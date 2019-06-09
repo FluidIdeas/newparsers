@@ -36,7 +36,8 @@ deletables = [
 	'./ninja ninja_test',
 	'exec /bin/bash --login +h',
 	'ABI=32 ./configure',
-	'tzselect'
+	'tzselect',
+	'passwd root'
 ]
 
 replaceables = {
