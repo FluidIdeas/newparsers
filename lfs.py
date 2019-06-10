@@ -1,6 +1,8 @@
 #!/usr/bin/env python3
 
 from bs4 import BeautifulSoup
+from functions import read_processed
+from functions import read_raw
 
 index = 1
 separator = '/'
@@ -10,6 +12,10 @@ index_path = book_dir + separator + 'index.html'
 wget_list_path = book_dir + separator + 'wget-list'
 chapter_map = {'chapter05': 'toolchain', 'chapter06': 'final-system'}
 unwanted_chapters = ['5.1', '5.2', '5.3', '5.36', '5.37', '6.1', '6.2', '6.3', '6.4', '6.5', '6.6', '6.77', '6.78', '6.79']
+
+additional_commands = {
+	'openssl': 'ln -svf /tools/bin/env /usr/bin/'
+}
 deletables = [
 	"vim -c ':options'",
 	'make check',
@@ -37,7 +43,8 @@ deletables = [
 	'exec /bin/bash --login +h',
 	'ABI=32 ./configure',
 	'tzselect',
-	'passwd root'
+	'passwd root',
+	'vim-test.log'
 ]
 
 replaceables = {
@@ -89,19 +96,6 @@ def get_prefix(i):
 	else:
 		return str(i)
 
-def read_processed(file_path):
-	with open(file_path, 'r') as fp:
-		lines = fp.readlines()
-		data = ''
-		for line in lines:
-			data = data + line.strip()
-	return data
-
-def read_raw(file_path):
-	with open(file_path, 'r') as fp:
-		data = fp.read()
-	return data
-
 def clean_commands(commands):
 	fresh_commands = list()
 	for command in commands:
@@ -125,6 +119,8 @@ def get_commands(document, name):
 	for command in commands:
 		cmds.append(command.text.strip())
 	cleaned = clean_commands(cmds)
+	if name in additional_commands:
+		cleaned.insert(0, additional_commands[name])
 	return cleaned
 
 def get_tarball_name(name):
