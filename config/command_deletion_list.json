@@ -1,0 +1,381 @@
+[
+	{
+		"libusb": [
+			"make -C doc docs",
+			"install -v -m644 doc/html/*"
+		]
+	},
+	{
+		"openssh": [
+			"ssh-keygen"
+		]
+	},
+	{
+		"git": [
+			"make html",
+			"make man",
+			"make install-man",
+			"make htmldir=/usr/share/doc/"
+		]
+	},
+	{
+		"highlight": [
+			"make gui",
+			"make install-gui"
+		]
+	},
+	{
+		"libxml2": [
+			"systemctl stop httpd.service"
+		]
+	},
+	{
+		"unzip": [
+			"convmv -f "
+		]
+	},
+	{
+		"x7lib": [
+			"bash -e",
+			"/usr/lib/X11",
+			"exit"
+		]
+	},
+	{
+		"x7app": [
+			"bash -e",
+			"exit"
+		]
+	},
+	{
+		"x7font": [
+			"bash -e",
+			"/usr/share/fonts/X11-OTF",
+			"exit"
+		]
+	},
+	{
+		"llvm": [
+			"cmake -DLLVM_ENABLE_SPHINX=ON",
+			"ninja docs-clang-html docs-clang-man",
+			"install -v -m644 docs/man/* /usr/share/man/man1",
+			"install -v -m644 tools/clang/docs/man/*"
+		]
+	},
+	{
+		"mesa": [
+			"cp -rfv docs/* /usr/share/doc/"
+		]
+	},
+	{
+		"libinput": [
+			"cp -rv Documentation"
+		]
+	},
+	{
+		"graphite2": [
+			"/usr/share/doc/",
+			"make docs"
+		]
+	},
+	{
+		"graphite-wo-harfbuzz": [
+			"/usr/share/doc/",
+			"make docs"
+		]
+	},
+	{
+		"libical": [
+			"make docs",
+			"/usr/share/doc/"
+		]
+	},
+	{
+		"alsa-lib": [
+			"/usr/share/doc",
+			"make doc"
+		]
+	},
+	{
+		"sdl2": [
+			"cd test",
+			"/usr/share/doc",
+			"doxygen"
+		]
+	},
+	{
+		"ffmpeg": [
+			"pushd doc",
+			"doc/*.pdf",
+			"make fate-rsync",
+			"rsync -vrltLW",
+			"make fate THREADS",
+			"doc/doxy/html/*"
+		]
+	},
+	{
+		"rust": [
+			"rustc-testlog"
+		]
+	},
+	{
+		"dbus": [
+			"systemctl start rescue.target",
+			"systemctl daemon-reload",
+			"make check",
+			"dbus-daemon-launch-helper",
+			"enable-tests",
+			"eval `dbus-launch`",
+			"DBUS_SESSION_BUS_PID"
+		]
+	},
+	{
+		"at-spi2-atk": [
+			"glib-compile-schemas"
+		]
+	},
+	{
+		"gtk3": [
+			"gtk-query-immodules-3.0",
+			"glib-compile-schemas",
+			"settings.ini"
+		]
+	},
+	{
+		"vala": [
+			"patch"
+		]
+	},
+	{
+		"gdk-pixbuf": [
+			"gdk-pixbuf-query-loaders"
+		]
+	},
+	{
+		"gtk2": [
+			"gtk-query-immodules-2.0",
+			"gtkrc"
+		]
+	},
+	{
+		"graphviz": [
+			"wget"
+		]
+	},
+	{
+		"libgcrypt": [
+			"make -C doc"
+		]
+	},
+	{
+		"libgcrypt": [
+			"doc/gcrypt.html"
+		]
+	},
+	{
+		"cpio": [
+			"make -C doc",
+			"pdf,ps,dvi"
+		]
+	},
+	{
+		"popt": [
+			"doxygen/html"
+		]
+	},
+	{
+		"parted": [
+			"texi2pdf",
+			"tests/Makefile",
+			"doc/parted.{pdf,ps,dvi}"
+		]
+	},
+	{
+		"lvm2": [
+			"make -C tools install_dmsetup_dynamic",
+			"--with-thin-check="
+		]
+	},
+	{
+		"sudo": [
+			"/etc/sudoers.d/sudo"
+		]
+	},
+	{
+		"libassuan": [
+			"make -C doc pdf ps",
+			"pdf,ps,dvi"
+		]
+	},
+	{
+		"gnupg": [
+			"make -C doc pdf ps html",
+			"{pdf,dvi,ps}"
+		]
+	},
+	{
+		"libdaemon": [
+			"doxygen",
+			"reference/html/*"
+		]
+	},
+	{
+		"liboauth": [
+			"doc/html/*"
+		]
+	},
+	{
+		"git": [
+			"make html",
+			"make man",
+			"make install-man",
+			"make htmldir=/usr/share/doc/git-2.20.1 install-html",
+			"tar -xf ../git-manpages",
+			"mkdir -vp /usr/share/doc/git"
+		]
+	},
+	{
+		"dhcpcd": [
+			"systemctl"
+		]
+	},
+	{
+		"dhcp": [
+			"systemctl"
+		]
+	},
+	{
+		"wpa_supplicant": [
+			"wpa_gui-qt4",
+			"wpa_passphrase",
+			"systemctl enable wpa_supplicant@<em class=\"replaceable\"><code>wlan0</code></em>",
+			"systemctl start wpa_supplicant@<em class=\"replaceable\"><code>wlan0</code></em>"
+		]
+	},
+	{
+		"networkmanager": [
+			"/etc/NetworkManager/conf.d/dhcp.conf",
+			"/etc/NetworkManager/conf.d/no-dns-update.conf"
+		]
+	},
+	{
+		"btrfs-progs": [
+			"make fssum",
+			"pushd tests"
+		]
+	},
+	{
+		"mdadm": [
+			"make test",
+			"./test",
+			"targetdir/log"
+		]
+	},
+	{
+		"gs": [
+			"gs -q -dBATCH"
+		]
+	},
+	{
+		"keyutils": [
+			"make -k test"
+		]
+	},
+	{
+		"docbook-xsl": [
+			"<em class=\"replaceable\"><code><version></code></em>",
+			"sed -i '/rewrite/d' /etc/xml/catalog"
+		]
+	},
+	{
+		"alsa-utils": [
+			"alsactl",
+			"usermod"
+		]
+	},
+	{
+		"alsa-tools": [
+			"bash -e",
+			"exit"
+		]
+	},
+	{
+		"faac": [
+			"frontend/faac",
+			"faad"
+		]
+	},
+	{
+		"faad2": [
+			"frontend/faad",
+			"aplay"
+		]
+	},
+	{
+		"libmusicbrainz5": [
+			"doxygen",
+			"docs"
+		]
+	},
+	{
+		"xine-lib": [
+			"doxygen",
+			"doc/api/*"
+		]
+	},
+	{
+		"libreoffice": [
+			"--no-overwrite-dir",
+			"/usr/share/pixmaps"
+		]
+	},
+	{
+		"krameworks5": [
+			"/opt/kf5.old",
+			"bash -e",
+			"/opt/kf5"
+		]
+	},
+	{
+		"plasma-all": [
+			"bash -e",
+			"xinitrc",
+			"startx"
+		]
+	},
+	{
+		"lm_sensors": [
+			"sensors-detect"
+		]
+	},
+	{
+		"xfce4-session": [
+			"dbus-launch",
+			"startx"
+		]
+	},
+	{
+		"libevent": [
+			"doxygen"
+		]
+	},
+	{
+		"qt5": [
+			"assistant-qt5",
+			"designer-qt5",
+			"linguist-qt5",
+			"qdbusviewer-qt5"
+		]
+	},
+	{
+		"make-ca": [
+			"Makebelieve_CA"
+		]
+	},
+	{
+		"libisoburn": [
+			"doxygen",
+			"doc/html/*"
+		]
+	}
+]

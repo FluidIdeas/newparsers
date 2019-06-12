@@ -2,6 +2,9 @@
 
 from bs4 import BeautifulSoup
 
+with open('config/templates/script_template') as tfp:
+	template = tfp.read()
+
 def read_processed(file_path):
 	with open(file_path, 'rb') as fp:
 		data = fp.read()
@@ -33,6 +36,8 @@ def get_version(tarball):
 			#print(str(i) + ': ' + str(ch))
 			if (str(ch).isdigit() and tarball[i + 1] != '-' or ch == '.') and start == -1:
 				#print('Start initialized')
+				if '-' in tarball and i < tarball.index('-'):
+					continue
 				start = i
 			if str(ch).isdigit() == False and start != -1 and ch != '.':
 				#print('End initialized')
@@ -57,7 +62,7 @@ def process_html_data(data):
 def parse_package(file_path):
 	package = dict()
 	doc = BeautifulSoup(read_raw(file_path).decode("latin-1"), 'html.parser')
-	package['name'] = file_path.split('/')[-1].replace('.html', '')
+	package['name'] = file_path.split('/')[-1].replace('.html', '').lower()
 	package['download_urls'] = list()
 	package['dependencies'] = list()
 	download_links = doc.select('div.itemizedlist ul.compact a.ulink[href]')
@@ -77,7 +82,7 @@ def parse_package(file_path):
 				continue
 			else:
 				cmd = cmd_pre.select('kbd.command')[0].text.strip()
-			root_cmd = 'cat > /tmp/root_script.sh <<"ENDOFSCRIPT"\n' + cmd + '\nENDOFSCRIPT\n\nchmod a+x /tmp/root_script.sh\n/tmp/root_script.sh\n'
+			root_cmd = 'sudo rm -rf /tmp/rootscript.sh\ncat > /tmp/rootscript.sh <<"ENDOFROOTSCRIPT"\n' + cmd + '\nENDOFROOTSCRIPT\n\nchmod a+x /tmp/rootscript.sh\nsudo /tmp/rootscript.sh\nsudo rm -rf /tmp/rootscript.sh\n'
 			commands.append(root_cmd)
 		package['commands'] = '\n'.join(commands)
 	return package
@@ -89,4 +94,32 @@ def print_package(package):
 	print(package['tarball'])
 	print(package['version'])
 	print(package['commands'])
+
+def get_script(p):
+	tmp = '' + template
+	deps = ''
+	for dep in p['dependencies']:
+		deps = deps + '#REQ:' + dep + '\n'
+	tmp = tmp.replace('##DEPS##', deps)
+	if p['name'] != None:
+		tmp = tmp.replace('##NAME##', 'NAME=' + p['name'])
+	if p['version'] != None:
+		tmp = tmp.replace('##VERSION##', 'VERSION=' + p['version'])
+	else:
+		tmp = tmp.replace('##VERSION##', '')
+	urls = ''
+	if len(p['download_urls']) > 0:
+		tmp = tmp.replace('##URL##', 'URL=' + p['download_urls'][0])
+		for url in p['download_urls']:
+			urls = urls + 'wget -nc ' + url + '\n'
+		tmp = tmp.replace('##DOWNLOADS##', urls)
+	else:
+		tmp = tmp.replace('##URL##', '')
+		tmp = tmp.replace('##DOWNLOADS##', '')
+		tmp = tmp.replace('##VERSION##', '')
+	if p['commands'] == None or len(p['commands']) > 0:
+		tmp = tmp.replace('##COMMANDS##', p['commands'])
+	else:
+		tmp = tmp.replace('##COMMANDS##', '')
+	return tmp
 

@@ -1,0 +1,10 @@
+{
+	"make test": "",
+	"grep -A9 summary *make_check.log": "",
+	"#make check 2>&1 | tee ../$packagedir-make_check.log": "",
+	"mkdir lib &&": "mkdir -pv lib &&",
+	"mkdir app &&": "mkdir -pv app &&",
+	"mkdir font &&": "mkdir -pv font &&",
+	" &&\n/usr/sbin/usermod -a -G netdev <em class=\"replaceable\"><code><username></em>": "",
+	"$KF5_PREFIX": "/usr"
+}

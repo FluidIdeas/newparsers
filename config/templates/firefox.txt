@@ -1,0 +1,41 @@
+export LANG=en-US
+
+if [ $(uname -m) == "x86_64" ]
+then
+	wget -O $SOURCE_DIR/firefox.tar.bz2 "https://download.mozilla.org/?product=firefox-latest&os=linux64&lang=$LANG"
+else
+	wget -O $SOURCE_DIR/firefox.tar.bz2 "https://download.mozilla.org/?product=firefox-latest&os=linux&lang=$LANG"
+fi
+
+TARBALL="firefox.tar.bz2"
+DIRECTORY=`tar -tf $TARBALL | sed -e 's@/.*@@' | uniq`
+
+sudo tar -xf $TARBALL -C /opt
+sudo chmod -R a+rw /opt/firefox
+
+sudo tee /usr/share/applications/firefox.desktop << "EOF" &&
+[Desktop Entry]
+Encoding=UTF-8
+Name=Firefox Web Browser
+Comment=Browse the World Wide Web
+GenericName=Web Browser
+Exec=/opt/firefox/firefox %u
+Terminal=false
+Type=Application
+Icon=firefox
+Categories=GNOME;GTK;Network;WebBrowser;
+MimeType=application/xhtml+xml;text/xml;application/xhtml+xml;application/vnd.mozilla.xul+xml;text/mml;x-scheme-handler/http;x-scheme-handler/https;
+StartupNotify=true
+EOF
+
+for s in 16 32 48 128
+do
+sudo install -v -Dm644 /opt/firefox/browser/chrome/icons/default/default${s}.png \
+                  /usr/share/icons/hicolor/${s}x${s}/apps/firefox.png
+done
+
+cd $SOURCE_DIR
+rm -rf $DIRECTORY
+
+sudo update-desktop-database
+sudo update-mime-database /usr/share/mime

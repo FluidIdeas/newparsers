@@ -1,0 +1,26 @@
+{
+	"harfbuzz": [
+		"graphite-wo-harfbuzz",
+		"freetype2-wo-harfbuzz"
+	],
+	"graphite2": [
+		"harfbuzz"
+	],
+	"alsa-tools": [
+		"fltk"
+	],
+	"krameworks5": [
+		"noto-fonts",
+		"oxygen-fonts",
+		"bluez",
+		"modemmanager",
+		"jasper",
+		"mitkrb",
+		"udisks2",
+		"upower",
+		"media-player-info"
+	],
+	"gnome-control-center": ["gsound"],
+	"mutter": ["libpipewire"],
+	"nautilus": ["tracker-miners"]
+}

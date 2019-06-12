@@ -6,6 +6,7 @@ from functions import read_raw
 from functions import parse_package
 from functions import print_package
 from functions import get_version
+from functions import get_script
 
 book_dir = '/home/chandrakant/aryalinux/books/blfs'
 out_dir = '/home/chandrakant/aryalinux/aryalinux/applications'
@@ -39,5 +40,8 @@ for link in links:
 	packages.append(package)
 
 for p in packages:
-	if p['name'] == 'imlib2':
-		print_package(p)
+	if 'commands' in p:
+		with open(out_dir + '/' + p['name'] + '.sh', 'w') as fp:
+			script = get_script(p)
+			fp.write(script)
+

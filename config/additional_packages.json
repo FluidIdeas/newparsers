@@ -1,0 +1,1576 @@
+[
+	{
+		"name": "bash-completion",
+		"version": "2.8",
+		"downloadUrls": [
+			"https://github.com/scop/bash-completion/releases/download/2.8/bash-completion-2.8.tar.xz"
+		],
+		"packageName": "bash-completion",
+		"requiredDependencies": [],
+		"recommendedDependencies": [],
+		"optionalDependencies": [],
+		"commands": [
+			"./configure --prefix=/usr",
+			"make -j$(nproc)",
+			"sudo make install"
+		],
+		"url": "https://github.com/scop/bash-completion/releases/download/2.8/bash-completion-2.8.tar.xz"
+	},
+	{
+		"name": "ccache",
+		"version": "3.5.1",
+		"downloadUrls": [
+			"https://www.samba.org/ftp/ccache/ccache-3.5.1a.tar.xz"
+		],
+		"packageName": "ccache",
+		"requiredDependencies": [],
+		"recommendedDependencies": [],
+		"optionalDependencies": [],
+		"commands": [
+			"./configure --prefix=/usr &&",
+			"make -j$(nproc)",
+			"sudo make install"
+		],
+		"url": "https://www.samba.org/ftp/ccache/ccache-3.5.1a.tar.xz"
+	},
+	{
+		"name": "xserver-meta",
+		"version": "1.20.3",
+		"downloadUrls": [],
+		"packageName": "xserver-meta",
+		"requiredDependencies": [
+			"libxml2",
+			"util-macros",
+			"xorgproto",
+			"libxau",
+			"libxdmcp",
+			"xcb-proto",
+			"libxcb",
+			"x7lib",
+			"xcb-util",
+			"xcb-util-image",
+			"xcb-util-keysyms",
+			"xcb-util-renderutil",
+			"xcb-util-wm",
+			"xcb-util-cursor",
+			"mesa",
+			"libva",
+			"xbitmaps",
+			"x7app",
+			"xcursor-themes",
+			"x7font",
+			"xkeyboard-config",
+			"xorg-server",
+			"x7driver",
+			"xf86-video-cirrus",
+			"xf86-video-mach64",
+			"xf86-video-openchrome",
+			"xf86-video-vesa",
+			"intel-vaapi-driver",
+			"libvdpau",
+			"libvdpau-va-gl",
+			"twm",
+			"xterm",
+			"xclock",
+			"xinit",
+			"wayland-protocols"
+		],
+		"recommendedDependencies": [],
+		"optionalDependencies": [
+			"xf86-video-mga",
+			"xf86-video-sis",
+			"xf86-video-r128",
+			"xf86-video-savage",
+			"xf86-video-tdfx"
+		],
+		"commands": [
+			"sudo rm /etc/X11/xorg.conf.d/*.conf"
+		],
+		"url": null
+	},
+	{
+		"name": "x7driver",
+		"version": "1.0",
+		"downloadUrls": [],
+		"packageName": "x7driver",
+		"requiredDependencies": [
+			"libevdev",
+			"xorg-evdev-driver",
+			"libinput",
+			"xorg-libinput-driver",
+			"xorg-synaptics-driver",
+			"xorg-vmmouse-driver",
+			"xorg-wacom-driver",
+			"xorg-amdgpu-driver",
+			"xorg-ati-driver",
+			"xorg-fbdev-driver",
+			"xorg-intel-driver",
+			"intel-hybrid-driver",
+			"xorg-nouveau-driver",
+			"xorg-vmware-driver",
+			"libva",
+			"libvdpau",
+			"libvdpau-va-gl"
+		],
+		"recommendedDependencies": [],
+		"optionalDependencies": [],
+		"commands": [],
+		"url": null
+	},
+	{
+		"name": "xf86-video-vesa",
+		"version": "2.4.0",
+		"downloadUrls": [
+			"https://www.x.org/archive/individual/driver/xf86-video-vesa-2.4.0.tar.gz"
+		],
+		"packageName": "xf86-video-vesa",
+		"requiredDependencies": [],
+		"recommendedDependencies": [],
+		"optionalDependencies": [],
+		"commands": [
+			"./configure $XORG_CONFIG &&",
+			"make -j$(nproc)",
+			"sudo make install"
+		],
+		"url": "https://www.x.org/archive/individual/driver/xf86-video-vesa-2.4.0.tar.gz"
+	},
+	{
+		"name": "xf86-video-openchrome",
+		"version": "0.6.0",
+		"downloadUrls": [
+			"https://www.x.org/archive/individual/driver/xf86-video-openchrome-0.6.0.tar.gz"
+		],
+		"packageName": "xf86-video-openchrome",
+		"requiredDependencies": [],
+		"recommendedDependencies": [],
+		"optionalDependencies": [],
+		"commands": [
+			"./configure $XORG_CONFIG &&",
+			"make -j$(nproc)",
+			"sudo make install"
+		],
+		"url": "https://www.x.org/archive/individual/driver/xf86-video-openchrome-0.6.0.tar.gz"
+	},
+	{
+		"name": "xf86-video-mach64",
+		"version": "6.9.6",
+		"downloadUrls": [
+			"https://www.x.org/archive/individual/driver/xf86-video-mach64-6.9.6.tar.gz"
+		],
+		"packageName": "xf86-video-mach64",
+		"requiredDependencies": [],
+		"recommendedDependencies": [],
+		"optionalDependencies": [],
+		"commands": [
+			"./configure $XORG_CONFIG &&",
+			"make -j$(nproc)",
+			"sudo make install"
+		],
+		"url": "https://www.x.org/archive/individual/driver/xf86-video-mach64-6.9.6.tar.gz"
+	},
+	{
+		"name": "xf86-video-cirrus",
+		"version": "1.5.3",
+		"downloadUrls": [
+			"https://www.x.org/archive/individual/driver/xf86-video-cirrus-1.5.3.tar.gz"
+		],
+		"packageName": "xf86-video-cirrus",
+		"requiredDependencies": [],
+		"recommendedDependencies": [],
+		"optionalDependencies": [],
+		"commands": [
+			"./configure $XORG_CONFIG &&",
+			"make -j$(nproc)",
+			"sudo make install"
+		],
+		"url": "https://www.x.org/archive/individual/driver/xf86-video-cirrus-1.5.3.tar.gz"
+	},
+	{
+		"name": "intel-vaapi-driver",
+		"version": "2.3.0",
+		"downloadUrls": [
+			"https://github.com/intel/intel-vaapi-driver/releases/download/2.3.0/intel-vaapi-driver-2.3.0.tar.bz2"
+		],
+		"packageName": "intel-vaapi-driver",
+		"requiredDependencies": [],
+		"recommendedDependencies": [],
+		"optionalDependencies": [],
+		"commands": [
+			"./configure $XORG_CONFIG &&",
+			"make -j$(nproc)",
+			"sudo make install"
+		],
+		"url": "https://github.com/intel/intel-vaapi-driver/releases/download/2.3.0/intel-vaapi-driver-2.3.0.tar.bz2"
+	},
+	{
+		"name": "perl-font-ttf",
+		"packageName": "perl-font-ttf",
+		"downloadUrls": [
+			"https://cpan.metacpan.org/authors/id/B/BH/BHALLISSY/Font-TTF-1.06.tar.gz"
+		],
+		"version": "1.06",
+		"requiredDependencies": [],
+		"recommendedDependencies": [],
+		"optionalDependencies": [],
+		"commands": [
+			"perl Makefile.PL &&",
+			"make -j$(nproc)",
+			"sudo make install"
+		],
+		"url": "https://cpan.metacpan.org/authors/id/B/BH/BHALLISSY/Font-TTF-1.06.tar.gz"
+	},
+	{
+		"name": "perl-io-string",
+		"packageName": "perl-io-string",
+		"downloadUrls": [
+			"https://cpan.metacpan.org/authors/id/G/GA/GAAS/IO-String-1.08.tar.gz"
+		],
+		"version": "1.08",
+		"requiredDependencies": [],
+		"recommendedDependencies": [],
+		"optionalDependencies": [],
+		"commands": [
+			"perl Makefile.PL &&",
+			"make -j$(nproc)",
+			"sudo make install"
+		],
+		"url": "https://cpan.metacpan.org/authors/id/G/GA/GAAS/IO-String-1.08.tar.gz"
+	},
+	{
+		"name": "dejavu-fonts",
+		"packageName": "dejavu-fonts",
+		"downloadUrls": [
+			"https://sourceforge.net/projects/dejavu/files/dejavu/2.37/dejavu-fonts-2.37.tar.bz2"
+		],
+		"version": "2.37",
+		"requiredDependencies": [
+			"fontforge",
+			"perl-font-ttf",
+			"perl-io-string"
+		],
+		"recommendedDependencies": [],
+		"optionalDependencies": [],
+		"commands": [
+			"make full-ttf",
+			"sudo mkdir -pv /usr/share/fonts/TTF/DejaVu",
+			"sudo cp -f build/*.ttf /usr/share/fonts/TTF/DejaVu"
+		],
+		"url": "https://sourceforge.net/projects/dejavu/files/dejavu/2.37/dejavu-fonts-2.37.tar.bz2"
+	},
+	{
+		"name": "gnome-desktop-environment",
+		"packageName": "gnome-desktop-environment",
+		"downloadUrls": [],
+		"version": "3.32.0",
+		"requiredDependencies": [
+			"meson",
+			"accountsservice",
+			"desktop-file-utils",
+			"gcr",
+			"gsettings-desktop-schemas",
+			"libsecret",
+			"rest",
+			"totem-pl-parser",
+			"vte",
+			"yelp-xsl",
+			"gconf",
+			"geocode-glib",
+			"gjs",
+			"gnome-desktop",
+			"gnome-menus",
+			"libnotify",
+			"gnome-online-accounts",
+			"gnome-video-effects",
+			"grilo",
+			"libchamplain",
+			"libgdata",
+			"libgee",
+			"libgtop",
+			"libgweather",
+			"libpeas",
+			"libwacom",
+			"libwnck",
+			"evolution-data-server",
+			"folks",
+			"gfbgraph",
+			"telepathy-glib",
+			"telepathy-logger",
+			"telepathy-mission-control",
+			"caribou",
+			"dconf",
+			"gnome-backgrounds",
+			"librsvg",
+			"gnome-themes-extra",
+			"gvfs",
+			"nautilus",
+			"zenity",
+			"gnome-bluetooth",
+			"gnome-keyring",
+			"clutter-gst",
+			"cups",
+			"cups-filters",
+			"gnome-settings-daemon",
+			"grilo",
+			"gnome-control-center",
+			"mutter",
+			"gnome-shell",
+			"gnome-shell-extensions",
+			"gnome-shell-coverflow-alt-tab",
+			"gnome-session",
+			"gdm",
+			"gnome-user-docs",
+			"baobab",
+			"brasero",
+			"cheese",
+			"eog",
+			"evince",
+			"file-roller",
+			"gedit",
+			"gtksourceview4",
+			"gnome-calculator",
+			"gnome-disk-utility",
+			"gnome-logs",
+			"gnome-maps",
+			"gnome-nettool",
+			"gnome-power-manager",
+			"gnome-system-monitor",
+			"gnome-terminal",
+			"gnome-weather",
+			"gucharmap",
+			"vino",
+			"vinagre",
+			"network-manager-applet",
+			"seahorse",
+			"notification-daemon",
+			"polkit-gnome",
+			"xdg-user-dirs",
+			"gnome-tweaks",
+			"plank",
+			"pavucontrol",
+			"aryalinux-wallpapers",
+			"aryalinux-google-fonts",
+			"aryalinux-icons",
+			"aryalinux-gtk-themes",
+			"aryalinux-gnome-settings"
+		],
+		"recommendedDependencies": [],
+		"optionalDependencies": [],
+		"commands": [
+			"sudo sed -i 's@MimeType=inode/directory@# MimeType=inode/directory@g' /usr/share/applications/org.gnome.baobab.desktop",
+			"sudo update-desktop-database",
+			"sudo update-mime-database /usr/share/mime",
+			"pushd $SOURCE_DIR",
+			"wget https://raw.githubusercontent.com/FluidIdeas/utils/master/wallpaper-list-update.sh",
+			"sudo chmod a+x wallpaper-list-update.sh",
+			"sudo ./wallpaper-list-update.sh",
+			"sudo rm wallpaper-list-update.sh",
+			"popd",
+			"sudo tee /etc/profile.d/aryalinux-desktop.sh << EOF",
+			"cd ~",
+			"xdg-user-dirs-update",
+			"default-gnome-user-instructions",
+			"EOF",
+			"sudo rm -rvf /usr/share/xsessions/gnome.desktop"
+		],
+		"url": null
+	},
+	{
+		"name": "gnome-tweaks",
+		"packageName": "gnome-tweaks",
+		"downloadUrls": [
+			"https://gitlab.gnome.org/GNOME/gnome-tweaks/-/archive/3.31.3/gnome-tweaks-3.31.3.tar.bz2"
+		],
+		"version": "3.31.3",
+		"requiredDependencies": [],
+		"recommendedDependencies": [],
+		"optionalDependencies": [],
+		"commands": [
+			"mkdir build &&\ncd build &&\n\nmeson --prefix=/usr .. &&\nninja",
+			"sudo ninja install"
+		],
+		"url": "https://gitlab.gnome.org/GNOME/gnome-tweaks/-/archive/3.31.3/gnome-tweaks-3.31.3.tar.bz2"
+	},
+	{
+		"name": "aryalinux-google-fonts",
+		"packageName": "aryalinux-google-fonts",
+		"downloadUrls": [
+			"https://sourceforge.net/projects/aryalinux-bin/files/files/1.4/aryalinux-google-fonts.tar.xz"
+		],
+		"version": "1.4",
+		"requiredDependencies": [],
+		"recommendedDependencies": [],
+		"optionalDependencies": [],
+		"commands": [
+			"sudo tar xf aryalinux-google-fonts.tar.xz -C /"
+		],
+		"url": null
+	},
+	{
+		"name": "aryalinux-gtk-themes",
+		"packageName": "aryalinux-gtk-themes",
+		"downloadUrls": [
+			"https://sourceforge.net/projects/aryalinux-bin/files/files/1.4/aryalinux-gtk-themes.tar.xz"
+		],
+		"version": "1.4",
+		"requiredDependencies": [],
+		"recommendedDependencies": [],
+		"optionalDependencies": [],
+		"commands": [
+			"sudo tar xf aryalinux-gtk-themes.tar.xz -C /"
+		],
+		"url": null
+	},
+	{
+		"name": "aryalinux-wallpapers",
+		"packageName": "aryalinux-wallpapers",
+		"downloadUrls": [
+			"https://sourceforge.net/projects/aryalinux-bin/files/files/1.4/aryalinux-wallpapers.tar.xz"
+		],
+		"version": "1.4",
+		"requiredDependencies": [],
+		"recommendedDependencies": [],
+		"optionalDependencies": [],
+		"commands": [
+			"sudo tar xf aryalinux-wallpapers.tar.xz -C /"
+		],
+		"url": null
+	},
+	{
+		"name": "aryalinux-icons",
+		"packageName": "aryalinux-icons",
+		"downloadUrls": [
+			"https://sourceforge.net/projects/aryalinux-bin/files/files/1.4/aryalinux-icons.tar.xz"
+		],
+		"version": "1.4",
+		"requiredDependencies": [],
+		"recommendedDependencies": [],
+		"optionalDependencies": [],
+		"commands": [
+			"sudo tar xf aryalinux-icons.tar.xz -C /"
+		],
+		"url": null
+	},
+	{
+		"name": "aryalinux-gnome-settings",
+		"packageName": "aryalinux-gnome-settings",
+		"downloadUrls": [
+			"https://sourceforge.net/projects/aryalinux-bin/files/artifacts/aryalinux-gnome-defaults.tar.xz"
+		],
+		"version": "1.4",
+		"requiredDependencies": [],
+		"recommendedDependencies": [],
+		"optionalDependencies": [],
+		"commands": [
+			"sudo tar xf aryalinux-gnome-defaults.tar.xz -C /",
+			"sudo cp -r /etc/skel/{.config,.local,.bash,.Xresources}* ~",
+			"sudo chown -R $USER:$USER ~"
+		],
+		"url": null
+	},
+	{
+		"name": "plank",
+		"packageName": "plank",
+		"downloadUrls": [
+			"https://launchpad.net/plank/1.0/0.11.4/+download/plank-0.11.4.tar.xz"
+		],
+		"version": "0.11.4",
+		"requiredDependencies": [
+			"libgee",
+			"libbamf3"
+		],
+		"recommendedDependencies": [],
+		"optionalDependencies": [],
+		"commands": [
+			"./configure --prefix=/usr &&",
+			"make",
+			"sudo make install"
+		],
+		"url": "https://launchpad.net/plank/1.0/0.11.4/+download/plank-0.11.4.tar.xz"
+	},
+	{
+		"name": "libbamf3",
+		"packageName": "libbamf3",
+		"downloadUrls": [
+			"https://launchpad.net/bamf/0.5/0.5.4/+download/bamf-0.5.4.tar.gz"
+		],
+		"version": "0.5.4",
+		"requiredDependencies": [
+			"libwnck",
+			"libgtop",
+			"libxslt",
+			"libxml2py2"
+		],
+		"recommendedDependencies": [],
+		"optionalDependencies": [],
+		"commands": [
+			"./configure --prefix=/usr &&",
+			"make",
+			"sudo make install"
+		],
+		"url": "https://launchpad.net/bamf/0.5/0.5.4/+download/bamf-0.5.4.tar.gz"
+	},
+	{
+		"name": "multimedia-pack",
+		"packageName": "multimedia-pack",
+		"downloadUrls": [],
+		"version": "1.4",
+		"requiredDependencies": [
+			"alsa",
+			"alsa-lib",
+			"alsa-plugins",
+			"alsa-utils",
+			"alsa-tools",
+			"alsa-firmware",
+			"alsa-oss",
+			"audiofile",
+			"faac",
+			"faad2",
+			"fdk-aac",
+			"flac",
+			"frei0r",
+			"gavl",
+			"gstreamer10",
+			"gst10-plugins-base",
+			"gst10-plugins-good",
+			"gst10-plugins-bad",
+			"gst10-plugins-ugly",
+			"gst10-libav",
+			"gstreamer10-vaapi",
+			"id3lib",
+			"liba52",
+			"libass",
+			"libcanberra",
+			"libcddb",
+			"libcdio",
+			"libdiscid",
+			"libdvdcss",
+			"libdvdread",
+			"libdvdnav",
+			"libdv",
+			"libmad",
+			"libmpeg2",
+			"libmusicbrainz",
+			"libmusicbrainz5",
+			"libogg",
+			"libquicktime",
+			"libsamplerate",
+			"libsndfile",
+			"libtheora",
+			"libvorbis",
+			"libvpx",
+			"mlt",
+			"opus",
+			"pulseaudio",
+			"sbc",
+			"sdl",
+			"sdl2",
+			"sound-theme-freedesktop",
+			"soundtouch",
+			"speex",
+			"taglib",
+			"v4l-utils",
+			"x264",
+			"x265",
+			"xine-lib",
+			"xvid"
+		],
+		"recommendedDependencies": [],
+		"optionalDependencies": [],
+		"commands": [],
+		"url": null
+	},
+	{
+		"name": "mpv",
+		"packageName": "mpv",
+		"downloadUrls": [
+			"https://github.com/mpv-player/mpv/archive/v0.29.1.tar.gz"
+		],
+		"version": "0.29.1",
+		"requiredDependencies": [
+			"xserver-meta",
+			"mesa",
+			"alsa-lib",
+			"pulseaudio",
+			"libass",
+			"libjpeg",
+			"gnutls",
+			"x264",
+			"lame",
+			"fdk-aac"
+		],
+		"recommendedDependencies": [],
+		"optionalDependencies": [],
+		"commands": [
+			"./bootstrap.py &&",
+			"./waf configure --enable-libmpv-shared --enable-vaapi --enable-vdpau --prefix=/usr &&",
+			"./waf build &&",
+			"sudo ./waf install --prefix=/usr"
+		],
+		"url": "https://github.com/mpv-player/mpv/archive/v0.29.1.tar.gz"
+	},
+	{
+		"name": "gnome-mpv",
+		"packageName": "gnome-mpv",
+		"downloadUrls": [
+			"https://github.com/gnome-mpv/gnome-mpv/releases/download/v0.16/gnome-mpv-0.16.tar.xz"
+		],
+		"version": "0.16",
+		"requiredDependencies": [
+			"mpv",
+			"gnome-desktop-environment"
+		],
+		"recommendedDependencies": [],
+		"optionalDependencies": [],
+		"commands": [
+			"./configure --prefix=/usr &&",
+			"make",
+			"sudo make install"
+		],
+		"url": "https://github.com/gnome-mpv/gnome-mpv/releases/download/v0.16/gnome-mpv-0.16.tar.xz"
+	},
+	{
+		"name": "libtdb",
+		"packageName": "libtdb",
+		"downloadUrls": [
+			"https://www.samba.org/ftp/tdb/tdb-1.3.17.tar.gz"
+		],
+		"version": "1.3.17",
+		"requiredDependencies": [],
+		"recommendedDependencies": [],
+		"optionalDependencies": [],
+		"commands": [
+			"sed -i \"s@../../buildtools@buildtools@g\" Makefile",
+			"./configure --prefix=/usr &&",
+			"make",
+			"sudo make install"
+		],
+		"url": "https://www.samba.org/ftp/tdb/tdb-1.3.17.tar.gz"
+	},
+	{
+		"name": "rhythmbox",
+		"packageName": "rhythmbox",
+		"downloadUrls": [
+			"https://download.gnome.org/sources/rhythmbox/3.4/rhythmbox-3.4.3.tar.xz"
+		],
+		"version": "3.4.3",
+		"requiredDependencies": [
+			"gobject-introspection",
+			"gtk3",
+			"xserver-meta",
+			"gdk-pixbuf",
+			"glib2",
+			"libsoup",
+			"libpeas",
+			"libxml2",
+			"libtdb",
+			"json-glib",
+			"libmtp",
+			"grilo",
+			"libdmapsharing",
+			"brasero",
+			"libnotify",
+			"libmusicbrainz5",
+			"pygobject2",
+			"libgpod",
+			"yelp"
+		],
+		"recommendedDependencies": [],
+		"optionalDependencies": [],
+		"commands": [
+			"./configure --prefix=/usr",
+			"make",
+			"sudo make install"
+		],
+		"url": "https://download.gnome.org/sources/rhythmbox/3.4/rhythmbox-3.4.3.tar.xz"
+	},
+	{
+		"name": "libmtp",
+		"packageName": "libmtp",
+		"downloadUrls": [
+			"https://sourceforge.net/projects/libmtp/files/libmtp/1.1.16/libmtp-1.1.16.tar.gz"
+		],
+		"version": "1.1.16",
+		"requiredDependencies": [],
+		"recommendedDependencies": [],
+		"optionalDependencies": [],
+		"commands": [
+			"./configure --prefix=/usr &&",
+			"make",
+			"sudo make install"
+		],
+		"url": "https://sourceforge.net/projects/libmtp/files/libmtp/1.1.16/libmtp-1.1.16.tar.gz"
+	},
+	{
+		"name": "libdmapsharing",
+		"packageName": "libdmapsharing",
+		"downloadUrls": [
+			"https://github.com/GNOME/libdmapsharing/archive/LIBDMAPSHARING_3_9_4.tar.gz"
+		],
+		"version": "3.9.4",
+		"requiredDependencies": [],
+		"recommendedDependencies": [],
+		"optionalDependencies": [],
+		"commands": [
+			"./autogen.sh --disable-tests --prefix=/usr &&",
+			"make",
+			"sudo make install"
+		],
+		"url": "https://github.com/GNOME/libdmapsharing/archive/LIBDMAPSHARING_3_9_4.tar.gz"
+	},
+	{
+		"name": "libplist",
+		"packageName": "libplist",
+		"downloadUrls": [
+			"https://github.com/libimobiledevice/libplist/archive/2.0.0.tar.gz"
+		],
+		"version": "2.0.0",
+		"requiredDependencies": [],
+		"recommendedDependencies": [],
+		"optionalDependencies": [],
+		"commands": [
+			"./autogen.sh --prefix=/usr &&",
+			"make",
+			"sudo make install"
+		],
+		"url": "https://github.com/libimobiledevice/libplist/archive/2.0.0.tar.gz"
+	},
+	{
+		"name": "libgpod",
+		"packageName": "libgpod",
+		"downloadUrls": [
+			"https://sourceforge.net/projects/gtkpod/files/libgpod/libgpod-0.8/libgpod-0.8.2.tar.bz2"
+		],
+		"version": "0.8.2",
+		"requiredDependencies": [
+			"libplist"
+		],
+		"recommendedDependencies": [],
+		"optionalDependencies": [],
+		"commands": [
+			"./configure --prefix=/usr &&",
+			"make",
+			"sudo make install"
+		],
+		"url": "https://sourceforge.net/projects/gtkpod/files/libgpod/libgpod-0.8/libgpod-0.8.2.tar.bz2"
+	},
+	{
+		"name": "openssl",
+		"packageName": "openssl",
+		"downloadUrls": [
+			"https://openssl.org/source/openssl-1.1.1a.tar.gz"
+		],
+		"version": "1.1.1a",
+		"requiredDependencies": [],
+		"recommendedDependencies": [],
+		"optionalDependencies": [],
+		"commands": [
+			"./config --prefix=/usr --openssldir=/etc/ssl --libdir=lib shared zlib-dynamic",
+			"make",
+			"sed -i '/INSTALL_LIBS/s/libcrypto.a libssl.a//' Makefile",
+			"sudo make MANSUFFIX=ssl install"
+		],
+		"url": "https://openssl.org/source/openssl-1.1.1a.tar.gz"
+	},
+	{
+		"name": "oxygen-fonts",
+		"packageName": "oxygen-fonts",
+		"downloadUrls": [
+			"https://sourceforge.net/projects/aryalinux-bin/files/files/1.4/oxygen-fonts-5.4.3-x86_64.tar.xz"
+		],
+		"version": "5.4.3",
+		"requiredDependencies": [],
+		"recommendedDependencies": [],
+		"optionalDependencies": [],
+		"commands": [
+			"sudo tar xf oxygen-fonts-5.4.3-x86_64.tar.xz -C /"
+		],
+		"url": null
+	},
+	{
+		"name": "noto-fonts",
+		"packageName": "noto-fonts",
+		"downloadUrls": [],
+		"version": "1.4",
+		"requiredDependencies": [],
+		"recommendedDependencies": [],
+		"optionalDependencies": [],
+		"commands": [
+			"sudo mkdir -pv /usr/share/fonts/truetype/noto-fonts",
+			"mkdir -pv noto-fonts && cd noto-fonts",
+			"wget -nc https://noto-website-2.storage.googleapis.com/pkgs/Noto{Sans,Serif,SansDisplay,SerifDisplay,Mono}-hinted.zip",
+			"wget -nc https://noto-website-2.storage.googleapis.com/pkgs/Noto{ColorEmoji,Emoji}-unhinted.zip",
+			"find . -name \"*zip\" -exec sudo unzip -o {} -d /usr/share/fonts/truetype/noto-fonts \\;"
+		],
+		"url": null
+	},
+	{
+		"name": "media-player-info",
+		"packageName": "media-player-info",
+		"downloadUrls": [
+			"https://www.freedesktop.org/software/media-player-info/media-player-info-24.tar.gz"
+		],
+		"version": "24",
+		"requiredDependencies": [],
+		"recommendedDependencies": [],
+		"optionalDependencies": [],
+		"commands": [
+			"./configure --prefix=/usr",
+			"make",
+			"sudo make install"
+		],
+		"url": "https://www.freedesktop.org/software/media-player-info/media-player-info-24.tar.gz"
+	},
+	{
+		"name": "kde-desktop-environment",
+		"packageName": "kde-desktop-environment",
+		"downloadUrls": [],
+		"version": "5.53",
+		"requiredDependencies": [
+			"extra-cmake-modules",
+			"phonon",
+			"phonon-backend-gstreamer",
+			"polkit-qt",
+			"libdbusmenu-qt",
+			"krameworks5",
+			"fftw",
+			"plasma-all",
+			"ark5",
+			"kdenlive",
+			"kmix5",
+			"khelpcenter",
+			"konsole5",
+			"lightdm"
+		],
+		"recommendedDependencies": [],
+		"optionalDependencies": [],
+		"commands": [
+			"sudo ln -svf /usr/lib /usr/lib64"
+		],
+		"url": null
+	},
+	{
+		"name": "xfce-desktop-environment",
+		"packageName": "xfce-desktop-environment",
+		"downloadUrls": [],
+		"version": "4.12",
+		"requiredDependencies": [
+			"libxfce4util",
+			"xfconf",
+			"libxfce4ui",
+			"exo",
+			"garcon",
+			"gtk-xfce-engine",
+			"libwnck2",
+			"xfce4-panel",
+			"xfce4-xkb-plugin",
+			"thunar",
+			"thunar-volman",
+			"tumbler",
+			"xfce4-appfinder",
+			"xfce4-power-manager",
+			"xfce4-settings",
+			"xfdesktop",
+			"xfwm4",
+			"xfce4-session",
+			"parole",
+			"xfce4-terminal",
+			"xfburn",
+			"ristretto",
+			"xfce4-notifyd",
+			"aryalinux-gtk-themes",
+			"aryalinux-google-fonts",
+			"aryalinux-wallpapers",
+			"aryalinux-icons",
+			"lightdm"
+		],
+		"recommendedDependencies": [],
+		"optionalDependencies": [],
+		"commands": [],
+		"url": null
+	},
+	{
+		"name": "gimp-gtk3",
+		"packageName": "gimp-gtk3",
+		"downloadUrls": [
+			"https://gitlab.gnome.org/GNOME/gimp/-/archive/gtk3-port/gimp-gtk3-port.tar.bz2",
+			"https://bitbucket.org/chandrakantsingh/patches/raw/1.5/gimp-gtk3.patch"
+		],
+		"version": "2.99.1",
+		"requiredDependencies": [
+			"gegl",
+			"gexiv2",
+			"glib-networking",
+			"gtk2",
+			"harfbuzz",
+			"libjpeg",
+			"libmypaint",
+			"librsvg",
+			"libtiff",
+			"libxml2py2",
+			"lcms2",
+			"mypaint-brushes",
+			"poppler",
+			"dbus-glib",
+			"gs",
+			"gvfs",
+			"iso-codes",
+			"libgudev",
+			"pygtk",
+			"xdg-utils"
+		],
+		"recommendedDependencies": [],
+		"optionalDependencies": [],
+		"commands": [
+			"patch -Np1 -i ../gimp-gtk3.patch",
+			"./autogen.sh --prefix=/usr --sysconfdir=/etc &&",
+			"make",
+			"sudo make install",
+			"sudo gtk-update-icon-cache &&",
+			"sudo update-desktop-database"
+		],
+		"url": "https://gitlab.gnome.org/GNOME/gimp/-/archive/gtk3-port/gimp-gtk3-port.tar.bz2"
+	},
+	{
+		"name": "gparted-gtk3",
+		"packageName": "gparted-gtk3",
+		"downloadUrls": [],
+		"version": "0.31.0",
+		"requiredDependencies": [
+			"gtkmm2",
+			"parted",
+			"gnome-common",
+			"gnome-doc-utils"
+		],
+		"recommendedDependencies": [],
+		"optionalDependencies": [],
+		"commands": [
+			"URL=https://github.com/lb90/gparted-gtk3.git",
+			"DIRECTORY=gparted-gtk3",
+			"git clone $URL",
+			"cd $DIRECTORY",
+			"./autogen.sh --prefix=/usr --disable-doc --disable-static &&",
+			"make",
+			"sudo make install",
+			"sudo cp -v /usr/share/applications/gparted.desktop /usr/share/applications/gparted.desktop.back &&",
+			"sudo sed -i 's/Exec=/Exec=sudo -A /' /usr/share/applications/gparted.desktop",
+			"cd $SOURCE_DIR",
+			"rm -rf gparted-gtk3"
+		],
+		"url": null
+	},
+	{
+		"name": "gnome-common",
+		"packageName": "gnome-common",
+		"downloadUrls": [
+			"https://ftp.gnome.org/pub/GNOME/sources/gnome-common/3.18/gnome-common-3.18.0.tar.xz"
+		],
+		"version": "0.31.0",
+		"requiredDependencies": [
+			"gnome-desktop-environment"
+		],
+		"recommendedDependencies": [],
+		"optionalDependencies": [],
+		"commands": [
+			"./autogen.sh --prefix=/usr &&",
+			"make",
+			"sudo make install"
+		],
+		"url": "https://ftp.gnome.org/pub/GNOME/sources/gnome-common/3.18/gnome-common-3.18.0.tar.xz"
+	},
+	{
+		"name": "gnome-doc-utils",
+		"packageName": "gnome-doc-utils",
+		"downloadUrls": [
+			"https://ftp.gnome.org/pub/GNOME/sources/gnome-doc-utils/0.20/gnome-doc-utils-0.20.10.tar.xz"
+		],
+		"version": "0.20.10",
+		"requiredDependencies": [
+			"gnome-desktop-environment"
+		],
+		"recommendedDependencies": [],
+		"optionalDependencies": [],
+		"commands": [
+			"./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var --disable-static &&",
+			"make",
+			"sudo make install"
+		],
+		"url": "https://ftp.gnome.org/pub/GNOME/sources/gnome-doc-utils/0.20/gnome-doc-utils-0.20.10.tar.xz"
+	},
+	{
+		"name": "ssr",
+		"packageName": "ssr",
+		"downloadUrls": [
+			"https://github.com/MaartenBaert/ssr/archive/0.3.11.tar.gz"
+		],
+		"version": "0.3.11",
+		"requiredDependencies": [
+			"qt5",
+			"jack2",
+			"ffmpeg",
+			"pulseaudio"
+		],
+		"recommendedDependencies": [],
+		"optionalDependencies": [],
+		"commands": [
+			"mkdir -pv build",
+			"cd build",
+			"cmake -DCMAKE_INSTALL_PREFIX=/usr -DWITH_QT5=1 -DWITH_PULSEAUDIO=1 -DWITH_JACK=1 .. &&",
+			"make",
+			"sudo make install"
+		],
+		"url": "https://github.com/MaartenBaert/ssr/archive/0.3.11.tar.gz"
+	},
+	{
+		"name": "jack2",
+		"packageName": "jack2",
+		"downloadUrls": [
+			"https://github.com/jackaudio/jack2/releases/download/v1.9.12/jack2-1.9.12.tar.gz"
+		],
+		"version": "1.9.12",
+		"requiredDependencies": [],
+		"recommendedDependencies": [],
+		"optionalDependencies": [],
+		"commands": [
+			"./waf configure --prefix=/usr &&",
+			"./waf build",
+			"sudo ./waf install"
+		],
+		"url": "https://github.com/jackaudio/jack2/releases/download/v1.9.12/jack2-1.9.12.tar.gz"
+	},
+	{
+		"name": "pavucontrol",
+		"packageName": "pavucontrol",
+		"downloadUrls": [
+			"http://freedesktop.org/software/pulseaudio/pavucontrol/pavucontrol-3.0.tar.gz"
+		],
+		"version": "3.0",
+		"requiredDependencies": [
+			"pulseaudio"
+		],
+		"recommendedDependencies": [],
+		"optionalDependencies": [],
+		"commands": [
+			"./configure --prefix=/usr",
+			"make",
+			"sudo make install"
+		],
+		"url": "http://freedesktop.org/software/pulseaudio/pavucontrol/pavucontrol-3.0.tar.gz"
+	},
+	{
+		"name": "gnome-shell-coverflow-alt-tab",
+		"packageName": "gnome-shell-coverflow-alt-tab",
+		"downloadUrls": [
+			"https://sourceforge.net/projects/aryalinux-bin/files/releases/1.5/gnome-shell-extensions/CoverflowAltTab-gnome-extension-36.tar.gz"
+		],
+		"version": "36",
+		"requiredDependencies": [
+			"gnome-shell-extensions"
+		],
+		"recommendedDependencies": [],
+		"optionalDependencies": [],
+		"commands": [
+			"sudo mkdir -pv /usr/share/gnome-shell/extensions/$(basename $(pwd))",
+			"sudo mv * /usr/share/gnome-shell/extensions/$(basename $(pwd))",
+			"sudo chmod -R a+r /usr/share/gnome-shell/extensions/$(basename $(pwd))"
+		],
+		"url": "https://sourceforge.net/projects/aryalinux-bin/files/releases/1.5/gnome-shell-extensions/CoverflowAltTab-gnome-extension-36.tar.gz"
+	},
+	{
+		"name": "openconnect",
+		"packageName": "openconnect",
+		"downloadUrls": [
+			"ftp://ftp.infradead.org/pub/openconnect/openconnect-8.02.tar.gz"
+		],
+		"version": "8.02",
+		"requiredDependencies": [
+			"vpnc"
+		],
+		"recommendedDependencies": [],
+		"optionalDependencies": [],
+		"commands": [
+			"./configure --prefix=/usr  &&",
+			"make",
+			"sudo make install"
+		],
+		"url": "ftp://ftp.infradead.org/pub/openconnect/openconnect-8.02.tar.gz"
+	},
+	{
+		"name": "openvpn",
+		"packageName": "openvpn",
+		"downloadUrls": [
+			"https://swupdate.openvpn.org/community/releases/openvpn-2.4.7.tar.xz"
+		],
+		"version": "2.4.7",
+		"requiredDependencies": [
+			"net-tools"
+		],
+		"recommendedDependencies": [],
+		"optionalDependencies": [],
+		"commands": [
+			"if grep \"gnome-desktop-environment\" /etc/alps/installed-list &> /dev/null; then export WITH_GNOME=\"--with-gnome\"; fi",
+			"./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var $WITH_GNOME &&",
+			"make",
+			"sudo make install"
+		],
+		"url": "https://swupdate.openvpn.org/community/releases/openvpn-2.4.7.tar.xz"
+	},
+	{
+		"name": "pptp",
+		"packageName": "pptp",
+		"downloadUrls": [
+			"https://sourceforge.net/projects/pptpclient/files/pptp/pptp-1.10.0/pptp-1.10.0.tar.gz"
+		],
+		"version": "1.10.0",
+		"requiredDependencies": [],
+		"recommendedDependencies": [],
+		"optionalDependencies": [],
+		"commands": [
+			"make",
+			"sudo make install"
+		],
+		"url": "https://sourceforge.net/projects/pptpclient/files/pptp/pptp-1.10.0/pptp-1.10.0.tar.gz"
+	},
+	{
+		"name": "vpnc",
+		"packageName": "vpnc",
+		"downloadUrls": [
+			"https://github.com/ndpgroup/vpnc/archive/0.5.3r550-2jnpr1.tar.gz"
+		],
+		"version": "0.5.3",
+		"requiredDependencies": [],
+		"recommendedDependencies": [],
+		"optionalDependencies": [],
+		"commands": [
+			"sed -i \"s@PREFIX=/usr/local@PREFIX=/usr@g\" Makefile",
+			"make",
+			"sudo make install"
+		],
+		"url": "https://github.com/ndpgroup/vpnc/archive/0.5.3r550-2jnpr1.tar.gz"
+	},
+	{
+		"name": "network-manager-openconnect",
+		"packageName": "network-manager-openconnect",
+		"downloadUrls": [
+			"https://ftp.gnome.org/pub/gnome/sources/NetworkManager-openconnect/1.2/NetworkManager-openconnect-1.2.4.tar.xz"
+		],
+		"version": "1.2.4",
+		"requiredDependencies": [],
+		"recommendedDependencies": [],
+		"optionalDependencies": [],
+		"commands": [
+			"if grep \"gnome-desktop-environment\" /etc/alps/installed-list &> /dev/null; then WITH_GNOME=\"--with-gnome\"; fi",
+			"./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var &WITH_GNOME &&",
+			"make",
+			"sudo make install"
+		],
+		"url": "https://ftp.gnome.org/pub/gnome/sources/NetworkManager-openconnect/1.2/NetworkManager-openconnect-1.2.4.tar.xz"
+	},
+	{
+		"name": "network-manager-openvpn",
+		"packageName": "network-manager-openvpn",
+		"downloadUrls": [
+			"https://download.gnome.org/sources/NetworkManager-openvpn/1.8/NetworkManager-openvpn-1.8.10.tar.xz"
+		],
+		"version": "1.8.10",
+		"requiredDependencies": [],
+		"recommendedDependencies": [],
+		"optionalDependencies": [],
+		"commands": [
+			"if grep \"gnome-desktop-environment\" /etc/alps/installed-list &> /dev/null; then WITH_GNOME=\"--with-gnome\"; fi",
+			"./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var &WITH_GNOME &&",
+			"make",
+			"sudo make install"
+		],
+		"url": "https://download.gnome.org/sources/NetworkManager-openvpn/1.8/NetworkManager-openvpn-1.8.10.tar.xz"
+	},
+	{
+		"name": "network-manager-pptp",
+		"packageName": "network-manager-pptp",
+		"downloadUrls": [
+			"https://ftp.gnome.org/pub/gnome/sources/NetworkManager-pptp/1.2/NetworkManager-pptp-1.2.8.tar.xz"
+		],
+		"version": "1.2.8",
+		"requiredDependencies": [],
+		"recommendedDependencies": [],
+		"optionalDependencies": [],
+		"commands": [
+			"if grep \"gnome-desktop-environment\" /etc/alps/installed-list &> /dev/null; then WITH_GNOME=\"--with-gnome\"; fi",
+			"./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var $WITH_GNOME &&",
+			"make",
+			"sudo make install"
+		],
+		"url": "https://ftp.gnome.org/pub/gnome/sources/NetworkManager-pptp/1.2/NetworkManager-pptp-1.2.8.tar.xz"
+	},
+	{
+		"name": "network-manager-vpnc",
+		"packageName": "network-manager-vpnc",
+		"downloadUrls": [
+			"https://ftp.gnome.org/pub/gnome/sources/NetworkManager-vpnc/1.2/NetworkManager-vpnc-1.2.6.tar.xz"
+		],
+		"version": "1.2.6",
+		"requiredDependencies": [],
+		"recommendedDependencies": [],
+		"optionalDependencies": [],
+		"commands": [
+			"if grep \"gnome-desktop-environment\" /etc/alps/installed-list &> /dev/null; then WITH_GNOME=\"--with-gnome\"; fi",
+			"./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var $WITH_GNOME &&",
+			"make",
+			"sudo make install"
+		],
+		"url": "https://ftp.gnome.org/pub/gnome/sources/NetworkManager-vpnc/1.2/NetworkManager-vpnc-1.2.6.tar.xz"
+	},
+	{
+		"name": "dconf-editor",
+		"packageName": "dconf-editor",
+		"downloadUrls": [
+			"http://ftp.gnome.org/pub/gnome/sources/dconf-editor/3.30/dconf-editor-3.30.2.tar.xz"
+		],
+		"version": "3.30.2",
+		"requiredDependencies": [
+			"dconf"
+		],
+		"recommendedDependencies": [],
+		"optionalDependencies": [],
+		"commands": [
+			"mkdir build &&\ncd build &&\n\nmeson --prefix=/usr --sysconfdir=/etc .. &&\nninja",
+			"sudo ninja install"
+		],
+		"url": "http://ftp.gnome.org/pub/gnome/sources/dconf-editor/3.30/dconf-editor-3.30.2.tar.xz"
+	},
+	{
+		"name": "meson",
+		"packageName": "meson",
+		"downloadUrls": [
+			"https://github.com/mesonbuild/meson/releases/download/0.50.0/meson-0.50.0.tar.gz",
+			"https://bitbucket.org/chandrakantsingh/patches/raw/1.5/meson-0.50.0-gnome.patch"
+		],
+		"version": "0.50.0",
+		"requiredDependencies": [],
+		"recommendedDependencies": [],
+		"optionalDependencies": [],
+		"commands": [
+			"patch -Np1 -i ../meson-0.50.0-gnome.patch",
+			"python3 setup.py build",
+			"python3 setup.py install --root=dest",
+			"sudo cp -rv dest/* /"
+		],
+		"url": "https://github.com/mesonbuild/meson/releases/download/0.50.0/meson-0.50.0.tar.gz"
+	},
+	{
+		"name": "gsound",
+		"packageName": "gsound",
+		"downloadUrls": [
+			"http://ftp.acc.umu.se/pub/gnome/sources/gsound/1.0/gsound-1.0.2.tar.xz"
+		],
+		"version": "1.0.2",
+		"requiredDependencies": [],
+		"recommendedDependencies": [],
+		"optionalDependencies": [],
+		"commands": [
+			"./configure --prefix=/usr",
+			"make",
+			"sudo make install"
+		],
+		"url": "http://ftp.acc.umu.se/pub/gnome/sources/gsound/1.0/gsound-1.0.2.tar.xz"
+	},
+	{
+		"name": "libpipewire",
+		"packageName": "libpipewire",
+		"downloadUrls": [
+			"https://github.com/PipeWire/pipewire/archive/0.2.5.tar.gz"
+		],
+		"version": "0.2.5",
+		"requiredDependencies": [],
+		"recommendedDependencies": [],
+		"optionalDependencies": [],
+		"commands": [
+			"mkdir build",
+			"cd build",
+			"meson --prefix=/usr &&",
+			"ninja",
+			"sudo ninja install"
+		],
+		"url": "https://github.com/PipeWire/pipewire/archive/0.2.5.tar.gz"
+	},
+	{
+		"name": "tracker-miners",
+		"packageName": "tracker-miners",
+		"downloadUrls": [
+			"http://ftp.acc.umu.se/pub/gnome/sources/tracker-miners/2.2/tracker-miners-2.2.1.tar.xz"
+		],
+		"version": "2.2.1",
+		"requiredDependencies": [
+			"libgrss"
+		],
+		"recommendedDependencies": [],
+		"optionalDependencies": [],
+		"commands": [
+			"mkdir build",
+			"cd build",
+			"meson --prefix=/usr &&",
+			"ninja",
+			"sudo ninja install"
+		],
+		"url": "http://ftp.acc.umu.se/pub/gnome/sources/tracker-miners/2.2/tracker-miners-2.2.1.tar.xz"
+	},
+	{
+		"name": "libgrss",
+		"packageName": "libgrss",
+		"downloadUrls": [
+			"http://ftp.acc.umu.se/pub/gnome/sources/libgrss/0.7/libgrss-0.7.0.tar.xz"
+		],
+		"version": "0.7.0",
+		"requiredDependencies": [],
+		"recommendedDependencies": [],
+		"optionalDependencies": [],
+		"commands": [
+			"./configure --prefix=/usr &&",
+			"make",
+			"sudo make install"
+		],
+		"url": "http://ftp.acc.umu.se/pub/gnome/sources/libgrss/0.7/libgrss-0.7.0.tar.xz"
+	},
+	{
+		"name": "gedit",
+		"packageName": "gedit",
+		"downloadUrls": [
+			"http://ftp.gnome.org/pub/gnome/sources/gedit/3.32/gedit-3.32.0.tar.xz"
+		],
+		"version": "3.32.0",
+		"requiredDependencies": [
+			"gsettings-desktop-schemas",
+			"gtksourceview",
+			"itstool",
+			"libpeas",
+			"gspell"
+		],
+		"recommendedDependencies": [
+			"gvfs",
+			"iso-codes",
+			"libsoup",
+			"pygobject3"
+		],
+		"optionalDependencies": [],
+		"commands": [
+			"mkdir build &&",
+			"cd build &&",
+			"meson --prefix=/usr --sysconfdir=/etc .. &&",
+			"ninja",
+			"sudo ninja install"
+		],
+		"url": "http://ftp.gnome.org/pub/gnome/sources/gedit/3.32/gedit-3.32.0.tar.xz"
+	},
+	{
+		"name": "gspell",
+		"packageName": "gspell",
+		"downloadUrls": [
+			"http://ftp.gnome.org/pub/gnome/sources/gspell/1.8/gspell-1.8.1.tar.xz"
+		],
+		"version": "1.8.1",
+		"requiredDependencies": [],
+		"recommendedDependencies": [],
+		"optionalDependencies": [],
+		"commands": [
+			"./configure --prefix=/usr --sysconfdir=/etc &&",
+			"make",
+			"sudo make install"
+		],
+		"url": "http://ftp.gnome.org/pub/gnome/sources/gspell/1.8/gspell-1.8.1.tar.xz"
+	},
+	{
+		"name": "intel-hybrid-driver",
+		"packageName": "intel-hybrid-driver",
+		"downloadUrls": [
+			"https://github.com/01org/intel-hybrid-driver/archive/1.0.2.tar.gz"
+		],
+		"version": "1.0.2",
+		"requiredDependencies": [
+			"libcmrt"
+		],
+		"recommendedDependencies": [],
+		"optionalDependencies": [],
+		"commands": [
+			"./autogen.sh --prefix=/usr --sysconfdir=/etc &&",
+			"make",
+			"sudo make install"
+		],
+		"url": "https://github.com/01org/intel-hybrid-driver/archive/1.0.2.tar.gz"
+	},
+	{
+		"name": "libcmrt",
+		"packageName": "libcmrt",
+		"downloadUrls": [
+			"https://github.com/intel/cmrt/archive/1.0.6.tar.gz"
+		],
+		"version": "1.0.6",
+		"requiredDependencies": [],
+		"recommendedDependencies": [],
+		"optionalDependencies": [],
+		"commands": [
+			"./autogen.sh --prefix=/usr --sysconfdir=/etc &&",
+			"make",
+			"sudo make install"
+		],
+		"url": "https://github.com/intel/cmrt/archive/1.0.6.tar.gz"
+	},
+	{
+		"name": "firefox",
+		"packageName": "firefox",
+		"downloadUrls": [
+			"https://archive.mozilla.org/pub/firefox/releases/66.0.2/source/firefox-66.0.2.source.tar.xz"
+		],
+		"version": "66.0.2",
+		"requiredDependencies": [
+			"autoconf213",
+			"cbindgen",
+			"llvm",
+			"gtk3",
+			"gtk2",
+			"libnotify",
+			"nodejs",
+			"nss",
+			"pulseaudio",
+			"alsa-lib",
+			"rust",
+			"unzip",
+			"yasm",
+			"zip"
+		],
+		"recommendedDependencies": [
+			"icu",
+			"libevent",
+			"libwebp",
+			"sqlite"
+		],
+		"optionalDependencies": [],
+		"commands": [
+			"cat > mozconfig << \"EOF\"",
+			"# If you have a multicore machine, all cores will be used by default.",
+			"",
+			"# If you have installed dbus-glib, comment out this line:",
+			"ac_add_options --disable-dbus",
+			"",
+			"# If you have installed dbus-glib, and you have installed (or will install)",
+			"# wireless-tools, and you wish to use geolocation web services, comment out",
+			"# this line",
+			"ac_add_options --disable-necko-wifi",
+			"",
+			"# API Keys for geolocation APIs - necko-wifi (above) is required for MLS",
+			"# Uncomment the following line if you wish to use Mozilla Location Service",
+			"#ac_add_options --with-mozilla-api-keyfile=$PWD/mozilla-key",
+			"",
+			"# Uncomment the following line if you wish to use Google's geolocaton API",
+			"# (needed for use with saved maps with Google Maps)",
+			"#ac_add_options --with-google-location-service-api-keyfile=$PWD/google-key",
+			"",
+			"# Uncomment this line if you have installed startup-notification:",
+			"#ac_add_options --enable-startup-notification",
+			"",
+			"# Uncomment the following option if you have not installed PulseAudio",
+			"#ac_add_options --disable-pulseaudio",
+			"# and uncomment this if you installed alsa-lib instead of PulseAudio",
+			"#ac_add_options --enable-alsa",
+			"",
+			"# If you have installed GConf, comment out this line",
+			"ac_add_options --disable-gconf",
+			"",
+			"# From firefox-61, the stylo CSS code can no-longer be disabled",
+			"",
+			"# Comment out following options if you have not installed",
+			"# recommended dependencies:",
+			"ac_add_options --enable-system-sqlite",
+			"ac_add_options --with-system-libevent",
+			"# current firefox fails to build against libvpx-1.8.0",
+			"#ac_add_options --with-system-libvpx",
+			"# firefox-65 understands webp and ships with an included copy",
+			"ac_add_options --with-system-webp",
+			"ac_add_options --with-system-nspr",
+			"ac_add_options --with-system-nss",
+			"ac_add_options --with-system-icu",
+			"",
+			"# The gold linker is no-longer the default",
+			"ac_add_options --enable-linker=gold",
+			"",
+			"# The shipped libdavid (av1 decoder) is not built by default,",
+			"# at least on linux, but if nasm is not present libxul tries to",
+			"# link to one of libdavid's objects and fails.  It is thought",
+			"# libdavid will be enabled in firefox-67, at which point nasm",
+			"# might be required.",
+			"ac_add_options --disable-av1",
+			"",
+			"# You cannot distribute the binary if you do this",
+			"ac_add_options --enable-official-branding",
+			"",
+			"# If you are going to apply the patch for system graphite",
+			"# and system harfbuzz, uncomment these lines:",
+			"#ac_add_options --with-system-graphite2",
+			"#ac_add_options --with-system-harfbuzz",
+			"",
+			"# Stripping is now enabled by default.",
+			"# Uncomment these lines if you need to run a debugger:",
+			"#ac_add_options --disable-strip",
+			"#ac_add_options --disable-install-strip",
+			"",
+			"# The BLFS editors recommend not changing anything below this line:",
+			"ac_add_options --prefix=/usr",
+			"ac_add_options --enable-application=browser",
+			"",
+			"ac_add_options --disable-crashreporter",
+			"ac_add_options --disable-updater",
+			"# enabling the tests will use a lot more space and significantly",
+			"# increase the build time, for no obvious benefit.",
+			"ac_add_options --disable-tests",
+			"",
+			"# With clang, unlike gcc-7 and later, the default level",
+			"# of optimization produces a working build.",
+			"ac_add_options --enable-optimize",
+			"",
+			"# From firefox-61 system cairo is not supported",
+			"",
+			"ac_add_options --enable-system-ffi",
+			"ac_add_options --enable-system-pixman",
+			"",
+			"# From firefox-62 --with-pthreads is not recognized",
+			"",
+			"ac_add_options --with-system-bz2",
+			"ac_add_options --with-system-jpeg",
+			"ac_add_options --with-system-png",
+			"ac_add_options --with-system-zlib",
+			"",
+			"mk_add_options MOZ_OBJDIR=@TOPSRCDIR@/firefox-build-dir",
+			"EOF",
+			"export SHELL=/bin/sh",
+			"sed -e 's/checkImpl/checkFFImpl/g' -i js/src/vm/JSContext*.h &&",
+			"export CC=clang CXX=clang++ AR=llvm-ar NM=llvm-nm RANLIB=llvm-ranlib &&",
+			"export MOZBUILD_STATE_PATH=${PWD}/mozbuild &&",
+			"./mach build",
+			"sudo ./mach install                                                  &&",
+			"",
+			"sudo mkdir -pv  /usr/lib/mozilla/plugins                             &&",
+			"sudo ln    -sfv ../../mozilla/plugins /usr/lib/firefox/browser/",
+			"unset CC CXX AR NM RANLIB MOZBUILD_STATE_PATH",
+			"",
+			"sudo mkdir -pv /usr/share/applications &&",
+			"sudo mkdir -pv /usr/share/pixmaps &&",
+			"",
+			"sudo tee /usr/share/applications/firefox.desktop << \"EOF\" &&",
+			"[Desktop Entry]",
+			"Encoding=UTF-8",
+			"Name=Firefox Web Browser",
+			"Comment=Browse the World Wide Web",
+			"GenericName=Web Browser",
+			"Exec=firefox %u",
+			"Terminal=false",
+			"Type=Application",
+			"Icon=firefox",
+			"Categories=GNOME;GTK;Network;WebBrowser;",
+			"MimeType=application/xhtml+xml;text/xml;application/xhtml+xml;application/vnd.mozilla.xul+xml;text/mml;x-scheme-handler/http;x-scheme-handler/https;",
+			"StartupNotify=true",
+			"EOF",
+			"",
+			"sudo ln -sfv /usr/lib/firefox/browser/chrome/icons/default/default128.png \\",
+			"        /usr/share/pixmaps/firefox.png"
+		],
+		"url": "https://archive.mozilla.org/pub/firefox/releases/66.0.2/source/firefox-66.0.2.source.tar.xz"
+	}
+]

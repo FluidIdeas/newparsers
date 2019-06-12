@@ -1,0 +1,52 @@
+{
+	"harfbuzz": [
+		"texlive",
+		"libreoffice",
+		"freetype2",
+		"harfbuzz"
+	],
+	"mesa": [
+		"gtk3",
+		"plasma-all"
+	],
+	"freetype2": [
+		"freetype2"
+	],
+	"librsvg": [
+		"gtk3"
+	],
+	"libnotify": [
+		"xfce4-notifyd",
+		"notification-daemon"
+	],
+	"networkmanager": [
+		"dhcp"
+	],
+	"cups": [
+		"cups-filters"
+	],
+	"v4l-utils": [
+		"qt5"
+	],
+	"gdk-pixbuf": [
+		"librsvg"
+	],
+	"harfbuzz-wo-freetype2": [
+		"texlive",
+		"libreoffice",
+		"freetype2",
+		"harfbuzz"
+	],
+	"freetype2-wo-harfbuzz": [
+		"harfbuzz",
+		"freetype2"
+	],
+	"graphite-wo-harfbuzz": [
+		"harfbuzz"
+	],
+	"libreoffice": [
+		"apache-ant",
+		"postgresql"
+	],
+	"transmission": ["qt5"]
+}
