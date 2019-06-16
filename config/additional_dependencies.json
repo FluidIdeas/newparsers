@@ -19,8 +19,5 @@
 		"udisks2",
 		"upower",
 		"media-player-info"
-	],
-	"gnome-control-center": ["gsound"],
-	"mutter": ["libpipewire"],
-	"nautilus": ["tracker-miners"]
+	]
 }
