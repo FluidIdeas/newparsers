@@ -955,5 +955,15 @@
             "libwebp",
             "sqlite"
         ]
+    },
+    {
+        "name": "xorg-vmmouse-driver",
+        "version": "13.1.0",
+        "download_urls": [
+            "https://www.x.org/pub/individual/driver/xf86-input-vmmouse-13.1.0.tar.bz2"
+        ],
+        "tarball": "xf86-input-vmmouse-13.1.0.tar.bz2",
+        "commands": "./configure $XORG_CONFIG --without-hal-fdi-dir --without-hal-callouts-dir --with-udev-rules-dir=/lib/udev/rules.d && make\n\nsudo make install",
+        "dependencies": ["xorg-server"]
     }
 ]

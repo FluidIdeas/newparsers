@@ -3,6 +3,10 @@
 from bs4 import BeautifulSoup
 import json
 
+systemd_service_tarball_url = 'http://www.linuxfromscratch.org/blfs/downloads/systemd/blfs-systemd-units-20180105.tar.bz2'
+systemd_service_tarball = systemd_service_tarball_url.split('/')[-1]
+systemd_service_dir = systemd_service_tarball[0:systemd_service_tarball.index('.')]
+
 with open('config/templates/script_template') as tfp:
 	template = tfp.read()
 
@@ -12,6 +16,11 @@ def load_json(file_path):
 
 deletions = load_json('config/deletion.json')
 variables = load_json('config/variables.json')
+expendable_deps = load_json('config/expendable_dependencies.json')
+replaceable_deps = load_json('config/replacable_dependencies.json')
+pkg_expendable_deps = load_json('config/package_expendable_dependencies.json')
+url_deletion = load_json('config/url_deletion.json')
+replaceable_cmds = load_json('config/replaceable_commands.json')
 
 def read_processed(file_path):
 	with open(file_path, 'rb') as fp:
@@ -67,6 +76,48 @@ def process_html_data(data):
 	print(modified)
 	return modified
 
+def get_systemd_service_install_cmds(cmd):
+	return '#!/bin/bash\n\nset -e\nset +h\n\n. /etc/alps/alps.conf\n\npushd $SOURCE_DIR\nwget -nc ' + systemd_service_tarball_url + '\ntar xf ' + systemd_service_tarball + '\ncd ' + systemd_service_dir + '\nsudo ' + cmd + '\npopd'
+
+def Diff(li1, li2):
+	result = li1.copy()
+	for item in li2:
+		if item in result:
+			result.remove(item)
+	return result
+
+def clean_dependencies(package):
+	new_deps = list()
+	for dep in package['dependencies']:
+		if 'x7driver#' in dep and dep.index('x7driver#') == 0:
+			new_deps.append(dep.replace('x7driver#', ''))
+			continue
+		if dep not in expendable_deps:
+			new_deps.append(dep.lower())
+	final_deps = list()
+	for dep in new_deps:
+		if '/' in dep:
+			final_deps.append(dep[dep.rindex('/') + 1:])
+		else:
+			final_deps.append(dep)
+	if package['name'] in pkg_expendable_deps:
+		package['dependencies'] = Diff(final_deps, pkg_expendable_deps[package['name']])
+	else:
+		package['dependencies'] = final_deps
+	for dep, replacement in replaceable_deps.items():
+		if dep in package['dependencies']:
+			package['dependencies'].remove(dep)
+			package['dependencies'].append(replacement)
+
+def delete_url_if_needed(package):
+	if package['name'] in url_deletion:
+		package['download_urls'].clear()
+
+def clean_commands(package):
+	for key, value in replaceable_cmds.items():
+		if 'commands' in package and key in package['commands']:
+			package['commands'] = package['commands'].replace(key, value)
+
 def parse_package(file_path):
 	package = dict()
 	doc = BeautifulSoup(read_raw(file_path).decode("latin-1"), 'html.parser')
@@ -78,6 +129,7 @@ def parse_package(file_path):
 		package['download_urls'].append(link.attrs['href'])
 	for link in doc.select('p.required a.xref , p.recommended a.xref '):
 		package['dependencies'].append(link.attrs['href'].split('/')[-1].replace('.html', ''))
+	clean_dependencies(package)
 	package['tarball'] = get_tarball(package['download_urls'])
 	package['version'] = get_version(package['tarball'])
 	commands = list()
@@ -93,6 +145,8 @@ def parse_package(file_path):
 					continue
 				else:
 					cmd = cmd_pre.select('kbd.command')[0].text.strip()
+					if 'make install-' in cmd and cmd.index('make install-') == 0:
+						cmd = get_systemd_service_install_cmds(cmd)
 				root_cmd = 'sudo rm -rf /tmp/rootscript.sh\ncat > /tmp/rootscript.sh <<"ENDOFROOTSCRIPT"\n' + cmd + '\nENDOFROOTSCRIPT\n\nchmod a+x /tmp/rootscript.sh\nsudo /tmp/rootscript.sh\nsudo rm -rf /tmp/rootscript.sh\n'
 				commands.append(root_cmd)
 		cmds = list()
@@ -112,8 +166,10 @@ def parse_package(file_path):
 		str_vars = ''
 		for key, value in variables.items():
 			if key in package['commands']:
-				str_vars = str_vars + key + '=' + value + '\n'
+				str_vars = str_vars + key + '="' + value + '"\n'
 		package['commands'] = str_vars + '\n' + package['commands']
+	delete_url_if_needed(package)
+	clean_commands(package)
 	return package
 
 def parse_perl_modules(file_path):
@@ -132,6 +188,7 @@ def parse_perl_modules(file_path):
 			package['name'] = prefix + '#' + name
 		else:
 			package['name'] = name
+		package['name'] = package['name'].lower()
 		module_div = doc.select('div.sect2 h2.sect2 a#' + name)[0].parent.parent.select('div.package, div.installation')
 		package['download_urls'] = list()
 		urls = module_div[0].select('ul.compact  li p a.ulink')
@@ -142,6 +199,7 @@ def parse_perl_modules(file_path):
 		deps = module_div[0].select('p.recommended a.xref, p.required a.xref')
 		for dep in deps:
 			package['dependencies'].append(dep.attrs['href'].replace('.html', ''))
+		clean_dependencies(package)
 		commands = list()
 		cmds = module_div[1].select('pre.userinput, pre.root')
 		for cmd in cmds:
@@ -152,6 +210,7 @@ def parse_perl_modules(file_path):
 		package['commands'] = '\n'.join(commands)
 		package['tarball'] = get_tarball(package['download_urls'])
 		package['version'] = get_version(package['tarball'])
+		clean_commands(package)
 		modules.append(package)
 	return modules
 
@@ -194,4 +253,16 @@ def get_script(p):
 		tmp = tmp.replace('##COMMANDS##', '')
 	return tmp
 
+def package_clone(package, new_name, removable_deps):
+	pkg = package.copy()
+	pkg['name'] = new_name
+	for dep in removable_deps:
+		if dep in pkg['dependencies']:
+			pkg['dependencies'].remove(dep)
+	return pkg
+
+def find_package(packages, name):
+	for package in packages:
+		if package['name'] == name:
+			return package
 

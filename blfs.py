@@ -9,6 +9,8 @@ from functions import print_package
 from functions import get_version
 from functions import get_script
 from functions import parse_perl_modules
+from functions import package_clone
+from functions import find_package
 
 import json
 
@@ -25,6 +27,7 @@ unwanted_pages = {
 additional_packages = load_json('config/additional_packages.json')
 additional_dependencies = load_json('config/additional_dependencies.json')
 additional_downloads = load_json('config/additional_downloads.json')
+cloned_packages = load_json('config/cloned_packages.json')
 
 packages = list()
 
@@ -64,6 +67,13 @@ for p in packages:
 
 # Generate additional packages
 for package in additional_packages:
+	with open(out_dir + '/' + package['name'] + '.sh', 'w') as fp:
+		script = get_script(package)
+		fp.write(script)
+
+# Generate cloned packages
+for name, clone_details in cloned_packages.items():
+	package = package_clone(find_package(packages, name), clone_details['name'], clone_details['deps'])
 	with open(out_dir + '/' + package['name'] + '.sh', 'w') as fp:
 		script = get_script(package)
 		fp.write(script)

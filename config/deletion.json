@@ -1,7 +1,7 @@
 {
     "libusb": [
         "make -C doc docs",
-        "install -v -m644 doc/html/*"
+        "doc/html/*"
     ],
     "openssh": [
         "ssh-keygen"
@@ -27,16 +27,19 @@
     "x7lib": [
         "bash -e",
         "/usr/lib/X11",
-        "exit"
+        "exit",
+			"grep -A9 summary"
     ],
     "x7app": [
         "bash -e",
-        "exit"
+        "exit",
+			"grep -A9 summary"
     ],
     "x7font": [
         "bash -e",
         "/usr/share/fonts/X11-OTF",
-        "exit"
+        "exit",
+			"grep -A9 summary"
     ],
     "llvm": [
         "cmake -DLLVM_ENABLE_SPHINX=ON",

@@ -1,0 +1,18 @@
+{
+	"graphite2": {
+		"name": "graphite-wo-harfbuzz",
+		"deps": ["harfbuzz"]
+	},
+	"freetype2": {
+		"name": "freetype2-wo-harfbuzz",
+		"deps": ["harfbuzz", "freetype2"]
+	},
+	"harfbuzz": {
+		"name": "harfbuzz-wo-freetype2",
+		"deps": ["harfbuzz", "freetype2-wo-harfbuzz", "graphite-wo-harfbuzz", "freetype2", "graphite2"]
+	},
+	"libva": {
+		"name": "libva-wo-mesa",
+		"deps": ["mesa"]
+	}
+}
