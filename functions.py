@@ -207,8 +207,6 @@ def parse_perl_modules(file_path):
 				commands.append(cmd.select('kbd.command')[0].text.replace('&&\nmake test', '').strip())
 			elif cmd.attrs['class'][0] == 'root':
 				commands.append('sudo rm -rf /tmp/rootscript.sh\ncat > /tmp/rootscript.sh <<"ENDOFROOTSCRIPT"\n' + cmd.select('kbd.command')[0].text + '\nENDOFROOTSCRIPT\n\nchmod a+x /tmp/rootscript.sh\nsudo /tmp/rootscript.sh\nsudo rm -rf /tmp/rootscript.sh\n')
-
-
 		cmds = list()
 		if package['name'] in deletions:
 			for command in commands:
@@ -221,10 +219,6 @@ def parse_perl_modules(file_path):
 					cmds.append(command)
 		else:
 			cmds = commands
-
-
-
-
 		package['commands'] = '\n'.join(cmds)
 		package['tarball'] = get_tarball(package['download_urls'])
 		package['version'] = get_version(package['tarball'])

@@ -24,7 +24,7 @@
         "version": "1.20.3",
         "download_urls": [],
         "tarball": null,
-        "commands": "sudo rm /etc/X11/xorg.conf.d/*.conf",
+        "commands": "sudo rm -f /etc/X11/xorg.conf.d/*.conf",
         "dependencies": [
             "libxml2",
             "util-macros",

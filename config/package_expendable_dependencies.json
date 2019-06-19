@@ -48,5 +48,6 @@
 		"apache-ant",
 		"postgresql"
 	],
-	"transmission": ["qt5"]
+	"transmission": ["qt5"],
+	"twm": ["x7legacy"]
 }
