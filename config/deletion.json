@@ -80,7 +80,8 @@
         "make fate-rsync",
         "rsync -vrltLW",
         "make fate THREADS",
-        "doc/doxy/html/*"
+        "doc/doxy/html/*",
+	"doxygen"
     ],
     "rust": [
         "rustc-testlog"
