@@ -1,4 +1,6 @@
 {
 	"java#java-bin": "java",
-	"ttf-and-otf-fonts#dejavu-fonts": "dejavu-fonts"
+	"ttf-and-otf-fonts#dejavu-fonts": "dejavu-fonts",
+	"pygobject3": "python-modules#pygobject3",
+	"pygobject2": "python-modules#pygobject2"
 }

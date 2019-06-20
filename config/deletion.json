@@ -117,7 +117,7 @@
         "wget"
     ],
     "libgcrypt": [
-        "doc/gcrypt.html"
+        "make -C doc pdf ps", "gcrypt.{pdf,ps,dvi}"
     ],
     "cpio": [
         "make -C doc",
