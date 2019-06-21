@@ -14,6 +14,7 @@ def load_json(file_path):
 	with open(file_path, 'r') as fp:
 		return json.load(fp)
 
+additional_commands = load_json('config/additional_commands.json')
 deletions = load_json('config/deletion.json')
 variables = load_json('config/variables.json')
 expendable_deps = load_json('config/expendable_dependencies.json')
@@ -114,6 +115,7 @@ def delete_url_if_needed(package):
 		package['download_urls'].clear()
 
 def clean_commands(package):
+	package['commands'] = 'echo $USER > /tmp/currentuser\n\n' + package['commands']
 	for key, value in replaceable_cmds.items():
 		if 'commands' in package and key in package['commands']:
 			package['commands'] = package['commands'].replace(key, value)
@@ -149,25 +151,26 @@ def parse_package(file_path):
 						cmd = get_systemd_service_install_cmds(cmd)
 				root_cmd = 'sudo rm -rf /tmp/rootscript.sh\ncat > /tmp/rootscript.sh <<"ENDOFROOTSCRIPT"\n' + cmd + '\nENDOFROOTSCRIPT\n\nchmod a+x /tmp/rootscript.sh\nsudo /tmp/rootscript.sh\nsudo rm -rf /tmp/rootscript.sh\n'
 				commands.append(root_cmd)
-		cmds = list()
-		if package['name'] in deletions:
-			for command in commands:
-				do_add = True
-				for deletable in deletions[package['name']]:
-					if deletable in command:
-						do_add = False
-						break
-				if do_add:
-					cmds.append(command)
-		else:
-			cmds = commands
-
-		package['commands'] = '\n'.join(cmds)
-		str_vars = ''
-		for key, value in variables.items():
-			if key in package['commands']:
-				str_vars = str_vars + key + '="' + value + '"\n'
-		package['commands'] = str_vars + '\n' + package['commands']
+	cmds = list()
+	if package['name'] in deletions:
+		for command in commands:
+			do_add = True
+			for deletable in deletions[package['name']]:
+				if deletable in command:
+					do_add = False
+					break
+			if do_add:
+				cmds.append(command)
+	else:
+		cmds = commands
+	if package['name'] in additional_commands:
+		cmds.insert(additional_commands[package['name']]['position'], additional_commands[package['name']]['command'])
+	package['commands'] = '\n'.join(cmds)
+	str_vars = ''
+	for key, value in variables.items():
+		if key in package['commands']:
+			str_vars = str_vars + 'export ' + key + '="' + value + '"\n'
+	package['commands'] = str_vars + '\n' + package['commands']
 	delete_url_if_needed(package)
 	clean_commands(package)
 	return package
@@ -194,7 +197,7 @@ def parse_perl_modules(file_path):
 		urls = module_div[0].select('ul.compact  li p a.ulink')
 		for url in urls:
 			package['download_urls'].append(url.attrs['href'])
-		package['url'] = package['download_urls'][0]
+		#package['url'] = package['download_urls'][0]
 		package['dependencies'] = list()
 		deps = module_div[0].select('p.recommended a.xref, p.required a.xref')
 		for dep in deps:
@@ -219,6 +222,8 @@ def parse_perl_modules(file_path):
 					cmds.append(command)
 		else:
 			cmds = commands
+		if package['name'] in additional_commands:
+			cmds.insert(additional_commands[package['name']]['position'], additional_commands[package['name']]['command'])
 		package['commands'] = '\n'.join(cmds)
 		package['tarball'] = get_tarball(package['download_urls'])
 		package['version'] = get_version(package['tarball'])
@@ -226,7 +231,7 @@ def parse_perl_modules(file_path):
 		str_vars = ''
 		for key, value in variables.items():
 			if key in package['commands']:
-				str_vars = str_vars + key + '="' + value + '"\n'
+				str_vars = str_vars + 'export ' + key + '="' + value + '"\n'
 		package['commands'] = str_vars + '\n' + package['commands']
 		modules.append(package)
 	return modules
@@ -256,10 +261,17 @@ def get_script(p):
 		tmp = tmp.replace('##VERSION##', '')
 	urls = ''
 	if len(p['download_urls']) > 0:
-		tmp = tmp.replace('##URL##', 'URL=' + p['download_urls'][0])
-		for url in p['download_urls']:
-			urls = urls + 'wget -nc ' + url + '\n'
-		tmp = tmp.replace('##DOWNLOADS##', urls)
+		if 'url' not in p:
+			tmp = tmp.replace('##URL##', 'URL=' + p['download_urls'][0])
+			for url in p['download_urls']:
+				urls = urls + 'wget -nc ' + url + '\n'
+			tmp = tmp.replace('##DOWNLOADS##', urls)
+		else:
+			if p['url'] == None:
+				tmp = tmp.replace('##URL##', '')
+				for url in p['download_urls']:
+					urls = urls + 'wget -nc ' + url + '\n'
+				tmp = tmp.replace('##DOWNLOADS##', urls)
 	else:
 		tmp = tmp.replace('##URL##', '')
 		tmp = tmp.replace('##DOWNLOADS##', '')

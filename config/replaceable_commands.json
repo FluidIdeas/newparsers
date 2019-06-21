@@ -7,5 +7,6 @@
 	"mkdir font &&": "mkdir -pv font &&",
 	" &&\n/usr/sbin/usermod -a -G netdev <em class=\"replaceable\"><code><username></em>": "",
 	"$KF5_PREFIX": "/usr",
-	"-Wno-format-overflow": " -Wno-format-overflow"
+	"-Wno-format-overflow": " -Wno-format-overflow",
+	"<username>": "$(cat /tmp/currentuser)"
 }

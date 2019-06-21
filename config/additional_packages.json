@@ -287,6 +287,7 @@
         "download_urls": [
             "https://sourceforge.net/projects/aryalinux-bin/files/files/1.4/aryalinux-google-fonts.tar.xz"
         ],
+	"url": null,
         "tarball": "aryalinux-google-fonts.tar.xz",
         "commands": "sudo tar xf aryalinux-google-fonts.tar.xz -C /",
         "dependencies": []
@@ -297,6 +298,7 @@
         "download_urls": [
             "https://sourceforge.net/projects/aryalinux-bin/files/files/1.4/aryalinux-gtk-themes.tar.xz"
         ],
+	"url": null,
         "tarball": "aryalinux-gtk-themes.tar.xz",
         "commands": "sudo tar xf aryalinux-gtk-themes.tar.xz -C /",
         "dependencies": []
@@ -307,6 +309,7 @@
         "download_urls": [
             "https://sourceforge.net/projects/aryalinux-bin/files/files/1.4/aryalinux-wallpapers.tar.xz"
         ],
+	"url": null,
         "tarball": "aryalinux-wallpapers.tar.xz",
         "commands": "sudo tar xf aryalinux-wallpapers.tar.xz -C /",
         "dependencies": []
@@ -317,6 +320,7 @@
         "download_urls": [
             "https://sourceforge.net/projects/aryalinux-bin/files/files/1.4/aryalinux-icons.tar.xz"
         ],
+	"url": null,
         "tarball": "aryalinux-icons.tar.xz",
         "commands": "sudo tar xf aryalinux-icons.tar.xz -C /",
         "dependencies": []
@@ -327,6 +331,7 @@
         "download_urls": [
             "https://sourceforge.net/projects/aryalinux-bin/files/artifacts/aryalinux-gnome-defaults.tar.xz"
         ],
+	"url": null,
         "tarball": "aryalinux-gnome-defaults.tar.xz",
         "commands": "sudo tar xf aryalinux-gnome-defaults.tar.xz -C /\nsudo cp -r /etc/skel/{.config,.local,.bash,.Xresources}* ~\nsudo chown -R $USER:$USER ~",
         "dependencies": []
@@ -886,6 +891,7 @@
         "dependencies": [
             "gsettings-desktop-schemas",
             "gtksourceview",
+            "gtksourceview4",
             "itstool",
             "libpeas",
             "gspell",
