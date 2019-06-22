@@ -11,5 +11,6 @@
 	"<username>": "$(cat /tmp/currentuser)",
 	"LO_PREFIX=<PREFIX>": "LO_PREFIX=/usr",
 	"--with-vendor=BLFS": "--with-vendor=AryaLinux",
-	"--with-lang='fr en-GB'": "--with-lang=ALL --without-java"
+	"--with-lang='fr en-GB'": "--with-lang=ALL --without-java",
+	"--with-system-postgresql": "--disable-postgresql-sdbc"
 }
