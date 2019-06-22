@@ -6,5 +6,9 @@
 	"sassc": {
 		"position": 0,
 		"command": "cd $SOURCE_DIR\nTARBALL=$(ls libsass*.tar*)\nDIRECTORY=$(tar tf $TARBALL | cut -d/ -f1 | uniq)\n\ntar xf $TARBALL\ncd $DIRECTORY"
+	},
+	"gnome-shell-extensions": {
+		"position": -1,
+		"command": "mkdir build && cd build && meson -Dextension_set=all --prefix=/usr .. && ninja"
 	}
 }

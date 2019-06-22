@@ -163,7 +163,9 @@
         "wpa_gui-qt4",
         "wpa_passphrase",
         "systemctl enable wpa_supplicant@<em class=\"replaceable\"><code>wlan0</code></em>",
-        "systemctl start wpa_supplicant@<em class=\"replaceable\"><code>wlan0</code></em>"
+        "systemctl start wpa_supplicant@<em class=\"replaceable\"><code>wlan0</code></em>",
+	"systemctl enable wpa_supplicant@wlan0",
+	"systemctl start wpa_supplicant@wlan0"
     ],
     "networkmanager": [
         "/etc/NetworkManager/conf.d/dhcp.conf",

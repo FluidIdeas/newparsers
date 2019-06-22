@@ -758,7 +758,7 @@
             "https://sourceforge.net/projects/aryalinux-bin/files/releases/1.5/gnome-shell-extensions/CoverflowAltTab-gnome-extension-36.tar.gz"
         ],
         "tarball": "CoverflowAltTab-gnome-extension-36.tar.gz",
-        "commands": "sudo mkdir -pv /usr/share/gnome-shell/extensions/$(basename $(pwd))\nsudo mv * /usr/share/gnome-shell/extensions/$(basename $(pwd))\nsudo chmod -R a+r /usr/share/gnome-shell/extensions/$(basename $(pwd))",
+        "commands": "sudo mkdir -pv /usr/share/gnome-shell/extensions/$(basename $(pwd))\nsudo cp -rvf /usr/share/gnome-shell/extensions/$(basename $(pwd))\nsudo chmod -R a+r /usr/share/gnome-shell/extensions/$(basename $(pwd))",
         "dependencies": [
             "gnome-shell-extensions"
         ]
@@ -994,6 +994,19 @@
         "commands": "",
         "dependencies": [
             "alsa-lib", "alsa-plugins", "alsa-utils", "alsa-tools", "alsa-firmware", "alsa-oss"
+        ]
+    },
+    {
+        "name": "gnome-shell-extensions",
+        "version": "3.32.1",
+        "download_urls": [
+            "http://ftp.gnome.org/pub/gnome/sources/gnome-shell-extensions/3.32/gnome-shell-extensions-3.32.1.tar.xz",
+		"ftp://ftp.gnome.org/pub/gnome/sources/gnome-shell-extensions/3.32/gnome-shell-extensions-3.32.1.tar.xz"
+        ],
+        "tarball": "gnome-shell-extensions-3.32.1.tar.xz",
+        "commands": "echo $USER > /tmp/currentuser\n\nmkdir build &&\ncd    build &&\n\nmeson -Dextension_set=all --prefix=/usr .. &&\nninja\n\nsudo ninja install",
+        "dependencies": [
+            "libgtop"
         ]
     }
 ]
