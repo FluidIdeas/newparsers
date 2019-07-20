@@ -1013,10 +1013,11 @@
         "name": "libgd",
         "version": "2.2.5",
         "download_urls": [
-            "https://github.com/libgd/libgd/releases/download/gd-2.2.5/libgd-2.2.5.tar.xz"
+            "https://github.com/libgd/libgd/releases/download/gd-2.2.5/libgd-2.2.5.tar.xz",
+	    "https://bitbucket.org/chandrakantsingh/patches/raw/2f08f4d7e5746ea6d66db0c22fa58ff9c18ca385/libgd-2.2.5-find-freetype2.patch"
         ],
         "tarball": "libgd-2.2.5.tar.xz",
-        "commands": "echo $USER > /tmp/currentuser\n\nmkdir -pv build\ncd build\ncmake -DCMAKE_INSTALL_PREFIX=/usr .. &&\nmake\nsudo make install",
+        "commands": "echo $USER > /tmp/currentuser\n\npatch -Np1 -i ../libgd-2.2.5-find-freetype2.patch &&\nmkdir -pv build\ncd build\ncmake -DCMAKE_INSTALL_PREFIX=/usr -DENABLE_FONTCONFIG=1 -DENABLE_FREETYPE=1 -DENABLE_ICONV=1 -DENABLE_JPEG=1 -DENABLE_LIQ=0 -DENABLE_PNG=1 -DENABLE_TIFF=1 -DENABLE_WEBP=1 -DENABLE_XPM=1 .. &&\nmake\nsudo make install",
         "dependencies": [
             "libgtop"
         ]

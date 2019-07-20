@@ -22,6 +22,7 @@ replaceable_deps = load_json('config/replacable_dependencies.json')
 pkg_expendable_deps = load_json('config/package_expendable_dependencies.json')
 url_deletion = load_json('config/url_deletion.json')
 replaceable_cmds = load_json('config/replaceable_commands.json')
+final_cmds = load_json('config/final-commands.json')
 
 def read_processed(file_path):
 	with open(file_path, 'rb') as fp:
@@ -151,6 +152,8 @@ def parse_package(file_path):
 						cmd = get_systemd_service_install_cmds(cmd)
 				root_cmd = 'sudo rm -rf /tmp/rootscript.sh\ncat > /tmp/rootscript.sh <<"ENDOFROOTSCRIPT"\n' + cmd + '\nENDOFROOTSCRIPT\n\nchmod a+x /tmp/rootscript.sh\nsudo /tmp/rootscript.sh\nsudo rm -rf /tmp/rootscript.sh\n'
 				commands.append(root_cmd)
+	if package['name'] in final_cmds:
+		commands.extend(final_cmds[package['name']])
 	cmds = list()
 	if package['name'] in deletions:
 		for command in commands:

@@ -1,0 +1,5 @@
+{
+	"php": [
+		"sudo systemctl enable php-fpm && sudo systemctl start php-fpm && sudo systemctl restart httpd"
+	]
+}

@@ -263,5 +263,6 @@
 	"openldap": ["groupadd", "--enable-slapd", "conf,ldif", "make install-slapd", "systemctl start slapd", "ldapsearch", "extended LDIF"],
 	"samba": ["workgroup = MYGROUP", "server string =", "make install-samba", "make install-winbindd", "systemctl stop smbd &&"],
 	"transmission": ["qt"],
-	"mariadb": ["mysql-test"]
+	"mariadb": ["mysql-test"],
+	"php": ["php_manual_en.html.gz", "php_manual_en.tar.gz"]
 }
