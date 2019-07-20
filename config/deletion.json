@@ -262,5 +262,6 @@
 	"mitkrb": ["/etc/krb5.conf", "kdb5_util create", "kadmin.local", "/usr/sbin/krb5kdc", "kinit", "klist", "ktutil", "make install-krb5"],
 	"openldap": ["groupadd", "--enable-slapd", "conf,ldif", "make install-slapd", "systemctl start slapd", "ldapsearch", "extended LDIF"],
 	"samba": ["workgroup = MYGROUP", "server string =", "make install-samba", "make install-winbindd", "systemctl stop smbd &&"],
-	"transmission": ["qt"]
+	"transmission": ["qt"],
+	"mariadb": ["mysql-test"]
 }

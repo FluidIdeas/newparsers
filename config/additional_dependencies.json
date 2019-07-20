@@ -19,5 +19,6 @@
 		"udisks2",
 		"upower",
 		"media-player-info"
-	]
+	],
+	"php": ["libgd", "postgresql", "net-snmp"]
 }

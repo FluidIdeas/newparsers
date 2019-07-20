@@ -1008,5 +1008,27 @@
         "dependencies": [
             "libgtop"
         ]
+    },
+    {
+        "name": "libgd",
+        "version": "2.2.5",
+        "download_urls": [
+            "https://github.com/libgd/libgd/releases/download/gd-2.2.5/libgd-2.2.5.tar.xz"
+        ],
+        "tarball": "libgd-2.2.5.tar.xz",
+        "commands": "echo $USER > /tmp/currentuser\n\nmkdir -pv build\ncd build\ncmake -DCMAKE_INSTALL_PREFIX=/usr .. &&\nmake\nsudo make install",
+        "dependencies": [
+            "libgtop"
+        ]
+    },
+    {
+        "name": "net-snmp",
+        "version": "5.8",
+        "download_urls": [
+            "https://sourceforge.net/projects/net-snmp/files/net-snmp/5.8/net-snmp-5.8.tar.gz"
+        ],
+        "tarball": "net-snmp-5.8.tar.gz",
+        "commands": "echo $USER > /tmp/currentuser\n\n./configure --prefix=/usr .. &&\nmake\nsudo make install",
+        "dependencies": []
     }
 ]

@@ -12,5 +12,7 @@
 	"LO_PREFIX=<PREFIX>": "LO_PREFIX=/usr",
 	"--with-vendor=BLFS": "--with-vendor=AryaLinux",
 	"--with-lang='fr en-GB'": "--with-lang=ALL --without-java",
-	"--with-system-postgresql": "--disable-postgresql-sdbc"
+	"--with-system-postgresql": "--disable-postgresql-sdbc",
+	"mysqld_safe --user=mysql 2>&1 >/dev/null &": "mysqld_safe --user=mysql 2>&1 >/dev/null && sleep 5 &",
+	"su - postgres": "su postgres"
 }
