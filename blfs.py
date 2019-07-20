@@ -54,6 +54,15 @@ for link in links:
 	package = parse_package(book_dir + '/' + link.attrs['href'])
 	packages.append(package)
 
+# Modification of php commands
+
+with open('config/templates/phpconfig') as fp:
+	php_configure = fp.read()
+for p in packages:
+	if p['name'] == 'php':
+		needle = p['commands'][p['commands'].index('./configure'): p['commands'].index('make') + 4]
+		p['commands'] = p['commands'].replace(needle, php_configure)
+
 # Generate packages in the book
 for p in packages:
 	if p['name'] in additional_dependencies:
