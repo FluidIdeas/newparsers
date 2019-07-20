@@ -55,7 +55,6 @@ for link in links:
 	packages.append(package)
 
 # Modification of php commands
-
 with open('config/templates/phpconfig') as fp:
 	php_configure = fp.read()
 for p in packages:
