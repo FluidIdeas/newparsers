@@ -1,5 +1,7 @@
 #!/usr/bin/env python3
 
+import sys
+
 from bs4 import BeautifulSoup
 from functions import read_processed
 from functions import load_json
@@ -16,6 +18,16 @@ import json
 
 book_dir = '/home/chandrakant/aryalinux/books/blfs'
 out_dir = '/home/chandrakant/aryalinux/aryalinux/applications'
+patches_file = '/home/chandrakant/aryalinux/patches/patches.list'
+
+with open(patches_file, 'w') as fp:
+	fp.write('')
+
+if len(sys.argv) < 2:
+	print('Please provide version')
+	exit()
+else:
+	version = sys.argv[1]
 
 unwanted_chapters = ['preface', 'introduction', 'appendices']
 unwanted_pages = {
@@ -51,7 +63,7 @@ for link in links:
 			break
 	if not process:
 		continue
-	package = parse_package(book_dir + '/' + link.attrs['href'])
+	package = parse_package(book_dir + '/' + link.attrs['href'], version, patches_file)
 	packages.append(package)
 
 # Modification of php commands

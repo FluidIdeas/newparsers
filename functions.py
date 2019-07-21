@@ -116,12 +116,27 @@ def delete_url_if_needed(package):
 		package['download_urls'].clear()
 
 def clean_commands(package):
-	package['commands'] = 'echo $USER > /tmp/currentuser\n\n' + package['commands']
+	if package['name'] != 'sudo':
+		package['commands'] = 'echo $USER > /tmp/currentuser\n\n' + package['commands']
 	for key, value in replaceable_cmds.items():
 		if 'commands' in package and key in package['commands']:
 			package['commands'] = package['commands'].replace(key, value)
 
-def parse_package(file_path):
+def endswith(haystack, needle):
+	return needle in haystack and haystack.index(needle) == len(haystack) - len(needle)
+
+def modify_patch_downloads(package, version, patches_file):
+	modified = list()
+	for url in package['download_urls']:
+		if endswith(url, '.patch'):
+			with open(patches_file, 'a') as fp:
+				fp.write(url + '\n')
+			modified.append('https://bitbucket.org/chandrakantsingh/patches/raw/' + version + '/' + url[url.rindex('/')+1:])
+		else:
+			modified.append(url)
+	return modified
+
+def parse_package(file_path, version, patches_file):
 	package = dict()
 	doc = BeautifulSoup(read_raw(file_path).decode("latin-1"), 'html.parser')
 	package['name'] = file_path.split('/')[-1].replace('.html', '').lower()
@@ -130,6 +145,7 @@ def parse_package(file_path):
 	download_links = doc.select('div.itemizedlist ul.compact a.ulink[href]')
 	for link in download_links:
 		package['download_urls'].append(link.attrs['href'])
+	package['download_urls'] = modify_patch_downloads(package, version, patches_file)
 	for link in doc.select('p.required a.xref , p.recommended a.xref '):
 		package['dependencies'].append(link.attrs['href'].split('/')[-1].replace('.html', ''))
 	clean_dependencies(package)
