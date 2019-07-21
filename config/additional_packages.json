@@ -1031,5 +1031,25 @@
         "tarball": "net-snmp-5.8.tar.gz",
         "commands": "echo $USER > /tmp/currentuser\n\n./configure --prefix=/usr .. &&\nmake\nsudo make install",
         "dependencies": []
+    },
+    {
+        "name": "sassc",
+        "version": "3.6.1",
+        "download_urls": [
+            "https://github.com/sass/sassc/archive/3.6.1/sassc-3.6.1.tar.gz"
+        ],
+        "tarball": "sassc-3.6.1.tar.gz",
+        "commands": "echo $USER > /tmp/currentuser\n\nautoreconf -fi &&\n\n./configure --prefix=/usr --disable-static &&\nmake\nsudo make install",
+        "dependencies": ["libsass"]
+    },
+    {
+        "name": "libsass",
+        "version": "3.6.1",
+        "download_urls": [
+            "https://github.com/sass/libsass/archive/3.6.1/libsass-3.6.1.tar.gz"
+        ],
+        "tarball": "libsass-3.6.1.tar.gz",
+        "commands": "echo $USER > /tmp/currentuser\n\nautoreconf -fi &&\n\n./configure --prefix=/usr --disable-static &&\nmake\nsudo make install",
+        "dependencies": []
     }
 ]
