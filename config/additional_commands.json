@@ -6,5 +6,9 @@
 	"gnome-shell-extensions": {
 		"position": -1,
 		"command": "mkdir build && cd build && meson -Dextension_set=all --prefix=/usr .. && ninja"
+	},
+	"grilo": {
+		"position": 0,
+		"command": "mkdir build &&\ncd    build    &&\n\nmeson --prefix=/usr \\\n      --libexecdir=/usr/lib \\\n-Denable-gtk-doc=false .. &&\nninja"
 	}
 }

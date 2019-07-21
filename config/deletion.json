@@ -264,5 +264,6 @@
 	"samba": ["workgroup = MYGROUP", "server string =", "make install-samba", "make install-winbindd", "systemctl stop smbd &&"],
 	"transmission": ["qt"],
 	"mariadb": ["mysql-test"],
-	"php": ["php_manual_en.html.gz", "php_manual_en.tar.gz"]
+	"php": ["php_manual_en.html.gz", "php_manual_en.tar.gz"],
+	"grilo": ["meson --prefix=/usr"]
 }
