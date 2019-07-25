@@ -1,0 +1,5 @@
+{
+	"network-manager-applet": [
+		{"..": "-Dlibnm_gtk=true .."}
+	]
+}

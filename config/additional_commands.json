@@ -10,5 +10,13 @@
 	"grilo": {
 		"position": 0,
 		"command": "mkdir build &&\ncd    build    &&\n\nmeson --prefix=/usr \\\n      --libexecdir=/usr/lib \\\n-Denable-gtk-doc=false .. &&\nninja"
+	},
+	"libgdata": {
+		"position": 0,
+		"command": "mkdir build &&\ncd    build    &&\n\nmeson --prefix=/usr -Dgtk_doc=false .. &&\nninja"
+	},
+	"bluez": {
+		"position": 0,
+		"command": "patch -Np1 -i ../bluez-5.50-glibc-build.patch"
 	}
 }

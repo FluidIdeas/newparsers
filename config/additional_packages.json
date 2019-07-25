@@ -758,7 +758,7 @@
             "https://sourceforge.net/projects/aryalinux-bin/files/releases/1.5/gnome-shell-extensions/CoverflowAltTab-gnome-extension-36.tar.gz"
         ],
         "tarball": "CoverflowAltTab-gnome-extension-36.tar.gz",
-        "commands": "sudo mkdir -pv /usr/share/gnome-shell/extensions/$(basename $(pwd))\nsudo cp -rvf /usr/share/gnome-shell/extensions/$(basename $(pwd))\nsudo chmod -R a+r /usr/share/gnome-shell/extensions/$(basename $(pwd))",
+        "commands": "sudo mkdir -pv /usr/share/gnome-shell/extensions/$(basename $(pwd))\nsudo cp -rvf * /usr/share/gnome-shell/extensions/$(basename $(pwd))\nsudo chmod -R a+r /usr/share/gnome-shell/extensions/$(basename $(pwd))",
         "dependencies": [
             "gnome-shell-extensions"
         ]
@@ -788,6 +788,15 @@
         ]
     },
     {
+        "name": "ppp",
+        "version": "2.4",
+        "download_urls": [
+        ],
+        "tarball": null,
+        "commands": "git clone https://github.com/paulusmack/ppp.git\ncd ppp\n./configure --prefix=/usr\nmake\nsudo make install\ncd ..\n\nrm -rf ppp",
+        "dependencies": []
+    },
+    {
         "name": "pptp",
         "version": "1.10.0",
         "download_urls": [
@@ -795,7 +804,7 @@
         ],
         "tarball": "pptp-1.10.0.tar.gz",
         "commands": "make\nsudo make install",
-        "dependencies": []
+        "dependencies": ["ppp"]
     },
     {
         "name": "vpnc",
@@ -814,7 +823,7 @@
             "https://ftp.gnome.org/pub/gnome/sources/NetworkManager-openconnect/1.2/NetworkManager-openconnect-1.2.4.tar.xz"
         ],
         "tarball": "NetworkManager-openconnect-1.2.4.tar.xz",
-        "commands": "if grep \"gnome-desktop-environment\" /etc/alps/installed-list &> /dev/null; then WITH_GNOME=\"--with-gnome\"; fi\n./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var &WITH_GNOME &&\nmake\nsudo make install",
+        "commands": "if grep \"gnome-desktop-environment\" /etc/alps/installed-list &> /dev/null; then WITH_GNOME=\"--with-gnome\"; fi\n./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var $WITH_GNOME &&\nmake\nsudo make install",
         "dependencies": []
     },
     {
@@ -824,7 +833,7 @@
             "https://download.gnome.org/sources/NetworkManager-openvpn/1.8/NetworkManager-openvpn-1.8.10.tar.xz"
         ],
         "tarball": "NetworkManager-openvpn-1.8.10.tar.xz",
-        "commands": "if grep \"gnome-desktop-environment\" /etc/alps/installed-list &> /dev/null; then WITH_GNOME=\"--with-gnome\"; fi\n./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var &WITH_GNOME &&\nmake\nsudo make install",
+        "commands": "if grep \"gnome-desktop-environment\" /etc/alps/installed-list &> /dev/null; then WITH_GNOME=\"--with-gnome\"; fi\n./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var $WITH_GNOME &&\nmake\nsudo make install",
         "dependencies": []
     },
     {
@@ -935,12 +944,13 @@
     },
     {
         "name": "firefox",
-        "version": "66.0.2",
+        "version": "68.0",
         "download_urls": [
-            "https://archive.mozilla.org/pub/firefox/releases/66.0.2/source/firefox-66.0.2.source.tar.xz"
+            "https://archive.mozilla.org/pub/firefox/releases/68.0/source/firefox-68.0.source.tar.xz",
+		"https://bitbucket.org/chandrakantsingh/patches/raw/2.0/firefox-68.0-sockios.patch"
         ],
-        "tarball": "firefox-66.0.2.source.tar.xz",
-        "commands": "cat > mozconfig << \"EOF\"\n# If you have a multicore machine, all cores will be used by default.\n\n# If you have installed dbus-glib, comment out this line:\nac_add_options --disable-dbus\n\n# If you have installed dbus-glib, and you have installed (or will install)\n# wireless-tools, and you wish to use geolocation web services, comment out\n# this line\nac_add_options --disable-necko-wifi\n\n# API Keys for geolocation APIs - necko-wifi (above) is required for MLS\n# Uncomment the following line if you wish to use Mozilla Location Service\n#ac_add_options --with-mozilla-api-keyfile=$PWD/mozilla-key\n\n# Uncomment the following line if you wish to use Google's geolocaton API\n# (needed for use with saved maps with Google Maps)\n#ac_add_options --with-google-location-service-api-keyfile=$PWD/google-key\n\n# Uncomment this line if you have installed startup-notification:\n#ac_add_options --enable-startup-notification\n\n# Uncomment the following option if you have not installed PulseAudio\n#ac_add_options --disable-pulseaudio\n# and uncomment this if you installed alsa-lib instead of PulseAudio\n#ac_add_options --enable-alsa\n\n# If you have installed GConf, comment out this line\nac_add_options --disable-gconf\n\n# From firefox-61, the stylo CSS code can no-longer be disabled\n\n# Comment out following options if you have not installed\n# recommended dependencies:\nac_add_options --enable-system-sqlite\nac_add_options --with-system-libevent\n# current firefox fails to build against libvpx-1.8.0\n#ac_add_options --with-system-libvpx\n# firefox-65 understands webp and ships with an included copy\nac_add_options --with-system-webp\nac_add_options --with-system-nspr\nac_add_options --with-system-nss\nac_add_options --with-system-icu\n\n# The gold linker is no-longer the default\nac_add_options --enable-linker=gold\n\n# The shipped libdavid (av1 decoder) is not built by default,\n# at least on linux, but if nasm is not present libxul tries to\n# link to one of libdavid's objects and fails.  It is thought\n# libdavid will be enabled in firefox-67, at which point nasm\n# might be required.\nac_add_options --disable-av1\n\n# You cannot distribute the binary if you do this\nac_add_options --enable-official-branding\n\n# If you are going to apply the patch for system graphite\n# and system harfbuzz, uncomment these lines:\n#ac_add_options --with-system-graphite2\n#ac_add_options --with-system-harfbuzz\n\n# Stripping is now enabled by default.\n# Uncomment these lines if you need to run a debugger:\n#ac_add_options --disable-strip\n#ac_add_options --disable-install-strip\n\n# The BLFS editors recommend not changing anything below this line:\nac_add_options --prefix=/usr\nac_add_options --enable-application=browser\n\nac_add_options --disable-crashreporter\nac_add_options --disable-updater\n# enabling the tests will use a lot more space and significantly\n# increase the build time, for no obvious benefit.\nac_add_options --disable-tests\n\n# With clang, unlike gcc-7 and later, the default level\n# of optimization produces a working build.\nac_add_options --enable-optimize\n\n# From firefox-61 system cairo is not supported\n\nac_add_options --enable-system-ffi\nac_add_options --enable-system-pixman\n\n# From firefox-62 --with-pthreads is not recognized\n\nac_add_options --with-system-bz2\nac_add_options --with-system-jpeg\nac_add_options --with-system-png\nac_add_options --with-system-zlib\n\nmk_add_options MOZ_OBJDIR=@TOPSRCDIR@/firefox-build-dir\nEOF\nexport SHELL=/bin/sh\nsed -e 's/checkImpl/checkFFImpl/g' -i js/src/vm/JSContext*.h &&\nexport CC=clang CXX=clang++ AR=llvm-ar NM=llvm-nm RANLIB=llvm-ranlib &&\nexport MOZBUILD_STATE_PATH=${PWD}/mozbuild &&\n./mach build\nsudo ./mach install                                                  &&\n\nsudo mkdir -pv  /usr/lib/mozilla/plugins                             &&\nsudo ln    -sfv ../../mozilla/plugins /usr/lib/firefox/browser/\nunset CC CXX AR NM RANLIB MOZBUILD_STATE_PATH\n\nsudo mkdir -pv /usr/share/applications &&\nsudo mkdir -pv /usr/share/pixmaps &&\n\nsudo tee /usr/share/applications/firefox.desktop << \"EOF\" &&\n[Desktop Entry]\nEncoding=UTF-8\nName=Firefox Web Browser\nComment=Browse the World Wide Web\nGenericName=Web Browser\nExec=firefox %u\nTerminal=false\nType=Application\nIcon=firefox\nCategories=GNOME;GTK;Network;WebBrowser;\nMimeType=application/xhtml+xml;text/xml;application/xhtml+xml;application/vnd.mozilla.xul+xml;text/mml;x-scheme-handler/http;x-scheme-handler/https;\nStartupNotify=true\nEOF\n\nsudo ln -sfv /usr/lib/firefox/browser/chrome/icons/default/default128.png \\\n        /usr/share/pixmaps/firefox.png",
+        "tarball": "firefox-68.0.source.tar.xz",
+        "commands": "patch -Np1 -i ../firefox-68.0-sockios.patch &&\n\ncat > mozconfig << \"EOF\"\n# If you have a multicore machine, all cores will be used by default.\n\n# If you have installed dbus-glib, comment out this line:\nac_add_options --disable-dbus\n\n# If you have installed dbus-glib, and you have installed (or will install)\n# wireless-tools, and you wish to use geolocation web services, comment out\n# this line\nac_add_options --disable-necko-wifi\n\n# API Keys for geolocation APIs - necko-wifi (above) is required for MLS\n# Uncomment the following line if you wish to use Mozilla Location Service\n#ac_add_options --with-mozilla-api-keyfile=$PWD/mozilla-key\n\n# Uncomment the following line if you wish to use Google's geolocaton API\n# (needed for use with saved maps with Google Maps)\n#ac_add_options --with-google-location-service-api-keyfile=$PWD/google-key\n\n# Uncomment this line if you have installed startup-notification:\n#ac_add_options --enable-startup-notification\n\n# Uncomment the following option if you have not installed PulseAudio\n#ac_add_options --disable-pulseaudio\n# and uncomment this if you installed alsa-lib instead of PulseAudio\n#ac_add_options --enable-alsa\n\n# If you have installed GConf, comment out this line\nac_add_options --disable-gconf\n\n# From firefox-61, the stylo CSS code can no-longer be disabled\n\n# Comment out following options if you have not installed\n# recommended dependencies:\nac_add_options --enable-system-sqlite\nac_add_options --with-system-libevent\n# current firefox fails to build against libvpx-1.8.0\n#ac_add_options --with-system-libvpx\n# firefox-65 understands webp and ships with an included copy\nac_add_options --with-system-webp\nac_add_options --with-system-nspr\nac_add_options --with-system-nss\nac_add_options --with-system-icu\n\n# The gold linker is no-longer the default\nac_add_options --enable-linker=gold\n\n# The shipped libdavid (av1 decoder) is not built by default,\n# at least on linux, but if nasm is not present libxul tries to\n# link to one of libdavid's objects and fails.  It is thought\n# libdavid will be enabled in firefox-67, at which point nasm\n# might be required.\nac_add_options --disable-av1\n\n# You cannot distribute the binary if you do this\nac_add_options --enable-official-branding\n\n# If you are going to apply the patch for system graphite\n# and system harfbuzz, uncomment these lines:\n#ac_add_options --with-system-graphite2\n#ac_add_options --with-system-harfbuzz\n\n# Stripping is now enabled by default.\n# Uncomment these lines if you need to run a debugger:\n#ac_add_options --disable-strip\n#ac_add_options --disable-install-strip\n\n# The BLFS editors recommend not changing anything below this line:\nac_add_options --prefix=/usr\nac_add_options --enable-application=browser\n\nac_add_options --disable-crashreporter\nac_add_options --disable-updater\n# enabling the tests will use a lot more space and significantly\n# increase the build time, for no obvious benefit.\nac_add_options --disable-tests\n\n# With clang, unlike gcc-7 and later, the default level\n# of optimization produces a working build.\nac_add_options --enable-optimize\n\n# From firefox-61 system cairo is not supported\n\nac_add_options --enable-system-ffi\nac_add_options --enable-system-pixman\n\n# From firefox-62 --with-pthreads is not recognized\n\nac_add_options --with-system-bz2\nac_add_options --with-system-jpeg\nac_add_options --with-system-png\nac_add_options --with-system-zlib\n\nmk_add_options MOZ_OBJDIR=@TOPSRCDIR@/firefox-build-dir\nEOF\nexport SHELL=/bin/sh\nsed -e 's/checkImpl/checkFFImpl/g' -i js/src/vm/JSContext*.h &&\nexport CC=clang CXX=clang++ AR=llvm-ar NM=llvm-nm RANLIB=llvm-ranlib &&\nexport MOZBUILD_STATE_PATH=${PWD}/mozbuild &&\n./mach build\nsudo ./mach install                                                  &&\n\nsudo mkdir -pv  /usr/lib/mozilla/plugins                             &&\nsudo ln    -sfv ../../mozilla/plugins /usr/lib/firefox/browser/\nunset CC CXX AR NM RANLIB MOZBUILD_STATE_PATH\n\nsudo mkdir -pv /usr/share/applications &&\nsudo mkdir -pv /usr/share/pixmaps &&\n\nsudo tee /usr/share/applications/firefox.desktop << \"EOF\" &&\n[Desktop Entry]\nEncoding=UTF-8\nName=Firefox Web Browser\nComment=Browse the World Wide Web\nGenericName=Web Browser\nExec=firefox %u\nTerminal=false\nType=Application\nIcon=firefox\nCategories=GNOME;GTK;Network;WebBrowser;\nMimeType=application/xhtml+xml;text/xml;application/xhtml+xml;application/vnd.mozilla.xul+xml;text/mml;x-scheme-handler/http;x-scheme-handler/https;\nStartupNotify=true\nEOF\n\nsudo ln -sfv /usr/lib/firefox/browser/chrome/icons/default/default128.png \\\n        /usr/share/pixmaps/firefox.png",
         "dependencies": [
             "autoconf213",
             "cbindgen",

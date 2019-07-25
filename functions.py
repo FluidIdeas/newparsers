@@ -2,6 +2,7 @@
 
 from bs4 import BeautifulSoup
 import json
+from mesa import mesafilter
 
 systemd_service_tarball_url = 'http://www.linuxfromscratch.org/blfs/downloads/systemd/blfs-systemd-units-20180105.tar.bz2'
 systemd_service_tarball = systemd_service_tarball_url.split('/')[-1]
@@ -22,7 +23,10 @@ replaceable_deps = load_json('config/replacable_dependencies.json')
 pkg_expendable_deps = load_json('config/package_expendable_dependencies.json')
 url_deletion = load_json('config/url_deletion.json')
 replaceable_cmds = load_json('config/replaceable_commands.json')
+pkg_replaceable_cmds = load_json('config/package_replaceable_commands.json')
 final_cmds = load_json('config/final-commands.json')
+
+custom_package_filters = {'mesa': mesafilter}
 
 def read_processed(file_path):
 	with open(file_path, 'rb') as fp:
@@ -171,6 +175,9 @@ def parse_package(file_path, version, patches_file):
 				commands.append(root_cmd)
 	if package['name'] in final_cmds:
 		commands.extend(final_cmds[package['name']])
+	if package['name'] in custom_package_filters:
+		filter_function = custom_package_filters[package['name']]
+		(package, commands) = filter_function(package, commands)
 	cmds = list()
 	if package['name'] in deletions:
 		for command in commands:
@@ -186,6 +193,10 @@ def parse_package(file_path, version, patches_file):
 	if package['name'] in additional_commands:
 		cmds.insert(additional_commands[package['name']]['position'], additional_commands[package['name']]['command'])
 	package['commands'] = '\n'.join(cmds)
+	if package['name'] in pkg_replaceable_cmds:
+		for replaceable_element in pkg_replaceable_cmds[package['name']]:
+			for orig, replacement in replaceable_element.items():
+				package['commands'] = package['commands'].replace(orig, replacement)
 	str_vars = ''
 	for key, value in variables.items():
 		if key in package['commands']:

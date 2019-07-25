@@ -265,5 +265,6 @@
 	"transmission": ["qt"],
 	"mariadb": ["mysql-test"],
 	"php": ["php_manual_en.html.gz", "php_manual_en.tar.gz"],
-	"grilo": ["meson --prefix=/usr"]
+	"grilo": ["meson --prefix=/usr"],
+	"libgdata": ["meson --prefix=/usr"]
 }
