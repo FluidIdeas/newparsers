@@ -2,7 +2,8 @@
 
 from bs4 import BeautifulSoup
 import json
-from mesa import mesafilter
+from filters import mesafilter
+from filters import rustfilter
 
 systemd_service_tarball_url = 'http://www.linuxfromscratch.org/blfs/downloads/systemd/blfs-systemd-units-20180105.tar.bz2'
 systemd_service_tarball = systemd_service_tarball_url.split('/')[-1]
@@ -26,7 +27,7 @@ replaceable_cmds = load_json('config/replaceable_commands.json')
 pkg_replaceable_cmds = load_json('config/package_replaceable_commands.json')
 final_cmds = load_json('config/final-commands.json')
 
-custom_package_filters = {'mesa': mesafilter}
+custom_package_filters = [mesafilter, rustfilter]
 
 def read_processed(file_path):
 	with open(file_path, 'rb') as fp:
@@ -175,8 +176,7 @@ def parse_package(file_path, version, patches_file):
 				commands.append(root_cmd)
 	if package['name'] in final_cmds:
 		commands.extend(final_cmds[package['name']])
-	if package['name'] in custom_package_filters:
-		filter_function = custom_package_filters[package['name']]
+	for filter_function in custom_package_filters:
 		(package, commands) = filter_function(package, commands)
 	cmds = list()
 	if package['name'] in deletions:

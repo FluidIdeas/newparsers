@@ -34,10 +34,20 @@ ninja
 '''
 
 def mesafilter(package, commands):
-	new_commands = list()
-	for command in commands:
-		if 'meson' in command:
-			new_commands.append(mesa_configure)
-		else:
-			new_commands.append(command)
-	return (package, new_commands)
+	if package['name'] == 'mesa':
+		new_commands = list()
+		for command in commands:
+			if 'meson' in command:
+				new_commands.append(mesa_configure)
+			else:
+				new_commands.append(command)
+		return (package, new_commands)
+	else:
+		return (package, commands)
+
+def rustfilter(package, commands):
+	if 'rust' in package['dependencies']:
+		commands.insert(0, '. /etc/profile.d/rustc.sh')
+	return (package, commands)
+
+
