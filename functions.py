@@ -4,6 +4,9 @@ from bs4 import BeautifulSoup
 import json
 from filters import mesafilter
 from filters import rustfilter
+from filters import bluezfilter
+from filters import krameworks5filter
+from filters import plasmafilter
 
 systemd_service_tarball_url = 'http://www.linuxfromscratch.org/blfs/downloads/systemd/blfs-systemd-units-20180105.tar.bz2'
 systemd_service_tarball = systemd_service_tarball_url.split('/')[-1]
@@ -27,7 +30,7 @@ replaceable_cmds = load_json('config/replaceable_commands.json')
 pkg_replaceable_cmds = load_json('config/package_replaceable_commands.json')
 final_cmds = load_json('config/final-commands.json')
 
-custom_package_filters = [mesafilter, rustfilter]
+custom_package_filters = [mesafilter, rustfilter, bluezfilter, krameworks5filter, plasmafilter]
 
 def read_processed(file_path):
 	with open(file_path, 'rb') as fp:

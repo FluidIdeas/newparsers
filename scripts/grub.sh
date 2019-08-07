@@ -9,7 +9,7 @@ export MAKEFLAGS="-j `nproc`"
 SOURCE_DIR="/sources"
 LOGFILE="/sources/build-log"
 STEPNAME="098-grub.sh"
-TARBALL="grub-2.02.tar.xz"
+TARBALL="grub-2.04.tar.xz"
 
 if ! grep "$STEPNAME" $LOGFILE &> /dev/null
 then
@@ -43,7 +43,7 @@ sed -ri "s:.*(AUX_MODULES.*valid):\1:" modules.cfg &&
 sed -r "s:.*(#.*SUBPIXEL_RENDERING) .*:\1:" \
     -i include/freetype/config/ftoption.h  &&
 
-CFLAGS="-march=$BUILD_ARCH -mtune=$BUILD_TUNE -O$BUILD_OPT_LEVEL" CXXFLAGS="-march=$BUILD_ARCH -mtune=$BUILD_TUNE -O$BUILD_OPT_LEVEL" CPPFLAGS="-march=$BUILD_ARCH -mtune=$BUILD_TUNE -O$BUILD_OPT_LEVEL" ./configure --prefix=/usr --disable-static &&
+./configure --prefix=/usr --disable-static &&
 make
 make install
 
@@ -57,13 +57,13 @@ then
 	cd $DIRECTORY
 fi
 
-patch -Np1 -i ../grub-2.02-gcc.patch
+# patch -Np1 -i ../grub-2.02-gcc.patch
 sed -i "s@GNU GRUB  version %s@$OS_NAME $OS_VERSION $OS_CODENAME \- GNU GRUB@g" grub-core/normal/main.c
 
 if [ `uname -m` == "x86_64" ]
 then
 
-CFLAGS="-march=$BUILD_ARCH -mtune=$BUILD_TUNE -O$BUILD_OPT_LEVEL" CXXFLAGS="-march=$BUILD_ARCH -mtune=$BUILD_TUNE -O$BUILD_OPT_LEVEL" CPPFLAGS="-march=$BUILD_ARCH -mtune=$BUILD_TUNE -O$BUILD_OPT_LEVEL" ./configure --prefix=/usr      \
+./configure --prefix=/usr      \
 	--sbindir=/sbin        \
 	--localstatedir=/var   \
 	--sysconfdir=/etc      \
@@ -79,7 +79,7 @@ make clean
 
 fi
 
-CFLAGS="-march=$BUILD_ARCH -mtune=$BUILD_TUNE -O$BUILD_OPT_LEVEL" CXXFLAGS="-march=$BUILD_ARCH -mtune=$BUILD_TUNE -O$BUILD_OPT_LEVEL" CPPFLAGS="-march=$BUILD_ARCH -mtune=$BUILD_TUNE -O$BUILD_OPT_LEVEL" ./configure --prefix=/usr      \
+./configure --prefix=/usr      \
 	--sbindir=/sbin        \
 	--localstatedir=/var   \
 	--sysconfdir=/etc      \

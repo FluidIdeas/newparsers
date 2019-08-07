@@ -49,5 +49,6 @@
 		"postgresql"
 	],
 	"transmission": ["qt5"],
-	"twm": ["x7legacy"]
+	"twm": ["x7legacy"],
+	"phonon": ["phonon-backend-gstreamer", "phonon-backend-vlc"]
 }

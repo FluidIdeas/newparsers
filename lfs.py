@@ -4,6 +4,8 @@ from bs4 import BeautifulSoup
 from functions import read_processed
 from functions import read_raw
 
+from filters import libffifilter
+
 index = 1
 separator = '/'
 book_dir = '/home/chandrakant/aryalinux/books/lfs'
@@ -12,6 +14,8 @@ index_path = book_dir + separator + 'index.html'
 wget_list_path = book_dir + separator + 'wget-list'
 chapter_map = {'chapter05': 'toolchain', 'chapter06': 'final-system'}
 unwanted_chapters = ['5.1', '5.2', '5.3', '5.36', '5.37', '6.1', '6.2', '6.3', '6.4', '6.5', '6.6', '6.77', '6.78', '6.79']
+
+filters = [libffifilter]
 
 additional_commands = {
 	'openssl': 'ln -svf /tools/bin/env /usr/bin/'
@@ -199,6 +203,8 @@ for chapter, links in chapters_links.items():
 			package['dir'] = 'final-system'
 		prefix = get_prefix(index)
 		package['script_name'] = prefix + '-' + package['name'].lower()
+		for f in filters:
+			f(package)
 		packages.append(package)
 		index = index + 1
 
