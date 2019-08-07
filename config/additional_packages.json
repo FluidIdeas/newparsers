@@ -1061,5 +1061,13 @@
         "tarball": "libsass-3.6.1.tar.gz",
         "commands": "echo $USER > /tmp/currentuser\n\nautoreconf -fi &&\n\n./configure --prefix=/usr --disable-static &&\nmake\nsudo make install",
         "dependencies": []
+    },
+    {
+        "name": "virtualbox",
+        "version": "nightly",
+        "download_urls": [],
+        "tarball": null,
+        "commands": "sudo pip install bs4\n\nwget https:\/\/www.virtualbox.org\/wiki\/Linux_Downloads -O Linux_Downloads\n\ncat > \/tmp\/parser.py<<\"EOF\"\nfrom bs4 import BeautifulSoup\n\nwith open('Linux_Downloads') as fp:\n\tdoc = BeautifulSoup(fp.read(), features=\"html.parser\")\n\nfor anchor in doc.select('a[href]'):\n\tif 'All distributions' in str(anchor):\n\t\tprint(anchor['href'])\nEOF\n\nurl=$(python \/tmp\/parser.py)\ntarball=$(echo $url | rev | cut -d\/ -f1 | rev)\n\nKERNEL_VERSION=$(uname -r)\nKERNEL_MAJOR_VERSION=$(uname -r | cut -d '.' -f1)\nKERNEL_URL=https:\/\/cdn.kernel.org\/pub\/linux\/kernel\/v$KERNEL_MAJOR_VERSION.x\/linux-$KERNEL_VERSION.tar.xz\nKERNEL_TARBALL=$(echo $KERNEL_URL | rev | cut -d\/ -f1 | rev)\nVBOX_INSTALLER=$(echo $url | rev | cut -d\/ -f1 | rev)\nVERSION=$(echo $VBOX_INSTALLER | cut -d \"-\" -f2)\n\nwget -nc $url\nwget -nc $KERNEL_URL\n\nKERNEL_DIR=$(tar tf $KERNEL_TARBALL | cut -d\/ -f1 | uniq)\n\nmkdir -pv \/usr\/src\/\nsudo tar xf $KERNEL_TARBALL -C \/usr\/src\nsudo ln -svf \/usr\/src\/$KERNEL_DIR \/lib\/modules\/$KERNEL_VERSION\/build\n\npushd \/usr\/src\/$KERNEL_DIR\nsudo make oldconfig\nsudo make prepare\nsudo make scripts\npopd\n\nchmod a+x $VBOX_INSTALLER\n\nsudo .\/$VBOX_INSTALLER\n\nsudo ln -svf \/opt\/VirtualBox\/virtualbox.desktop \/usr\/share\/applications\/\nsudo update-desktop-database\nsudo update-mime-database \/usr\/share\/mime",
+        "dependencies": ["xserver-meta"]
     }
 ]
