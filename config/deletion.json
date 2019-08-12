@@ -129,7 +129,8 @@
     "parted": [
         "texi2pdf",
         "tests/Makefile",
-        "doc/parted.{pdf,ps,dvi}"
+        "doc/parted.{pdf,ps,dvi}",
+	"make check"
     ],
     "lvm2": [
         "make -C tools install_dmsetup_dynamic",
@@ -267,5 +268,6 @@
 	"php": ["php_manual_en.html.gz", "php_manual_en.tar.gz"],
 	"grilo": ["meson --prefix=/usr"],
 	"libgdata": ["meson --prefix=/usr"],
-	"qt5": ["-archdatadir"]
+	"qt5": ["-archdatadir"],
+	"fuse": ["doxygen"]
 }

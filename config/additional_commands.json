@@ -18,5 +18,9 @@
 	"bluez": {
 		"position": 0,
 		"command": "patch -Np1 -i ../bluez-5.50-glibc-build.patch"
+	},
+	"gst10-plugins-good": {
+		"position": 0,
+		"command" : "patch -Np1 -i ../292.diff"
 	}
 }
