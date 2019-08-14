@@ -472,3 +472,12 @@ def plasmafilter(p, commands):
 		return(p, commands)
 
 
+def gimpfilter(p, commands):
+	if p['name'] == 'gimp':
+		cmds = commands[0: -3]
+		p['commands'] = cmds
+		p['download_urls'] = p['download_urls'][0: -1]
+		return (p, cmds)
+	else:
+		return (p, commands)
+
