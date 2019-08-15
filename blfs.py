@@ -13,6 +13,7 @@ from functions import get_script
 from functions import parse_perl_modules
 from functions import package_clone
 from functions import find_package
+import mate
 
 import json
 
@@ -87,6 +88,13 @@ for p in packages:
 
 # Generate additional packages
 for package in additional_packages:
+	with open(out_dir + '/' + package['name'] + '.sh', 'w') as fp:
+		script = get_script(package)
+		fp.write(script)
+
+# Generate mate packages
+mate_packages = mate.get_packages()
+for package in mate_packages:
 	with open(out_dir + '/' + package['name'] + '.sh', 'w') as fp:
 		script = get_script(package)
 		fp.write(script)

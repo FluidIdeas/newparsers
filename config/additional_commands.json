@@ -22,5 +22,9 @@
 	"gst10-plugins-good": {
 		"position": 0,
 		"command" : "patch -Np1 -i ../292.diff"
+	},
+	"rust": {
+		"position": 1000,
+		"command": "\n\ncat > \/tmp\/clearcargo.sh <<EOF\nif [ -d $HOME\/.cargo ]; then\n\trm -rf $HOME\/.cargo\nfi\nEOF\nchmod a+x \/tmp\/clearcargo.sh\n\/tmp\/clearcargo.sh\nsed -i \"s@$HOME@\/root@g\" \/tmp\/clearcargo.sh\nsudo \/tmp\/clearcargo.sh\nsudo rm -f \/tmp\/clearcargo.sh"
 	}
 }

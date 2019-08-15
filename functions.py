@@ -195,7 +195,10 @@ def parse_package(file_path, version, patches_file):
 	else:
 		cmds = commands
 	if package['name'] in additional_commands:
-		cmds.insert(additional_commands[package['name']]['position'], additional_commands[package['name']]['command'])
+		if additional_commands[package['name']]['position'] != 1000:
+			cmds.insert(additional_commands[package['name']]['position'], additional_commands[package['name']]['command'])
+		else:
+			cmds.append(additional_commands[package['name']]['command'])
 	package['commands'] = '\n'.join(cmds)
 	if package['name'] in pkg_replaceable_cmds:
 		for replaceable_element in pkg_replaceable_cmds[package['name']]:
