@@ -16,6 +16,9 @@ systemd_service_dir = systemd_service_tarball[0:systemd_service_tarball.index('.
 with open('config/templates/script_template') as tfp:
 	template = tfp.read()
 
+with open('config/templates/bin-template') as tfp:
+	bin_template = tfp.read()
+
 def load_json(file_path):
 	with open(file_path, 'r') as fp:
 		return json.load(fp)
@@ -310,6 +313,37 @@ def get_script(p):
 				for url in p['download_urls']:
 					urls = urls + 'wget -nc ' + url + '\n'
 				tmp = tmp.replace('##DOWNLOADS##', urls)
+	else:
+		tmp = tmp.replace('##URL##', '')
+		tmp = tmp.replace('##DOWNLOADS##', '')
+		tmp = tmp.replace('##VERSION##', '')
+	if p['commands'] == None or len(p['commands']) > 0:
+		tmp = tmp.replace('##COMMANDS##', p['commands'])
+	else:
+		tmp = tmp.replace('##COMMANDS##', '')
+	return tmp
+
+def get_bin_script(p):
+	tmp = '' + bin_template
+	deps = ''
+	if p['dependencies'] != None:
+		for dep in p['dependencies']:
+			deps = deps + '#REQ:' + dep + '\n'
+	else:
+		deps = ''
+	tmp = tmp.replace('##DEPS##', deps)
+	if p['name'] != None:
+		tmp = tmp.replace('##NAME##', 'NAME=' + p['name'])
+	if p['version'] != None:
+		tmp = tmp.replace('##VERSION##', 'VERSION=' + p['version'])
+	else:
+		tmp = tmp.replace('##VERSION##', '')
+	urls = ''
+	if len(p['download_urls']) > 0:
+		tmp = tmp.replace('##URL##', '')
+		for url in p['download_urls']:
+			urls = urls + 'wget -nc ' + url + '\n'
+		tmp = tmp.replace('##DOWNLOADS##', urls)
 	else:
 		tmp = tmp.replace('##URL##', '')
 		tmp = tmp.replace('##DOWNLOADS##', '')

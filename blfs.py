@@ -10,10 +10,12 @@ from functions import parse_package
 from functions import print_package
 from functions import get_version
 from functions import get_script
+from functions import get_bin_script
 from functions import parse_perl_modules
 from functions import package_clone
 from functions import find_package
 import mate
+import os
 
 import json
 
@@ -32,15 +34,21 @@ else:
 
 unwanted_chapters = ['preface', 'introduction', 'appendices']
 unwanted_pages = {
-	'postlfs': ['profile', 'postlfs', 'config', 'bootdisk', 'console-fonts', 'firmware', 'devices', 'skel', 'users', 'vimrc', 'logon', 'security', 'vulnerabilities', 'filesystems', 'initramfs', 'editors', 'shells', 'virtualization', 'aboutlvm'],
-	'general': ['general', 'genlib', 'graphlib', 'genutils', 'sysutils', 'prog', 'other-tools'],
-	'basicnet': ['basicnet', 'connect', 'advanced-network', 'netprogs', 'othernetprogs', 'netutils', 'netlibs', 'textweb', 'mailnews']
+	'postlfs': ['profile', 'postlfs', 'config', 'bootdisk', 'console-fonts', 'firmware', 'devices', 'skel', 'users', 'vimrc', 'logon', 'security', 'vulnerabilities', 'filesystems', 'initramfs', 'editors', 'shells', 'virtualization', 'aboutlvm', 'firewall', 'others', 'raid'],
+	'general': ['general', 'genlib', 'graphlib', 'genutils', 'sysutils', 'prog', 'other-tools', 'ojdk-conf', 'svnserver'],
+	'basicnet': ['basicnet', 'connect', 'advanced-network', 'netprogs', 'othernetprogs', 'netutils', 'netlibs', 'textweb', 'mailnews', 'othermn'],
+	'kde': ['add-pkgs', 'introduction', 'kdeintro'],
+	'x': ['dm-introduction', 'icons-introduction', 'introduction', 'other-wms', 'tuning-fontconfig', 'xorg-config', 'xorg7', 'TTF-and-OTF-fonts'],
+	'pst': ['tex-path']
 }
+
+unwanted_scripts = ['ttf-and-otf-fonts']
 
 additional_packages = load_json('config/additional_packages.json')
 additional_dependencies = load_json('config/additional_dependencies.json')
 additional_downloads = load_json('config/additional_downloads.json')
 cloned_packages = load_json('config/cloned_packages.json')
+binary_packages = load_json('config/bin_packages.json')
 
 packages = list()
 
@@ -105,4 +113,14 @@ for name, clone_details in cloned_packages.items():
 	with open(out_dir + '/' + package['name'] + '.sh', 'w') as fp:
 		script = get_script(package)
 		fp.write(script)
+
+# Generate binary packages
+for package in binary_packages:
+	with open(out_dir + '/' + package['name'] + '-bin.sh', 'w') as fp:
+		script = get_bin_script(package)
+		fp.write(script)
+
+for f in unwanted_scripts:
+	if os.path.exists(out_dir + '/' + f + '.sh'):
+		os.remove(out_dir + '/' + f + '.sh')
 

@@ -268,7 +268,8 @@
             "aryalinux-google-fonts",
             "aryalinux-icons",
             "aryalinux-gtk-themes",
-            "aryalinux-gnome-settings"
+            "aryalinux-gnome-settings",
+            "plymouth"
         ]
     },
     {
@@ -1068,7 +1069,7 @@
             "https://launchpad.net/ubuntu/+archive/primary/+sourcefiles/lightdm-gtk-greeter/2.0.1-2ubuntu4/lightdm-gtk-greeter_2.0.1.orig.tar.gz"
         ],
         "tarball": "lightdm-gtk-greeter_2.0.1.orig.tar.gz",
-        "commands": "export CFLAGS=\"-Wno-error=format-nonliteral\"\n./configure --prefix=/usr --sysconfdir=/etc --disable-liblightdm-qt &&\nmake \"-j`nproc`\"\n\ncat > 1434987998845.sh << \"ENDOFFILE\"\nmake install\nENDOFFILE\nchmod a+x 1434987998845.sh\nsudo ./1434987998845.sh\nsudo rm -rf 1434987998845.sh\n\n\nsudo tee -a /etc/lightdm/lightdm-gtk-greeter.conf << EOF\n[greeter]\nxft-hintstyle = hintmedium\nxft-antialias = true\nxft-rgba = rgb\nicon-theme-name = 'Flat Remix'\ntheme-name = Adapta-Nokto\nbackground = /usr/share/backgrounds/aryalinux/pexels-photo-459059.jpeg\nfont-name = Droid Sans 10\nEOF\n",
+        "commands": "export CFLAGS=\"-Wno-error=format-nonliteral\"\n./configure --prefix=/usr --sysconfdir=/etc --disable-liblightdm-qt &&\nmake \"-j`nproc`\"\n\ncat > 1434987998845.sh << \"ENDOFFILE\"\nmake install\nENDOFFILE\nchmod a+x 1434987998845.sh\nsudo ./1434987998845.sh\nsudo rm -rf 1434987998845.sh\n\n\nsudo tee -a /etc/lightdm/lightdm-gtk-greeter.conf << EOF\n[greeter]\nxft-hintstyle = hintmedium\nxft-antialias = true\nxft-rgba = rgb\nicon-theme-name = 'Flat Remix'\ntheme-name = Adapta-Nokto\nbackground = /usr/share/backgrounds/aryalinux/default-lock-screen-wallpaper.jpeg\nfont-name = Droid Sans 10\nEOF\n",
         "dependencies": ["lightdm"]
     },
     {
@@ -1086,8 +1087,8 @@
         "version": "nightly",
         "download_urls": [],
         "tarball": null,
-        "commands": "sudo pip install bs4\n\nwget https://www.virtualbox.org/wiki/Linux_Downloads -O Linux_Downloads\n\ncat > /tmp/parser.py<<\"EOF\"\nfrom bs4 import BeautifulSoup\n\nwith open('Linux_Downloads') as fp:\n\tdoc = BeautifulSoup(fp.read(), features=\"html.parser\")\n\nfor anchor in doc.select('a[href]'):\n\tif 'All distributions' in str(anchor):\n\t\tprint(anchor['href'])\nEOF\n\nurl=$(python /tmp/parser.py)\ntarball=$(echo $url | rev | cut -d/ -f1 | rev)\n\nKERNEL_VERSION=$(uname -r)\nKERNEL_MAJOR_VERSION=$(uname -r | cut -d '.' -f1)\nKERNEL_URL=https://cdn.kernel.org/pub/linux/kernel/v$KERNEL_MAJOR_VERSION.x/linux-$KERNEL_VERSION.tar.xz\nKERNEL_TARBALL=$(echo $KERNEL_URL | rev | cut -d/ -f1 | rev)\nVBOX_INSTALLER=$(echo $url | rev | cut -d/ -f1 | rev)\nVERSION=$(echo $VBOX_INSTALLER | cut -d \"-\" -f2)\n\nwget -nc $url\nwget -nc $KERNEL_URL\n\nKERNEL_DIR=$(tar tf $KERNEL_TARBALL | cut -d/ -f1 | uniq)\n\nmkdir -pv /usr/src/\nsudo tar xf $KERNEL_TARBALL -C /usr/src\nsudo ln -svf /usr/src/$KERNEL_DIR /lib/modules/$KERNEL_VERSION/build\n\npushd /usr/src/$KERNEL_DIR\nsudo make oldconfig\nsudo make prepare\nsudo make scripts\npopd\n\nchmod a+x $VBOX_INSTALLER\n\nsudo ./$VBOX_INSTALLER\n\nsudo ln -svf /opt/VirtualBox/virtualbox.desktop /usr/share/applications/\nsudo update-desktop-database\nsudo update-mime-database /usr/share/mime",
-        "dependencies": ["xserver-meta"]
+        "commands": "sudo pip install bs4\n\nwget https://www.virtualbox.org/wiki/Linux_Downloads -O Linux_Downloads\n\ncat > /tmp/parser.py<<\"EOF\"\nfrom bs4 import BeautifulSoup\n\nwith open('Linux_Downloads') as fp:\n\tdoc = BeautifulSoup(fp.read(), features=\"html.parser\")\n\nfor anchor in doc.select('a[href]'):\n\tif 'All distributions' in str(anchor):\n\t\tprint(anchor['href'])\nEOF\n\nurl=$(python /tmp/parser.py)\ntarball=$(echo $url | rev | cut -d/ -f1 | rev)\n\nVBOX_INSTALLER=$(echo $url | rev | cut -d/ -f1 | rev)\nVERSION=$(echo $VBOX_INSTALLER | cut -d \"-\" -f2)\n\nwget -nc $url\n\nchmod a+x $VBOX_INSTALLER\n\nsudo ./$VBOX_INSTALLER\n\nsudo ln -svf /opt/VirtualBox/virtualbox.desktop /usr/share/applications/\nsudo update-desktop-database\nsudo update-mime-database /usr/share/mime\n",
+        "dependencies": ["xserver-meta", "kernel-headers"]
     },
     {
         "name": "kf5-intro",
@@ -1155,19 +1156,11 @@
         "dependencies": []
     },
     {
-        "name": "compton",
-        "version": "0.1",
-        "download_urls": ["https://github.com/chjj/compton/archive/v0.1_beta2.tar.gz"],
-        "tarball": "v0.1_beta2.tar.gz",
-        "commands": "make\nsudo make install\nmkdir -pv ~/.config\nsudo mkdir -pv /etc/skel/.config\nsed -i 's/menu-opacity = 0.8;/menu-opacity = 1.0;/g' compton.sample.conf\ncp -v compton.sample.conf ~/.config/compton.conf\nsudo cp -v compton.sample.conf /etc/skel/.config/compton.conf",
-        "dependencies": []
-    },
-    {
         "name": "mate-desktop-environment",
         "version": "1.23",
         "download_urls": [],
         "tarball": null,
-        "commands": "sudo tee /etc/gtk-2.0/gtkrc <<\"EOF\"\ninclude \"/usr/share/themes/Clearlooks/gtk-2.0/gtkrc\"\ngtk-icon-theme-name = \"elementary\"\nEOF\n\nsudo mkdir -pv /etc/polkit-1/localauthority/50-local.d/\nsudo mkdir -pv /etc/polkit-1/rules.d/\n\nsudo tee /etc/polkit-1/rules.d/50-org.freedesktop.NetworkManagerAndUdisks2.rules <<\"EOF\"\npolkit.addRule(function(action, subject) {\n  if (action.id.indexOf(\"org.freedesktop.NetworkManager.\") == 0 || action.id.indexOf(\"org.freedesktop.udisks2.filesystem-mount\") == 0) {\n    return polkit.Result.YES;\n  }\n});\nEOF\n\nsudo mkdir -pv /usr/share/icons/default/\nsudo tee /usr/share/icons/default/index.theme <<\"EOF\"\n[Icon Theme]\nInherits=Adwaita\nEOF\n\nccache -C\nsudo ccache -C\nccache -c\nsudo ccache -c\n\nrm -rf ~/.ccache\nsudo rm -rf ~/.ccache\nxdg-user-dirs-update\nsudo xdg-user-dirs-update\n\nsudo tee /etc/profile.d/xdg.sh << EOF\ncd ~\nxdg-user-dirs-update\nEOF\n\nsudo rm -rf /etc/X11/xorg.conf.d/*\n\nsudo tee /etc/X11/xorg.conf.d/99-synaptics-overrides.conf <<\"EOF\"\nSection  \"InputClass\"\n    Identifier  \"touchpad overrides\"\n    # This makes this snippet apply to any device with the \"synaptics\" driver\n    # assigned\n    MatchDriver  \"synaptics\"\n\n    ####################################\n    ## The lines that you need to add ##\n    # Enable left mouse button by tapping\n    Option  \"TapButton1\"  \"1\"\n    # Enable vertical scrolling\n    Option  \"VertEdgeScroll\"  \"1\"\n    # Enable right mouse button by tapping lower right corner\n    Option \"RBCornerButton\" \"3\"\n    ####################################\n\nEndSection\nEOF\n\nif [ ! -f /usr/share/pixmaps/aryalinux.png ]\nthen\npushd /usr/share/pixmaps/\nsudo wget https://sourceforge.net/projects/aryalinux-bin/files/artifacts/aryalinux.png\npopd\nfi\n\nsudo sed -i \"s@/share/backgrounds/mate/desktop/Stripes.png@/share/backgrounds/aryalinux/default-desktop-wallpaper.jpeg@g\" /usr/share/glib-2.0/schemas/org.mate.background.gschema.xml\nsudo sed -i \"s@'Sans 10'@'Noto Sans 10'@g\" /usr/share/glib-2.0/schemas/*.xml\nsudo sed -i \"s@'Sans 8'@'Noto Sans 8'@g\" /usr/share/glib-2.0/schemas/*.xml\nsudo sed -i \"s@'Sans 11'@'Noto Sans 11'@g\" /usr/share/glib-2.0/schemas/*.xml\nsudo sed -i \"s@'Sans Bold 10'@'Noto Sans 10'@g\" /usr/share/glib-2.0/schemas/*.xml\n\nsudo sed -i \"s@'Monospace 10'@'Droid Sans Mono 10'@g\" /usr/share/glib-2.0/schemas/*.xml\nsudo sed -i \"s@'Monospace 11'@'Droid Sans Mono 12'@g\" /usr/share/glib-2.0/schemas/*.xml\n\nsudo sed -i \"s@'Menta'@'Arc-Dark'@g\" /usr/share/glib-2.0/schemas/org.mate.marco.gschema.xml\nsudo sed -i \"s@'Menta'@'Arc'@g\" /usr/share/glib-2.0/schemas/org.mate.interface.gschema.xml\nsudo sed -i \"s@'menta'@'Numix-Circle'@g\" /usr/share/glib-2.0/schemas/org.mate.interface.gschema.xml\n\ncd /usr/share/glib-2.0/schemas/\n\nsudo tee org.mate.screensaver.gschema.xml <<\"EOF\"\n<schemalist gettext-domain=\"mate-screensaver\">\n  <enum id=\"org.mate.screensaver.Mode\">\n    <value nick=\"blank-only\" value=\"0\"/>\n    <value nick=\"random\" value=\"1\"/>\n    <value nick=\"single\" value=\"2\"/>\n  </enum>\n  <schema id=\"org.mate.screensaver\" path=\"/org/mate/screensaver/\">\n    <key name=\"idle-activation-enabled\" type=\"b\">\n      <default>true</default>\n      <summary>Activate when idle</summary>\n      <description>Set this to TRUE to activate the screensaver when the session is idle.</description>\n    </key>\n    <key name=\"lock-enabled\" type=\"b\">\n      <default>false</default>\n      <summary>Lock on activation</summary>\n      <description>Set this to TRUE to lock the screen when the screensaver goes active.</description>\n    </key>\n    <key name=\"mode\" enum=\"org.mate.screensaver.Mode\">\n      <default>'blank-only'</default>\n      <summary>Screensaver theme selection mode</summary>\n      <description>The selection mode used by screensaver. May be \"blank-only\" to enable the screensaver without using any theme on activation, \"single\" to enable screensaver using only one theme on activation (specified in \"themes\" key), and \"random\" to enable the screensaver using a random theme on activation.</description>\n    </key>\n    <key name=\"themes\" type=\"as\">\n      <default>[]</default>\n      <summary>Screensaver themes</summary>\n      <description>This key specifies the list of themes to be used by the screensaver. It's ignored when \"mode\" key is \"blank-only\", should provide the theme name when \"mode\" is \"single\", and should provide a list of themes when \"mode\" is \"random\".</description>\n    </key>\n    <key name=\"power-management-delay\" type=\"i\">\n      <default>30</default>\n      <summary>Time before power management baseline</summary>\n      <description>The number of seconds of inactivity before signalling to power management. This key is set and maintained by the session power management agent.</description>\n    </key>\n      <key name=\"cycle-delay\" type=\"i\">\n      <default>10</default>\n      <summary>Time before theme change</summary>\n      <description>The number of minutes to run before changing the screensaver theme.</description>\n    </key>\n    <key name=\"lock-delay\" type=\"i\">\n      <default>0</default>\n      <summary>Time before locking</summary>\n      <description>The number of minutes after screensaver activation before locking the screen.</description>\n    </key>\n    <key name=\"embedded-keyboard-enabled\" type=\"b\">\n      <default>false</default>\n      <summary>Allow embedding a keyboard into the window</summary>\n      <description>Set this to TRUE to allow embedding a keyboard into the window when trying to unlock. The \"keyboard_command\" key must be set with the appropriate command.</description>\n    </key>\n    <key name=\"embedded-keyboard-command\" type=\"s\">\n      <default>''</default>\n      <summary>Embedded keyboard command</summary>\n      <description>The command that will be run, if the \"embedded_keyboard_enabled\" key is set to TRUE, to embed a keyboard widget into the window. This command should implement an XEMBED plug interface and output a window XID on the standard output.</description>\n    </key>\n    <key name=\"logout-enabled\" type=\"b\">\n      <default>false</default>\n      <summary>Allow logout</summary>\n      <description>Set this to TRUE to offer an option in the unlock dialog to allow logging out after a delay. The delay is specified in the \"logout_delay\" key.</description>\n    </key>\n    <key name=\"logout-delay\" type=\"i\">\n      <default>120</default>\n      <summary>Time before logout option</summary>\n      <description>The number of minutes after the screensaver activation before a logout option will appear in the unlock dialog. This key has effect only if the \"logout_enable\" key is set to TRUE.</description>\n    </key>\n    <key name=\"logout-command\" type=\"s\">\n      <default>''</default>\n      <summary>Logout command</summary>\n      <description>The command to invoke when the logout button is clicked. This command should simply log the user out without any interaction. This key has effect only if the \"logout_enable\" key is set to TRUE.</description>\n    </key>\n    <key name=\"user-switch-enabled\" type=\"b\">\n      <default>true</default>\n      <summary>Allow user switching</summary>\n      <description>Set this to TRUE to offer an option in the unlock dialog to switch to a different user account.</description>\n    </key>\n    <key name=\"lock-dialog-theme\" type=\"s\">\n      <default>'default'</default>\n      <summary>Theme for lock dialog</summary>\n      <description>Theme to use for the lock dialog</description>\n    </key>\n    <key name=\"status-message-enabled\" type=\"b\">\n      <default>true</default>\n      <summary>Allow the session status message to be displayed</summary>\n      <description>Allow the session status message to be displayed when the screen is locked.</description>\n    </key>\n  </schema>\n</schemalist>\nEOF\n\nsudo tee org.mate.background.gschema.xml <<\"EOF\"\n<schemalist gettext-domain=\"mate-desktop\">\n  <enum id=\"org.mate.background.picture-options-enum\">\n\t<value nick=\"wallpaper\" value=\"0\"/>\n\t<value nick=\"zoom\" value=\"1\"/>\n\t<value nick=\"centered\" value=\"2\"/>\n\t<value nick=\"scaled\" value=\"3\"/>\n\t<value nick=\"stretched\" value=\"4\"/>\n\t<value nick=\"spanned\" value=\"5\"/>\n  </enum>\n  <enum id=\"org.mate.background.color-shading-type-enum\">\n\t<value nick=\"solid\" value=\"0\"/>\n\t<value nick=\"horizontal-gradient\" value=\"1\"/>\n\t<value nick=\"vertical-gradient\" value=\"2\"/>\n  </enum>\n  <schema id=\"org.mate.background\" path=\"/org/mate/desktop/background/\">\n    <key name=\"draw-background\" type=\"b\">\n      <default>true</default>\n      <summary>Draw Desktop Background</summary>\n      <description>Have MATE draw the desktop background.</description>\n    </key>\n    <key name=\"show-desktop-icons\" type=\"b\">\n      <default>true</default>\n      <summary>Show Desktop Icons</summary>\n      <description>Have MATE file manager (Caja) draw the desktop icons.</description>\n    </key>\n    <key name=\"background-fade\" type=\"b\">\n      <default>true</default>\n      <summary>Fade the background on change</summary>\n      <description>If set to true, then MATE will change the desktop background with a fading effect.</description>\n    </key>\n    <key name=\"picture-options\" enum=\"org.mate.background.picture-options-enum\">\n      <default>'zoom'</default>\n      <summary>Picture Options</summary>\n      <description>Determines how the image set by wallpaper_filename is rendered.  Possible values are \"wallpaper\", \"centered\", \"scaled\", \"stretched\", \"zoom\", \"spanned\".</description>\n    </key>\n    <key name=\"picture-filename\" type=\"s\">\n      <default>'/usr/share/backgrounds/aryalinux/default-desktop-wallpaper.jpeg'</default>\n      <summary>Picture Filename</summary>\n      <description>File to use for the background image.</description>\n    </key>\n    <key name=\"picture-opacity\" type=\"i\">\n      <default>100</default>\n      <summary>Picture Opacity</summary>\n      <description>Opacity with which to draw the background picture.</description>\n    </key>\n    <key name=\"primary-color\" type=\"s\">\n      <default>'#5891BC'</default>\n      <summary>Primary Color</summary>\n      <description>Left or Top color when drawing gradients, or the solid color.</description>\n    </key>\n    <key name=\"secondary-color\" type=\"s\">\n      <default>'#3C8F25'</default>\n      <summary>Secondary Color</summary>\n      <description>Right or Bottom color when drawing gradients, not used for solid color.</description>\n    </key>\n    <key name=\"color-shading-type\" enum=\"org.mate.background.color-shading-type-enum\">\n      <default>'vertical-gradient'</default>\n      <summary>Color Shading Type</summary>\n      <description>How to shade the background color. Possible values are \"horizontal-gradient\", \"vertical-gradient\", and \"solid\".</description>\n    </key>\n  </schema>\n</schemalist>\nEOF\n\nsudo glib-compile-schemas .",
+        "commands": "sudo tee /etc/gtk-2.0/gtkrc <<\"EOF\"\ninclude \"/usr/share/themes/Clearlooks/gtk-2.0/gtkrc\"\ngtk-icon-theme-name = \"Flat-Remix\"\nEOF\n\nsudo mkdir -pv /etc/polkit-1/localauthority/50-local.d/\nsudo mkdir -pv /etc/polkit-1/rules.d/\n\nsudo tee /etc/polkit-1/rules.d/50-org.freedesktop.NetworkManagerAndUdisks2.rules <<\"EOF\"\npolkit.addRule(function(action, subject) {\n  if (action.id.indexOf(\"org.freedesktop.NetworkManager.\") == 0 || action.id.indexOf(\"org.freedesktop.udisks2.filesystem-mount\") == 0) {\n    return polkit.Result.YES;\n  }\n});\nEOF\n\nsudo mkdir -pv /usr/share/icons/default/\nsudo tee /usr/share/icons/default/index.theme <<\"EOF\"\n[Icon Theme]\nInherits=Adwaita\nEOF\n\nccache -C\nsudo ccache -C\nccache -c\nsudo ccache -c\n\nrm -rf ~/.ccache\nsudo rm -rf ~/.ccache\nxdg-user-dirs-update\nsudo xdg-user-dirs-update\n\nsudo tee /etc/profile.d/xdg.sh << EOF\ncd ~\nxdg-user-dirs-update\nEOF\n\nsudo rm -rf /etc/X11/xorg.conf.d/*\n\nsudo tee /etc/X11/xorg.conf.d/99-synaptics-overrides.conf <<\"EOF\"\nSection  \"InputClass\"\n    Identifier  \"touchpad overrides\"\n    # This makes this snippet apply to any device with the \"synaptics\" driver\n    # assigned\n    MatchDriver  \"synaptics\"\n\n    ####################################\n    ## The lines that you need to add ##\n    # Enable left mouse button by tapping\n    Option  \"TapButton1\"  \"1\"\n    # Enable vertical scrolling\n    Option  \"VertEdgeScroll\"  \"1\"\n    # Enable right mouse button by tapping lower right corner\n    Option \"RBCornerButton\" \"3\"\n    ####################################\n\nEndSection\nEOF\n\nif [ ! -f /usr/share/pixmaps/aryalinux.png ]\nthen\n  pushd /usr/share/pixmaps/\n  sudo wget https://sourceforge.net/projects/aryalinux-bin/files/artifacts/aryalinux.png\n  popd\nfi\n\nsudo sed -i \"s@/share/backgrounds/mate/desktop/Stripes.png@/share/backgrounds/aryalinux/default-desktop-wallpaper.jpeg@g\" /usr/share/glib-2.0/schemas/org.mate.background.gschema.xml\nsudo sed -i \"s@'Sans 10'@'Noto Sans 10'@g\" /usr/share/glib-2.0/schemas/*.xml\nsudo sed -i \"s@'Sans 8'@'Noto Sans 8'@g\" /usr/share/glib-2.0/schemas/*.xml\nsudo sed -i \"s@'Sans 11'@'Noto Sans 11'@g\" /usr/share/glib-2.0/schemas/*.xml\nsudo sed -i \"s@'Sans Bold 10'@'Noto Sans 10'@g\" /usr/share/glib-2.0/schemas/*.xml\n\nsudo sed -i \"s@'Monospace 10'@'Droid Sans Mono 10'@g\" /usr/share/glib-2.0/schemas/*.xml\nsudo sed -i \"s@'Monospace 11'@'Droid Sans Mono 12'@g\" /usr/share/glib-2.0/schemas/*.xml\n\nsudo sed -i \"s@'Menta'@'Arc-Dark'@g\" /usr/share/glib-2.0/schemas/org.mate.marco.gschema.xml\nsudo sed -i \"s@'Menta'@'Arc'@g\" /usr/share/glib-2.0/schemas/org.mate.interface.gschema.xml\nsudo sed -i \"s@'menta'@'Numix-Circle'@g\" /usr/share/glib-2.0/schemas/org.mate.interface.gschema.xml\n\npushd /usr/share/glib-2.0/schemas/\nsudo glib-compile-schemas .\npopd",
         "dependencies": [
 		"gobject-introspection",
 		"desktop-file-utils",
@@ -1190,13 +1183,10 @@
 		"libsoup",
 		"icon-naming-utils",
 		"libunique",
-		"libunique3",
 		"libwnck",
 		"librsvg",
 		"upower",
-		"intltool",
 		"libtasn1",
-		"libtool",
 		"xmlto",
 		"gtk-doc",
 		"rarian",
@@ -1209,6 +1199,17 @@
 		"yelp",
 		"xdg-utils",
 		"xdg-user-dirs",
+		"python-modules#docutils",
+		"python-modules#pygobject2",
+		"python-modules#pygobject3",
+		"libpeas",
+		"gtksourceview",
+		"poppler",
+		"libgtop",
+		"gtkmm2",
+		"gtkmm3",
+		"glibmm",
+		"gnome-keyring",
 		"mate-common",
 		"mate-desktop",
 		"libmatekbd",
@@ -1226,6 +1227,7 @@
 		"lightdm-gtk-greeter",
 		"plymouth",
 		"mate-screensaver",
+		"vte2",
 		"mate-terminal",
 		"caja",
 		"caja-extensions",
@@ -1243,19 +1245,21 @@
 		"mate-system-monitor",
 		"mate-power-manager",
 		"marco",
-		"python-modules#pygobject2",
-		"python-modules#pygobject3",
 		"mozo",
 		"mate-backgrounds",
+		"libmatemixer",
 		"mate-media",
 		"wireless_tools",
 		"wpa_supplicant",
 		"networkmanager",
-		"ModemManager",
+		"modemmanager",
 		"network-manager-applet",
 		"net-tools",
-		"usb_modeswitch",
-		"compton"
+		"usb-modeswitch",
+		"aryalinux-wallpapers",
+		"aryalinux-google-fonts",
+		"aryalinux-gtk-themes",
+		"aryalinux-icons"
 	]
     },
     {
@@ -1278,5 +1282,21 @@
 		"nss",
 		"sqlite"
 	]
+    },
+    {
+        "name": "kernel-headers",
+        "version": "current",
+        "download_urls": [],
+        "tarball": null,
+        "commands": "KERNEL_VERSION=$(uname -r)\nKERNEL_MAJOR_VERSION=$(uname -r | cut -d '.' -f1)\nKERNEL_URL=https://cdn.kernel.org/pub/linux/kernel/v$KERNEL_MAJOR_VERSION.x/linux-$KERNEL_VERSION.tar.xz\nKERNEL_TARBALL=$(echo $KERNEL_URL | rev | cut -d/ -f1 | rev)\n\nwget -nc $KERNEL_URL\n\nKERNEL_DIR=$(tar tf $KERNEL_TARBALL | cut -d/ -f1 | uniq)\n\nsudo mkdir -pv /usr/src/\nsudo tar xf $KERNEL_TARBALL -C /usr/src\nsudo ln -svf /usr/src/$KERNEL_DIR /lib/modules/$KERNEL_VERSION/build\n\npushd /usr/src/$KERNEL_DIR\nsudo make oldconfig\nsudo make prepare\nsudo make scripts\npopd\n\nsudo rm -rf $KERNEL_TARBALL\n\nVERSION=KERNEL_VERSION\n",
+        "dependencies": []
+    },
+    {
+        "name": "binary-app-installer",
+        "version": "1.0",
+        "download_urls": [],
+        "tarball": null,
+        "commands": "sudo rm -rf master.tar.bz2\nwget -nc https://bitbucket.org/chandrakantsingh/binary-app-installer/get/master.tar.bz2 &&\nsudo tar xf master.tar.bz2 -C /\nsudo update-desktop-database",
+        "dependencies": []
     }
 ]

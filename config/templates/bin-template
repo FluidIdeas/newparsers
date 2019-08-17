@@ -1,0 +1,26 @@
+#!/bin/bash
+
+set -e
+set +h
+
+. /etc/alps/alps.conf
+. /var/lib/alps/functions
+. /etc/alps/directories.conf
+
+##DEPS##
+
+cd $SOURCE_DIR
+
+##DOWNLOADS##
+
+##NAME##
+##VERSION##
+##URL##
+
+##COMMANDS##
+
+
+if [ ! -z $URL ]; then cd $SOURCE_DIR && cleanup "$NAME" "$DIRECTORY"; fi
+
+register_installed "$NAME" "$VERSION" "$INSTALLED_LIST"
+

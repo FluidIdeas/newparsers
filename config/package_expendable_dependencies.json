@@ -50,5 +50,6 @@
 	],
 	"transmission": ["qt5"],
 	"twm": ["x7legacy"],
-	"phonon": ["phonon-backend-gstreamer", "phonon-backend-vlc"]
+	"phonon": ["phonon-backend-gstreamer", "phonon-backend-vlc"],
+	"python-modules#pycairo": ["python-modules#pygtk"]
 }
