@@ -20,5 +20,5 @@
 		"upower",
 		"media-player-info"
 	],
-	"php": ["libgd", "postgresql", "net-snmp", "tidy-htlm5"]
+	"php": ["libgd", "postgresql", "net-snmp", "tidy-html5"]
 }
