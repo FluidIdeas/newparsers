@@ -46,6 +46,8 @@ def get_max(version_list):
 def latest(tarballs):
 	all_versions = list()
 	for tarball in tarballs:
+		if '.news' in tarball:
+			continue
 		version = get_version(tarball)
 		all_versions.append(version)
 	return get_max(all_versions)
