@@ -134,7 +134,8 @@
     ],
     "lvm2": [
         "make -C tools install_dmsetup_dynamic",
-        "--with-thin-check="
+        "--with-thin-check=",
+	"make check_local"
     ],
     "sudo": [
         "/etc/sudoers.d/sudo"
