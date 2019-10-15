@@ -481,4 +481,15 @@ def gimpfilter(p, commands):
 	else:
 		return (p, commands)
 
+def linux_pam_filter(package, commands):
+	if package['name'] == 'linux-pam':
+		newcmds = list()
+		for cmd in commands:
+			if '/etc/pam.d/system-password' in cmd:
+				newcmds.append(cmd.replace("cat > /etc/pam.d/system-password", "sudo tee /etc/pam.d/system-password"))
+			else:
+				newcmds.append(cmd)
+		return (package, newcmds)
+	else:
+		return (package, commands)
 

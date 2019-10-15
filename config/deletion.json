@@ -270,5 +270,6 @@
 	"grilo": ["meson --prefix=/usr"],
 	"libgdata": ["meson --prefix=/usr"],
 	"qt5": ["-archdatadir"],
-	"fuse": ["doxygen"]
+	"fuse": ["doxygen"],
+	"linux-pam": ["/lib/cracklib/pw_dict"]
 }
