@@ -493,3 +493,36 @@ def linux_pam_filter(package, commands):
 	else:
 		return (package, commands)
 
+def postgresql_filter(package, commands):
+	index = -1
+	if package['name'] == 'postgresql':
+		for i in range(len(commands)):
+			if 'initdb' in commands[i]:
+				index = i
+				break
+	if index != -1:
+		commands.insert(index + 1, 'sleep 5\n')
+	return (package, commands)
+
+def boostfilter(package, commands):
+	if package['name'] == 'boost':
+		new_cmds = list()
+		for cmd in commands:
+			if '<N>' in cmd:
+				new_cmds.append(cmd.replace('<N>', '$(nproc)'))
+			else:
+				new_cmds.append(cmd)
+		return (package, new_cmds)
+	else:
+		return (package, commands)
+
+def cupsfilter(package, commands):
+	if package['name'] == 'cups':
+		new_cmds = list()
+		for cmd in commands:
+			if 'gtk-update-icon-cache' not in cmd:
+				new_cmds.append(cmd)
+		return (package, new_cmds)
+	else:
+		return (package, commands)
+		

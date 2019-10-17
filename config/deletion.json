@@ -271,5 +271,6 @@
 	"libgdata": ["meson --prefix=/usr"],
 	"qt5": ["-archdatadir"],
 	"fuse": ["doxygen"],
-	"linux-pam": ["/lib/cracklib/pw_dict"]
+	"linux-pam": ["/lib/cracklib/pw_dict"],
+	"postgresql": ["make -C contrib"]
 }

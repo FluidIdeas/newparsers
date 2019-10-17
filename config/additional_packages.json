@@ -262,7 +262,6 @@
             "polkit-gnome",
             "xdg-user-dirs",
             "gnome-tweaks",
-            "plank",
             "pavucontrol",
             "aryalinux-wallpapers",
             "aryalinux-google-fonts",
@@ -1039,7 +1038,7 @@
             "https://sourceforge.net/projects/net-snmp/files/net-snmp/5.8/net-snmp-5.8.tar.gz"
         ],
         "tarball": "net-snmp-5.8.tar.gz",
-        "commands": "echo $USER > /tmp/currentuser\n\n./configure --prefix=/usr .. &&\nmake\nsudo make install",
+        "commands": "echo $USER > /tmp/currentuser\n\n./configure --prefix=/usr &&\nmake\nsudo make install",
         "dependencies": []
     },
     {
