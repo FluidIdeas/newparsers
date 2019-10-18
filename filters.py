@@ -525,4 +525,16 @@ def cupsfilter(package, commands):
 		return (package, new_cmds)
 	else:
 		return (package, commands)
-		
+
+def gnomeshellextensionsfilter(package, commands):
+	if package['name'] == 'gnome-shell-extensions':
+		new_cmds = list()
+		for cmd in commands:
+			if 'meson --prefix=/usr ..' in cmd:
+				new_cmds.append(cmd.replace('meson --prefix=/usr ..', 'meson --prefix=/usr -Dextension_set=all ..'))
+			else:
+				new_cmds.append(cmd)
+		return (package, new_cmds)
+	else:
+		return (package, commands)
+
