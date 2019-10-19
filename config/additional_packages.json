@@ -334,7 +334,7 @@
         ],
 	"url": null,
         "tarball": "aryalinux-gnome-defaults-2.0.tar.xz",
-        "commands": "sudo tar xf aryalinux-gnome-defaults-2.0.tar.xz -C /\nsudo cp -r /etc/skel/{.config,.local,.bash,.Xresources}* ~\nsudo chown -R $USER:$USER ~",
+        "commands": "sudo tar xf aryalinux-gnome-defaults-2.0.tar.xz -C /\nsudo cp -r /etc/skel/{.config,.Xresources}* ~\nsudo chown -R $USER:$USER ~",
         "dependencies": []
     },
     {
@@ -1291,7 +1291,7 @@
         "version": "latest",
         "download_urls": [],
         "tarball": null,
-        "commands": "git clone https://github.com/micheleg/dash-to-dock.git\n\ncd dash-to-dock\nmake\nsudo make install\n\ncd ..\nsudo rm -rf dash-to-dock",
+        "commands": "git clone https://github.com/micheleg/dash-to-dock.git\n\ncd dash-to-dock\nmake\nsudo make DESTDIR=/ install\n\ncd ..\nsudo rm -rf dash-to-dock",
         "dependencies": ["gnome-shell-extensions"]
     },
     {
@@ -1299,7 +1299,7 @@
         "version": "latest",
         "download_urls": [],
         "tarball": null,
-        "commands": "git clone https://github.com/home-sweet-gnome/dash-to-panel.git\n\ncd dash-to-panel\nsudo make install\n\ncd ..\nsudo rm -rf dash-to-panel",
+        "commands": "git clone https://github.com/home-sweet-gnome/dash-to-panel.git\n\ncd dash-to-panel\nsudo make DESTDIR=/ install\n\ncd ..\nsudo rm -rf dash-to-panel",
         "dependencies": ["gnome-shell-extensions"]
     }
 ]

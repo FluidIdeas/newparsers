@@ -538,3 +538,16 @@ def gnomeshellextensionsfilter(package, commands):
 	else:
 		return (package, commands)
 
+def openldapfilter(package, commands):
+	if package['name'] == 'openldap':
+		new_cmds = list()
+		for cmd in commands:
+			if 'make install' in cmd:
+				cmd = cmd.replace('make install', 'sudo make install')
+			if 'ln -sf' in cmd:
+				cmd = cmd.replace('ln -sf', 'sudo ln -sf')
+			new_cmds.append(cmd)
+		return (package, new_cmds)
+	else:
+		return (package, commands)
+
