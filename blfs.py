@@ -100,12 +100,15 @@ for package in additional_packages:
 		script = get_script(package)
 		fp.write(script)
 
-# Generate mate packages
-mate_packages = mate.get_packages()
-for package in mate_packages:
-	with open(out_dir + '/' + package['name'] + '.sh', 'w') as fp:
-		script = get_script(package)
-		fp.write(script)
+if len(sys.argv) >= 3 and sys.argv[2] == 'fetch-mate':
+	# Generate mate packages
+	mate_packages = mate.get_packages()
+	for package in mate_packages:
+		with open(out_dir + '/' + package['name'] + '.sh', 'w') as fp:
+			script = get_script(package)
+			fp.write(script)
+else:
+	print('Not fetching mate packages.')
 
 # Generate cloned packages
 for name, clone_details in cloned_packages.items():

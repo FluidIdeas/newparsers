@@ -1301,5 +1301,77 @@
         "tarball": null,
         "commands": "git clone https://github.com/home-sweet-gnome/dash-to-panel.git\n\ncd dash-to-panel\nsudo make DESTDIR=/ install\n\ncd ..\nsudo rm -rf dash-to-panel",
         "dependencies": ["gnome-shell-extensions"]
+    },
+    {
+        "name": "go",
+        "version": "1.13.3",
+        "download_urls": ["https://dl.google.com/go/go1.13.3.linux-amd64.tar.gz"],
+        "tarball": "go1.13.3.linux-amd64.tar.gz",
+        "commands": "sudo mkdir -pv /opt/go\nsudo mv * /opt/go\nsudo mkdir /opt/gopath\nsudo chmod -R a+rw /opt/gopath\nsudo tee /etc/profile.d/go.sh << \"EOF\"\nexport GOPATH=/opt/gopath\nexport PATH=$PATH:/opt/go/bin:/opt/gopath/bin\nEOF\n",
+        "dependencies": []
+    },
+    {
+        "name": "apparmor",
+        "version": "latest",
+        "download_urls": [],
+        "tarball": null,
+        "commands": "git clone https://gitlab.com/apparmor/apparmor.git\ncd apparmor\npushd ./libraries/libapparmor\nsh ./autogen.sh\nsh ./configure --prefix=/usr --with-perl --with-python\nmake\nsudo make install\npopd\n\npushd binutils\nmake\nsudo make install\npopd\n\npushd parser\nmake\nsudo make install\npopd\n\npushd utils\nmake\nsudo make install\npopd\n\npushd changehat/pam_apparmor\nmake\nsudo make install\npopd\n\npushd profiles\nmake\nsudo make install\npopd\n",
+        "dependencies": []
+    },
+    {
+        "name": "xdg-dbus-proxy",
+        "version": "0.1.2",
+        "download_urls": ["https://github.com/flatpak/xdg-dbus-proxy/releases/download/0.1.2/xdg-dbus-proxy-0.1.2.tar.xz"],
+        "tarball": "xdg-dbus-proxy-0.1.2.tar.xz",
+        "commands": "./configure --prefix=/usr &&\nmake\nsudo make install",
+        "dependencies": []
+    },
+    {
+        "name": "fuse2",
+        "version": "2.9.9",
+        "download_urls": ["https://github.com/libfuse/libfuse/releases/download/fuse-2.9.9/fuse-2.9.9.tar.gz"],
+        "tarball": "fuse-2.9.9.tar.gz",
+        "commands": "./configure --prefix=/usr &&\nmake\nsudo make install",
+        "dependencies": []
+    },
+    {
+        "name": "libostree",
+        "version": "2019.4",
+        "download_urls": ["https://github.com/ostreedev/ostree/releases/download/v2019.4/libostree-2019.4.tar.xz"],
+        "tarball": "libostree-2019.4.tar.xz",
+        "commands": "./configure --prefix=/usr &&\nmake -j$(nproc)\nsudo make install",
+        "dependencies": ["fuse2"]
+    },
+    {
+        "name": "libindicator",
+        "version": "12.10.1",
+        "download_urls": ["https://launchpad.net/libindicator/12.10/12.10.1/+download/libindicator-12.10.1.tar.gz"],
+        "tarball": "libindicator-12.10.1.tar.gz",
+        "commands": "export CFLAGS+=\" -Wno-error=deprecated-declarations\" &&\n./configure --prefix=/usr --with-gtk=3 --disable-static &&\nmake &&\nsudo make install",
+        "dependencies": []
+    },
+    {
+        "name": "flatpak",
+        "version": "1.5.0",
+        "download_urls": ["https://github.com/flatpak/flatpak/releases/download/1.5.0/flatpak-1.5.0.tar.xz"],
+        "tarball": "flatpak-1.5.0.tar.xz",
+        "commands": "./configure --prefix=/usr &&\nmake -j$(nproc)\nsudo make install\nsudo flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo\nsudo tee /etc/profile.d/flatpak.sh << \"EOF\"\nexport XDG_DATA_DIRS=/usr/var/lib/flatpak/exports/share/:/usr/local/share/:/usr/share/\nEOF",
+        "dependencies": ["libostree", "appstream-glib", "libseccomp"]
+    },
+    {
+        "name": "libseccomp",
+        "version": "2.4.1",
+        "download_urls": ["https://github.com/seccomp/libseccomp/releases/download/v2.4.1/libseccomp-2.4.1.tar.gz"],
+        "tarball": "libseccomp-2.4.1.tar.gz",
+        "commands": "./configure --prefix=/usr --disable-static &&\nmake \"-j`nproc`\" || make\n\n\n\nsudo tee rootscript.sh << \"ENDOFROOTSCRIPT\"\nmake install\n\nENDOFROOTSCRIPT\nsudo chmod 755 rootscript.sh\nsudo bash -e ./rootscript.sh\nsudo rm rootscript.sh",
+        "dependencies": ["valgrind"]
+    },
+    {
+        "name": "appstream-glib",
+        "version": "0.7.16",
+        "download_urls": ["https://github.com/hughsie/appstream-glib/archive/appstream_glib_0_7_16.tar.gz"],
+        "tarball": "appstream_glib_0_7_16.tar.gz",
+        "commands": "mkdir build\ncd build/\nmeson --prefix=/usr --libdir=/usr/lib --sysconfdir=/etc --mandir=/usr/man -Dgtk-doc=false -Dstemmer=false -Drpm=false ..\nninja\nsudo ninja install",
+        "dependencies": ["valgrind"]
     }
 ]
