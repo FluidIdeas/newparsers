@@ -15,7 +15,7 @@ from filters import cupsfilter
 from filters import gnomeshellextensionsfilter
 from filters import openldapfilter
 
-systemd_service_tarball_url = 'http://www.linuxfromscratch.org/blfs/downloads/systemd/blfs-systemd-units-20180105.tar.bz2'
+systemd_service_tarball_url = 'http://www.linuxfromscratch.org/blfs/downloads/systemd/blfs-systemd-units-20191026.tar.xz'
 systemd_service_tarball = systemd_service_tarball_url.split('/')[-1]
 systemd_service_dir = systemd_service_tarball[0:systemd_service_tarball.index('.')]
 

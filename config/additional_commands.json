@@ -5,7 +5,7 @@
 	},
 	"grilo": {
 		"position": 0,
-		"command": "mkdir build &&\ncd    build    &&\n\nmeson --prefix=/usr \\\n      --libexecdir=/usr/lib \\\n-Denable-gtk-doc=false .. &&\nninja"
+		"command": "patch -Np1 -i ../52.diff\n\nmkdir build &&\ncd    build    &&\n\nmeson --prefix=/usr \\\n      --libexecdir=/usr/lib \\\n-Denable-gtk-doc=false .. &&\nninja"
 	},
 	"libgdata": {
 		"position": 0,
