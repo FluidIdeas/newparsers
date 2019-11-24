@@ -180,7 +180,6 @@
         "tarball": null,
         "commands": "sudo sed -i 's@MimeType=inode/directory@# MimeType=inode/directory@g' /usr/share/applications/org.gnome.baobab.desktop\nsudo update-desktop-database\nsudo update-mime-database /usr/share/mime\npushd $SOURCE_DIR\nwget https://raw.githubusercontent.com/FluidIdeas/utils/master/wallpaper-list-update.sh\nsudo chmod a+x wallpaper-list-update.sh\nsudo ./wallpaper-list-update.sh\nsudo rm wallpaper-list-update.sh\npopd\nsudo tee /etc/profile.d/aryalinux-desktop.sh << EOF\ncd ~\nxdg-user-dirs-update\ndefault-gnome-user-instructions\nEOF\nsudo rm -rvf /usr/share/xsessions/gnome.desktop",
         "dependencies": [
-            "meson",
             "accountsservice",
             "desktop-file-utils",
             "gcr",
@@ -855,29 +854,6 @@
         ],
         "tarball": "NetworkManager-vpnc-1.2.6.tar.xz",
         "commands": "if grep \"gnome-desktop-environment\" /etc/alps/installed-list &> /dev/null; then WITH_GNOME=\"--with-gnome\"; fi\n./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var $WITH_GNOME &&\nmake\nsudo make install",
-        "dependencies": []
-    },
-    {
-        "name": "dconf-editor",
-        "version": "3.30.2",
-        "download_urls": [
-            "http://ftp.gnome.org/pub/gnome/sources/dconf-editor/3.30/dconf-editor-3.30.2.tar.xz"
-        ],
-        "tarball": "dconf-editor-3.30.2.tar.xz",
-        "commands": "mkdir build &&\ncd build &&\n\nmeson --prefix=/usr --sysconfdir=/etc .. &&\nninja\nsudo ninja install",
-        "dependencies": [
-            "dconf"
-        ]
-    },
-    {
-        "name": "meson",
-        "version": "0.50.0",
-        "download_urls": [
-            "https://github.com/mesonbuild/meson/releases/download/0.50.0/meson-0.50.0.tar.gz",
-            "https://bitbucket.org/chandrakantsingh/patches/raw/1.5/meson-0.50.0-gnome.patch"
-        ],
-        "tarball": "meson-0.50.0.tar.gz",
-        "commands": "patch -Np1 -i ../meson-0.50.0-gnome.patch\npython3 setup.py build\npython3 setup.py install --root=dest\nsudo cp -rv dest/* /",
         "dependencies": []
     },
     {

@@ -272,5 +272,6 @@
 	"qt5": ["-archdatadir"],
 	"fuse": ["doxygen"],
 	"linux-pam": ["/lib/cracklib/pw_dict"],
-	"postgresql": ["make -C contrib"]
+    "postgresql": ["make -C contrib"],
+    "dconf": ["common/meson.build", "gsettings/abicheck.sh"]
 }
