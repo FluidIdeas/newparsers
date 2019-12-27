@@ -287,9 +287,9 @@
         "download_urls": [
             "https://sourceforge.net/projects/aryalinux/files/releases/2.0/aryalinux-google-fonts.tar.xz"
         ],
-	"url": null,
+    	"url": null,
         "tarball": "aryalinux-google-fonts.tar.xz",
-        "commands": "sudo tar xf aryalinux-google-fonts.tar.xz -C /",
+        "commands": "sudo tar xf aryalinux-google-fonts.tar.xz -C /\nsudo chown -R root:root /usr/share/fonts/aryalinux-google-fonts",
         "dependencies": []
     },
     {
@@ -298,9 +298,9 @@
         "download_urls": [
             "https://sourceforge.net/projects/aryalinux/files/releases/2.0/aryalinux-gtk-themes.tar.xz"
         ],
-	"url": null,
+    	"url": null,
         "tarball": "aryalinux-gtk-themes.tar.xz",
-        "commands": "sudo tar xf aryalinux-gtk-themes.tar.xz -C /",
+        "commands": "sudo tar xf aryalinux-gtk-themes.tar.xz -C /\nsudo chown -R root:root /usr/share/themes/",
         "dependencies": []
     },
     {
@@ -309,9 +309,9 @@
         "download_urls": [
             "https://sourceforge.net/projects/aryalinux/files/releases/2.0/aryalinux-wallpapers-2.0.tar.xz"
         ],
-	"url": null,
+	    "url": null,
         "tarball": "aryalinux-wallpapers-2.0.tar.xz",
-        "commands": "sudo tar xf aryalinux-wallpapers-2.0.tar.xz -C /",
+        "commands": "sudo tar xf aryalinux-wallpapers-2.0.tar.xz -C /\nsudo chown -R root:root /usr/share/backgrounds/aryalinux",
         "dependencies": []
     },
     {
@@ -320,9 +320,9 @@
         "download_urls": [
             "https://sourceforge.net/projects/aryalinux/files/releases/2.0/aryalinux-icons.tar.xz"
         ],
-	"url": null,
+	    "url": null,
         "tarball": "aryalinux-icons.tar.xz",
-        "commands": "sudo tar xf aryalinux-icons.tar.xz -C /",
+        "commands": "sudo tar xf aryalinux-icons.tar.xz -C /\nsudo chown -R root:root /usr/share/icons/",
         "dependencies": []
     },
     {
@@ -331,7 +331,7 @@
         "download_urls": [
             "https://sourceforge.net/projects/aryalinux/files/releases/2.0/aryalinux-gnome-defaults-2.0.tar.xz"
         ],
-	"url": null,
+	    "url": null,
         "tarball": "aryalinux-gnome-defaults-2.0.tar.xz",
         "commands": "sudo tar xf aryalinux-gnome-defaults-2.0.tar.xz -C /\nsudo cp -r /etc/skel/{.config,.Xresources}* ~\nsudo chown -R $USER:$USER ~",
         "dependencies": []
@@ -620,10 +620,8 @@
             "libxfce4ui",
             "exo",
             "garcon",
-            "gtk-xfce-engine",
             "libwnck2",
             "xfce4-panel",
-            "xfce4-xkb-plugin",
             "thunar",
             "thunar-volman",
             "tumbler",
@@ -1299,14 +1297,6 @@
         "version": "0.1.2",
         "download_urls": ["https://github.com/flatpak/xdg-dbus-proxy/releases/download/0.1.2/xdg-dbus-proxy-0.1.2.tar.xz"],
         "tarball": "xdg-dbus-proxy-0.1.2.tar.xz",
-        "commands": "./configure --prefix=/usr &&\nmake\nsudo make install",
-        "dependencies": []
-    },
-    {
-        "name": "fuse2",
-        "version": "2.9.9",
-        "download_urls": ["https://github.com/libfuse/libfuse/releases/download/fuse-2.9.9/fuse-2.9.9.tar.gz"],
-        "tarball": "fuse-2.9.9.tar.gz",
         "commands": "./configure --prefix=/usr &&\nmake\nsudo make install",
         "dependencies": []
     },
