@@ -365,7 +365,7 @@
         ]
     },
     {
-        "name": "multimedia-pack",
+        "name": "multimedia-plugins",
         "version": "1.4",
         "download_urls": [],
         "tarball": null,
