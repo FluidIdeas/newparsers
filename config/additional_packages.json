@@ -775,23 +775,21 @@
     },
     {
         "name": "openconnect",
-        "version": "8.02",
+        "version": "8.05",
         "download_urls": [
-            "ftp://ftp.infradead.org/pub/openconnect/openconnect-8.02.tar.gz"
+            "ftp://ftp.infradead.org/pub/openconnect/openconnect-8.05.tar.gz"
         ],
-        "tarball": "openconnect-8.02.tar.gz",
-        "commands": "./configure --prefix=/usr  &&\nmake\nsudo make install",
-        "dependencies": [
-            "vpnc"
-        ]
+        "tarball": "openconnect-8.05.tar.gz",
+        "commands": "sudo wget http://git.infradead.org/users/dwmw2/vpnc-scripts.git/blob_plain/HEAD:/vpnc-script -O /etc/vpnc/vpnc-script\n\n./configure --prefix=/usr  &&\nmake\nsudo make install",
+        "dependencies": []
     },
     {
         "name": "openvpn",
-        "version": "2.4.7",
+        "version": "2.4.8",
         "download_urls": [
-            "https://swupdate.openvpn.org/community/releases/openvpn-2.4.7.tar.xz"
+            "https://swupdate.openvpn.org/community/releases/openvpn-2.4.8.tar.gz"
         ],
-        "tarball": "openvpn-2.4.7.tar.xz",
+        "tarball": "openvpn-2.4.8.tar.xz",
         "commands": "if grep \"gnome-desktop-environment\" /etc/alps/installed-list &> /dev/null; then export WITH_GNOME=\"--with-gnome\"; fi\n./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var $WITH_GNOME &&\nmake\nsudo make install",
         "dependencies": [
             "net-tools"
@@ -817,22 +815,12 @@
         "dependencies": ["ppp"]
     },
     {
-        "name": "vpnc",
-        "version": "0.5.3",
-        "download_urls": [
-            "https://github.com/ndpgroup/vpnc/archive/0.5.3r550-2jnpr1.tar.gz"
-        ],
-        "tarball": "0.5.3r550-2jnpr1.tar.gz",
-        "commands": "sed -i \"s@PREFIX=/usr/local@PREFIX=/usr@g\" Makefile\nmake\nsudo make install",
-        "dependencies": []
-    },
-    {
         "name": "network-manager-openconnect",
-        "version": "1.2.4",
+        "version": "1.2.6",
         "download_urls": [
-            "https://ftp.gnome.org/pub/gnome/sources/NetworkManager-openconnect/1.2/NetworkManager-openconnect-1.2.4.tar.xz"
+            "https://ftp.acc.umu.se/pub/gnome/sources/NetworkManager-openconnect/1.2/NetworkManager-openconnect-1.2.6.tar.xz"
         ],
-        "tarball": "NetworkManager-openconnect-1.2.4.tar.xz",
+        "tarball": "NetworkManager-openconnect-1.2.6.tar.xz",
         "commands": "if grep \"gnome-desktop-environment\" /etc/alps/installed-list &> /dev/null; then WITH_GNOME=\"--with-gnome\"; fi\n./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var $WITH_GNOME &&\nmake\nsudo make install",
         "dependencies": []
     },
@@ -857,16 +845,6 @@
         "dependencies": []
     },
     {
-        "name": "network-manager-vpnc",
-        "version": "1.2.6",
-        "download_urls": [
-            "https://ftp.gnome.org/pub/gnome/sources/NetworkManager-vpnc/1.2/NetworkManager-vpnc-1.2.6.tar.xz"
-        ],
-        "tarball": "NetworkManager-vpnc-1.2.6.tar.xz",
-        "commands": "if grep \"gnome-desktop-environment\" /etc/alps/installed-list &> /dev/null; then WITH_GNOME=\"--with-gnome\"; fi\n./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var $WITH_GNOME &&\nmake\nsudo make install",
-        "dependencies": []
-    },
-    {
         "name": "libgrss",
         "version": "0.7.0",
         "download_urls": [
@@ -874,37 +852,6 @@
         ],
         "tarball": "libgrss-0.7.0.tar.xz",
         "commands": "./configure --prefix=/usr &&\nmake\nsudo make install",
-        "dependencies": []
-    },
-    {
-        "name": "gedit",
-        "version": "3.32.0",
-        "download_urls": [
-            "http://ftp.gnome.org/pub/gnome/sources/gedit/3.32/gedit-3.32.0.tar.xz"
-        ],
-        "tarball": "gedit-3.32.0.tar.xz",
-        "commands": "mkdir build &&\ncd build &&\nmeson --prefix=/usr --sysconfdir=/etc .. &&\nninja\nsudo ninja install",
-        "dependencies": [
-            "gsettings-desktop-schemas",
-            "gtksourceview",
-            "gtksourceview4",
-            "itstool",
-            "libpeas",
-            "gspell",
-            "gvfs",
-            "iso-codes",
-            "libsoup",
-            "python-modules#pygobject3"
-        ]
-    },
-    {
-        "name": "gspell",
-        "version": "1.8.1",
-        "download_urls": [
-            "http://ftp.gnome.org/pub/gnome/sources/gspell/1.8/gspell-1.8.1.tar.xz"
-        ],
-        "tarball": "gspell-1.8.1.tar.xz",
-        "commands": "./configure --prefix=/usr --sysconfdir=/etc &&\nmake\nsudo make install",
         "dependencies": []
     },
     {
@@ -922,20 +869,18 @@
     {
         "name": "libcmrt",
         "version": "1.0.6",
-        "download_urls": [
-            "https://github.com/intel/cmrt/archive/1.0.6.tar.gz"
-        ],
-        "tarball": "1.0.6.tar.gz",
-        "commands": "./autogen.sh --prefix=/usr --sysconfdir=/etc &&\nmake\nsudo make install",
+        "download_urls": [],
+        "tarball": null,
+        "commands": "git clone https://github.com/intel/cmrt\ncd cmrt\n\n./autogen.sh --prefix=/usr --sysconfdir=/etc &&\nmake\nsudo make install\n\ncd ..\nrm -rf cmrt",
         "dependencies": []
     },
     {
         "name": "firefox",
-        "version": "68.0.2",
+        "version": "69.0.3",
         "download_urls": [
-            "https://archive.mozilla.org/pub/firefox/releases/68.0.2/source/firefox-68.0.2.source.tar.xz"
+            "https://archive.mozilla.org/pub/firefox/releases/69.0.3/source/firefox-69.0.3.source.tar.xz"
         ],
-        "tarball": "firefox-68.0.2.source.tar.xz",
+        "tarball": "firefox-69.0.3.source.tar.xz",
         "commands": "cat > mozconfig << \"EOF\"\n# If you have a multicore machine, all cores will be used by default.\n\n# If you have installed dbus-glib, comment out this line:\n#ac_add_options --disable-dbus\n\n# If you have installed dbus-glib, and you have installed (or will install)\n# wireless-tools, and you wish to use geolocation web services, comment out\n# this line\n#ac_add_options --disable-necko-wifi\n\n# API Keys for geolocation APIs - necko-wifi (above) is required for MLS\n# Uncomment the following line if you wish to use Mozilla Location Service\n#ac_add_options --with-mozilla-api-keyfile=$PWD/mozilla-key\n\n# Uncomment the following line if you wish to use Google's geolocaton API\n# (needed for use with saved maps with Google Maps)\n#ac_add_options --with-google-location-service-api-keyfile=$PWD/google-key\n\n# Uncomment this line if you have installed startup-notification:\nac_add_options --enable-startup-notification\n\n# Uncomment the following option if you have not installed PulseAudio\n#ac_add_options --disable-pulseaudio\n# and uncomment this if you installed alsa-lib instead of PulseAudio\n#ac_add_options --enable-alsa\n\n# If you have installed GConf, comment out this line\n#ac_add_options --disable-gconf\n\n# From firefox-61, the stylo CSS code can no-longer be disabled\n\n# Comment out following options if you have not installed\n# recommended dependencies:\nac_add_options --enable-system-sqlite\nac_add_options --with-system-libevent\n# current firefox fails to build against libvpx-1.8.0\n#ac_add_options --with-system-libvpx\n# firefox-65 understands webp and ships with an included copy\nac_add_options --with-system-webp\nac_add_options --with-system-nspr\nac_add_options --with-system-nss\nac_add_options --with-system-icu\n\n# The gold linker is no-longer the default\nac_add_options --enable-linker=gold\n\n# The shipped libdavid (av1 decoder) is not built by default,\n# at least on linux, but if nasm is not present libxul tries to\n# link to one of libdavid's objects and fails.  It is thought\n# libdavid will be enabled in firefox-67, at which point nasm\n# might be required.\nac_add_options --disable-av1\n\n# You cannot distribute the binary if you do this\n#ac_add_options --enable-official-branding\n\n# If you are going to apply the patch for system graphite\n# and system harfbuzz, uncomment these lines:\n#ac_add_options --with-system-graphite2\n#ac_add_options --with-system-harfbuzz\n\n# Stripping is now enabled by default.\n# Uncomment these lines if you need to run a debugger:\n#ac_add_options --disable-strip\n#ac_add_options --disable-install-strip\n\n# The BLFS editors recommend not changing anything below this line:\nac_add_options --prefix=/usr\nac_add_options --enable-application=browser\n\nac_add_options --disable-crashreporter\nac_add_options --disable-updater\n# enabling the tests will use a lot more space and significantly\n# increase the build time, for no obvious benefit.\nac_add_options --disable-tests\n\n# With clang, unlike gcc-7 and later, the default level\n# of optimization produces a working build.\nac_add_options --enable-optimize\n\n# From firefox-61 system cairo is not supported\n\nac_add_options --enable-system-ffi\nac_add_options --enable-system-pixman\n\n# From firefox-62 --with-pthreads is not recognized\n\nac_add_options --with-system-bz2\nac_add_options --with-system-jpeg\nac_add_options --with-system-png\nac_add_options --with-system-zlib\n\nmk_add_options MOZ_OBJDIR=@TOPSRCDIR@/firefox-build-dir\nEOF\nexport SHELL=/bin/sh\nsed -e 's/checkImpl/checkFFImpl/g' -i js/src/vm/JSContext*.h &&\nexport CC=clang CXX=clang++ AR=llvm-ar NM=llvm-nm RANLIB=llvm-ranlib &&\nexport MOZBUILD_STATE_PATH=${PWD}/mozbuild &&\n./mach build\nif [ -f /sources/distro-build.sh ]; then\n\tDESTDIR=$BINARY_DIR/$NAME-$VERSION-$(uname-m) ./mach install\nfi\n\nsudo ./mach install                                                  &&\n\nsudo mkdir -pv  /usr/lib/mozilla/plugins                             &&\nsudo ln    -sfv ../../mozilla/plugins /usr/lib/firefox/browser/\nunset CC CXX AR NM RANLIB MOZBUILD_STATE_PATH\n\nsudo mkdir -pv /usr/share/applications &&\nsudo mkdir -pv /usr/share/pixmaps &&\n\nsudo tee /usr/share/applications/firefox.desktop << \"EOF\" &&\n[Desktop Entry]\nEncoding=UTF-8\nName=Firefox Web Browser\nComment=Browse the World Wide Web\nGenericName=Web Browser\nExec=firefox %u\nTerminal=false\nType=Application\nIcon=firefox\nCategories=GNOME;GTK;Network;WebBrowser;\nMimeType=application/xhtml+xml;text/xml;application/xhtml+xml;application/vnd.mozilla.xul+xml;text/mml;x-scheme-handler/http;x-scheme-handler/https;\nStartupNotify=true\nEOF\n\nsudo ln -sfv /usr/lib/firefox/browser/chrome/icons/default/default128.png \\\n        /usr/share/pixmaps/firefox.png",
         "dependencies": [
             "autoconf213",
@@ -1130,7 +1075,7 @@
     },
     {
         "name": "mate-desktop-environment",
-        "version": "1.23",
+        "version": "1.23.2",
         "download_urls": [],
         "tarball": null,
         "commands": "sudo tee /etc/gtk-2.0/gtkrc <<\"EOF\"\ninclude \"/usr/share/themes/Clearlooks/gtk-2.0/gtkrc\"\ngtk-icon-theme-name = \"Flat-Remix\"\nEOF\n\nsudo mkdir -pv /etc/polkit-1/localauthority/50-local.d/\nsudo mkdir -pv /etc/polkit-1/rules.d/\n\nsudo tee /etc/polkit-1/rules.d/50-org.freedesktop.NetworkManagerAndUdisks2.rules <<\"EOF\"\npolkit.addRule(function(action, subject) {\n  if (action.id.indexOf(\"org.freedesktop.NetworkManager.\") == 0 || action.id.indexOf(\"org.freedesktop.udisks2.filesystem-mount\") == 0) {\n    return polkit.Result.YES;\n  }\n});\nEOF\n\nsudo mkdir -pv /usr/share/icons/default/\nsudo tee /usr/share/icons/default/index.theme <<\"EOF\"\n[Icon Theme]\nInherits=Adwaita\nEOF\n\nccache -C\nsudo ccache -C\nccache -c\nsudo ccache -c\n\nrm -rf ~/.ccache\nsudo rm -rf ~/.ccache\nxdg-user-dirs-update\nsudo xdg-user-dirs-update\n\nsudo tee /etc/profile.d/xdg.sh << EOF\ncd ~\nxdg-user-dirs-update\nEOF\n\nsudo rm -rf /etc/X11/xorg.conf.d/*\n\nsudo tee /etc/X11/xorg.conf.d/99-synaptics-overrides.conf <<\"EOF\"\nSection  \"InputClass\"\n    Identifier  \"touchpad overrides\"\n    # This makes this snippet apply to any device with the \"synaptics\" driver\n    # assigned\n    MatchDriver  \"synaptics\"\n\n    ####################################\n    ## The lines that you need to add ##\n    # Enable left mouse button by tapping\n    Option  \"TapButton1\"  \"1\"\n    # Enable vertical scrolling\n    Option  \"VertEdgeScroll\"  \"1\"\n    # Enable right mouse button by tapping lower right corner\n    Option \"RBCornerButton\" \"3\"\n    ####################################\n\nEndSection\nEOF\n\nif [ ! -f /usr/share/pixmaps/aryalinux.png ]\nthen\n  pushd /usr/share/pixmaps/\n  sudo wget https://sourceforge.net/projects/aryalinux/files/releases/2.0/aryalinux.png\n  popd\nfi\n\nsudo sed -i \"s@/share/backgrounds/mate/desktop/Stripes.png@/share/backgrounds/aryalinux/default-desktop-wallpaper.jpeg@g\" /usr/share/glib-2.0/schemas/org.mate.background.gschema.xml\nsudo sed -i \"s@'Sans 10'@'Noto Sans 10'@g\" /usr/share/glib-2.0/schemas/*.xml\nsudo sed -i \"s@'Sans 8'@'Noto Sans 8'@g\" /usr/share/glib-2.0/schemas/*.xml\nsudo sed -i \"s@'Sans 11'@'Noto Sans 11'@g\" /usr/share/glib-2.0/schemas/*.xml\nsudo sed -i \"s@'Sans Bold 10'@'Noto Sans 10'@g\" /usr/share/glib-2.0/schemas/*.xml\n\nsudo sed -i \"s@'Monospace 10'@'Droid Sans Mono 10'@g\" /usr/share/glib-2.0/schemas/*.xml\nsudo sed -i \"s@'Monospace 11'@'Droid Sans Mono 12'@g\" /usr/share/glib-2.0/schemas/*.xml\n\nsudo sed -i \"s@'Menta'@'Arc-Dark'@g\" /usr/share/glib-2.0/schemas/org.mate.marco.gschema.xml\nsudo sed -i \"s@'Menta'@'Arc'@g\" /usr/share/glib-2.0/schemas/org.mate.interface.gschema.xml\nsudo sed -i \"s@'menta'@'Numix-Circle'@g\" /usr/share/glib-2.0/schemas/org.mate.interface.gschema.xml\n\npushd /usr/share/glib-2.0/schemas/\nsudo glib-compile-schemas .\npopd",
@@ -1240,9 +1185,9 @@
     },
     {
         "name": "firefox-bin",
-        "version": "08-2019",
+        "version": "12-2019",
         "download_urls": [],
-        "tarball": "usb-modeswitch-2.2.5.tar.bz2",
+        "tarball": null,
         "commands": "if [ \"x$INSTALL_LANGUAGE\" == \"x\" ]; then\n\necho \"These are the languages in which firefox is available:\"\necho \"\"\nwget -O /tmp/langfile https://ftp.mozilla.org/pub/firefox/releases/latest/README.txt &> /dev/null\ncat /tmp/langfile | grep \"lang=\" | grep -v \"wget\" | grep -v \"http\" | grep -v \"For\" | tr -s ' ' | sed \"s@ (@@g\" | rev | cut -d= -f1 | rev | sed \"s@lang=@@g\" | tr \"\\n\" \" \" | sed \"s@en-GB@en-US en-GB@g\"\necho \"\"\nread -p \"Enter the language for Firefox \" LANG\nrm /tmp/langfile\n\nelse\n\tLANG=\"$INSTALL_LANGUAGE\"\nfi\n\nif [ $(uname -m) == \"x86_64\" ]\nthen\n\twget -O $SOURCE_DIR/firefox.tar.bz2 \"https://download.mozilla.org/?product=firefox-latest&os=linux64&lang=$LANG\"\nelse\n\twget -O $SOURCE_DIR/firefox.tar.bz2 \"https://download.mozilla.org/?product=firefox-latest&os=linux&lang=$LANG\"\nfi\n\nTARBALL=\"firefox.tar.bz2\"\nDIRECTORY=`tar -tf $TARBALL | sed -e 's@/.*@@' | uniq`\n\ntar -xf $TARBALL\n\ncd $DIRECTORY\n\ncat > 1434987998846.sh << \"ENDOFFILE\"\nmkdir /opt/firefox\ncp -rf * /opt/firefox\n\ncat > /usr/share/applications/firefox.desktop << \"EOF\" &&\n[Desktop Entry]\nEncoding=UTF-8\nName=Firefox Web Browser\nComment=Browse the World Wide Web\nGenericName=Web Browser\nExec=/opt/firefox/firefox %u\nTerminal=false\nType=Application\nIcon=firefox\nCategories=GNOME;GTK;Network;WebBrowser;\nMimeType=application/xhtml+xml;text/xml;application/xhtml+xml;application/vnd.mozilla.xul+xml;text/mml;x-scheme-handler/http;x-scheme-handler/https;\nStartupNotify=true\nEOF\n\nfor s in 16 32 48 128\ndo\ninstall -v -Dm644 /opt/firefox/browser/chrome/icons/default/default${s}.png \\\n                  /usr/share/icons/hicolor/${s}x${s}/apps/firefox.png\ndone\n\nENDOFFILE\nchmod a+x 1434987998846.sh\nsudo ./1434987998846.sh\nsudo rm -rf 1434987998846.sh\n\nif [ -f /usr/bin/firefox ]; then\n\tsudo rm /usr/bin/firefox\n\tsudo rm -rf /usr/lib/firefox/\nfi",
         "dependencies": [
 		"curl",
@@ -1409,9 +1354,9 @@
     {
         "name": "hardinfo",
         "version": "0.5.1",
-        "download_urls": ["https://github.com/lpereira/hardinfo/archive/release-0.5.1.tar.gz"],
-        "tarball": "release-0.5.1.tar.gz",
-        "commands": "./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var --disable-static &&\nmake\nsudo make install",
+        "download_urls": [],
+        "tarball": null,
+        "commands": "sudo rm -rf hardinfo\n\ngit clone https://github.com/lpereira/hardinfo.git\ncd hardinfo\nmkdir -pv build\ncd build\ncmake -DCMAKE_INSTALL_PREFIX=/usr ..\nmake\nsudo make install\n\ncd ..\nsudo rm -rf hardinfo",
         "dependencies": []
     },
     {
@@ -1428,7 +1373,7 @@
         "download_urls": ["https://download.kde.org/stable/ktorrent/5.1.2/ktorrent-5.1.2.tar.xz"],
         "tarball": "ktorrent-5.1.2.tar.xz",
         "commands": "mkdir -pv build\ncd build\n\ncmake -DCMAKE_INSTALL_PREFIX=/usr ..\nmake -j$(nproc)\n\nsudo make install",
-        "dependencies": []
+        "dependencies": ["libktorrent"]
     },
     {
         "name": "clementine",
