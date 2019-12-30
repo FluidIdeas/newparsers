@@ -610,7 +610,14 @@
             "kmix5",
             "khelpcenter",
             "konsole5",
-            "lightdm"
+            "lightdm",
+            "libnotify",
+            "gvfs",
+            "udisks2",
+            "dolphin",
+            "dolphin-plugins",
+            "kcalc",
+            "gwenview5"
         ]
     },
     {

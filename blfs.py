@@ -15,6 +15,7 @@ from functions import parse_perl_modules
 from functions import package_clone
 from functions import find_package
 import mate
+import kde_apps
 import os
 
 import json
@@ -85,6 +86,10 @@ for p in packages:
 
 # Generate packages in the book
 for p in packages:
+	if p['name'] == 'krameworks5':
+		frameworks = p
+	if p['name'] == 'plasma-all':
+		plasma_all = p
 	if p['name'] in additional_dependencies:
 		p['dependencies'].extend(additional_dependencies[p['name']])
 	if p['name'] in additional_downloads:
@@ -100,7 +105,7 @@ for package in additional_packages:
 		script = get_script(package)
 		fp.write(script)
 
-if len(sys.argv) >= 3 and sys.argv[2] == 'fetch-mate':
+if 'fetch-mate' in sys.argv:
 	# Generate mate packages
 	mate_packages = mate.get_packages()
 	for package in mate_packages:
@@ -109,6 +114,15 @@ if len(sys.argv) >= 3 and sys.argv[2] == 'fetch-mate':
 			fp.write(script)
 else:
 	print('Not fetching mate packages.')
+
+if 'fetch-kde-apps' in sys.argv:
+	kde_packages = kde_apps.get_packages(sys.argv[sys.argv.index('fetch-kde-apps') + 1], plasma_all, frameworks)
+	for package in kde_packages:
+		with open(out_dir + '/' + package['name'] + '.sh', 'w') as fp:
+			script = get_script(package)
+			fp.write(script)
+else:
+	print('Not fetching kde apps.')
 
 # Generate cloned packages
 for name, clone_details in cloned_packages.items():
