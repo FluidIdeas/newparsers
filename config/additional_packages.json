@@ -453,12 +453,12 @@
         ]
     },
     {
-        "name": "gnome-mpv",
-        "version": "0.16",
+        "name": "celluloid",
+        "version": "0.18",
         "download_urls": [
-            "https://github.com/gnome-mpv/gnome-mpv/releases/download/v0.16/gnome-mpv-0.16.tar.xz"
+            "https://github.com/celluloid-player/celluloid/releases/download/v0.18/celluloid-0.18.tar.xz"
         ],
-        "tarball": "gnome-mpv-0.16.tar.xz",
+        "tarball": "celluloid-0.18.tar.xz",
         "commands": "./configure --prefix=/usr &&\nmake\nsudo make install",
         "dependencies": [
             "mpv",
@@ -1405,5 +1405,140 @@
             "xcb-util-keysyms",
             "xcb-util-renderutil"
         ]
+    },
+    {
+        "name": "hardinfo",
+        "version": "0.5.1",
+        "download_urls": ["https://github.com/lpereira/hardinfo/archive/release-0.5.1.tar.gz"],
+        "tarball": "release-0.5.1.tar.gz",
+        "commands": "./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var --disable-static &&\nmake\nsudo make install",
+        "dependencies": []
+    },
+    {
+        "name": "libktorrent",
+        "version": "2.1.1",
+        "download_urls": ["https://download.kde.org/stable/ktorrent/5.1.2/libktorrent-2.1.1.tar.xz"],
+        "tarball": "libktorrent-2.1.1.tar.xz",
+        "commands": "mkdir -pv build\ncd build\n\ncmake -DCMAKE_INSTALL_PREFIX=/usr ..\nmake -j$(nproc)\n\nsudo make install",
+        "dependencies": []
+    },
+    {
+        "name": "ktorrent",
+        "version": "5.1.2",
+        "download_urls": ["https://download.kde.org/stable/ktorrent/5.1.2/ktorrent-5.1.2.tar.xz"],
+        "tarball": "ktorrent-5.1.2.tar.xz",
+        "commands": "mkdir -pv build\ncd build\n\ncmake -DCMAKE_INSTALL_PREFIX=/usr ..\nmake -j$(nproc)\n\nsudo make install",
+        "dependencies": []
+    },
+    {
+        "name": "clementine",
+        "version": "1.3.1",
+        "download_urls": ["https://github.com/clementine-player/Clementine/releases/download/1.3.1/clementine-1.3.1.tar.xz"],
+        "tarball": "clementine-1.3.1.tar.xz",
+        "commands": "mkdir build &&\ncd build &&\ncmake -DCMAKE_INSTALL_PREFIX=/usr -DBUILD_WITH_QT4=off .. &&\nmake \"-j`nproc`\"\nsudo make install",
+        "dependencies": [
+            "multimedia-plugins",
+            "protobuf",
+            "libchromaprint",
+            "libgpod",
+            "libimobiledevice",
+            "libmygpo-qt1",
+            "libcrypto++",
+            "libechonest",
+            "glew",
+            "libsparsehash",
+            "libmtp",
+            "sqlite",
+            "liblastfm"
+        ]
+    },
+    {
+        "name": "liblastfm",
+        "version": "1.0.9",
+        "download_urls": ["http://archive.ubuntu.com/ubuntu/pool/universe/libl/liblastfm/liblastfm_1.0.9.orig.tar.gz"],
+        "tarball": "liblastfm_1.0.9.orig.tar.gz",
+        "commands": "mkdir -pv build\ncd build\n\ncmake -DCMAKE_INSTALL_PREFIX=/usr ..\nmake -j$(nproc)\n\nsudo make install",
+        "dependencies": ["fftw", "libsamplerate", "qt5"]
+    },
+    {
+        "name": "libsparsehash",
+        "version": "2.0.3",
+        "download_urls": ["https://github.com/sparsehash/sparsehash/archive/sparsehash-2.0.3.tar.gz"],
+        "tarball": "sparsehash-2.0.3.tar.gz",
+        "commands": "./configure --prefix=/usr  &&\nmake \"-j`nproc`\"\nsudo make install",
+        "dependencies": []
+    },
+    {
+        "name": "libechonest",
+        "version": "2.3.1",
+        "download_urls": ["http://archive.ubuntu.com/ubuntu/pool/universe/libe/libechonest/libechonest_2.3.1.orig.tar.gz"],
+        "tarball": "libechonest_2.3.1.orig.tar.gz",
+        "commands": "mkdir build &&\ncd build &&\ncmake -DCMAKE_INSTALL_PREFIX=/usr -DBUILD_WITH_QT4=off .. &&\nmake \"-j`nproc`\"\nsudo make install",
+        "dependencies": []
+    },
+    {
+        "name": "libmygpo-qt1",
+        "version": "1.0.9",
+        "download_urls": ["https://github.com/gpodder/libmygpo-qt/archive/1.0.9.tar.gz"],
+        "tarball": "1.0.9.tar.gz",
+        "commands": "mkdir build &&\ncd build &&\ncmake -DCMAKE_INSTALL_PREFIX=/usr -DBUILD_WITH_QT4=off .. &&\nmake \"-j`nproc`\"\nsudo make install",
+        "dependencies": ["qt5", "gjson"]
+    },
+    {
+        "name": "libcrypto++",
+        "version": "5.6.3",
+        "download_urls": ["http://archive.ubuntu.com/ubuntu/pool/universe/libc/libcrypto++/libcrypto++_5.6.3.orig.tar.xz"],
+        "tarball": "libcrypto++_5.6.3.orig.tar.xz",
+        "commands": "sed -i \"s@/usr/local@/usr@g\" GNUmakefile\nmake \"-j`nproc`\"\nmake libcryptopp.so",
+        "dependencies": []
+    },
+    {
+        "name": "gjson",
+        "version": "0.9.0",
+        "download_urls": ["https://github.com/flavio/qjson/archive/0.9.0.tar.gz"],
+        "tarball": "0.9.0.tar.gz",
+        "commands": "mkdir build &&\ncd build &&\ncmake -DCMAKE_INSTALL_PREFIX=/usr .. &&\nmake \"-j`nproc`\"\nsudo make install",
+        "dependencies": []
+    },
+    {
+        "name": "libimobiledevice",
+        "version": "1.2.0",
+        "download_urls": [
+            "http://www.libimobiledevice.org/downloads/libimobiledevice-1.2.0.tar.bz2",
+            "https://bitbucket.org/chandrakantsingh/patches/raw/1.0/libimobiledevice-1.2.0-sslv3.patch"
+        ],
+        "tarball": "libimobiledevice-1.2.0.tar.bz2",
+        "commands": "patch -Np1 -i ../libimobiledevice-1.2.0-sslv3.patch &&\n./configure --prefix=/usr &&\nmake \"-j`nproc`\"\nsudo make install",
+        "dependencies": ["libplist", "libusbmuxd"]
+    },
+    {
+        "name": "libusbmuxd",
+        "version": "2.0.1",
+        "download_urls": [
+            "https://github.com/libimobiledevice/libusbmuxd/archive/2.0.1.tar.gz"
+        ],
+        "tarball": "2.0.1.tar.gz",
+        "commands": "./configure --prefix=/usr  &&\nmake \"-j`nproc`\"\nsudo make install",
+        "dependencies": []
+    },
+    {
+        "name": "libchromaprint",
+        "version": "1.4.3",
+        "download_urls": [
+            "https://github.com/acoustid/chromaprint/releases/download/v1.4.3/chromaprint-1.4.3.tar.gz"
+        ],
+        "tarball": "chromaprint-1.4.3.tar.gz",
+        "commands": "mkdir build &&\ncd build &&\ncmake -DCMAKE_INSTALL_PREFIX=/usr .. &&\nmake \"-j`nproc`\"\nsudo make install",
+        "dependencies": ["ffmpeg"]
+    },
+    {
+        "name": "protobuf",
+        "version": "3.11.2",
+        "download_urls": [
+            "https://github.com/protocolbuffers/protobuf/releases/download/v3.11.2/protobuf-all-3.11.2.tar.gz"
+        ],
+        "tarball": "protobuf-all-3.11.2.tar.gz",
+        "commands": "./configure --prefix=/usr  &&\nmake \"-j`nproc`\"\nsudo make install",
+        "dependencies": []
     }
 ]
