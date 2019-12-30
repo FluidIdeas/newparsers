@@ -14,7 +14,6 @@ from filters import boostfilter
 from filters import cupsfilter
 from filters import gnomeshellextensionsfilter
 from filters import openldapfilter
-from filters import qt5filter
 from filters import kframeworksplasma
 
 systemd_service_tarball_url = 'http://www.linuxfromscratch.org/blfs/downloads/9.0-systemd/blfs-systemd-units-20180105.tar.bz2'
@@ -55,7 +54,6 @@ custom_package_filters = [
 	cupsfilter, 
 	gnomeshellextensionsfilter, 
 	openldapfilter,
-	qt5filter,
 	kframeworksplasma
 ]
 

@@ -551,18 +551,6 @@ def openldapfilter(package, commands):
 	else:
 		return (package, commands)
 
-def qt5filter(package, commands):
-	if package['name'] == 'qt5':
-		new_cmds = list()
-		for cmd in commands:
-			if '/etc/profile.d/qt5.sh' in cmd:
-				new_cmds.append(cmd.replace('cat > /etc/profile.d/qt5.sh', 'sudo tee /etc/profile.d/qt5.sh'))
-			else:
-				new_cmds.append(cmd)
-		return (package, new_cmds)
-	else:
-		return (package, commands)
-
 def kframeworksplasma(package, commands):
 	if package['name'] == 'krameworks5' or package['name'] == 'plasma-all':
 		new_cmds = list()
