@@ -19,6 +19,7 @@ import kde_apps
 import os
 
 import json
+import shutil
 
 book_dir = '/home/chandrakant/aryalinux/books/blfs'
 out_dir = '/home/chandrakant/aryalinux/aryalinux/applications'
@@ -141,3 +142,6 @@ for f in unwanted_scripts:
 	if os.path.exists(out_dir + '/' + f + '.sh'):
 		os.remove(out_dir + '/' + f + '.sh')
 
+
+for f in os.listdir('app-scripts'):
+	shutil.copyfile('app-scripts/' + f, out_dir + '/' + f)
