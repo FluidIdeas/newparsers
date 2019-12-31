@@ -285,7 +285,7 @@
         "name": "aryalinux-google-fonts",
         "version": "1.4",
         "download_urls": [
-            "https://sourceforge.net/projects/aryalinux/files/releases/2.0/aryalinux-google-fonts.tar.xz"
+            "http://aryalinux.info/files/aryalinux-google-fonts.tar.xz"
         ],
     	"url": null,
         "tarball": "aryalinux-google-fonts.tar.xz",
@@ -296,7 +296,7 @@
         "name": "aryalinux-gtk-themes",
         "version": "1.4",
         "download_urls": [
-            "https://sourceforge.net/projects/aryalinux/files/releases/2.0/aryalinux-gtk-themes.tar.xz"
+            "http://aryalinux.info/files/aryalinux-gtk-themes.tar.xz"
         ],
     	"url": null,
         "tarball": "aryalinux-gtk-themes.tar.xz",
@@ -307,7 +307,7 @@
         "name": "aryalinux-wallpapers",
         "version": "2.0",
         "download_urls": [
-            "https://sourceforge.net/projects/aryalinux/files/releases/2.0/aryalinux-wallpapers-2.0.tar.xz"
+            "http://aryalinux.info/files/aryalinux-wallpapers-2.0.tar.xz"
         ],
 	    "url": null,
         "tarball": "aryalinux-wallpapers-2.0.tar.xz",
@@ -318,7 +318,7 @@
         "name": "aryalinux-icons",
         "version": "1.4",
         "download_urls": [
-            "https://sourceforge.net/projects/aryalinux/files/releases/2.0/aryalinux-icons.tar.xz"
+            "http://aryalinux.info/files/aryalinux-icons.tar.xz"
         ],
 	    "url": null,
         "tarball": "aryalinux-icons.tar.xz",
@@ -329,7 +329,7 @@
         "name": "aryalinux-gnome-settings",
         "version": "2.0",
         "download_urls": [
-            "https://sourceforge.net/projects/aryalinux/files/releases/2.0/aryalinux-gnome-defaults-2.0.tar.xz"
+            "http://aryalinux.info/files/aryalinux-gnome-defaults-2.0.tar.xz"
         ],
 	    "url": null,
         "tarball": "aryalinux-gnome-defaults-2.0.tar.xz",
@@ -561,7 +561,7 @@
         "name": "oxygen-fonts",
         "version": "5.4.3",
         "download_urls": [
-            "https://sourceforge.net/projects/aryalinux/files/releases/2.0/oxygen-fonts-5.4.3-x86_64.tar.xz"
+            "http://aryalinux.info/files/oxygen-fonts-5.4.3-x86_64.tar.xz"
         ],
         "tarball": "oxygen-fonts-5.4.3-x86_64.tar.xz",
         "commands": "sudo cp -rv share /usr/\nsudo cp -r lib64/* /usr/lib/",
@@ -765,7 +765,7 @@
         "name": "gnome-shell-coverflow-alt-tab",
         "version": "36",
         "download_urls": [
-            "https://sourceforge.net/projects/aryalinux/files/releases/2.0/CoverflowAltTab-gnome-extension-36.tar.gz"
+            "http://aryalinux.info/files/CoverflowAltTab-gnome-extension-36.tar.gz"
         ],
         "tarball": "CoverflowAltTab-gnome-extension-36.tar.gz",
         "commands": "sudo mkdir -pv /usr/share/gnome-shell/extensions/$(basename $(pwd))\nsudo cp -rvf * /usr/share/gnome-shell/extensions/$(basename $(pwd))\nsudo chmod -R a+r /usr/share/gnome-shell/extensions/$(basename $(pwd))",
@@ -1078,7 +1078,7 @@
         "version": "1.23.2",
         "download_urls": [],
         "tarball": null,
-        "commands": "sudo tee /etc/gtk-2.0/gtkrc <<\"EOF\"\ninclude \"/usr/share/themes/Clearlooks/gtk-2.0/gtkrc\"\ngtk-icon-theme-name = \"Flat-Remix\"\nEOF\n\nsudo mkdir -pv /etc/polkit-1/localauthority/50-local.d/\nsudo mkdir -pv /etc/polkit-1/rules.d/\n\nsudo tee /etc/polkit-1/rules.d/50-org.freedesktop.NetworkManagerAndUdisks2.rules <<\"EOF\"\npolkit.addRule(function(action, subject) {\n  if (action.id.indexOf(\"org.freedesktop.NetworkManager.\") == 0 || action.id.indexOf(\"org.freedesktop.udisks2.filesystem-mount\") == 0) {\n    return polkit.Result.YES;\n  }\n});\nEOF\n\nsudo mkdir -pv /usr/share/icons/default/\nsudo tee /usr/share/icons/default/index.theme <<\"EOF\"\n[Icon Theme]\nInherits=Adwaita\nEOF\n\nccache -C\nsudo ccache -C\nccache -c\nsudo ccache -c\n\nrm -rf ~/.ccache\nsudo rm -rf ~/.ccache\nxdg-user-dirs-update\nsudo xdg-user-dirs-update\n\nsudo tee /etc/profile.d/xdg.sh << EOF\ncd ~\nxdg-user-dirs-update\nEOF\n\nsudo rm -rf /etc/X11/xorg.conf.d/*\n\nsudo tee /etc/X11/xorg.conf.d/99-synaptics-overrides.conf <<\"EOF\"\nSection  \"InputClass\"\n    Identifier  \"touchpad overrides\"\n    # This makes this snippet apply to any device with the \"synaptics\" driver\n    # assigned\n    MatchDriver  \"synaptics\"\n\n    ####################################\n    ## The lines that you need to add ##\n    # Enable left mouse button by tapping\n    Option  \"TapButton1\"  \"1\"\n    # Enable vertical scrolling\n    Option  \"VertEdgeScroll\"  \"1\"\n    # Enable right mouse button by tapping lower right corner\n    Option \"RBCornerButton\" \"3\"\n    ####################################\n\nEndSection\nEOF\n\nif [ ! -f /usr/share/pixmaps/aryalinux.png ]\nthen\n  pushd /usr/share/pixmaps/\n  sudo wget https://sourceforge.net/projects/aryalinux/files/releases/2.0/aryalinux.png\n  popd\nfi\n\nsudo sed -i \"s@/share/backgrounds/mate/desktop/Stripes.png@/share/backgrounds/aryalinux/default-desktop-wallpaper.jpeg@g\" /usr/share/glib-2.0/schemas/org.mate.background.gschema.xml\nsudo sed -i \"s@'Sans 10'@'Noto Sans 10'@g\" /usr/share/glib-2.0/schemas/*.xml\nsudo sed -i \"s@'Sans 8'@'Noto Sans 8'@g\" /usr/share/glib-2.0/schemas/*.xml\nsudo sed -i \"s@'Sans 11'@'Noto Sans 11'@g\" /usr/share/glib-2.0/schemas/*.xml\nsudo sed -i \"s@'Sans Bold 10'@'Noto Sans 10'@g\" /usr/share/glib-2.0/schemas/*.xml\n\nsudo sed -i \"s@'Monospace 10'@'Droid Sans Mono 10'@g\" /usr/share/glib-2.0/schemas/*.xml\nsudo sed -i \"s@'Monospace 11'@'Droid Sans Mono 12'@g\" /usr/share/glib-2.0/schemas/*.xml\n\nsudo sed -i \"s@'Menta'@'Arc-Dark'@g\" /usr/share/glib-2.0/schemas/org.mate.marco.gschema.xml\nsudo sed -i \"s@'Menta'@'Arc'@g\" /usr/share/glib-2.0/schemas/org.mate.interface.gschema.xml\nsudo sed -i \"s@'menta'@'Numix-Circle'@g\" /usr/share/glib-2.0/schemas/org.mate.interface.gschema.xml\n\npushd /usr/share/glib-2.0/schemas/\nsudo glib-compile-schemas .\npopd",
+        "commands": "sudo tee /etc/gtk-2.0/gtkrc <<\"EOF\"\ninclude \"/usr/share/themes/Clearlooks/gtk-2.0/gtkrc\"\ngtk-icon-theme-name = \"Flat-Remix\"\nEOF\n\nsudo mkdir -pv /etc/polkit-1/localauthority/50-local.d/\nsudo mkdir -pv /etc/polkit-1/rules.d/\n\nsudo tee /etc/polkit-1/rules.d/50-org.freedesktop.NetworkManagerAndUdisks2.rules <<\"EOF\"\npolkit.addRule(function(action, subject) {\n  if (action.id.indexOf(\"org.freedesktop.NetworkManager.\") == 0 || action.id.indexOf(\"org.freedesktop.udisks2.filesystem-mount\") == 0) {\n    return polkit.Result.YES;\n  }\n});\nEOF\n\nsudo mkdir -pv /usr/share/icons/default/\nsudo tee /usr/share/icons/default/index.theme <<\"EOF\"\n[Icon Theme]\nInherits=Adwaita\nEOF\n\nccache -C\nsudo ccache -C\nccache -c\nsudo ccache -c\n\nrm -rf ~/.ccache\nsudo rm -rf ~/.ccache\nxdg-user-dirs-update\nsudo xdg-user-dirs-update\n\nsudo tee /etc/profile.d/xdg.sh << EOF\ncd ~\nxdg-user-dirs-update\nEOF\n\nsudo rm -rf /etc/X11/xorg.conf.d/*\n\nsudo tee /etc/X11/xorg.conf.d/99-synaptics-overrides.conf <<\"EOF\"\nSection  \"InputClass\"\n    Identifier  \"touchpad overrides\"\n    # This makes this snippet apply to any device with the \"synaptics\" driver\n    # assigned\n    MatchDriver  \"synaptics\"\n\n    ####################################\n    ## The lines that you need to add ##\n    # Enable left mouse button by tapping\n    Option  \"TapButton1\"  \"1\"\n    # Enable vertical scrolling\n    Option  \"VertEdgeScroll\"  \"1\"\n    # Enable right mouse button by tapping lower right corner\n    Option \"RBCornerButton\" \"3\"\n    ####################################\n\nEndSection\nEOF\n\nif [ ! -f /usr/share/pixmaps/aryalinux.png ]\nthen\n  pushd /usr/share/pixmaps/\n  sudo wget http://aryalinux.info/files/aryalinux.png\n  popd\nfi\n\nsudo sed -i \"s@/share/backgrounds/mate/desktop/Stripes.png@/share/backgrounds/aryalinux/default-desktop-wallpaper.jpeg@g\" /usr/share/glib-2.0/schemas/org.mate.background.gschema.xml\nsudo sed -i \"s@'Sans 10'@'Noto Sans 10'@g\" /usr/share/glib-2.0/schemas/*.xml\nsudo sed -i \"s@'Sans 8'@'Noto Sans 8'@g\" /usr/share/glib-2.0/schemas/*.xml\nsudo sed -i \"s@'Sans 11'@'Noto Sans 11'@g\" /usr/share/glib-2.0/schemas/*.xml\nsudo sed -i \"s@'Sans Bold 10'@'Noto Sans 10'@g\" /usr/share/glib-2.0/schemas/*.xml\n\nsudo sed -i \"s@'Monospace 10'@'Droid Sans Mono 10'@g\" /usr/share/glib-2.0/schemas/*.xml\nsudo sed -i \"s@'Monospace 11'@'Droid Sans Mono 12'@g\" /usr/share/glib-2.0/schemas/*.xml\n\nsudo sed -i \"s@'Menta'@'Arc-Dark'@g\" /usr/share/glib-2.0/schemas/org.mate.marco.gschema.xml\nsudo sed -i \"s@'Menta'@'Arc'@g\" /usr/share/glib-2.0/schemas/org.mate.interface.gschema.xml\nsudo sed -i \"s@'menta'@'Numix-Circle'@g\" /usr/share/glib-2.0/schemas/org.mate.interface.gschema.xml\n\npushd /usr/share/glib-2.0/schemas/\nsudo glib-compile-schemas .\npopd",
         "dependencies": [
 		"gobject-introspection",
 		"desktop-file-utils",
@@ -1485,5 +1485,13 @@
         "tarball": "protobuf-all-3.11.2.tar.gz",
         "commands": "./configure --prefix=/usr  &&\nmake \"-j`nproc`\"\nsudo make install",
         "dependencies": []
+    },
+    {
+        "name": "vpn-libs",
+        "version": "2.1",
+        "download_urls": [],
+        "tarball": null,
+        "commands": "echo \"Installation completed successfully.\"",
+        "dependencies": ["openconnect", "pptp", "openvpn", "network-manager-openconnect", "network-manager-pptp", "network-manager-openvpn"]
     }
 ]
