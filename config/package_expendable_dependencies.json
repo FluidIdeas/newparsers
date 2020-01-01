@@ -53,5 +53,6 @@
 	"phonon": ["phonon-backend-gstreamer", "phonon-backend-vlc"],
 	"python-modules#pycairo": ["python-modules#pygtk"],
 	"linux-pam": ["shadow", "systemd"],
-	"systemd": ["polkit"]
+	"systemd": ["polkit"],
+	"audacious": ["qt5"]
 }

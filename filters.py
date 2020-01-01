@@ -496,13 +496,14 @@ def linux_pam_filter(package, commands):
 def postgresql_filter(package, commands):
 	index = -1
 	if package['name'] == 'postgresql':
-		for i in range(len(commands)):
-			if 'initdb' in commands[i]:
-				index = i
-				break
-	if index != -1:
-		commands.insert(index + 1, 'sleep 5\n')
-	return (package, commands)
+		new_cmds = list()
+		for command in commands:
+			if 'createdb' in command:
+				new_cmds.append('sleep 5\n')
+			new_cmds.append(command)
+		return (package, new_cmds)
+	else:
+		return (package, commands)
 
 def boostfilter(package, commands):
 	if package['name'] == 'boost':

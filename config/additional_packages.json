@@ -241,6 +241,7 @@
             "cheese",
             "eog",
             "evince",
+            "p7zip",
             "file-roller",
             "gedit",
             "gtksourceview4",
@@ -268,7 +269,10 @@
             "aryalinux-icons",
             "aryalinux-gtk-themes",
             "aryalinux-gnome-settings",
-            "plymouth"
+            "plymouth",
+            "cups",
+            "cups-filters",
+            "vpn-libs"
         ]
     },
     {
@@ -622,10 +626,10 @@
     },
     {
         "name": "xfce-desktop-environment",
-        "version": "4.12",
+        "version": "4.14",
         "download_urls": [],
         "tarball": null,
-        "commands": "",
+        "commands": "sudo gtk-update-icon-cache /usr/share/icons/Flat-Remix\nsudo gtk-update-icon-cache /usr/share/icons/Flat-Remix-Dark\nsudo gtk-update-icon-cache /usr/share/icons/Flat-Remix-Light\nsudo gtk-update-icon-cache /usr/share/icons/Numix\nsudo gtk-update-icon-cache /usr/share/icons/Numix-Circle\nsudo gtk-update-icon-cache /usr/share/icons/Numix-Cicle-Light\nsudo gtk-update-icon-cache /usr/share/icons/Numix-Light\nsudo gtk-update-icon-cache /usr/share/icons/Numix-Square\nsudo gtk-update-icon-cache /usr/share/icons/Paper\nsudo gtk-update-icon-cache /usr/share/icons/Paper-Mono-Dark",
         "dependencies": [
             "libxfce4util",
             "xfconf",
@@ -634,6 +638,8 @@
             "garcon",
             "libwnck2",
             "xfce4-panel",
+            "udisks2",
+            "gvfs",
             "thunar",
             "thunar-volman",
             "tumbler",
@@ -652,7 +658,27 @@
             "aryalinux-google-fonts",
             "aryalinux-wallpapers",
             "aryalinux-icons",
-            "lightdm"
+            "lightdm",
+            "xfce4-dev-tools",
+            "network-manager-applet",
+            "cups",
+            "cups-filters",
+            "vpn-libs",
+            "plymouth",
+            "aryalinux-xfce-settings",
+            "pnmixer",
+            "xdg-user-dirs",
+            "xdg-utils",
+            "mousepad",
+            "pavucontrol",
+            "galculator",
+            "epdfview",
+            "p7zip",
+            "xarchiver",
+            "thunar-archive-plugin",
+            "xfce4-whiskermenu-plugin",
+            "xfce4-screenshooter",
+            "blueman"
         ]
     },
     {
@@ -780,7 +806,7 @@
             "ftp://ftp.infradead.org/pub/openconnect/openconnect-8.05.tar.gz"
         ],
         "tarball": "openconnect-8.05.tar.gz",
-        "commands": "sudo wget http://git.infradead.org/users/dwmw2/vpnc-scripts.git/blob_plain/HEAD:/vpnc-script -O /etc/vpnc/vpnc-script\n\n./configure --prefix=/usr  &&\nmake\nsudo make install",
+        "commands": "sudo mkdir -pv /etc/vpnc\nsudo wget http://git.infradead.org/users/dwmw2/vpnc-scripts.git/blob_plain/HEAD:/vpnc-script -O /etc/vpnc/vpnc-script\nsudo chmod a+x /etc/vpnc/vpnc-script\n\n./configure --prefix=/usr  &&\nmake\nsudo make install",
         "dependencies": []
     },
     {
@@ -831,7 +857,7 @@
             "https://download.gnome.org/sources/NetworkManager-openvpn/1.8/NetworkManager-openvpn-1.8.10.tar.xz"
         ],
         "tarball": "NetworkManager-openvpn-1.8.10.tar.xz",
-        "commands": "if grep \"gnome-desktop-environment\" /etc/alps/installed-list &> /dev/null; then WITH_GNOME=\"--with-gnome\"; fi\n./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var $WITH_GNOME &&\nmake\nsudo make install",
+        "commands": "if grep \"gnome-desktop-environment\" /etc/alps/installed-list &> /dev/null; then WITH_GNOME=\"--with-gnome\"; fi\n./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var --without-libnm-glib $WITH_GNOME &&\nmake\nsudo make install",
         "dependencies": []
     },
     {
@@ -841,7 +867,7 @@
             "https://ftp.gnome.org/pub/gnome/sources/NetworkManager-pptp/1.2/NetworkManager-pptp-1.2.8.tar.xz"
         ],
         "tarball": "NetworkManager-pptp-1.2.8.tar.xz",
-        "commands": "if grep \"gnome-desktop-environment\" /etc/alps/installed-list &> /dev/null; then WITH_GNOME=\"--with-gnome\"; fi\n./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var $WITH_GNOME &&\nmake\nsudo make install",
+        "commands": "if grep \"gnome-desktop-environment\" /etc/alps/installed-list &> /dev/null; then WITH_GNOME=\"--with-gnome\"; fi\n./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var --without-libnm-glib $WITH_GNOME &&\nmake\nsudo make install",
         "dependencies": []
     },
     {
@@ -1180,7 +1206,8 @@
 		"aryalinux-wallpapers",
 		"aryalinux-google-fonts",
 		"aryalinux-gtk-themes",
-		"aryalinux-icons"
+		"aryalinux-icons",
+        "blueman"
 	]
     },
     {
@@ -1493,5 +1520,71 @@
         "tarball": null,
         "commands": "echo \"Installation completed successfully.\"",
         "dependencies": ["openconnect", "pptp", "openvpn", "network-manager-openconnect", "network-manager-pptp", "network-manager-openvpn"]
+    },
+    {
+        "name": "onig",
+        "version": "6.9.4",
+        "download_urls": [
+            "https://github.com/kkos/oniguruma/releases/download/v6.9.4/onig-6.9.4.tar.gz"
+        ],
+        "tarball": "onig-6.9.4.tar.gz",
+        "commands": "mkdir -pv build\ncd build\n\ncmake -DCMAKE_INSTALL_PREFIX=/usr .. &&\nmake -j$(nproc)\nsudo make install",
+        "dependencies": []
+    },
+    {
+        "name": "aryalinux-xfce-settings",
+        "version": "2.0",
+        "download_urls": [
+            "http://aryalinux.info/files/aryalinux-xfce-defaults-2.0.tar.xz"
+        ],
+	    "url": null,
+        "tarball": "aryalinux-xfce-defaults-2.0.tar.xz",
+        "commands": "sudo tar xf aryalinux-xfce-defaults-2.0.tar.xz -C /\nsudo cp -r /etc/skel/{.config,.Xresources}* ~\nsudo chown -R $USER:$USER ~",
+        "dependencies": []
+    },
+    {
+        "name": "thunar-archive-plugin",
+        "version": "master",
+        "download_urls": [],
+	    "url": null,
+        "tarball": null,
+        "commands": "git clone https://git.xfce.org/thunar-plugins/thunar-archive-plugin\ncd thunar-archive-plugin\n\n./autogen.sh --prefix=/usr\nmake\nsudo make install\n\ncd $SOURCE_DIR\nrm -rf thunar-archive-plugin",
+        "dependencies": ["thunar"]
+    },
+    {
+        "name": "xfce4-screenshooter",
+        "version": "1.9.7",
+        "download_urls": ["https://github.com/xfce-mirror/xfce4-screenshooter/releases/tag/xfce4-screenshooter-1.9.7"],
+	    "url": null,
+        "tarball": "xfce4-screenshooter-1.9.7",
+        "commands": "./configure --prefix=/usr\nmake\nsudo make install",
+        "dependencies": []
+    },
+    {
+        "name": "xfce4-whiskermenu-plugin",
+        "version": "2.3.4",
+        "download_urls": ["https://archive.xfce.org/src/panel-plugins/xfce4-whiskermenu-plugin/2.3/xfce4-whiskermenu-plugin-2.3.4.tar.bz2"],
+	    "url": null,
+        "tarball": "xfce4-whiskermenu-plugin-2.3.4.tar.bz2",
+        "commands": "./configure --prefix=/usr\nmake\nsudo make install",
+        "dependencies": []
+    },
+    {
+        "name": "epdfview",
+        "version": "0.1.8",
+        "download_urls": ["http://anduin.linuxfromscratch.org/BLFS/epdfview/epdfview-0.1.8.tar.bz2", "https://bitbucket.org/chandrakantsingh/patches/raw/2.1/epdfview-0.1.8-fixes-2.patch"],
+	    "url": null,
+        "tarball": "epdfview-0.1.8.tar.bz2",
+        "commands": "patch -Np1 -i ../epdfview-0.1.8-fixes-2.patch &&\n./configure --prefix=/usr &&\nmake\nsudo make install\nfor size in 24 32 48; do\n  sudo ln -svf ../../../../epdfview/pixmaps/icon_epdfview-$size.png \\\n          /usr/share/icons/hicolor/${size}x${size}/apps\ndone &&\nunset size &&\n\nsudo update-desktop-database &&\nsudo gtk-update-icon-cache -t -f --include-image-data /usr/share/icons/hicolor",
+        "dependencies": ["gtk2", "poppler", "desktop-file-utils", "hicolor-icon-theme"]
+    },
+    {
+        "name": "blueman",
+        "version": "2.1.1",
+        "download_urls": ["https://github.com/blueman-project/blueman/releases/download/2.1.1/blueman-2.1.1.tar.gz"],
+	    "url": null,
+        "tarball": "blueman-2.1.1.tar.gz",
+        "commands": "./autogen.sh --prefix=/usr &&\nmake\nsudo make install",
+        "dependencies": ["bluez"]
     }
 ]
