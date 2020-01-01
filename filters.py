@@ -560,3 +560,12 @@ def kframeworksplasma(package, commands):
 		return (package, new_cmds)
 	else:
 		return (package, commands)
+
+def pnmixer(package, commands):
+	if package['name'] == 'pnmixer':
+		new_urls = list()
+		for url in package['download_urls']:
+			if url.strip() != '':
+				new_urls.append(url)
+		package['download_urls'] = new_urls
+	return (package, commands)

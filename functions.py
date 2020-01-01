@@ -15,6 +15,7 @@ from filters import cupsfilter
 from filters import gnomeshellextensionsfilter
 from filters import openldapfilter
 from filters import kframeworksplasma
+from filters import pnmixer
 
 systemd_service_tarball_url = 'http://www.linuxfromscratch.org/blfs/downloads/9.0-systemd/blfs-systemd-units-20180105.tar.bz2'
 systemd_service_tarball = systemd_service_tarball_url.split('/')[-1]
@@ -54,7 +55,8 @@ custom_package_filters = [
 	cupsfilter, 
 	gnomeshellextensionsfilter, 
 	openldapfilter,
-	kframeworksplasma
+	kframeworksplasma,
+	pnmixer
 ]
 
 def read_processed(file_path):
