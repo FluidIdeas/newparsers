@@ -59,6 +59,22 @@ custom_package_filters = [
 	pnmixer
 ]
 
+def get_package_sections(book_dir):
+	doc = BeautifulSoup(read_raw(book_dir + '/index.html').decode("latin-1"), 'html.parser')
+	section_anchors = doc.select("h4 a")
+	sections = list()
+	for a in section_anchors:
+		sections.append(a.attrs['href'])
+	package_sections = dict()
+	for section in sections:
+		doc = BeautifulSoup(read_raw(book_dir + '/' + section).decode("latin-1"), 'html.parser')
+		anchors = doc.select('li.sect1 a')
+		package_sections[section] = list()
+		for anchor in anchors:
+			package_sections[section].append(anchor.attrs['href'].replace('.html', ''))
+	return package_sections
+		
+
 def read_processed(file_path):
 	with open(file_path, 'rb') as fp:
 		data = fp.read()
@@ -319,6 +335,10 @@ def get_script(p):
 	tmp = tmp.replace('##DEPS##', deps)
 	if p['name'] != None:
 		tmp = tmp.replace('##NAME##', 'NAME=' + p['name'])
+	if 'section' in p:
+		tmp = tmp.replace('##SECTION##', 'SECTION="' + p['section'].replace('.html', '') + '"')
+	else:
+		tmp = tmp.replace('##SECTION##\n', '')
 	if p['version'] != None:
 		tmp = tmp.replace('##VERSION##', 'VERSION=' + p['version'])
 	else:
@@ -390,3 +410,18 @@ def find_package(packages, name):
 		if package['name'] == name:
 			return package
 
+def get_section(package, sections, friendly_section_names):
+	sectionName = None
+	for section, packageNames in sections.items():
+		if package['name'] in packageNames:
+			sectionName = section
+	actualSectionName = None
+	package['section'] = None
+	for key, value in friendly_section_names.items():
+		if sectionName != None:
+			if key in sectionName:
+				package['section'] = value
+		else:
+			package['section'] = None
+	if package['section'] == None:
+		package['section'] = 'Others'

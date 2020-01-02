@@ -14,6 +14,8 @@ from functions import get_bin_script
 from functions import parse_perl_modules
 from functions import package_clone
 from functions import find_package
+from functions import get_package_sections
+from functions import get_section
 import mate
 import kde_apps
 import os
@@ -85,8 +87,32 @@ for p in packages:
 		needle = p['commands'][p['commands'].index('./configure'): p['commands'].index('make') + 4]
 		p['commands'] = p['commands'].replace(needle, php_configure)
 
+# Fetching sections
+friendly_section_names = {
+	'postlfs/config': 'Configuration',
+	'security': 'Security',
+	'filesystems': 'Filesystems',
+	'editors': 'Editors',
+	'shells': 'Shells',
+	'virtualization': 'Virtualization',
+	'general/': 'Miscellaneous',
+	'basicnet/': 'Networking',
+	'server/': 'Servers',
+	'x/': 'X-Server',
+	'kde/': 'KDE',
+	'gnome/': 'Gnome',
+	'xfce/': 'XFCE',
+	'xsoft/': 'Office Productivity',
+	'multimedia/': 'Multimedia',
+	'pst/': 'Printing and Typesetting'
+}
+
+sections_dict = get_package_sections(book_dir)
+sections = sections_dict.keys()
+
 # Generate packages in the book
 for p in packages:
+	get_section(p, sections_dict, friendly_section_names)
 	if p['name'] == 'krameworks5':
 		frameworks = p
 	if p['name'] == 'plasma-all':
@@ -145,3 +171,4 @@ for f in unwanted_scripts:
 
 for f in os.listdir('app-scripts'):
 	shutil.copyfile('app-scripts/' + f, out_dir + '/' + f)
+

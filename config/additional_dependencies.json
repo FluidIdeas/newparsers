@@ -22,5 +22,6 @@
 	],
 	"php": ["libgd", "postgresql", "net-snmp", "tidy-html5", "onig"],
 	"babl": ["lcms2"],
-	"mlt": ["pulseaudio"]
+	"mlt": ["pulseaudio"],
+	"vlc": ["qt5"]
 }
