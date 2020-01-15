@@ -16,6 +16,7 @@ from functions import package_clone
 from functions import find_package
 from functions import get_package_sections
 from functions import get_section
+from kde_apps_new import get_data
 import mate
 import kde_apps
 import os
@@ -125,6 +126,10 @@ for p in packages:
 		with open(out_dir + '/' + p['name'] + '.sh', 'w') as fp:
 			script = get_script(p)
 			fp.write(script)
+
+if 'fetch-kde-framework' in sys.argv:
+	kde_framework_packages = get_data(False)
+	additional_packages.extend(kde_framework_packages)
 
 # Generate additional packages
 for package in additional_packages:

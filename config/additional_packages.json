@@ -1633,5 +1633,27 @@
         "tarball": "aryalinux-kde-defaults-2.0.tar.xz",
         "commands": "sudo tar xf aryalinux-kde-defaults-2.0.tar.xz -C /\nsudo cp -r /etc/skel/{.gtkrc-2.0-kde4,.gtkrc-2.0,.config,.Xresources}* ~\nsudo chown -R $USER:$USER ~",
         "dependencies": []
+    },
+    {
+        "name": "openjdk",
+        "version": "13.0.2",
+        "download_urls": [
+            "https://download.java.net/java/GA/jdk13.0.2/d4173c853231432d94f001e99d882ca7/8/GPL/openjdk-13.0.2_linux-x64_bin.tar.gz"
+        ],
+    	"url": null,
+        "tarball": "openjdk-13.0.2_linux-x64_bin.tar.gz",
+        "commands": "sudo tar xf openjdk-13.0.2_linux-x64_bin.tar.gz -C /opt &&\n\nsudo tee /etc/profile.d/openjdk.sh <<\"EOF\"\nexport PATH=$PATH:/opt/jdk-13.0.2/bin\nexport JAVA_HOME=/opt/jdk-13.0.2\nEOF\n\nsudo tee /usr/share/applications/openjdk-java.desktop << \"EOF\" &&\n[Desktop Entry]\nName=OpenJDK Java 13.0.2 Runtime\nComment=OpenJDK Java 13.0.2 Runtime\nExec=/opt/jdk/bin/java -jar\nTerminal=false\nType=Application\nIcon=java\nMimeType=application/x-java-archive;application/java-archive;application/x-jar;\nNoDisplay=true\nEOF\n\nsudo tee /usr/share/applications/openjdk-jconsole.desktop << \"EOF\"\n[Desktop Entry]\nName=OpenJDK Java 13.0.2 Console\nComment=OpenJDK Java 13.0.2 Console\nKeywords=java;console;monitoring\nExec=/opt/jdk/bin/jconsole\nTerminal=false\nType=Application\nIcon=java\nCategories=Application;System;\nEOF\n\nsudo update-desktop-database",
+        "dependencies": ["cups"]
+    },
+    {
+        "name": "maven",
+        "version": "3.6.3",
+        "download_urls": [
+            "https://www-us.apache.org/dist/maven/maven-3/3.6.3/binaries/apache-maven-3.6.3-bin.tar.gz"
+        ],
+    	"url": null,
+        "tarball": "apache-maven-3.6.3-bin.tar.gz",
+        "commands": "sudo tar xf apache-maven-3.6.3-bin.tar.gz -C /opt &&\n\nsudo tee /etc/profile.d/maven.sh <<\"EOF\"\nexport PATH=$PATH:/opt/apache-maven-3.6.3/bin\nexport M2_HOME=/opt/apache-maven-3.6.3\nEOF",
+        "dependencies": ["openjdk"]
     }
 ]
