@@ -23,5 +23,6 @@
 	"php": ["libgd", "postgresql", "net-snmp", "tidy-html5", "onig"],
 	"babl": ["lcms2"],
 	"mlt": ["pulseaudio"],
-	"vlc": ["qt5"]
+	"vlc": ["qt5"],
+	"pavucontrol": ["gtkmm3", "libsigc"]
 }

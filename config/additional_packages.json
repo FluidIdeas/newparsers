@@ -347,11 +347,11 @@
     },
     {
         "name": "plank",
-        "version": "0.11.4",
+        "version": "0.11.89",
         "download_urls": [
-            "https://launchpad.net/plank/1.0/0.11.4/+download/plank-0.11.4.tar.xz"
+            "https://launchpad.net/plank/1.0/0.11.89/+download/plank-0.11.89.tar.xz"
         ],
-        "tarball": "plank-0.11.4.tar.xz",
+        "tarball": "plank-0.11.89.tar.xz",
         "commands": "./configure --prefix=/usr &&\nmake\nsudo make install",
         "dependencies": [
             "libgee",
@@ -799,7 +799,7 @@
         "tarball": "pavucontrol-3.0.tar.gz",
         "commands": "./configure --prefix=/usr\nmake\nsudo make install",
         "dependencies": [
-            "pulseaudio"
+            "pulseaudio", "gtkmm3", "libsigc"
         ]
     },
     {
@@ -1655,5 +1655,15 @@
         "tarball": "apache-maven-3.6.3-bin.tar.gz",
         "commands": "sudo tar xf apache-maven-3.6.3-bin.tar.gz -C /opt &&\n\nsudo tee /etc/profile.d/maven.sh <<\"EOF\"\nexport PATH=$PATH:/opt/apache-maven-3.6.3/bin\nexport M2_HOME=/opt/apache-maven-3.6.3\nEOF",
         "dependencies": ["openjdk"]
+    },
+    {
+        "name": "axel",
+        "version": "2.17.6",
+        "download_urls": [
+            "https://github.com/axel-download-accelerator/axel/releases/download/v2.17.6/axel-2.17.6.tar.xz"
+        ],
+        "tarball": "axel-2.17.6.tar.xz",
+        "commands": "./configure --prefix=/usr &&\nmake\nsudo make install",
+        "dependencies": []
     }
 ]
