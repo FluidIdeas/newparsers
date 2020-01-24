@@ -8,7 +8,8 @@
         ],
         "tarball": "bash-completion-2.8.tar.xz",
         "commands": "./configure --prefix=/usr\nmake -j$(nproc)\nsudo make install",
-        "dependencies": []
+        "dependencies": [],
+        "description": "bash-completion is a collection of command line command completions for the Bash shell, collection of helper functions to assist in creating new completions, and set of facilities for loading completions on demand as well as installing them."
     },
     {
         "name": "ccache",
@@ -19,7 +20,8 @@
         ],
         "tarball": "ccache-3.5.1a.tar.xz",
         "commands": "./configure --prefix=/usr &&\nmake -j$(nproc)\nsudo make install",
-        "dependencies": []
+        "dependencies": [],
+        "description": "ccache (or “Ccache”) is a compiler cache. It speeds up recompilation by caching previous compilations and detecting when the same compilation is being done again. Supported languages are C, C++, Objective-C and Objective-C++."
     },
     {
         "name": "xserver-meta",
@@ -27,6 +29,7 @@
         "download_urls": [],
         "tarball": null,
         "commands": "sudo rm -f /etc/X11/xorg.conf.d/*.conf",
+        "description": "A meta package to install the collection of packages needed to install x-server.",
         "dependencies": [
             "libxml2",
             "util-macros",
@@ -71,6 +74,7 @@
         "download_urls": [],
         "tarball": null,
         "commands": "",
+        "description": "A collection of user-space drivers for various graphics cards",
         "dependencies": [
             "libevdev",
             "xorg-evdev-driver",
@@ -99,7 +103,8 @@
         ],
         "tarball": "xf86-video-vesa-2.4.0.tar.gz",
         "commands": "./configure $XORG_CONFIG &&\nmake -j$(nproc)\nsudo make install",
-        "dependencies": []
+        "dependencies": [],
+        "description": "Userspace VESA video graphics driver."
     },
     {
         "name": "xf86-video-openchrome",
@@ -109,7 +114,8 @@
         ],
         "tarball": "xf86-video-openchrome-0.6.0.tar.gz",
         "commands": "./configure $XORG_CONFIG &&\nmake -j$(nproc)\nsudo make install",
-        "dependencies": []
+        "dependencies": [],
+        "description": "Userspace openchrome video graphics driver"
     },
     {
         "name": "xf86-video-mach64",
@@ -119,7 +125,8 @@
         ],
         "tarball": "xf86-video-mach64-6.9.6.tar.gz",
         "commands": "./configure $XORG_CONFIG &&\nmake -j$(nproc)\nsudo make install",
-        "dependencies": []
+        "dependencies": [],
+        "description": "Userspace mach64 video graphics driver"
     },
     {
         "name": "xf86-video-cirrus",
@@ -129,7 +136,8 @@
         ],
         "tarball": "xf86-video-cirrus-1.5.3.tar.gz",
         "commands": "./configure $XORG_CONFIG &&\nmake -j$(nproc)\nsudo make install",
-        "dependencies": []
+        "dependencies": [],
+        "description": "Userspace cirrus video graphics driver"
     },
     {
         "name": "intel-vaapi-driver",
@@ -139,7 +147,8 @@
         ],
         "tarball": "intel-vaapi-driver-2.3.0.tar.bz2",
         "commands": "./configure $XORG_CONFIG &&\nmake -j$(nproc)\nsudo make install",
-        "dependencies": []
+        "dependencies": [],
+        "description": "VA-API (Video Acceleration API) user mode driver for Intel GEN Graphics family."
     },
     {
         "name": "perl-font-ttf",
@@ -150,7 +159,8 @@
         ],
         "tarball": "Font-TTF-1.06.tar.gz",
         "commands": "perl Makefile.PL &&\nmake -j$(nproc)\nsudo make install",
-        "dependencies": []
+        "dependencies": [],
+        "description": "This module allows you to do almost anything to a TrueType/OpenType Font including modify and inspect nearly all tables."
     },
     {
         "name": "perl-io-string",
@@ -161,7 +171,8 @@
         ],
         "tarball": "IO-String-1.08.tar.gz",
         "commands": "perl Makefile.PL &&\nmake -j$(nproc)\nsudo make install",
-        "dependencies": []
+        "dependencies": [],
+        "description": "The IO::String module provides the IO::File interface for in-core strings. An IO::String object can be attached to a string, and makes it possible to use the normal file operations for reading or writing data, as well as for seeking to various locations of the string. This is useful when you want to use a library module that only provides an interface to file handles on data that you have in a string variable."
     },
     {
         "name": "dejavu-fonts",
@@ -176,7 +187,8 @@
             "fontforge",
             "perl-font-ttf",
             "perl-io-string"
-        ]
+        ],
+        "description": "The DejaVu fonts are modifications of the Bitstream Vera fonts designed for greater coverage of Unicode, as well as providing more styles."
     },
     {
         "name": "gnome-desktop-environment",
@@ -278,7 +290,8 @@
             "cups",
             "cups-filters",
             "vpn-libs"
-        ]
+        ],
+        "description": "GNOME is a free and open-source desktop environment for Unix-like operating systems. GNOME was originally an acronym for GNU Network Object Model Environment, but the acronym was dropped because it no longer reflected the vision of the GNOME project."
     },
     {
         "name": "gnome-tweaks",
@@ -288,7 +301,8 @@
         ],
         "tarball": "gnome-tweaks-3.31.3.tar.bz2",
         "commands": "mkdir build &&\ncd build &&\n\nmeson --prefix=/usr .. &&\nninja\nsudo ninja install",
-        "dependencies": []
+        "dependencies": [],
+        "description": "Customize advanced GNOME 3 options"
     },
     {
         "name": "aryalinux-google-fonts",
@@ -299,7 +313,8 @@
     	"url": null,
         "tarball": "aryalinux-google-fonts.tar.xz",
         "commands": "sudo tar xf aryalinux-google-fonts.tar.xz -C /\nsudo chown -R root:root /usr/share/fonts/aryalinux-google-fonts",
-        "dependencies": []
+        "dependencies": [],
+        "description": "Collection of TTF fonts, sourced from Google for AryaLinux"
     },
     {
         "name": "aryalinux-gtk-themes",
@@ -310,7 +325,8 @@
     	"url": null,
         "tarball": "aryalinux-gtk-themes.tar.xz",
         "commands": "sudo tar xf aryalinux-gtk-themes.tar.xz -C /\nsudo chown -R root:root /usr/share/themes/",
-        "dependencies": []
+        "dependencies": [],
+        "description": "Collection of GTK themes from various souces for usage within AryaLinux."
     },
     {
         "name": "aryalinux-wallpapers",
@@ -321,7 +337,8 @@
 	    "url": null,
         "tarball": "aryalinux-wallpapers-2.0.tar.xz",
         "commands": "sudo tar xf aryalinux-wallpapers-2.0.tar.xz -C /\nsudo chown -R root:root /usr/share/backgrounds/aryalinux",
-        "dependencies": []
+        "dependencies": [],
+        "description": "The wallpaper collection for AryaLinux desktop."
     },
     {
         "name": "aryalinux-icons",
@@ -332,7 +349,8 @@
 	    "url": null,
         "tarball": "aryalinux-icons.tar.xz",
         "commands": "sudo tar xf aryalinux-icons.tar.xz -C /\nsudo chown -R root:root /usr/share/icons/",
-        "dependencies": []
+        "dependencies": [],
+        "description": "Collections of icons for usage in AryaLinux."
     },
     {
         "name": "aryalinux-gnome-settings",
@@ -343,7 +361,8 @@
 	    "url": null,
         "tarball": "aryalinux-gnome-defaults-2.0.tar.xz",
         "commands": "sudo tar xf aryalinux-gnome-defaults-2.0.tar.xz -C /\nsudo cp -r /etc/skel/{.config,.Xresources}* ~\nsudo chown -R $USER:$USER ~",
-        "dependencies": []
+        "dependencies": [],
+        "description": "Default settings for the AryaLinux Gnome desktop environment."
     },
     {
         "name": "plank",
@@ -356,7 +375,8 @@
         "dependencies": [
             "libgee",
             "libbamf3"
-        ]
+        ],
+        "description": "Plank is meant to be the simplest dock on the planet. The goal is to provide just what a dock needs and absolutely nothing more. It is, however, a library which can be extended to create other dock programs with more advanced features."
     },
     {
         "name": "libbamf3",
@@ -372,7 +392,8 @@
             "libgtop",
             "libxslt",
             "python-modules#libxml2py2"
-        ]
+        ],
+        "description": "Bamf matches application windows to desktop files. It removes the headache of applications matching into a simple DBus daemon and C wrapper library. It currently features application matching at amazing levels of accuracy (covering nearly every corner case)."
     },
     {
         "name": "multimedia-plugins",
@@ -439,7 +460,8 @@
             "x265",
             "xine-lib",
             "xvid"
-        ]
+        ],
+        "description": "A meta package which is a collection of audio and video codecs and plugins."
     },
     {
         "name": "mpv",
@@ -460,7 +482,8 @@
             "x264",
             "lame",
             "fdk-aac"
-        ]
+        ],
+        "description": "mpv is a free (as in freedom) media player for the command line. It supports a wide variety of media file formats, audio and video codecs, and subtitle types."
     },
     {
         "name": "celluloid",
@@ -473,7 +496,8 @@
         "dependencies": [
             "mpv",
             "gnome-desktop-environment"
-        ]
+        ],
+        "description": "Celluloid (formerly GNOME MPV) is a simple GTK+ frontend for mpv. It aims to be easy to use while maintaining high level of configurability."
     },
     {
         "name": "libtdb",
@@ -484,7 +508,8 @@
         ],
         "tarball": "tdb-1.3.17.tar.gz",
         "commands": "sed -i \"s@../../buildtools@buildtools@g\" Makefile\n./configure --prefix=/usr &&\nmake\nsudo make install",
-        "dependencies": []
+        "dependencies": [],
+        "description": "This is a simple database API. It is modelled after the structure of GDBM. TDB features, unlike GDBM, multiple writers support with appropriate locking and transactions."
     },
     {
         "name": "rhythmbox",
@@ -514,7 +539,8 @@
             "python-modules#pygobject2",
             "libgpod",
             "yelp"
-        ]
+        ],
+        "description": "Rhythmbox is a free and open-source audio player that plays and organizes digital audio files. Rhythmbox is designed to work well under the GNOME desktop, however it can function on many desktop environments."
     },
     {
         "name": "libmtp",
@@ -524,7 +550,8 @@
         ],
         "tarball": "libmtp-1.1.16.tar.gz",
         "commands": "./configure --prefix=/usr &&\nmake\nsudo make install",
-        "dependencies": []
+        "dependencies": [],
+        "description": "A library to access MTP (Media Transfer Protocol) Devices."
     },
     {
         "name": "libdmapsharing",
@@ -534,7 +561,8 @@
         ],
         "tarball": "LIBDMAPSHARING_3_9_4.tar.gz",
         "commands": "./autogen.sh --disable-tests --prefix=/usr &&\nmake\nsudo make install",
-        "dependencies": []
+        "dependencies": [],
+        "description": "Libdmapsharing is a library which allows programs to access, share and control the playback of media content using DMAP (DAAP, DPAP & DACP). Libdmapsharing also detects audio AirPlay services; coupled with the AirPlay support in PulseAudio or GStreamer, this can allow an application to stream audio to an AirPlay device."
     },
     {
         "name": "libplist",
@@ -544,7 +572,8 @@
         ],
         "tarball": "2.1.0.tar.gz",
         "commands": "./autogen.sh --prefix=/usr &&\nmake\nsudo make install",
-        "dependencies": []
+        "dependencies": [],
+        "description": "A library to handle Apple Property List format in binary or XML - libimobiledevice/libplist"
     },
     {
         "name": "libgpod",
@@ -556,18 +585,8 @@
         "commands": "./configure --prefix=/usr &&\nmake\nsudo make install",
         "dependencies": [
             "libplist"
-        ]
-    },
-    {
-        "name": "openssl",
-        "version": "1.1.1a",
-        "section": "Security",
-        "download_urls": [
-            "https://openssl.org/source/openssl-1.1.1a.tar.gz"
         ],
-        "tarball": "openssl-1.1.1a.tar.gz",
-        "commands": "./config --prefix=/usr --openssldir=/etc/ssl --libdir=lib shared zlib-dynamic\nmake\nsed -i '/INSTALL_LIBS/s/libcrypto.a libssl.a//' Makefile\nsudo make MANSUFFIX=ssl install",
-        "dependencies": []
+        "description": "libgpod is a shared library to access the contents of an iPod. This library is based on code used in the gtkpod project."
     },
     {
         "name": "oxygen-fonts",
@@ -577,7 +596,8 @@
         ],
         "tarball": "oxygen-fonts-5.4.3-x86_64.tar.xz",
         "commands": "sudo cp -rv share /usr/\nsudo cp -r lib64/* /usr/lib/",
-        "dependencies": []
+        "dependencies": [],
+        "description": "The Oxygen typeface family is created as part of the KDE Project, a libre desktop for the GNU+Linux operating system. The design is optimised for the FreeType font rendering system and works well in all graphical user interfaces, desktops and devices."
     },
     {
         "name": "noto-fonts",
@@ -585,7 +605,8 @@
         "download_urls": [],
         "tarball": null,
         "commands": "sudo mkdir -pv /usr/share/fonts/truetype/noto-fonts\nmkdir -pv noto-fonts && cd noto-fonts\nwget -nc https://noto-website-2.storage.googleapis.com/pkgs/Noto{Sans,Serif,SansDisplay,SerifDisplay,Mono}-hinted.zip\nwget -nc https://noto-website-2.storage.googleapis.com/pkgs/Noto{ColorEmoji,Emoji}-unhinted.zip\nfind . -name \"*zip\" -exec sudo unzip -o {} -d /usr/share/fonts/truetype/noto-fonts \\;",
-        "dependencies": []
+        "dependencies": [],
+        "description": "Noto is a font family comprising over 100 individual fonts, which are together designed to cover all the scripts encoded in the Unicode standard."
     },
     {
         "name": "media-player-info",
@@ -595,7 +616,8 @@
         ],
         "tarball": "media-player-info-24.tar.gz",
         "commands": "./configure --prefix=/usr\nmake\nsudo make install",
-        "dependencies": []
+        "dependencies": [],
+        "description": "media-player-info is a repository of data files describing media player capabilities, mostly of mass-storage devices. These files contain information about the directory layout to use to add music to these devices, the supported file formats and so on."
     },
     {
         "name": "kde-desktop-environment",
@@ -635,7 +657,8 @@
             "aryalinux-wallpapers",
             "aryalinux-icons",
             "aryalinux-kde-settings"
-        ]
+        ],
+        "description": "Plasma is KDE's desktop environment. Simple by default, powerful when needed."
     },
     {
         "name": "xfce-desktop-environment",
@@ -692,7 +715,8 @@
             "xfce4-whiskermenu-plugin",
             "xfce4-screenshooter",
             "blueman"
-        ]
+        ],
+        "description": "Xfce or XFCE is a free and open-source desktop environment for Unix-like operating systems such as Linux and BSD. Xfce aims to be fast and lightweight while still being visually appealing and easy to use. Xfce embodies the traditional Unix philosophy of modularity and re-usability."
     },
     {
         "name": "gimp-gtk3",
@@ -724,7 +748,8 @@
             "libgudev",
             "pygtk",
             "xdg-utils"
-        ]
+        ],
+        "description": "The Gtk3 branch of the GNU Image Manipulation Program"
     },
     {
         "name": "gparted-gtk3",
@@ -737,7 +762,8 @@
             "parted",
             "gnome-common",
             "gnome-doc-utils"
-        ]
+        ],
+        "description": "GTK3 version of gparted partition editing tool."
     },
     {
         "name": "gnome-common",
@@ -750,7 +776,8 @@
         "commands": "./autogen.sh --prefix=/usr &&\nmake\nsudo make install",
         "dependencies": [
             "gnome-desktop-environment"
-        ]
+        ],
+        "description": "This module contains various files needed to bootstrap GNOME modules built from git."
     },
     {
         "name": "gnome-doc-utils",
@@ -763,7 +790,8 @@
         "commands": "./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var --disable-static &&\nmake\nsudo make install",
         "dependencies": [
             "gnome-desktop-environment"
-        ]
+        ],
+        "description": "The GNOME Doc Utils package is a collection of documentation utilities for the GNOME project. Notably, it contains utilities for building documentation and all auxiliary files in your source tree, and it contains the DocBook XSLT stylesheets that were once distributed with Yelp. Starting with GNOME 2.8, Yelp requires GNOME Doc Utils for the XSLT. Starting with GNOME 2.12, many of the core GNOME packages require GNOME Doc Utils."
     },
     {
         "name": "simple-screen-recorder",
@@ -778,7 +806,8 @@
             "jack2",
             "ffmpeg",
             "pulseaudio"
-        ]
+        ],
+        "description": "DescriptionSimpleScreenRecorder is a Qt-based screencast software made for Linux operating systems, which was created as a simpler alternative to programs such as ffmpeg/avconv and VLC."
     },
     {
         "name": "jack2",
@@ -788,7 +817,8 @@
         ],
         "tarball": "jack2-1.9.12.tar.gz",
         "commands": "./waf configure --prefix=/usr &&\n./waf build\nsudo ./waf install",
-        "dependencies": []
+        "dependencies": [],
+        "description": "JACK2 aka jackdmp is a C++ version of the JACK low-latency audio server for multi-processor machines. It is a new implementation of the JACK server core features that aims at removing some limitations of the JACK1 design."
     },
     {
         "name": "pavucontrol",
@@ -800,7 +830,8 @@
         "commands": "./configure --prefix=/usr\nmake\nsudo make install",
         "dependencies": [
             "pulseaudio", "gtkmm3", "libsigc"
-        ]
+        ],
+        "description": "PulseAudio Volume Control (pavucontrol) is a simple GTK based volume control tool (\"mixer\") for the PulseAudio sound server. In contrast to classic mixer tools this one allows you to control both the volume of hardware devices and of each playback stream separately."
     },
     {
         "name": "gnome-shell-coverflow-alt-tab",
@@ -812,7 +843,8 @@
         "commands": "sudo mkdir -pv /usr/share/gnome-shell/extensions/$(basename $(pwd))\nsudo cp -rvf * /usr/share/gnome-shell/extensions/$(basename $(pwd))\nsudo chmod -R a+r /usr/share/gnome-shell/extensions/$(basename $(pwd))",
         "dependencies": [
             "gnome-shell-extensions"
-        ]
+        ],
+        "description": "Replacement of Alt-Tab, iterates through windows in a cover-flow manner."
     },
     {
         "name": "openconnect",
@@ -822,7 +854,8 @@
         ],
         "tarball": "openconnect-8.05.tar.gz",
         "commands": "sudo mkdir -pv /etc/vpnc\nsudo wget http://git.infradead.org/users/dwmw2/vpnc-scripts.git/blob_plain/HEAD:/vpnc-script -O /etc/vpnc/vpnc-script\nsudo chmod a+x /etc/vpnc/vpnc-script\n\n./configure --prefix=/usr  &&\nmake\nsudo make install",
-        "dependencies": []
+        "dependencies": [],
+        "description": "OpenConnect is an SSL VPN client initially created to support Cisco's AnyConnect SSL VPN. It has since been ported to support the Juniper SSL VPN (which is now known as Pulse Connect Secure), and to the Palo Alto Networks GlobalProtect SSL VPN."
     },
     {
         "name": "openvpn",
@@ -834,7 +867,8 @@
         "commands": "if grep \"gnome-desktop-environment\" /etc/alps/installed-list &> /dev/null; then export WITH_GNOME=\"--with-gnome\"; fi\n./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var $WITH_GNOME &&\nmake\nsudo make install",
         "dependencies": [
             "net-tools"
-        ]
+        ],
+        "description": "OpenVPN is an open-source commercial software that implements virtual private network techniques to create secure point-to-point or site-to-site connections in routed or bridged configurations and remote access facilities. It uses a custom security protocol that utilizes SSL/TLS for key exchange."
     },
     {
         "name": "ppp",
@@ -843,7 +877,8 @@
         ],
         "tarball": null,
         "commands": "git clone https://github.com/paulusmack/ppp.git\ncd ppp\n./configure --prefix=/usr\nmake\nsudo make install\ncd ..\n\nrm -rf ppp",
-        "dependencies": []
+        "dependencies": [],
+        "description": "ppp (Paul's PPP Package) is an open source package which implements the Point-to-Point Protocol (PPP) on Linux and Solaris systems."
     },
     {
         "name": "pptp",
@@ -853,7 +888,8 @@
         ],
         "tarball": "pptp-1.10.0.tar.gz",
         "commands": "make\nsudo make install",
-        "dependencies": ["ppp"]
+        "dependencies": ["ppp"],
+        "description": "Linux and FreeBSD client for the proprietary Microsoft Point-to-Point tunneling protocol, PPTP"
     },
     {
         "name": "network-manager-openconnect",
@@ -863,7 +899,8 @@
         ],
         "tarball": "NetworkManager-openconnect-1.2.6.tar.xz",
         "commands": "if grep \"gnome-desktop-environment\" /etc/alps/installed-list &> /dev/null; then WITH_GNOME=\"--with-gnome\"; fi\n./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var $WITH_GNOME &&\nmake\nsudo make install",
-        "dependencies": []
+        "dependencies": [],
+        "description": "Network Manager plugin for openconnect"
     },
     {
         "name": "network-manager-openvpn",
@@ -873,7 +910,8 @@
         ],
         "tarball": "NetworkManager-openvpn-1.8.10.tar.xz",
         "commands": "if grep \"gnome-desktop-environment\" /etc/alps/installed-list &> /dev/null; then WITH_GNOME=\"--with-gnome\"; fi\n./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var --without-libnm-glib $WITH_GNOME &&\nmake\nsudo make install",
-        "dependencies": []
+        "dependencies": [],
+        "description": "Network Manager plugin for openvpn"
     },
     {
         "name": "network-manager-pptp",
@@ -883,17 +921,8 @@
         ],
         "tarball": "NetworkManager-pptp-1.2.8.tar.xz",
         "commands": "if grep \"gnome-desktop-environment\" /etc/alps/installed-list &> /dev/null; then WITH_GNOME=\"--with-gnome\"; fi\n./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var --without-libnm-glib $WITH_GNOME &&\nmake\nsudo make install",
-        "dependencies": []
-    },
-    {
-        "name": "libgrss",
-        "version": "0.7.0",
-        "download_urls": [
-            "http://ftp.acc.umu.se/pub/gnome/sources/libgrss/0.7/libgrss-0.7.0.tar.xz"
-        ],
-        "tarball": "libgrss-0.7.0.tar.xz",
-        "commands": "./configure --prefix=/usr &&\nmake\nsudo make install",
-        "dependencies": []
+        "dependencies": [],
+        "description": "Network Manager plugin for pptp"
     },
     {
         "name": "intel-hybrid-driver",
@@ -905,7 +934,8 @@
         "commands": "./autogen.sh --prefix=/usr --sysconfdir=/etc &&\nmake\nsudo make install",
         "dependencies": [
             "libcmrt"
-        ]
+        ],
+        "description": "VA driver for Intel G45 & HD Graphics family."
     },
     {
         "name": "libcmrt",
@@ -913,7 +943,8 @@
         "download_urls": [],
         "tarball": null,
         "commands": "git clone https://github.com/intel/cmrt\ncd cmrt\n\n./autogen.sh --prefix=/usr --sysconfdir=/etc &&\nmake\nsudo make install\n\ncd ..\nrm -rf cmrt",
-        "dependencies": []
+        "dependencies": [],
+        "description": "C bindings for Intel Media Runtime"
     },
     {
         "name": "firefox",
@@ -942,7 +973,8 @@
             "libevent",
             "libwebp",
             "sqlite"
-        ]
+        ],
+        "description": "Mozilla Firefox, or simply Firefox, is a free and open-source web browser developed by the Mozilla Foundation and its subsidiary, Mozilla Corporation. Firefox uses the Gecko layout engine to render web pages, which implements current and anticipated web standards."
     },
     {
         "name": "xorg-vmmouse-driver",
@@ -952,7 +984,8 @@
         ],
         "tarball": "xf86-input-vmmouse-13.1.0.tar.bz2",
         "commands": "./configure $XORG_CONFIG --without-hal-fdi-dir --without-hal-callouts-dir --with-udev-rules-dir=/lib/udev/rules.d && make\n\nsudo make install",
-        "dependencies": ["xorg-server"]
+        "dependencies": ["xorg-server"],
+        "description": "The VMMouse driver enables support for the special VMMouse protocol that is provided by VMware virtual machines to give absolute pointer positioning."
     },
     {
         "name": "caribou",
@@ -965,7 +998,8 @@
         "commands": "PYTHON=python3 ./configure --prefix=/usr --sysconfdir=/etc --disable-gtk2-module --disable-static && make\n\nsudo make install",
         "dependencies": [
             "clutter", "gtk3", "libgee", "libxklavier", "python-modules#pygobject2", "python-modules#pygobject3", "vala"
-        ]
+        ],
+        "description": "Configurable on screen keyboard with scanning mode"
     },
     {
         "name": "alsa",
@@ -976,7 +1010,8 @@
         "commands": "",
         "dependencies": [
             "alsa-lib", "alsa-plugins", "alsa-utils", "alsa-tools", "alsa-firmware", "alsa-oss"
-        ]
+        ],
+        "description": "ALSA is the Advanced Linux Sound Architecture."
     },
     {
         "name": "libgd",
@@ -989,7 +1024,8 @@
         "commands": "echo $USER > /tmp/currentuser\n\npatch -Np1 -i ../libgd-2.2.5-find-freetype2.patch &&\nmkdir -pv build\ncd build\ncmake -DCMAKE_INSTALL_PREFIX=/usr -DENABLE_FONTCONFIG=1 -DENABLE_FREETYPE=1 -DENABLE_ICONV=1 -DENABLE_JPEG=1 -DENABLE_LIQ=0 -DENABLE_PNG=1 -DENABLE_TIFF=1 -DENABLE_WEBP=1 -DENABLE_XPM=1 .. &&\nmake\nsudo make install",
         "dependencies": [
             "libgtop"
-        ]
+        ],
+        "description": "Perl module to create barcode images"
     },
     {
         "name": "net-snmp",
@@ -999,27 +1035,8 @@
         ],
         "tarball": "net-snmp-5.8.tar.gz",
         "commands": "echo $USER > /tmp/currentuser\n\n./configure --prefix=/usr &&\nmake\nsudo make install",
-        "dependencies": []
-    },
-    {
-        "name": "sassc",
-        "version": "3.6.1",
-        "download_urls": [
-            "https://github.com/sass/sassc/archive/3.6.1/sassc-3.6.1.tar.gz"
-        ],
-        "tarball": "sassc-3.6.1.tar.gz",
-        "commands": "echo $USER > /tmp/currentuser\n\nautoreconf -fi &&\n\n./configure --prefix=/usr --disable-static &&\nmake\nsudo make install",
-        "dependencies": ["libsass"]
-    },
-    {
-        "name": "libsass",
-        "version": "3.6.1",
-        "download_urls": [
-            "https://github.com/sass/libsass/archive/3.6.1/libsass-3.6.1.tar.gz"
-        ],
-        "tarball": "libsass-3.6.1.tar.gz",
-        "commands": "echo $USER > /tmp/currentuser\n\nautoreconf -fi &&\n\n./configure --prefix=/usr --disable-static &&\nmake\nsudo make install",
-        "dependencies": []
+        "dependencies": [],
+        "description": "The module Net::SNMP implements an object oriented interface to the Simple Network Management Protocol. Perl applications can use the module to retrieve or update information on a remote host using the SNMP protocol. Net::SNMP is implemented completely in Perl, requires no compiling, and uses only standard Perl modules. SNMPv1 and SNMPv2c (Community-Based SNMPv2), as well as SNMPv3 with USM are supported by the module. SNMP over UDP as well as TCP with both IPv4 and IPv6 can be used. The Net::SNMP module assumes that the user has a basic understanding of the Simple Network Management Protocol and related network management concepts."
     },
     {
         "name": "lightdm-gtk-greeter",
@@ -1029,7 +1046,8 @@
         ],
         "tarball": "lightdm-gtk-greeter_2.0.1.orig.tar.gz",
         "commands": "export CFLAGS=\"-Wno-error=format-nonliteral\"\n./configure --prefix=/usr --sysconfdir=/etc --disable-liblightdm-qt &&\nmake \"-j`nproc`\"\n\ncat > 1434987998845.sh << \"ENDOFFILE\"\nmake install\nENDOFFILE\nchmod a+x 1434987998845.sh\nsudo ./1434987998845.sh\nsudo rm -rf 1434987998845.sh\n\n\nsudo tee -a /etc/lightdm/lightdm-gtk-greeter.conf << EOF\n[greeter]\nxft-hintstyle = hintmedium\nxft-antialias = true\nxft-rgba = rgb\nicon-theme-name = 'Flat Remix'\ntheme-name = Adapta-Nokto\nbackground = /usr/share/backgrounds/aryalinux/default-lock-screen-wallpaper.jpeg\nfont-name = Droid Sans 10\nEOF\n",
-        "dependencies": ["lightdm"]
+        "dependencies": ["lightdm"],
+        "description": "A LightDM greeter that uses the GTK+ toolkit."
     },
     {
         "name": "lightdm",
@@ -1039,7 +1057,8 @@
         ],
         "tarball": "lightdm-1.18.3.tar.xz",
         "commands": "./configure --prefix=/usr \\\n            --sysconfdir=/etc \\\n            --localstatedir=/var \\\n            --libexecdir=/usr/lib \\\n            --with-greeter-user=lightdm \\\n            --with-greeter-session=lightdm-gtk-greeter \\\n            --disable-static \\\n            --disable-tests  \\\n\t\t\t--disable-liblightdm-qt5  \\\n\t\t\t--disable-liblightdm-qt\n\nmake \"-j`nproc`\"\nsudo make install\nsudo rm -rf /etc/apparmor.d /etc/init\nsudo install -dm770 /var/lib/lightdm\nsudo install -dm711 /var/log/lightdm\nsudo chmod +t /var/lib/lightdm\necho \"GDK_CORE_DEVICE_EVENTS=true\" | sudo tee -a /var/lib/lightdm/.pam_environment\nsudo chmod 644 /var/lib/lightdm/.pam_environment\nsudo install -dm755 /etc/lightdm\nsudo tee /etc/lightdm/lightdm.conf << \"EOF\"\n#\n# General configuration\n#\n# start-default-seat = True to always start one seat if none are defined in the configuration\n# greeter-user = User to run greeter as\n# minimum-display-number = Minimum display number to use for X servers\n# minimum-vt = First VT to run displays on\n# lock-memory = True to prevent memory from being paged to disk\n# user-authority-in-system-dir = True if session authority should be in the system location\n# guest-account-script = Script to be run to setup guest account\n# log-directory = Directory to log information to\n# run-directory = Directory to put running state in\n# cache-directory = Directory to cache to\n# sessions-directory = Directory to find sessions\n# remote-sessions-directory = Directory to find remote sessions\n# greeters-directory = Directory to find greeters\n#\n[LightDM]\n#start-default-seat=true\ngreeter-user=lightdm\n#minimum-display-number=0\nminimum-vt=1\n#lock-memory=true\n#user-authority-in-system-dir=false\n#guest-account-script=guest-account\nlog-directory=/var/log/lightdm\nrun-directory=/run/lightdm\n#cache-directory=/var/cache/lightdm\n#sessions-directory=/usr/share/lightdm/sessions:/usr/share/xsessions\n#remote-sessions-directory=/usr/share/lightdm/remote-sessions\n#greeters-directory=/usr/share/lightdm/greeters:/usr/share/xgreeters\n\n#\n# Seat defaults\n#\n# type = Seat type (xlocal, xremote)\n# xdg-seat = Seat name to set pam_systemd XDG_SEAT variable and name to pass to X server\n# xserver-command = X server command to run (can also contain arguments e.g. X -special-option)\n# xserver-layout = Layout to pass to X server\n# xserver-config = Config file to pass to X server\n# xserver-allow-tcp = True if TCP/IP connections are allowed to this X server\n# xserver-share = True if the X server is shared for both greeter and session\n# xserver-hostname = Hostname of X server (only for type=xremote)\n# xserver-display-number = Display number of X server (only for type=xremote)\n# xdmcp-manager = XDMCP manager to connect to (implies xserver-allow-tcp=true)\n# xdmcp-port = XDMCP UDP/IP port to communicate on\n# xdmcp-key = Authentication key to use for XDM-AUTHENTICATION-1 (stored in keys.conf)\n# unity-compositor-command = Unity compositor command to run (can also contain arguments e.g. unity-system-compositor -special-option)\n# unity-compositor-timeout = Number of seconds to wait for compositor to start\n# greeter-session = Session to load for greeter\n# greeter-hide-users = True to hide the user list\n# greeter-allow-guest = True if the greeter should show a guest login option\n# greeter-show-manual-login = True if the greeter should offer a manual login option\n# greeter-show-remote-login = True if the greeter should offer a remote login option\n# user-session = Session to load for users\n# allow-guest = True if guest login is allowed\n# guest-session = Session to load for guests (overrides user-session)\n# session-wrapper = Wrapper script to run session with\n# greeter-wrapper = Wrapper script to run greeter with\n# guest-wrapper = Wrapper script to run guest sessions with\n# display-setup-script = Script to run when starting a greeter session (runs as root)\n# greeter-setup-script = Script to run when starting a greeter (runs as root)\n# session-setup-script = Script to run when starting a user session (runs as root)\n# session-cleanup-script = Script to run when quitting a user session (runs as root)\n# autologin-guest = True to log in as guest by default\n# autologin-user = User to log in with by default (overrides autologin-guest)\n# autologin-user-timeout = Number of seconds to wait before loading default user\n# autologin-session = Session to load for automatic login (overrides user-session)\n# autologin-in-background = True if autologin session should not be immediately activated\n# exit-on-failure = True if the daemon should exit if this seat fails\n#\n[SeatDefaults]\n#type=xlocal\n#xdg-seat=seat0\n#xserver-command=X\n#xserver-layout=\n#xserver-config=\n#xserver-allow-tcp=false\n#xserver-share=true\n#xserver-hostname=\n#xserver-display-number=\n#xdmcp-manager=\n#xdmcp-port=177\n#xdmcp-key=\n#unity-compositor-command=unity-system-compositor\n#unity-compositor-timeout=60\ngreeter-session=lightdm-gtk-greeter\n#greeter-hide-users=false\n#greeter-allow-guest=true\n#greeter-show-manual-login=false\n#greeter-show-remote-login=true\n#user-session=default\n#allow-guest=true\n#guest-session=UNIMPLEMENTED\nsession-wrapper=/etc/lightdm/Xsession\n#greeter-wrapper=\n#guest-wrapper=\n#display-setup-script=\n#greeter-setup-script=\n#session-setup-script=\n#session-cleanup-script=\n#autologin-guest=false\n#autologin-user=\n#autologin-user-timeout=0\n#autologin-in-background=false\n#autologin-session=UNIMPLEMENTED\n#pam-service=lightdm-autologin\n#exit-on-failure=false\n\n#\n# Seat configuration\n#\n# Each seat must start with \"Seat:\".\n# Uses settings from [SeatDefaults], any of these can be overriden by setting them in this section.\n#\n#[Seat:0]\n\n#\n# XDMCP Server configuration\n#\n# enabled = True if XDMCP connections should be allowed\n# port = UDP/IP port to listen for connections on\n# key = Authentication key to use for XDM-AUTHENTICATION-1 or blank to not use authentication (stored in keys.conf)\n#\n# The authentication key is a 56 bit DES key specified in hex as 0xnnnnnnnnnnnnnn.  Alternatively\n# it can be a word and the first 7 characters are used as the key.\n#\n[XDMCPServer]\n#enabled=false\n#port=177\n#key=\n\n#\n# VNC Server configuration\n#\n# enabled = True if VNC connections should be allowed\n# command = Command to run Xvnc server with\n# port = TCP/IP port to listen for connections on\n# width = Width of display to use\n# height = Height of display to use\n# depth = Color depth of display to use\n#\n[VNCServer]\n#enabled=false\n#command=Xvnc\n#port=5900\n#width=1024\n#height=768\n#depth=8\nEOF\n\nsudo tee /etc/lightdm/users.conf << \"EOF\"\n#\n# User accounts configuration\n#\n# NOTE: If you have AccountsService installed on your system, then LightDM will\n# use this instead and these settings will be ignored\n#\n# minimum-uid = Minimum UID required to be shown in greeter\n# hidden-users = Users that are not shown to the user\n# hidden-shells = Shells that indicate a user cannot login\n#\n[UserAccounts]\nminimum-uid=1000\nhidden-users=nobody nobody4 noaccess\nhidden-shells=/bin/false /sbin/nologin\nEOF\n\nsudo tee /etc/lightdm/Xsession << \"EOF\"\n#!/bin/sh\n#\n# LightDM wrapper to run around X sessions.\n\necho \"Running X session wrapper\"\n\n# Load profile\nfor file in \"/etc/profile\" \"$HOME/.profile\" \"/etc/xprofile\" \"$HOME/.xprofile\"; do\n    if [ -f \"$file\" ]; then\n        echo \"Loading profile from $file\";\n        . \"$file\"\n    fi\ndone\n\n# Load resources\nfor file in \"/etc/X11/Xresources\" \"$HOME/.Xresources\"; do\n    if [ -f \"$file\" ]; then\n        echo \"Loading resource: $file\"\n        xrdb -nocpp -merge \"$file\"\n    fi\ndone\n\n# Load keymaps\nfor file in \"/etc/X11/Xkbmap\" \"$HOME/.Xkbmap\"; do\n    if [ -f \"$file\" ]; then\n        echo \"Loading keymap: $file\"\n        setxkbmap `cat \"$file\"`\n        XKB_IN_USE=yes\n    fi\ndone\n\n# Load xmodmap if not using XKB\nif [ -z \"$XKB_IN_USE\" ]; then\n    for file in \"/etc/X11/Xmodmap\" \"$HOME/.Xmodmap\"; do\n        if [ -f \"$file\" ]; then\n           echo \"Loading modmap: $file\"\n           xmodmap \"$file\"\n        fi\n    done\nfi\n\nunset XKB_IN_USE\n\n# Run all system xinitrc shell scripts.\nxinitdir=\"/etc/X11/xinit/xinitrc.d\"\nif [ -d \"$xinitdir\" ]; then\n    for script in $xinitdir/*; do\n        echo \"Loading xinit script $script\"\n        if [ -x \"$script\" -a ! -d \"$script\" ]; then\n            . \"$script\"\n        fi\n    done\nfi\n\necho \"X session wrapper complete, running session $@\"\n\nexec $@\nEOF\n\n\nsudo chmod 755 /etc/lightdm/Xsession\nsudo install -dm755 /etc/pam.d\nsudo tee /etc/pam.d/lightdm << \"EOF\"\n# Begin /etc/pam.d/lightdm\n\nauth     requisite      pam_nologin.so\nauth     required       pam_env.so\n\nauth     required       pam_succeed_if.so uid >= 1000 quiet\nauth     include        system-auth\nauth     optional       pam_gnome_keyring.so\n\naccount  include        system-account\npassword include        system-password\n\nsession  required       pam_limits.so\nsession  include        system-session\nsession  optional       pam_gnome_keyring.so auto_start\n\n# End /etc/pam.d/lightdm\nEOF\n\nsudo tee /etc/pam.d/lightdm-autologin << \"EOF\"\n# Begin /etc/pam.d/lightdm-autologin\n\nauth     requisite      pam_nologin.so\nauth     required       pam_env.so\n\nauth     required       pam_succeed_if.so uid >= 1000 quiet\nauth     required       pam_permit.so\n\naccount  include        system-account\n\npassword required       pam_deny.so\n\nsession  required       pam_limits.so\nsession  include        system-session\n\n# End /etc/pam.d/lightdm-autologin\nEOF\n\nsudo tee /etc/pam.d/lightdm-greeter << \"EOF\"\n# Begin /etc/pam.d/lightdm-greeter\n\nauth     required       pam_env.so\nauth     required       pam_permit.so\n\naccount  required       pam_permit.so\npassword required       pam_deny.so\nsession  required       pam_unix.so\n\n# End /etc/pam.d/lightdm-greeter\nEOF\n\nsudo install -dm700 /usr/share/polkit-1/rules.d\n\nsudo tee /usr/share/polkit-1/rules.d/lightdm.rules << \"EOF\"\npolkit.addRule(function(action, subject) {\n    if (subject.user == \"lightdm\") {\n        polkit.log(\"action=\" + action);\n        polkit.log(\"subject=\" + subject);\n        if (action.id.indexOf(\"org.freedesktop.login1.\") == 0) {\n            return polkit.Result.YES;\n        }\n        if (action.id.indexOf(\"org.freedesktop.consolekit.system.\") == 0) {\n            return polkit.Result.YES;\n        }\n        if (action.id.indexOf(\"org.freedesktop.upower.\") == 0) {\n            return polkit.Result.YES;\n        }\n    }\n});\nEOF\n\nsudo chmod 600 /usr/share/polkit-1/rules.d/lightdm.rules\n\nsudo install -dm755 /etc/tmpfiles.d /lib/systemd/system\n\nsudo tee /etc/tmpfiles.d/lightdm.conf << \"EOF\"\nd /run/lightdm 0711 lightdm lightdm\nEOF\n\nsudo tee /lib/systemd/system/lightdm.service << \"EOF\"\n[Unit]\nDescription=Light Display Manager\nDocumentation=man:lightdm(1)\nConflicts=getty@tty1.service\nAfter=systemd-user-sessions.service getty@tty1.service plymouth-quit.service\n\n[Service]\nExecStart=/usr/sbin/lightdm\nRestart=always\nIgnoreSIGPIPE=no\nBusName=org.freedesktop.DisplayManager\n\n[Install]\nAlias=display-manager.service\nEOF\n\nsudo getent group lightdm || sudo groupadd -g 63 lightdm\nsudo getent passwd lightdm || sudo useradd -c \"Light Display Manager\" -u 63 -g lightdm -d /var/lib/lightdm -s /sbin/nologin lightdm\n\nsudo chown -R lightdm:lightdm /var/lib/lightdm /var/log/lightdm\n\nsudo chown -R polkitd:polkitd /usr/share/polkit-1/rules.d\nif [ -f /etc/systemd/system/display-manager.service ]; then sudo systemctl disable gdm; fi\nsudo systemctl enable lightdm\n",
-        "dependencies": ["xserver-meta", "itstool", "libgcrypt", "libxklavier", "systemd", "polkit"]
+        "dependencies": ["xserver-meta", "itstool", "libgcrypt", "libxklavier", "systemd", "polkit"],
+        "description": "LightDM is a free and open-source X display manager that aims to be lightweight, fast, extensible and multi-desktop. It can use various front-ends to draw User Interface, also called Greeters. It also supports Wayland."
     },
     {
         "name": "virtualbox",
@@ -1047,7 +1066,8 @@
         "download_urls": [],
         "tarball": null,
         "commands": "sudo pip install bs4\n\nwget https://www.virtualbox.org/wiki/Linux_Downloads -O Linux_Downloads\n\ncat > /tmp/parser.py<<\"EOF\"\nfrom bs4 import BeautifulSoup\n\nwith open('Linux_Downloads') as fp:\n\tdoc = BeautifulSoup(fp.read(), features=\"html.parser\")\n\nfor anchor in doc.select('a[href]'):\n\tif 'All distributions' in str(anchor):\n\t\tprint(anchor['href'])\nEOF\n\nurl=$(python /tmp/parser.py)\ntarball=$(echo $url | rev | cut -d/ -f1 | rev)\n\nVBOX_INSTALLER=$(echo $url | rev | cut -d/ -f1 | rev)\nVERSION=$(echo $VBOX_INSTALLER | cut -d \"-\" -f2)\n\nwget -nc $url\n\nchmod a+x $VBOX_INSTALLER\n\nsudo ./$VBOX_INSTALLER\n\nsudo ln -svf /opt/VirtualBox/virtualbox.desktop /usr/share/applications/\nsudo update-desktop-database\nsudo update-mime-database /usr/share/mime\n",
-        "dependencies": ["xserver-meta", "kernel-headers"]
+        "dependencies": ["xserver-meta", "kernel-headers"],
+        "description": "Oracle VM VirtualBox is a free and open-source hosted hypervisor for x86 virtualization, developed by Oracle Corporation. Created by Innotek GmbH, it was acquired by Sun Microsystems in 2008, which was, in turn, acquired by Oracle in 2010. VirtualBox may be installed on Windows, macOS, Linux, Solaris and OpenSolaris."
     },
     {
         "name": "kf5-intro",
@@ -1055,7 +1075,8 @@
         "download_urls": [],
         "tarball": null,
         "commands": "if [ \"$KF5_PREFIX\" == \"/usr\" ]; then\n\nsudo tee -a /etc/profile.d/qt5.sh << \"EOF\"\n# Begin kf5 extension for /etc/profile.d/qt5.sh\n\npathappend /usr/lib/qt5/plugins    QT_PLUGIN_PATH\npathappend $QT5DIR/lib/plugins     QT_PLUGIN_PATH\n\npathappend /usr/lib/qt5/qml        QML2_IMPORT_PATH\npathappend $QT5DIR/lib/qml         QML2_IMPORT_PATH\n\n# End extension for /etc/profile.d/qt5.sh\nEOF\n\nsudo tee /etc/profile.d/kf5.sh << \"EOF\"\n# Begin /etc/profile.d/kf5.sh\n\nexport KF5_PREFIX=/usr\n\n# End /etc/profile.d/kf5.sh\nEOF\n\nsudo tee -a /etc/sudoers.d/qt << \"EOF\"\nDefaults env_keep += QT_PLUGIN_PATH\nDefaults env_keep += QML2_IMPORT_PATH\nEOF\n\nsudo tee -a /etc/sudoers.d/kde << \"EOF\"\nDefaults env_keep += KF5_PREFIX\nEOF\n\nelif [ \"$KF5_PREFIX\" == \"/opt\" ]; then\n\nsudo tee /etc/profile.d/kf5.sh << \"EOF\"\n# Begin /etc/profile.d/kf5.sh\n\nexport KF5_PREFIX=/opt/kf5\n\npathappend $KF5_PREFIX/bin             PATH\npathappend $KF5_PREFIX/lib/pkgconfig   PKG_CONFIG_PATH\n\npathappend $KF5_PREFIX/etc/xdg         XDG_CONFIG_DIRS\npathappend $KF5_PREFIX/share           XDG_DATA_DIRS\n\npathappend $KF5_PREFIX/lib/plugins     QT_PLUGIN_PATH\n\npathappend $KF5_PREFIX/lib/qml         QML2_IMPORT_PATH\n\npathappend $KF5_PREFIX/lib/python3.7/site-packages PYTHONPATH\n\npathappend $KF5_PREFIX/share/man       MANPATH\n# End /etc/profile.d/kf5.sh\nEOF\n\nsudo tee -a /etc/profile.d/qt5.sh << \"EOF\"\n# Begin Qt5 changes for KF5\n\npathappend $QT5DIR/plugins             QT_PLUGIN_PATH\npathappend $QT5DIR/qml                 QML2_IMPORT_PATH\n\n# End Qt5 changes for KF5\nEOF\n\nsudo tee -a /etc/ld.so.conf << \"EOF\"\n# Begin KF5 addition\n\n/opt/kf5/lib\n\n# End KF5 addition\nEOF\n\ninstall -v -dm755           $KF5_PREFIX/{etc,share} &&\nln -sfv /etc/dbus-1         $KF5_PREFIX/etc         &&\nln -sfv /usr/share/dbus-1   $KF5_PREFIX/share\n\ninstall -v -dm755                $KF5_PREFIX/share/icons &&\nln -sfv /usr/share/icons/hicolor $KF5_PREFIX/share/icons\n\nfi",
-        "dependencies": []
+        "dependencies": [],
+        "description": "A meta package that sets the environment for building KDE Frameworks."
     },
     {
         "name": "libidl",
@@ -1063,7 +1084,8 @@
         "download_urls": ["http://ftp.gnome.org/pub/gnome/sources/libIDL/0.8/libIDL-0.8.14.tar.bz2"],
         "tarball": "libIDL-0.8.14.tar.bz2",
         "commands": "./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var --disable-static &&\nmake\n\nsudo make install",
-        "dependencies": []
+        "dependencies": [],
+        "description": "The libIDL package contains libraries for Interface Definition Language files. This is a specification for defining portable interfaces."
     },
     {
         "name": "libart",
@@ -1071,7 +1093,8 @@
         "download_urls": ["http://ftp.gnome.org/pub/gnome/sources/libart_lgpl/2.3/libart_lgpl-2.3.21.tar.bz2"],
         "tarball": "libart_lgpl-2.3.21.tar.bz2",
         "commands": "./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var --disable-static &&\nmake\n\nsudo make install",
-        "dependencies": []
+        "dependencies": [],
+        "description": "Android Runtime (ART) is the managed runtime used by applications and some system services on Android. ART and its predecessor Dalvik were originally created specifically for the Android project. ART as the runtime executes the Dalvik Executable format and DEX bytecode specification."
     },
     {
         "name": "plymouth",
@@ -1079,7 +1102,8 @@
         "download_urls": ["https://www.freedesktop.org/software/plymouth/releases/plymouth-0.9.4.tar.xz"],
         "tarball": "plymouth-0.9.4.tar.xz",
         "commands": "./configure --prefix=/usr --enable-systemd-integration --enable-static --disable-pango --disable-gtk &&\nmake\n\nsudo make install",
-        "dependencies": []
+        "dependencies": [],
+        "description": "Plymouth provides a boot-time I/O multiplexing framework - the most obvious use for which is to provide an attractive graphical animation in place of the text messages that normally get shown during boot. (The messages are instead redirected to a logfile for later viewing.) However, in event-driven boot systems Plymouth can also usefully handle user interaction such as password prompts for encrypted file systems."
     },
     {
         "name": "galculator",
@@ -1087,7 +1111,8 @@
         "download_urls": ["http://galculator.mnim.org/downloads/galculator-2.1.4.tar.bz2"],
         "tarball": "galculator-2.1.4.tar.bz2",
         "commands": "./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var --disable-static &&\nmake\n\nsudo make install",
-        "dependencies": []
+        "dependencies": [],
+        "description": "galculator is a scientific calculator. It supports different number bases (DEC/HEX/OCT/BIN) and angles bases (DEG/RAD/GRAD) and features a wide range of mathematical (basic arithmetic operations, trigonometric functions, etc) and other useful functions (memory, etc) at the moment. galculator can be used in algebraic mode as well as in Reverse Polish Notation (RPN)."
     },
     {
         "name": "murrine-gtk-engine",
@@ -1095,7 +1120,8 @@
         "download_urls": ["https://download.gnome.org/sources/murrine/0.98/murrine-0.98.2.tar.xz"],
         "tarball": "murrine-0.98.2.tar.xz",
         "commands": "./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var --disable-static &&\nmake\n\nsudo make install",
-        "dependencies": []
+        "dependencies": [],
+        "description": "\"Murrine\" is an Italian word meaning the glass artworks done by Venicians glass blowers. The Engine is cairo-based, and it's very fast compared to clearlooks-cairo and ubuntulooks."
     },
     {
         "name": "gnome-themes-standard",
@@ -1103,7 +1129,8 @@
         "download_urls": ["http://ftp.acc.umu.se/pub/gnome/sources/gnome-themes-standard/3.27/gnome-themes-standard-3.27.90.tar.xz"],
         "tarball": "gnome-themes-standard-3.27.90.tar.xz",
         "commands": "./configure --prefix=/usr\nmake\n\nsudo make install",
-        "dependencies": []
+        "dependencies": [],
+        "description": "Adwaita GTK+ 2 theme — engine"
     },
     {
         "name": "usb-modeswitch",
@@ -1112,7 +1139,8 @@
 			"http://www.draisberghof.de/usb_modeswitch/usb-modeswitch-data-20150627.tar.bz2"],
         "tarball": "usb-modeswitch-2.2.5.tar.bz2",
         "commands": "sudo make install-static\n\ncd $SOURCE_DIR\nrm -rf usb-modeswitch-2.2.5\n\n\ntar -xf usb-modeswitch-data-20150627.tar.bz2\ncd usb-modeswitch-data-20150627\n\nsudo make install\n",
-        "dependencies": []
+        "dependencies": [],
+        "description": "mode switching tool for controlling \"flip flop\" USB devices"
     },
     {
         "name": "mate-desktop-environment",
@@ -1121,110 +1149,111 @@
         "tarball": null,
         "commands": "sudo tee /etc/gtk-2.0/gtkrc <<\"EOF\"\ninclude \"/usr/share/themes/Clearlooks/gtk-2.0/gtkrc\"\ngtk-icon-theme-name = \"Flat-Remix\"\nEOF\n\nsudo mkdir -pv /etc/polkit-1/localauthority/50-local.d/\nsudo mkdir -pv /etc/polkit-1/rules.d/\n\nsudo tee /etc/polkit-1/rules.d/50-org.freedesktop.NetworkManagerAndUdisks2.rules <<\"EOF\"\npolkit.addRule(function(action, subject) {\n  if (action.id.indexOf(\"org.freedesktop.NetworkManager.\") == 0 || action.id.indexOf(\"org.freedesktop.udisks2.filesystem-mount\") == 0) {\n    return polkit.Result.YES;\n  }\n});\nEOF\n\nsudo mkdir -pv /usr/share/icons/default/\nsudo tee /usr/share/icons/default/index.theme <<\"EOF\"\n[Icon Theme]\nInherits=Adwaita\nEOF\n\nccache -C\nsudo ccache -C\nccache -c\nsudo ccache -c\n\nrm -rf ~/.ccache\nsudo rm -rf ~/.ccache\nxdg-user-dirs-update\nsudo xdg-user-dirs-update\n\nsudo tee /etc/profile.d/xdg.sh << EOF\ncd ~\nxdg-user-dirs-update\nEOF\n\nsudo rm -rf /etc/X11/xorg.conf.d/*\n\nsudo tee /etc/X11/xorg.conf.d/99-synaptics-overrides.conf <<\"EOF\"\nSection  \"InputClass\"\n    Identifier  \"touchpad overrides\"\n    # This makes this snippet apply to any device with the \"synaptics\" driver\n    # assigned\n    MatchDriver  \"synaptics\"\n\n    ####################################\n    ## The lines that you need to add ##\n    # Enable left mouse button by tapping\n    Option  \"TapButton1\"  \"1\"\n    # Enable vertical scrolling\n    Option  \"VertEdgeScroll\"  \"1\"\n    # Enable right mouse button by tapping lower right corner\n    Option \"RBCornerButton\" \"3\"\n    ####################################\n\nEndSection\nEOF\n\nif [ ! -f /usr/share/pixmaps/aryalinux.png ]\nthen\n  pushd /usr/share/pixmaps/\n  sudo wget http://aryalinux.info/files/aryalinux.png\n  popd\nfi\n\nsudo sed -i \"s@/share/backgrounds/mate/desktop/Stripes.png@/share/backgrounds/aryalinux/default-desktop-wallpaper.jpeg@g\" /usr/share/glib-2.0/schemas/org.mate.background.gschema.xml\nsudo sed -i \"s@'Sans 10'@'Noto Sans 10'@g\" /usr/share/glib-2.0/schemas/*.xml\nsudo sed -i \"s@'Sans 8'@'Noto Sans 8'@g\" /usr/share/glib-2.0/schemas/*.xml\nsudo sed -i \"s@'Sans 11'@'Noto Sans 11'@g\" /usr/share/glib-2.0/schemas/*.xml\nsudo sed -i \"s@'Sans Bold 10'@'Noto Sans 10'@g\" /usr/share/glib-2.0/schemas/*.xml\n\nsudo sed -i \"s@'Monospace 10'@'Droid Sans Mono 10'@g\" /usr/share/glib-2.0/schemas/*.xml\nsudo sed -i \"s@'Monospace 11'@'Droid Sans Mono 12'@g\" /usr/share/glib-2.0/schemas/*.xml\n\nsudo sed -i \"s@'Menta'@'Arc-Dark'@g\" /usr/share/glib-2.0/schemas/org.mate.marco.gschema.xml\nsudo sed -i \"s@'Menta'@'Arc'@g\" /usr/share/glib-2.0/schemas/org.mate.interface.gschema.xml\nsudo sed -i \"s@'menta'@'Numix-Circle'@g\" /usr/share/glib-2.0/schemas/org.mate.interface.gschema.xml\n\npushd /usr/share/glib-2.0/schemas/\nsudo glib-compile-schemas .\npopd",
         "dependencies": [
-		"gobject-introspection",
-		"desktop-file-utils",
-		"shared-mime-info",
-		"libxml2",
-		"libxslt",
-		"glib2",
-		"libidl",
-		"dbus",
-		"dbus-glib",
-		"polkit",
-		"popt",
-		"libgcrypt",
-		"gtk2",
-		"libcanberra",
-		"libart",
-		"libglade",
-		"libtasn1",
-		"libxklavier",
-		"libsoup",
-		"icon-naming-utils",
-		"libunique",
-		"libwnck",
-		"librsvg",
-		"upower",
-		"libtasn1",
-		"xmlto",
-		"gtk-doc",
-		"rarian",
-		"dconf",
-		"libsecret",
-		"gnome-keyring",
-		"libnotify",
-		"libwnck2",
-		"zenity",
-		"yelp",
-		"xdg-utils",
-		"xdg-user-dirs",
-		"python-modules#docutils",
-		"python-modules#pygobject2",
-		"python-modules#pygobject3",
-		"libpeas",
-		"gtksourceview",
-		"poppler",
-		"libgtop",
-		"gtkmm2",
-		"gtkmm3",
-		"glibmm",
-		"gnome-keyring",
-		"mate-common",
-		"mate-desktop",
-		"libmatekbd",
-		"libmatewnck",
-		"libmateweather",
-		"mate-icon-theme",
-		"caja",
-		"marco",
-		"mate-settings-daemon",
-		"mate-session-manager",
-		"mate-menus",
-		"mate-panel",
-		"mate-control-center",
-		"lightdm",
-		"lightdm-gtk-greeter",
-		"plymouth",
-		"mate-screensaver",
-        "vte2",
-        "vte",
-        "mate-terminal",
-        "gvfs",
-		"caja",
-		"caja-extensions",
-		"caja-dropbox",
-		"pluma",
-		"galculator",
-		"eom",
-		"engrampa",
-        "atril",
-        "udisks2",
-		"mate-utils",
-		"murrine-gtk-engine",
-		"mate-themes",
-		"gnome-themes-standard",
-		"adwaita-icon-theme",
-		"mate-system-monitor",
-		"mate-power-manager",
-		"marco",
-		"mozo",
-		"mate-backgrounds",
-		"libmatemixer",
-		"mate-media",
-		"wireless_tools",
-		"wpa_supplicant",
-		"networkmanager",
-		"modemmanager",
-		"network-manager-applet",
-		"net-tools",
-		"usb-modeswitch",
-		"aryalinux-wallpapers",
-		"aryalinux-google-fonts",
-		"aryalinux-gtk-themes",
-		"aryalinux-icons",
-        "blueman",
-        "aryalinux-mate-settings"
-	]
+            "gobject-introspection",
+            "desktop-file-utils",
+            "shared-mime-info",
+            "libxml2",
+            "libxslt",
+            "glib2",
+            "libidl",
+            "dbus",
+            "dbus-glib",
+            "polkit",
+            "popt",
+            "libgcrypt",
+            "gtk2",
+            "libcanberra",
+            "libart",
+            "libglade",
+            "libtasn1",
+            "libxklavier",
+            "libsoup",
+            "icon-naming-utils",
+            "libunique",
+            "libwnck",
+            "librsvg",
+            "upower",
+            "libtasn1",
+            "xmlto",
+            "gtk-doc",
+            "rarian",
+            "dconf",
+            "libsecret",
+            "gnome-keyring",
+            "libnotify",
+            "libwnck2",
+            "zenity",
+            "yelp",
+            "xdg-utils",
+            "xdg-user-dirs",
+            "python-modules#docutils",
+            "python-modules#pygobject2",
+            "python-modules#pygobject3",
+            "libpeas",
+            "gtksourceview",
+            "poppler",
+            "libgtop",
+            "gtkmm2",
+            "gtkmm3",
+            "glibmm",
+            "gnome-keyring",
+            "mate-common",
+            "mate-desktop",
+            "libmatekbd",
+            "libmatewnck",
+            "libmateweather",
+            "mate-icon-theme",
+            "caja",
+            "marco",
+            "mate-settings-daemon",
+            "mate-session-manager",
+            "mate-menus",
+            "mate-panel",
+            "mate-control-center",
+            "lightdm",
+            "lightdm-gtk-greeter",
+            "plymouth",
+            "mate-screensaver",
+            "vte2",
+            "vte",
+            "mate-terminal",
+            "gvfs",
+            "caja",
+            "caja-extensions",
+            "caja-dropbox",
+            "pluma",
+            "galculator",
+            "eom",
+            "engrampa",
+            "atril",
+            "udisks2",
+            "mate-utils",
+            "murrine-gtk-engine",
+            "mate-themes",
+            "gnome-themes-standard",
+            "adwaita-icon-theme",
+            "mate-system-monitor",
+            "mate-power-manager",
+            "marco",
+            "mozo",
+            "mate-backgrounds",
+            "libmatemixer",
+            "mate-media",
+            "wireless_tools",
+            "wpa_supplicant",
+            "networkmanager",
+            "modemmanager",
+            "network-manager-applet",
+            "net-tools",
+            "usb-modeswitch",
+            "aryalinux-wallpapers",
+            "aryalinux-google-fonts",
+            "aryalinux-gtk-themes",
+            "aryalinux-icons",
+            "blueman",
+            "aryalinux-mate-settings"
+        ],
+        "description": "MATE is a desktop environment composed of free and open-source software that runs on Linux and BSD operating systems. An Argentine user of Arch Linux started the MATE project to fork and continue GNOME 2 in response to the negative reception of GNOME 3, which had replaced its traditional taskbar with GNOME Shell."
     },
     {
         "name": "firefox-bin",
@@ -1233,19 +1262,20 @@
         "tarball": null,
         "commands": "if [ \"x$INSTALL_LANGUAGE\" == \"x\" ]; then\n\necho \"These are the languages in which firefox is available:\"\necho \"\"\nwget -O /tmp/langfile https://ftp.mozilla.org/pub/firefox/releases/latest/README.txt &> /dev/null\ncat /tmp/langfile | grep \"lang=\" | grep -v \"wget\" | grep -v \"http\" | grep -v \"For\" | tr -s ' ' | sed \"s@ (@@g\" | rev | cut -d= -f1 | rev | sed \"s@lang=@@g\" | tr \"\\n\" \" \" | sed \"s@en-GB@en-US en-GB@g\"\necho \"\"\nread -p \"Enter the language for Firefox \" LANG\nrm /tmp/langfile\n\nelse\n\tLANG=\"$INSTALL_LANGUAGE\"\nfi\n\nif [ $(uname -m) == \"x86_64\" ]\nthen\n\twget -O $SOURCE_DIR/firefox.tar.bz2 \"https://download.mozilla.org/?product=firefox-latest&os=linux64&lang=$LANG\"\nelse\n\twget -O $SOURCE_DIR/firefox.tar.bz2 \"https://download.mozilla.org/?product=firefox-latest&os=linux&lang=$LANG\"\nfi\n\nTARBALL=\"firefox.tar.bz2\"\nDIRECTORY=`tar -tf $TARBALL | sed -e 's@/.*@@' | uniq`\n\ntar -xf $TARBALL\n\ncd $DIRECTORY\n\ncat > 1434987998846.sh << \"ENDOFFILE\"\nmkdir /opt/firefox\ncp -rf * /opt/firefox\n\ncat > /usr/share/applications/firefox.desktop << \"EOF\" &&\n[Desktop Entry]\nEncoding=UTF-8\nName=Firefox Web Browser\nComment=Browse the World Wide Web\nGenericName=Web Browser\nExec=/opt/firefox/firefox %u\nTerminal=false\nType=Application\nIcon=firefox\nCategories=GNOME;GTK;Network;WebBrowser;\nMimeType=application/xhtml+xml;text/xml;application/xhtml+xml;application/vnd.mozilla.xul+xml;text/mml;x-scheme-handler/http;x-scheme-handler/https;\nStartupNotify=true\nEOF\n\nfor s in 16 32 48 128\ndo\ninstall -v -Dm644 /opt/firefox/browser/chrome/icons/default/default${s}.png \\\n                  /usr/share/icons/hicolor/${s}x${s}/apps/firefox.png\ndone\n\nENDOFFILE\nchmod a+x 1434987998846.sh\nsudo ./1434987998846.sh\nsudo rm -rf 1434987998846.sh\n\nif [ -f /usr/bin/firefox ]; then\n\tsudo rm /usr/bin/firefox\n\tsudo rm -rf /usr/lib/firefox/\nfi",
         "dependencies": [
-		"curl",
-		"alsa-lib",
-		"gtk2",
-		"unzip",
-		"yasm",
-		"zip",
-		"icu",
-		"libevent",
-		"libvpx",
-		"nspr",
-		"nss",
-		"sqlite"
-	]
+            "curl",
+            "alsa-lib",
+            "gtk2",
+            "unzip",
+            "yasm",
+            "zip",
+            "icu",
+            "libevent",
+            "libvpx",
+            "nspr",
+            "nss",
+            "sqlite"
+        ],
+        "description": "The Firefox binary package. This package unlike firefox is not built from source. The latest online binaries are downloaded and extracted when this package is installed."
     },
     {
         "name": "kernel-headers",
@@ -1253,7 +1283,8 @@
         "download_urls": [],
         "tarball": null,
         "commands": "KERNEL_VERSION=$(uname -r)\nKERNEL_MAJOR_VERSION=$(uname -r | cut -d '.' -f1)\nKERNEL_URL=https://cdn.kernel.org/pub/linux/kernel/v$KERNEL_MAJOR_VERSION.x/linux-$KERNEL_VERSION.tar.xz\nKERNEL_TARBALL=$(echo $KERNEL_URL | rev | cut -d/ -f1 | rev)\n\nwget -nc $KERNEL_URL\n\nKERNEL_DIR=$(tar tf $KERNEL_TARBALL | cut -d/ -f1 | uniq)\n\nsudo mkdir -pv /usr/src/\nsudo tar xf $KERNEL_TARBALL -C /usr/src\nsudo ln -svf /usr/src/$KERNEL_DIR /lib/modules/$KERNEL_VERSION/build\n\npushd /usr/src/$KERNEL_DIR\nsudo make oldconfig\nsudo make prepare\nsudo make scripts\npopd\n\nsudo rm -rf $KERNEL_TARBALL\n\nVERSION=KERNEL_VERSION\n",
-        "dependencies": []
+        "dependencies": [],
+        "description": "The current linux kernel headers."
     },
     {
         "name": "binary-app-installer",
@@ -1261,7 +1292,8 @@
         "download_urls": [],
         "tarball": null,
         "commands": "sudo rm -rf master.tar.bz2\nwget -nc https://bitbucket.org/chandrakantsingh/binary-app-installer/get/master.tar.bz2 &&\nsudo tar xf master.tar.bz2 -C /\nsudo update-desktop-database",
-        "dependencies": []
+        "dependencies": [],
+        "description": "Binary application installer. You can download popular binaries form the internet and pass them to the binary app installer to install without having to run commands to do so inside the terminal."
     },
     {
         "name": "dash-to-dock",
@@ -1269,7 +1301,8 @@
         "download_urls": [],
         "tarball": null,
         "commands": "git clone https://github.com/micheleg/dash-to-dock.git\n\ncd dash-to-dock\nmake\nsudo make DESTDIR=/ install\n\ncd ..\nsudo rm -rf dash-to-dock",
-        "dependencies": ["gnome-shell-extensions"]
+        "dependencies": ["gnome-shell-extensions"],
+        "description": "This extension moves the dash out of the overview transforming it in a dock for an easier launching of applications and a faster switching between windows and desktops. Side and bottom placement options are available."
     },
     {
         "name": "dash-to-panel",
@@ -1277,7 +1310,8 @@
         "download_urls": [],
         "tarball": null,
         "commands": "git clone https://github.com/home-sweet-gnome/dash-to-panel.git\n\ncd dash-to-panel\nsudo make DESTDIR=/ install\n\ncd ..\nsudo rm -rf dash-to-panel",
-        "dependencies": ["gnome-shell-extensions"]
+        "dependencies": ["gnome-shell-extensions"],
+        "description": "This extension moves the dash into the gnome main panel so that the application launchers and system tray are combined into a single panel, similar to that found in KDE Plasma and Windows 7+. A separate dock is no longer needed for easy access to running and favorited applications."
     },
     {
         "name": "go",
@@ -1285,7 +1319,8 @@
         "download_urls": ["https://dl.google.com/go/go1.13.3.linux-amd64.tar.gz"],
         "tarball": "go1.13.3.linux-amd64.tar.gz",
         "commands": "sudo mkdir -pv /opt/go\nsudo mv * /opt/go\nsudo mkdir /opt/gopath\nsudo chmod -R a+rw /opt/gopath\nsudo tee /etc/profile.d/go.sh << \"EOF\"\nexport GOPATH=/opt/gopath\nexport PATH=$PATH:/opt/go/bin:/opt/gopath/bin\nEOF\n",
-        "dependencies": []
+        "dependencies": [],
+        "description": "DescriptionGo, also known as Golang, is a statically typed, compiled programming language designed at Google by Robert Griesemer, Rob Pike, and Ken Thompson. Go is syntactically similar to C, but with memory safety, garbage collection, structural typing, and CSP-style concurrency."
     },
     {
         "name": "apparmor",
@@ -1293,7 +1328,8 @@
         "download_urls": [],
         "tarball": null,
         "commands": "git clone https://gitlab.com/apparmor/apparmor.git\ncd apparmor\npushd ./libraries/libapparmor\nsh ./autogen.sh\nsh ./configure --prefix=/usr --with-perl --with-python\nmake\nsudo make install\npopd\n\npushd binutils\nmake\nsudo make install\npopd\n\npushd parser\nmake\nsudo make install\npopd\n\npushd utils\nmake\nsudo make install\npopd\n\npushd changehat/pam_apparmor\nmake\nsudo make install\npopd\n\npushd profiles\nmake\nsudo make install\npopd\n",
-        "dependencies": []
+        "dependencies": [],
+        "description": "AppArmor protects systems from insecure or untrusted processes by running them in restricted confinement, while still allowing processes to share files, exercise privilege and communicate with other processes. AppArmor is a Mandatory Access Control (MAC) mechanism which uses the Linux Security Module (LSM) framework. The confinement's restrictions are mandatory and are not bound to identity, group membership, or object ownership. The protections provided are in addition to the kernel's regular access control mechanisms (including DAC) and can be used to restrict the superuser."
     },
     {
         "name": "xdg-dbus-proxy",
@@ -1301,7 +1337,8 @@
         "download_urls": ["https://github.com/flatpak/xdg-dbus-proxy/releases/download/0.1.2/xdg-dbus-proxy-0.1.2.tar.xz"],
         "tarball": "xdg-dbus-proxy-0.1.2.tar.xz",
         "commands": "./configure --prefix=/usr &&\nmake\nsudo make install",
-        "dependencies": []
+        "dependencies": [],
+        "description": "xdg-dbus-proxy is a filtering proxy for D-Bus connections. It was originally part of the Flatpak project, but it has been broken out as a standalone module to facilitate using it in other contexts, for example in WebKit-GTK's optional bubblewrap-based sandbox."
     },
     {
         "name": "libostree",
@@ -1309,7 +1346,8 @@
         "download_urls": ["https://github.com/ostreedev/ostree/releases/download/v2019.4/libostree-2019.4.tar.xz"],
         "tarball": "libostree-2019.4.tar.xz",
         "commands": "./configure --prefix=/usr &&\nmake -j$(nproc)\nsudo make install",
-        "dependencies": ["fuse2"]
+        "dependencies": ["fuse2"],
+        "description": "libostree is a library for managing bootable, immutable, versioned filesystem trees. It is like git in that it checksums individual files and has a content-addressed object store; unlike git, it \"checks out\" the files using hardlinks into an immutable directory tree. This can be used to provide atomic upgrades with rollback, history and parallel-installation, particularly useful on \"fixed purpose\" systems such as embedded devices. It is also used by the Flatpak application runtime system."
     },
     {
         "name": "libindicator",
@@ -1317,7 +1355,8 @@
         "download_urls": ["https://launchpad.net/libindicator/12.10/12.10.1/+download/libindicator-12.10.1.tar.gz"],
         "tarball": "libindicator-12.10.1.tar.gz",
         "commands": "export CFLAGS+=\" -Wno-error=deprecated-declarations\" &&\n./configure --prefix=/usr --with-gtk=3 --disable-static &&\nmake &&\nsudo make install",
-        "dependencies": []
+        "dependencies": [],
+        "description": "This library contains information to build indicators to go into the indicator applet."
     },
     {
         "name": "flatpak",
@@ -1325,7 +1364,8 @@
         "download_urls": ["https://github.com/flatpak/flatpak/releases/download/1.5.0/flatpak-1.5.0.tar.xz"],
         "tarball": "flatpak-1.5.0.tar.xz",
         "commands": "./configure --prefix=/usr &&\nmake -j$(nproc)\nsudo make install\nsudo flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo\nsudo tee /etc/profile.d/flatpak.sh << \"EOF\"\nexport XDG_DATA_DIRS=/usr/var/lib/flatpak/exports/share/:/usr/local/share/:/usr/share/\nEOF",
-        "dependencies": ["libostree", "appstream-glib", "libseccomp"]
+        "dependencies": ["libostree", "appstream-glib", "libseccomp"],
+        "description": "DescriptionFlatpak is a software utility for software deployment and package management for Linux. It is advertised as offering a sandbox environment in which users can run application software in isolation from the rest of the system."
     },
     {
         "name": "libseccomp",
@@ -1333,7 +1373,8 @@
         "download_urls": ["https://github.com/seccomp/libseccomp/releases/download/v2.4.1/libseccomp-2.4.1.tar.gz"],
         "tarball": "libseccomp-2.4.1.tar.gz",
         "commands": "./configure --prefix=/usr --disable-static &&\nmake \"-j`nproc`\" || make\n\n\n\nsudo tee rootscript.sh << \"ENDOFROOTSCRIPT\"\nmake install\n\nENDOFROOTSCRIPT\nsudo chmod 755 rootscript.sh\nsudo bash -e ./rootscript.sh\nsudo rm rootscript.sh",
-        "dependencies": ["valgrind"]
+        "dependencies": ["valgrind"],
+        "description": "The libseccomp library provides an easy to use, platform independent, interface to the Linux Kernel's syscall filtering mechanism. The libseccomp API is designed to abstract away the underlying BPF based syscall filter language and present a more conventional function-call based filtering interface that should be familiar to, and easily adopted by, application developers."
     },
     {
         "name": "appstream-glib",
@@ -1341,7 +1382,8 @@
         "download_urls": ["https://github.com/hughsie/appstream-glib/archive/appstream_glib_0_7_16.tar.gz"],
         "tarball": "appstream_glib_0_7_16.tar.gz",
         "commands": "mkdir build\ncd build/\nmeson --prefix=/usr --libdir=/usr/lib --sysconfdir=/etc --mandir=/usr/man -Dgtk-doc=false -Dstemmer=false -Drpm=false ..\nninja\nsudo ninja install",
-        "dependencies": ["valgrind"]
+        "dependencies": ["valgrind"],
+        "description": "This library provides GObjects and helper methods to make it easy to read and write AppStream metadata. It also provides a simple DOM implementation that makes it easy to edit nodes and convert to and from the standardized XML representation."
     },
     {
         "name": "mate-themes",
@@ -1349,7 +1391,8 @@
         "download_urls": ["https://pub.mate-desktop.org/releases/themes/3.22/mate-themes-3.22.9.tar.xz"],
         "tarball": "mate-themes-3.22.9.tar.xz",
         "commands": "./configure --prefix=/usr\nmake\nsudo make install",
-        "dependencies": []
+        "dependencies": [],
+        "description": "Themes for mate desktop environment"
     },
     {
         "name": "atril",
@@ -1357,7 +1400,8 @@
         "download_urls": ["https://github.com/mate-desktop/atril/releases/download/v1.22.3/atril-1.22.3.tar.xz"],
         "tarball": "atril-1.22.3.tar.xz",
         "commands": "./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var --disable-static &&\nmake\nsudo make install",
-        "dependencies": []
+        "dependencies": [],
+        "description": "Atril is a document viewer capable of displaying multiple and single page document formats like PDF and Postscript."
     },
     {
         "name": "qt5",
@@ -1392,7 +1436,8 @@
             "xcb-util-image",
             "xcb-util-keysyms",
             "xcb-util-renderutil"
-        ]
+        ],
+        "description": "Qt5 is a cross-platform application framework that is widely used for developing application software with a graphical user interface (GUI) (in which cases Qt5 is classified as a widget toolkit), and also used for developing non-GUI programs such as command-line tools and consoles for servers. One of the major users of Qt is KDE Frameworks 5 (KF5)."
     },
     {
         "name": "hardinfo",
@@ -1400,7 +1445,8 @@
         "download_urls": [],
         "tarball": null,
         "commands": "sudo rm -rf hardinfo\n\ngit clone https://github.com/lpereira/hardinfo.git\ncd hardinfo\nmkdir -pv build\ncd build\ncmake -DCMAKE_INSTALL_PREFIX=/usr ..\nmake\nsudo make install\n\ncd ..\nsudo rm -rf hardinfo",
-        "dependencies": []
+        "dependencies": [],
+        "description": "HardInfo is a small application that displays information about your hardware and operating system. Currently it knows about PCI, ISA PnP, USB, IDE, SCSI, Serial and parallel port devices."
     },
     {
         "name": "libktorrent",
@@ -1408,7 +1454,8 @@
         "download_urls": ["https://download.kde.org/stable/ktorrent/5.1.2/libktorrent-2.1.1.tar.xz"],
         "tarball": "libktorrent-2.1.1.tar.xz",
         "commands": "mkdir -pv build\ncd build\n\ncmake -DCMAKE_INSTALL_PREFIX=/usr ..\nmake -j$(nproc)\n\nsudo make install",
-        "dependencies": []
+        "dependencies": [],
+        "description": "This package contains header files, CMake modules and other files needed for developing and compiling/linking which use the KTorrent library."
     },
     {
         "name": "ktorrent",
@@ -1416,7 +1463,8 @@
         "download_urls": ["https://download.kde.org/stable/ktorrent/5.1.2/ktorrent-5.1.2.tar.xz"],
         "tarball": "ktorrent-5.1.2.tar.xz",
         "commands": "mkdir -pv build\ncd build\n\ncmake -DCMAKE_INSTALL_PREFIX=/usr ..\nmake -j$(nproc)\n\nsudo make install",
-        "dependencies": ["libktorrent"]
+        "dependencies": ["libktorrent"],
+        "description": "The KTorrent library is a C++ / Qt 4 / KDE Platform based implementation of the BitTorrent protocol (mostly client side)."
     },
     {
         "name": "clementine",
@@ -1438,7 +1486,8 @@
             "libmtp",
             "sqlite",
             "liblastfm"
-        ]
+        ],
+        "description": "Clementine is a multiplatform music player focusing on a fast and easy-to-use interface for searching and playing your music."
     },
     {
         "name": "liblastfm",
@@ -1446,7 +1495,8 @@
         "download_urls": ["http://archive.ubuntu.com/ubuntu/pool/universe/libl/liblastfm/liblastfm_1.0.9.orig.tar.gz"],
         "tarball": "liblastfm_1.0.9.orig.tar.gz",
         "commands": "mkdir -pv build\ncd build\n\ncmake -DCMAKE_INSTALL_PREFIX=/usr ..\nmake -j$(nproc)\n\nsudo make install",
-        "dependencies": ["fftw", "libsamplerate", "qt5"]
+        "dependencies": ["fftw", "libsamplerate", "qt5"],
+        "description": "liblastfm is a collection of C++/Qt4 libraries provided by Last.fm for use with their web services."
     },
     {
         "name": "libsparsehash",
@@ -1454,7 +1504,8 @@
         "download_urls": ["https://github.com/sparsehash/sparsehash/archive/sparsehash-2.0.3.tar.gz"],
         "tarball": "sparsehash-2.0.3.tar.gz",
         "commands": "./configure --prefix=/usr  &&\nmake \"-j`nproc`\"\nsudo make install",
-        "dependencies": []
+        "dependencies": [],
+        "description": "The Google SparseHash project contains several C++ template hash-map implementations in use at Google, with different performance characteristics, including an implementation that optimizes for space and one that optimizes for speed."
     },
     {
         "name": "libechonest",
@@ -1462,7 +1513,8 @@
         "download_urls": ["http://archive.ubuntu.com/ubuntu/pool/universe/libe/libechonest/libechonest_2.3.1.orig.tar.gz"],
         "tarball": "libechonest_2.3.1.orig.tar.gz",
         "commands": "mkdir build &&\ncd build &&\ncmake -DCMAKE_INSTALL_PREFIX=/usr -DBUILD_WITH_QT4=off .. &&\nmake \"-j`nproc`\"\nsudo make install",
-        "dependencies": []
+        "dependencies": [],
+        "description": "Libechonest is a Qt library for communicating with 'The Echo Nest': an 'intelligent music application platform'. It currently supports all of the features of the Echo Nest API, including all the API functions."
     },
     {
         "name": "libmygpo-qt1",
@@ -1470,7 +1522,8 @@
         "download_urls": ["https://github.com/gpodder/libmygpo-qt/archive/1.0.9.tar.gz"],
         "tarball": "1.0.9.tar.gz",
         "commands": "mkdir build &&\ncd build &&\ncmake -DCMAKE_INSTALL_PREFIX=/usr -DBUILD_WITH_QT4=off .. &&\nmake \"-j`nproc`\"\nsudo make install",
-        "dependencies": ["qt5", "gjson"]
+        "dependencies": ["qt5", "gjson"],
+        "description": "C++/Qt Library wrapping the gpodder.net Webservice"
     },
     {
         "name": "libcrypto++",
@@ -1478,7 +1531,8 @@
         "download_urls": ["https://github.com/weidai11/cryptopp/archive/CRYPTOPP_8_2_0.tar.gz"],
         "tarball": "CRYPTOPP_8_2_0.tar.gz",
         "commands": "sed -i \"s@/usr/local@/usr@g\" GNUmakefile\nmake \"-j`nproc`\"\nmake libcryptopp.so",
-        "dependencies": []
+        "dependencies": [],
+        "description": "Crypto++ is library for creating C++ programs which use cryptographic algorithms. The library uses a Pipes & Filters architecture with heavy use of templates and abstract base classes."
     },
     {
         "name": "gjson",
@@ -1486,7 +1540,8 @@
         "download_urls": ["https://github.com/flavio/qjson/archive/0.9.0.tar.gz"],
         "tarball": "0.9.0.tar.gz",
         "commands": "mkdir build &&\ncd build &&\ncmake -DCMAKE_INSTALL_PREFIX=/usr .. &&\nmake \"-j`nproc`\"\nsudo make install",
-        "dependencies": []
+        "dependencies": [],
+        "description": "Go package that provides a fast and simple way to get values from a JSON document. It has features such as one line retrieval, dot notation paths, iteration, and parsing JSON lines."
     },
     {
         "name": "libimobiledevice",
@@ -1497,7 +1552,8 @@
         ],
         "tarball": "libimobiledevice-1.2.0.tar.bz2",
         "commands": "patch -Np1 -i ../libimobiledevice-1.2.0-sslv3.patch &&\n./configure --prefix=/usr &&\nmake \"-j`nproc`\"\nsudo make install",
-        "dependencies": ["libplist", "libusbmuxd"]
+        "dependencies": ["libplist", "libusbmuxd"],
+        "description": "libimobiledevice is a library that talks the native Apple USB protocols that the iPhone, iPad and iPod Touch use. Unlike other projects, libimobiledevice does not depend on using any existing libraries from Apple."
     },
     {
         "name": "libusbmuxd",
@@ -1507,7 +1563,8 @@
         ],
         "tarball": "2.0.1.tar.gz",
         "commands": "./autogen.sh --prefix=/usr  &&\nmake \"-j`nproc`\"\nsudo make install",
-        "dependencies": []
+        "dependencies": [],
+        "description": "usbmuxd, the USB multiplexor daemon, is in charge of coordinating access to iPhone and iPod Touch services over USB. Synchronization and management applications for the iPhone and iPod Touch need this daemon to communicate with such devices concurrently."
     },
     {
         "name": "libchromaprint",
@@ -1517,7 +1574,8 @@
         ],
         "tarball": "chromaprint-1.4.3.tar.gz",
         "commands": "mkdir build &&\ncd build &&\ncmake -DCMAKE_INSTALL_PREFIX=/usr .. &&\nmake \"-j`nproc`\"\nsudo make install",
-        "dependencies": ["ffmpeg"]
+        "dependencies": ["ffmpeg"],
+        "description": "Chromaprint is a library for calculating audio fingerprints which are used by the Acoustid service. Its main purpose is to provide an accurate identifier for record tracks"
     },
     {
         "name": "protobuf",
@@ -1527,7 +1585,8 @@
         ],
         "tarball": "protobuf-all-3.11.2.tar.gz",
         "commands": "./configure --prefix=/usr  &&\nmake \"-j`nproc`\"\nsudo make install",
-        "dependencies": []
+        "dependencies": [],
+        "description": "An alternative protocol buffer support for the Go programming language, forked from golang-goprotobuf. It is backwards compatible with goprotobuf, but provides faster marshalling and unmarshalling and can generate extra helper code, tests and benchmarks."
     },
     {
         "name": "vpn-libs",
@@ -1535,7 +1594,8 @@
         "download_urls": [],
         "tarball": null,
         "commands": "echo \"Installation completed successfully.\"",
-        "dependencies": ["openconnect", "pptp", "openvpn", "network-manager-openconnect", "network-manager-pptp", "network-manager-openvpn"]
+        "dependencies": ["openconnect", "pptp", "openvpn", "network-manager-openconnect", "network-manager-pptp", "network-manager-openvpn"],
+        "description": "Meta package to install vpn support - openvpn, openconnect, pptp"
     },
     {
         "name": "onig",
@@ -1545,7 +1605,8 @@
         ],
         "tarball": "onig-6.9.4.tar.gz",
         "commands": "mkdir -pv build\ncd build\n\ncmake -DCMAKE_INSTALL_PREFIX=/usr .. &&\nmake -j$(nproc)\nsudo make install",
-        "dependencies": []
+        "dependencies": [],
+        "description": "Oniguruma is a library for working with regular expressions."
     },
     {
         "name": "aryalinux-xfce-settings",
@@ -1556,7 +1617,8 @@
     	"url": null,
         "tarball": "aryalinux-xfce-defaults-2.0.tar.xz",
         "commands": "sudo tar xf aryalinux-xfce-defaults-2.0.tar.xz -C /\nsudo cp -r /etc/skel/{.config,.Xresources}* ~\nsudo chown -R $USER:$USER ~",
-        "dependencies": []
+        "dependencies": [],
+        "description": "Default settings of the XFCE desktop environment in AryaLinux. Includes commands for setting themes, icons and fonts for the defualt XFCE desktop."
     },
     {
         "name": "thunar-archive-plugin",
@@ -1564,7 +1626,8 @@
         "download_urls": [],
         "tarball": null,
         "commands": "git clone https://git.xfce.org/thunar-plugins/thunar-archive-plugin\ncd thunar-archive-plugin\n\n./autogen.sh --prefix=/usr\nmake\nsudo make install\n\ncd $SOURCE_DIR\nrm -rf thunar-archive-plugin",
-        "dependencies": ["thunar"]
+        "dependencies": ["thunar"],
+        "description": "This plugin allows one to extract and create archive from inside the Thunar file manager. At the moment it uses file-roller but will use xarchiver in the future."
     },
     {
         "name": "xfce4-screenshooter",
@@ -1572,7 +1635,8 @@
         "download_urls": ["https://github.com/xfce-mirror/xfce4-screenshooter/archive/xfce4-screenshooter-1.9.7.tar.gz"],
         "tarball": "xfce4-screenshooter-1.9.7.tar.gz",
         "commands": "./autogen.sh --prefix=/usr\nmake\nsudo make install",
-        "dependencies": []
+        "dependencies": [],
+        "description": "Screenshooter is an utility for the Xfce Desktop Environment. It can take desktop, rectangles or selected window screenshots, and you can bind it to your \"Print Screen\" key. A panel plugin is provided too."
     },
     {
         "name": "xfce4-whiskermenu-plugin",
@@ -1582,7 +1646,8 @@
         ],
         "tarball": "xfce4-whiskermenu-plugin-2.3.4.tar.bz2",
         "commands": "mkdir -pv build\ncd build\n\ncmake -DCMAKE_INSTALL_PREFIX=/usr ..\nmake\nsudo make install",
-        "dependencies": []
+        "dependencies": [],
+        "description": "Whisker Menu is an alternate application launcher for Xfce. When you open it you are shown a list of applications you have marked as favorites. You can browse through all of your installed applications by clicking on the category buttons on the side. Top level categories make browsing fast, and simple to switch between. Additionally, Whisker Menu keeps a list of the last ten applications that you've launched from it."
     },
     {
         "name": "blueman",
@@ -1590,7 +1655,8 @@
         "download_urls": ["https://github.com/blueman-project/blueman/releases/download/2.1.1/blueman-2.1.1.tar.gz"],
         "tarball": "blueman-2.1.1.tar.gz",
         "commands": "sudo pip3 install Cython\n\n./autogen.sh --prefix=/usr --disable-runtime-deps-check &&\nmake\nsudo make install",
-        "dependencies": ["bluez"]
+        "dependencies": ["bluez"],
+        "description": "Blueman is a GTK+ bluetooth management utility for GNOME using bluez D-Bus backend."
     },
     {
         "name": "aryalinux-mate-settings",
@@ -1601,7 +1667,8 @@
     	"url": null,
         "tarball": "aryalinux-mate-defaults-2.0.tar.xz",
         "commands": "sudo tar xf aryalinux-mate-defaults-2.0.tar.xz -C /\nsudo cp -r /etc/skel/{.config,.Xresources}* ~\nsudo chown -R $USER:$USER ~",
-        "dependencies": []
+        "dependencies": [],
+        "description": "Default settings of the Mate desktop environment in AryaLinux. Includes commands for setting themes, icons and fonts for the defualt Mate desktop."
     },
     {
         "name": "kde-partition-manager",
@@ -1611,7 +1678,8 @@
         ],
         "tarball": "partitionmanager-4.0.0.tar.xz",
         "commands": "mkdir build\ncd build\n\ncmake -DCMAKE_INSTALL_PREFIX=/usr ..\nmake -j$(nproc)\nsudo make install",
-        "dependencies": ["kde-desktop-environment", "kpmcore"]
+        "dependencies": ["kde-desktop-environment", "kpmcore"],
+        "description": "KDE Partition Manager is a disk partitioning application originally written by Volker Lanz for the KDE Platform. It was first released for KDE SC 4.1 and is released independently of the central KDE release cycle."
     },
     {
         "name": "kpmcore",
@@ -1621,7 +1689,8 @@
         ],
         "tarball": "kpmcore-4.0.1.tar.xz",
         "commands": "mkdir build\ncd build\n\ncmake -DCMAKE_INSTALL_PREFIX=/usr ..\nmake -j$(nproc)\nsudo make install",
-        "dependencies": []
+        "dependencies": [],
+        "description": "Library for managing partitions. Common code for KDE Partition Manager and other projects."
     },
     {
         "name": "aryalinux-kde-settings",
@@ -1632,7 +1701,8 @@
     	"url": null,
         "tarball": "aryalinux-kde-defaults-2.0.tar.xz",
         "commands": "sudo tar xf aryalinux-kde-defaults-2.0.tar.xz -C /\nsudo cp -r /etc/skel/{.gtkrc-2.0-kde4,.gtkrc-2.0,.config,.Xresources}* ~\nsudo chown -R $USER:$USER ~",
-        "dependencies": []
+        "dependencies": [],
+        "description": "Default settings of the KDE plasma desktop environment in AryaLinux. Includes commands for setting themes, icons and fonts for the defualt KDE plasma desktop."
     },
     {
         "name": "openjdk",
@@ -1643,7 +1713,8 @@
     	"url": null,
         "tarball": "openjdk-13.0.2_linux-x64_bin.tar.gz",
         "commands": "sudo tar xf openjdk-13.0.2_linux-x64_bin.tar.gz -C /opt &&\n\nsudo tee /etc/profile.d/openjdk.sh <<\"EOF\"\nexport PATH=$PATH:/opt/jdk-13.0.2/bin\nexport JAVA_HOME=/opt/jdk-13.0.2\nEOF\n\nsudo tee /usr/share/applications/openjdk-java.desktop << \"EOF\" &&\n[Desktop Entry]\nName=OpenJDK Java 13.0.2 Runtime\nComment=OpenJDK Java 13.0.2 Runtime\nExec=/opt/jdk/bin/java -jar\nTerminal=false\nType=Application\nIcon=java\nMimeType=application/x-java-archive;application/java-archive;application/x-jar;\nNoDisplay=true\nEOF\n\nsudo tee /usr/share/applications/openjdk-jconsole.desktop << \"EOF\"\n[Desktop Entry]\nName=OpenJDK Java 13.0.2 Console\nComment=OpenJDK Java 13.0.2 Console\nKeywords=java;console;monitoring\nExec=/opt/jdk/bin/jconsole\nTerminal=false\nType=Application\nIcon=java\nCategories=Application;System;\nEOF\n\nsudo update-desktop-database",
-        "dependencies": ["cups"]
+        "dependencies": ["cups"],
+        "description": "OpenJDK is an open-source implementation of Oracle's Java Standard Edition platform. OpenJDK is useful for developing Java programs, and provides a complete runtime environment to run Java programs."
     },
     {
         "name": "maven",
@@ -1654,7 +1725,8 @@
     	"url": null,
         "tarball": "apache-maven-3.6.3-bin.tar.gz",
         "commands": "sudo tar xf apache-maven-3.6.3-bin.tar.gz -C /opt &&\n\nsudo tee /etc/profile.d/maven.sh <<\"EOF\"\nexport PATH=$PATH:/opt/apache-maven-3.6.3/bin\nexport M2_HOME=/opt/apache-maven-3.6.3\nEOF",
-        "dependencies": ["openjdk"]
+        "dependencies": ["openjdk"],
+        "description": "Build and automation tool for Java projects."
     },
     {
         "name": "axel",
@@ -1664,7 +1736,8 @@
         ],
         "tarball": "axel-2.17.6.tar.xz",
         "commands": "./configure --prefix=/usr &&\nmake\nsudo make install",
-        "dependencies": []
+        "dependencies": [],
+        "description": "Lightweight CLI download accelerator"
     },
     {
         "name": "compiz",
@@ -1672,7 +1745,8 @@
         "download_urls": [],
         "tarball": null,
         "commands": "packages=\"compiz\ncompiz-bcop\ncompiz-plugins-main\ncompiz-plugins-extra\ncompiz-plugins-experimental\nlibcompizconfig\ncompizconfig-python\nccsm\"\n\nbase_repo_url=\"https://github.com/compiz-reloaded/\"\nfor package in $packages; do\n\ngit clone \"$base_repo_url$package\"\npushd $package\nif \"x$package\" != \"xccsm\"; then\n\n./autogen.sh --prefix=/usr &&\nmake\nsudo make install\n\nelse:\n\npython setup.py build --prefix=/usr &&\nsudo python setup.py install --prefix=/usr\n\nfi\n\npopd\nsudo rm -r $package\ndone",
-        "dependencies": ["glu", "python-modules#pygtk"]
+        "dependencies": ["glu", "python-modules#pygtk"],
+        "description": "Compiz is an OpenGL compositing manager that uses GLX_EXT_texture_from_pixmap for binding redirected top-level windows to texture objects. It has a flexible plug-in system and it is designed to run well on most graphics hardware."
     },
     {
         "name": "apache-ant",
