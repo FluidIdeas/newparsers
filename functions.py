@@ -9,7 +9,6 @@ from filters import krameworks5filter
 from filters import plasmafilter
 from filters import gimpfilter
 from filters import linux_pam_filter
-from filters import postgresql_filter
 from filters import boostfilter
 from filters import cupsfilter
 from filters import gnomeshellextensionsfilter
@@ -50,7 +49,6 @@ custom_package_filters = [
 	plasmafilter, 
 	gimpfilter, 
 	linux_pam_filter, 
-	postgresql_filter, 
 	boostfilter, 
 	cupsfilter, 
 	gnomeshellextensionsfilter, 
@@ -335,6 +333,10 @@ def get_script(p):
 	tmp = tmp.replace('##DEPS##', deps)
 	if p['name'] != None:
 		tmp = tmp.replace('##NAME##', 'NAME=' + p['name'])
+	if 'description' in p:
+		tmp = tmp.replace('##DESCRIPTION##', 'DESCRIPTION="' + p['description'] + '"')
+	else:
+		tmp = tmp.replace('##DESCRIPTION##\n', '')
 	if 'section' in p:
 		tmp = tmp.replace('##SECTION##', 'SECTION="' + p['section'].replace('.html', '') + '"')
 	else:
@@ -425,3 +427,37 @@ def get_section(package, sections, friendly_section_names):
 			package['section'] = None
 	if package['section'] == None:
 		package['section'] = 'Others'
+
+def get_descriptions(base_url):
+	descriptions = dict()
+	base_url = '/home/chandrakant/aryalinux/books/blfs/'
+	doc = BeautifulSoup(read_processed(base_url + 'index.html'), features="lxml")
+	anchors = doc.select('a[href]')
+	skip_chapters = ['preface', 'introduction']
+
+	for anchor in anchors:
+		parts = anchor.attrs['href'].split('/')
+		if len(parts) < 2:
+			print(anchor)
+			continue
+		chapter = parts[0]
+		filename = parts[1]
+		packagename = filename.replace('.html', '').lower()
+		if chapter not in skip_chapters:
+			doc = BeautifulSoup(read_processed(base_url + anchor.attrs['href']), features="lxml")
+			try:
+				firstp = doc.select('div.package p')[0]
+				description = firstp.text
+				lines = description.split('\n')
+				new_desc = list()
+				for line in lines:
+					if (len(line.strip())) != 0:
+						new_desc.append(line.strip())
+				description = ' '.join(new_desc)
+				if '"' in description:
+					description = description.replace('"', '\"')
+				descriptions[packagename] = description
+			except:
+				pass
+
+	return descriptions

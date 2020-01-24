@@ -124,7 +124,8 @@
         "pdf,ps,dvi"
     ],
     "popt": [
-        "doxygen/html"
+        "doxygen/html",
+        "doxygen"
     ],
     "parted": [
         "texi2pdf",
@@ -244,7 +245,8 @@
         "assistant-qt5",
         "designer-qt5",
         "linguist-qt5",
-        "qdbusviewer-qt5"
+        "qdbusviewer-qt5",
+        "-archdatadir"
     ],
     "make-ca": [
         "Makebelieve_CA",
@@ -260,7 +262,6 @@
     "ntfs-3g": [
         "/mnt/usb"
     ],
-	"popt": ["doxygen"],
 	"mitkrb": ["/etc/krb5.conf", "kdb5_util create", "kadmin.local", "/usr/sbin/krb5kdc", "kinit", "klist", "ktutil", "make install-krb5"],
 	"openldap": ["groupadd", "--enable-slapd", "conf,ldif", "make install-slapd", "systemctl start slapd", "ldapsearch", "extended LDIF"],
 	"samba": ["workgroup = MYGROUP", "server string =", "make install-samba", "make install-winbindd", "systemctl stop smbd &&"],
@@ -269,9 +270,8 @@
 	"php": ["php_manual_en.html.gz", "php_manual_en.tar.gz"],
 	"grilo": ["meson --prefix=/usr"],
 	"libgdata": ["meson --prefix=/usr"],
-	"qt5": ["-archdatadir"],
 	"fuse": ["doxygen"],
 	"linux-pam": ["/lib/cracklib/pw_dict"],
-    "postgresql": ["make -C contrib"],
+    "postgresql": ["make -C contrib", "createdb", "/usr/bin/postgres", "/usr/bin/pg_ctl"],
     "dconf": ["common/meson.build", "gsettings/abicheck.sh"]
 }

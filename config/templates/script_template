@@ -17,6 +17,7 @@ cd $SOURCE_DIR
 ##VERSION##
 ##URL##
 ##SECTION##
+##DESCRIPTION##
 
 if [ ! -z $URL ]
 then

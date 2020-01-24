@@ -16,6 +16,7 @@ from functions import package_clone
 from functions import find_package
 from functions import get_package_sections
 from functions import get_section
+from functions import get_descriptions
 from kde_apps_new import get_data
 import mate
 import kde_apps
@@ -110,10 +111,15 @@ friendly_section_names = {
 
 sections_dict = get_package_sections(book_dir)
 sections = sections_dict.keys()
+print('Getting descriptions...')
+descriptions = get_descriptions(book_dir + '/')
+print('Done.')
 
 # Generate packages in the book
 for p in packages:
 	get_section(p, sections_dict, friendly_section_names)
+	if p['name'] in descriptions:
+		p['description'] = descriptions[p['name']]
 	if p['name'] == 'krameworks5':
 		frameworks = p
 	if p['name'] == 'plasma-all':
@@ -133,6 +139,8 @@ if 'fetch-kde-framework' in sys.argv:
 
 # Generate additional packages
 for package in additional_packages:
+	if package['name'] in descriptions:
+		package['description'] = descriptions[package['name']]
 	with open(out_dir + '/' + package['name'] + '.sh', 'w') as fp:
 		script = get_script(package)
 		fp.write(script)

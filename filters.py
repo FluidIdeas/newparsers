@@ -493,18 +493,6 @@ def linux_pam_filter(package, commands):
 	else:
 		return (package, commands)
 
-def postgresql_filter(package, commands):
-	index = -1
-	if package['name'] == 'postgresql':
-		new_cmds = list()
-		for command in commands:
-			if 'createdb' in command:
-				new_cmds.append('sleep 5\n')
-			new_cmds.append(command)
-		return (package, new_cmds)
-	else:
-		return (package, commands)
-
 def boostfilter(package, commands):
 	if package['name'] == 'boost':
 		new_cmds = list()

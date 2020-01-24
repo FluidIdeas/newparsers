@@ -352,7 +352,7 @@
             "https://launchpad.net/plank/1.0/0.11.89/+download/plank-0.11.89.tar.xz"
         ],
         "tarball": "plank-0.11.89.tar.xz",
-        "commands": "./configure --prefix=/usr &&\nmake\nsudo make install",
+        "commands": "./configure --prefix=/usr &&\nmake\nsudo make install\nmkdir -pv /usr/share/plank/themes\ngit clone https://github.com/kennyh0727/plank-themes\ncd plank-themes\ncp -r {anti-shade,paperterial,shade} /usr/share/plank/themes/\ncd ..",
         "dependencies": [
             "libgee",
             "libbamf3"
@@ -1664,6 +1664,48 @@
         ],
         "tarball": "axel-2.17.6.tar.xz",
         "commands": "./configure --prefix=/usr &&\nmake\nsudo make install",
+        "dependencies": []
+    },
+    {
+        "name": "compiz",
+        "version": "0.8.17",
+        "download_urls": [],
+        "tarball": null,
+        "commands": "packages=\"compiz\ncompiz-bcop\ncompiz-plugins-main\ncompiz-plugins-extra\ncompiz-plugins-experimental\nlibcompizconfig\ncompizconfig-python\nccsm\"\n\nbase_repo_url=\"https://github.com/compiz-reloaded/\"\nfor package in $packages; do\n\ngit clone \"$base_repo_url$package\"\npushd $package\nif \"x$package\" != \"xccsm\"; then\n\n./autogen.sh --prefix=/usr &&\nmake\nsudo make install\n\nelse:\n\npython setup.py build --prefix=/usr &&\nsudo python setup.py install --prefix=/usr\n\nfi\n\npopd\nsudo rm -r $package\ndone",
+        "dependencies": ["glu", "python-modules#pygtk"]
+    },
+    {
+        "name": "apache-ant",
+        "version": "1.9.14",
+        "description": "Apache Ant is a Java library and command-line tool whose mission is to drive processes described in build files as targets and extension points dependent upon each other. The main known usage of Ant is the build of Java applications. Ant supplies a number of built-in tasks allowing to compile, assemble, test and run Java applications. Ant can also be used effectively to build non Java applications, for instance C or C++ applications. More generally, Ant can be used to pilot any type of process which can be described in terms of targets and tasks.",
+        "download_urls": [],
+        "tarball": null,
+        "commands": "version=1.9.14\nwget https:\/\/www-us.apache.org\/dist\/\/ant\/binaries\/apache-ant-$version-bin.tar.bz2\ndir=$(tar tf apache-ant-$version-bin.tar.bz2 | cut -d\/ -f1 | uniq)\nsudo tar xf apache-ant-$version-bin.tar.bz2 -C \/opt\/\nsudo tee \/etc\/profile.d\/ant.sh<<\"EOF\"\nexport PATH=$PATH:\/opt\/ant-dir\/bin\nEOF\n\nsudo sed -i \"s@ant-dir@$dir@g\" \/etc\/profile.d\/ant.sh\n",
+        "dependencies": ["openjdk"]
+    },
+    {
+        "name": "nodejs",
+        "version": "1.9.14",
+        "description": "Node.js® is a JavaScript runtime built on Chrome's V8 JavaScript engine.",
+        "download_urls": [],
+        "tarball": null,
+        "commands": "version=\"12.14.1\"\nwget https:\/\/nodejs.org\/dist\/v$version\/node-v$version-linux-x64.tar.xz\ndir=$(tar tf node-v$version-linux-x64.tar.xz | cut -d\/ -f1 | uniq)\nsudo tar xf node-v$version-linux-x64.tar.xz -C \/opt\/\nsudo tee \/etc\/profile.d\/nodejs.sh<<\"EOF\"\nexport PATH=$PATH:\/opt\/node-dir\/bin\nEOF\n\nsudo sed -i \"s@node-dir@$dir@g\" \/etc\/profile.d\/nodejs.sh",
+        "dependencies": ["openjdk"]
+    },
+    {
+        "name": "mongodb",
+        "version": "4.2.2",
+        "description": "MongoDB is a general purpose, document-based, distributed database built for modern application developers and for the cloud era. No database makes you more productive.",
+        "download_urls": ["https://fastdl.mongodb.org/src/mongodb-src-r4.2.2.tar.gz"],
+        "commands": "sudo pip3 install psutil\nsudo pip install psutil\nsudo pip3 install Cheetah3\nsudo pip install Cheetah\nsudo groupadd -g 49 mongodb &&\nsudo useradd -c \"MongoDB User\" -g mongodb -d \/var\/lib\/mongodb \\\n        -u 49 mongodb\nsudo mkdir -pv \/var\/lib\/mongodb\/\nsudo mkdir -pv \/var\/run\/mongodb\/\nsudo chown mongodb:mongodb \/var\/lib\/mongodb\/\nsudo chown mongodb:mongodb \/var\/run\/mongodb\/\n\nscons core --disable-warnings-as-errors -j$(nproc) install &&\nsudo cp -v build\/opt\/mongo\/mongo* \/usr\/bin\n\nsudo tee \/lib\/systemd\/system\/mongodb.service<<EOF\n[Unit]\nDescription=MongoDB Database Server\nDocumentation=https:\/\/docs.mongodb.org\/manual\nAfter=network.target\n\n[Service]\nUser=mongodb\nGroup=mongodb\nExecStart=\/usr\/bin\/mongod --config \/etc\/mongod.conf\nPIDFile=\/var\/run\/mongodb\/mongod.pid\n# file size\nLimitFSIZE=infinity\n# cpu time\nLimitCPU=infinity\n# virtual memory size\nLimitAS=infinity\n# open files\nLimitNOFILE=64000\n# processes\/threads\nLimitNPROC=64000\n# locked memory\nLimitMEMLOCK=infinity\n# total threads (user+kernel)\nTasksMax=infinity\nTasksAccounting=false\n\n# Recommended limits for for mongod as specified in\n# http:\/\/docs.mongodb.org\/manual\/reference\/ulimit\/#recommended-settings\n\n[Install]\nWantedBy=multi-user.target\nEOF\nsudo cp debian\/mongod.conf \/etc\/\nsudo systemctl enable mongodb",
+        "dependencies": ["scons", "pyyaml"]
+    },
+    {
+        "name": "pyyaml",
+        "version": "5.3",
+        "description": "PyYAML - The next generation YAML parser and emitter for Python.",
+        "download_urls": ["https://github.com/yaml/pyyaml/archive/5.3.tar.gz"],
+        "commands": "python setup.py build\nsudo python setup.py install\n\npython3 setup.py build\nsudo python3 setup.py install\n\n",
         "dependencies": []
     }
 ]
