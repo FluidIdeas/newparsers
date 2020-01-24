@@ -1706,6 +1706,7 @@
     },
     {
         "name": "openjdk",
+        "section": "Programming",
         "version": "13.0.2",
         "download_urls": [
             "https://download.java.net/java/GA/jdk13.0.2/d4173c853231432d94f001e99d882ca7/8/GPL/openjdk-13.0.2_linux-x64_bin.tar.gz"
@@ -1718,6 +1719,7 @@
     },
     {
         "name": "maven",
+        "section": "Programming",
         "version": "3.6.3",
         "download_urls": [
             "https://www-us.apache.org/dist/maven/maven-3/3.6.3/binaries/apache-maven-3.6.3-bin.tar.gz"
@@ -1750,6 +1752,7 @@
     },
     {
         "name": "apache-ant",
+        "section": "Programming",
         "version": "1.9.14",
         "description": "Apache Ant is a Java library and command-line tool whose mission is to drive processes described in build files as targets and extension points dependent upon each other. The main known usage of Ant is the build of Java applications. Ant supplies a number of built-in tasks allowing to compile, assemble, test and run Java applications. Ant can also be used effectively to build non Java applications, for instance C or C++ applications. More generally, Ant can be used to pilot any type of process which can be described in terms of targets and tasks.",
         "download_urls": [],
@@ -1759,6 +1762,7 @@
     },
     {
         "name": "nodejs",
+        "section": "Programming",
         "version": "1.9.14",
         "description": "Node.js® is a JavaScript runtime built on Chrome's V8 JavaScript engine.",
         "download_urls": [],
@@ -1769,6 +1773,7 @@
     {
         "name": "mongodb",
         "version": "4.2.2",
+        "section": "Database",
         "description": "MongoDB is a general purpose, document-based, distributed database built for modern application developers and for the cloud era. No database makes you more productive.",
         "download_urls": ["https://fastdl.mongodb.org/src/mongodb-src-r4.2.2.tar.gz"],
         "commands": "sudo pip3 install psutil\nsudo pip install psutil\nsudo pip3 install Cheetah3\nsudo pip install Cheetah\nsudo groupadd -g 49 mongodb &&\nsudo useradd -c \"MongoDB User\" -g mongodb -d \/var\/lib\/mongodb \\\n        -u 49 mongodb\nsudo mkdir -pv \/var\/lib\/mongodb\/\nsudo mkdir -pv \/var\/run\/mongodb\/\nsudo chown mongodb:mongodb \/var\/lib\/mongodb\/\nsudo chown mongodb:mongodb \/var\/run\/mongodb\/\n\nscons core --disable-warnings-as-errors -j$(nproc) install &&\nsudo cp -v build\/opt\/mongo\/mongo* \/usr\/bin\n\nsudo tee \/lib\/systemd\/system\/mongodb.service<<EOF\n[Unit]\nDescription=MongoDB Database Server\nDocumentation=https:\/\/docs.mongodb.org\/manual\nAfter=network.target\n\n[Service]\nUser=mongodb\nGroup=mongodb\nExecStart=\/usr\/bin\/mongod --config \/etc\/mongod.conf\nPIDFile=\/var\/run\/mongodb\/mongod.pid\n# file size\nLimitFSIZE=infinity\n# cpu time\nLimitCPU=infinity\n# virtual memory size\nLimitAS=infinity\n# open files\nLimitNOFILE=64000\n# processes\/threads\nLimitNPROC=64000\n# locked memory\nLimitMEMLOCK=infinity\n# total threads (user+kernel)\nTasksMax=infinity\nTasksAccounting=false\n\n# Recommended limits for for mongod as specified in\n# http:\/\/docs.mongodb.org\/manual\/reference\/ulimit\/#recommended-settings\n\n[Install]\nWantedBy=multi-user.target\nEOF\nsudo cp debian\/mongod.conf \/etc\/\nsudo systemctl enable mongodb",
@@ -1781,5 +1786,14 @@
         "download_urls": ["https://github.com/yaml/pyyaml/archive/5.3.tar.gz"],
         "commands": "python setup.py build\nsudo python setup.py install\n\npython3 setup.py build\nsudo python3 setup.py install\n\n",
         "dependencies": []
+    },
+    {
+        "name": "neofetch",
+        "version": "6.1.0",
+        "description": "Neofetch is a command-line system information tool written in bash 3.2+. Neofetch displays information about your operating system, software and hardware in an aesthetic and visually pleasing way.",
+        "download_urls": [],
+        "commands": "git clone https://github.com/dylanaraps/neofetch.git\ncd neofetch\nsudo make install\ncd ..\nrm -rf neofetch",
+        "dependencies": [],
+        "section": "Others"
     }
 ]
