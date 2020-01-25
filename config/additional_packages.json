@@ -192,6 +192,7 @@
     },
     {
         "name": "gnome-desktop-environment",
+        "section": "GNOME Libraries and Desktop",
         "version": "3.32.0",
         "download_urls": [],
         "tarball": null,
@@ -513,6 +514,7 @@
     },
     {
         "name": "rhythmbox",
+        "section": "Audio Utilities",
         "version": "3.4.3",
         "download_urls": [
             "https://download.gnome.org/sources/rhythmbox/3.4/rhythmbox-3.4.3.tar.xz"
@@ -621,6 +623,7 @@
     },
     {
         "name": "kde-desktop-environment",
+        "section": "Introduction to KDE",
         "version": "5.53",
         "download_urls": [],
         "tarball": null,
@@ -662,6 +665,7 @@
     },
     {
         "name": "xfce-desktop-environment",
+        "section": "Xfce Desktop",
         "version": "4.14",
         "download_urls": [],
         "tarball": null,
@@ -948,6 +952,7 @@
     },
     {
         "name": "firefox",
+        "section": "Graphical Web Browsers",
         "version": "69.0.3",
         "download_urls": [
             "https://archive.mozilla.org/pub/firefox/releases/69.0.3/source/firefox-69.0.3.source.tar.xz"
@@ -1062,6 +1067,7 @@
     },
     {
         "name": "virtualbox",
+        "section": "Virtualization",
         "version": "nightly",
         "download_urls": [],
         "tarball": null,
@@ -1144,6 +1150,7 @@
     },
     {
         "name": "mate-desktop-environment",
+        "section": "Mate Desktop",
         "version": "1.23.2",
         "download_urls": [],
         "tarball": null,
@@ -1222,7 +1229,6 @@
             "caja-extensions",
             "caja-dropbox",
             "pluma",
-            "galculator",
             "eom",
             "engrampa",
             "atril",
@@ -1251,7 +1257,10 @@
             "aryalinux-gtk-themes",
             "aryalinux-icons",
             "blueman",
-            "aryalinux-mate-settings"
+            "aryalinux-mate-settings",
+            "mate-calc",
+            "mate-notification-daemon",
+            "mate-applets"
         ],
         "description": "MATE is a desktop environment composed of free and open-source software that runs on Linux and BSD operating systems. An Argentine user of Arch Linux started the MATE project to fork and continue GNOME 2 in response to the negative reception of GNOME 3, which had replaced its traditional taskbar with GNOME Shell."
     },
@@ -1773,7 +1782,7 @@
     {
         "name": "mongodb",
         "version": "4.2.2",
-        "section": "Database",
+        "section": "Databases",
         "description": "MongoDB is a general purpose, document-based, distributed database built for modern application developers and for the cloud era. No database makes you more productive.",
         "download_urls": ["https://fastdl.mongodb.org/src/mongodb-src-r4.2.2.tar.gz"],
         "commands": "sudo pip3 install psutil\nsudo pip install psutil\nsudo pip3 install Cheetah3\nsudo pip install Cheetah\nsudo groupadd -g 49 mongodb &&\nsudo useradd -c \"MongoDB User\" -g mongodb -d \/var\/lib\/mongodb \\\n        -u 49 mongodb\nsudo mkdir -pv \/var\/lib\/mongodb\/\nsudo mkdir -pv \/var\/run\/mongodb\/\nsudo chown mongodb:mongodb \/var\/lib\/mongodb\/\nsudo chown mongodb:mongodb \/var\/run\/mongodb\/\n\nscons core --disable-warnings-as-errors -j$(nproc) install &&\nsudo cp -v build\/opt\/mongo\/mongo* \/usr\/bin\n\nsudo tee \/lib\/systemd\/system\/mongodb.service<<EOF\n[Unit]\nDescription=MongoDB Database Server\nDocumentation=https:\/\/docs.mongodb.org\/manual\nAfter=network.target\n\n[Service]\nUser=mongodb\nGroup=mongodb\nExecStart=\/usr\/bin\/mongod --config \/etc\/mongod.conf\nPIDFile=\/var\/run\/mongodb\/mongod.pid\n# file size\nLimitFSIZE=infinity\n# cpu time\nLimitCPU=infinity\n# virtual memory size\nLimitAS=infinity\n# open files\nLimitNOFILE=64000\n# processes\/threads\nLimitNPROC=64000\n# locked memory\nLimitMEMLOCK=infinity\n# total threads (user+kernel)\nTasksMax=infinity\nTasksAccounting=false\n\n# Recommended limits for for mongod as specified in\n# http:\/\/docs.mongodb.org\/manual\/reference\/ulimit\/#recommended-settings\n\n[Install]\nWantedBy=multi-user.target\nEOF\nsudo cp debian\/mongod.conf \/etc\/\nsudo systemctl enable mongodb",

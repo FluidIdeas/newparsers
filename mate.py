@@ -4,7 +4,73 @@ import subprocess
 from bs4 import BeautifulSoup
 from decimal import Decimal
 
-mate_packages = 'libidl libart intltool libtool yelp mate-common mate-desktop libmatekbd libmatewnck libmateweather mate-icon-theme caja marco mate-settings-daemon mate-session-manager mate-menus mate-panel mate-control-center plymouth mate-screensaver mate-terminal caja caja-extensions caja-dropbox pluma galculator eom engrampa atril mate-utils murrine-gtk-engine gnome-themes-standard mate-system-monitor mate-power-manager marco mozo mate-backgrounds mate-media ModemManager usb_modeswitch compton libmatemixer'
+mate_packages = 'libidl libart intltool libtool yelp mate-common mate-desktop libmatekbd libmatewnck libmateweather mate-icon-theme caja marco mate-settings-daemon mate-session-manager mate-menus mate-panel mate-control-center plymouth mate-screensaver mate-terminal caja caja-extensions caja-dropbox pluma galculator eom engrampa atril mate-utils murrine-gtk-engine gnome-themes-standard mate-system-monitor mate-power-manager marco mozo mate-backgrounds mate-media ModemManager usb_modeswitch compton libmatemixer mate-calc mate-notification-daemon mate-applets'
+mate_sections = {
+	"atril": "Mate Desktop Applications",
+	"caja-dropbox": "Mate Desktop",
+	"caja-extensions": "Mate Desktop",
+	"caja":"Mate Desktop Applications",
+	"engrampa":"Mate Desktop Applications",
+	"eom": "Mate Desktop Applications",
+	"libmatekbd": "Mate Desktop",
+	"libmatemixer": "Mate Desktop",
+	"libmateweather": "Mate Desktop",
+	"libmatewnck": "Mate Desktop",
+	"marco": "Mate Desktop",
+	"mate-backgrounds": "Mate Desktop",
+	"mate-common": "Mate Desktop",
+	"mate-control-center": "Mate Desktop",
+	"mate-desktop": "Mate Desktop",
+	"mate-icon-theme": "Mate Desktop",
+	"mate-media": "Mate Desktop",
+	"mate-menus": "Mate Desktop",
+	"mate-panel": "Mate Desktop",
+	"mate-power-manager": "Mate Desktop",
+	"mate-screensaver": "Mate Desktop",
+	"mate-session-manager": "Mate Desktop",
+	"mate-settings-daemon": "Mate Desktop",
+	"mate-system-monitor": "Mate Desktop",
+	"mate-terminal": "Mate Desktop",
+	"mate-utils": "Mate Desktop",
+	"mozo": "Mate Desktop Applications",
+	"pluma": "Mate Desktop Applications",
+	"mate-calc": "Mate Desktop Applications",
+	"mate-notification-daemon": "Mate Desktop",
+	"mate-applets": "Mate Desktop"
+}
+mate_descriptions = {
+	"atril": "Atril is a document viewer capable of displaying multiple and single page document formats like PDF and Postscript.",
+	"caja-dropbox": "Dropbox extension for Caja file manager",
+	"caja-extensions": "Set of extensions for Caja, the MATE file manager",
+	"caja":"Caja, the file manager for the MATE desktop",
+	"engrampa":"A file archiver for MATE",
+	"eom": "An image viewer for MATE",
+	"libmatekbd": "Keyboard management library",
+	"libmatemixer": "Mixer library for MATE Desktop",
+	"libmateweather": "Library to access weather information from online services",
+	"libmatewnck": "Mate Desktop",
+	"marco": "MATE default window manager",
+	"mate-backgrounds": "This module contains a set of backgrounds packaged with the MATE desktop.",
+	"mate-common": "Common scripts and macros to develop with MATE",
+	"mate-control-center": "Utilities to configure the MATE desktop",
+	"mate-desktop": "Library with common API for various MATE modules",
+	"mate-icon-theme": "MATE default icon theme",
+	"mate-media": "Media tools for MATE",
+	"mate-menus": "Library for the Desktop Menu freedesktop.org specification",
+	"mate-panel": "MATE panel",
+	"mate-power-manager": "Power management tool for the MATE desktop",
+	"mate-screensaver": "MATE screen saver and locker",
+	"mate-session-manager": "MATE session manager",
+	"mate-settings-daemon": "MATE settings daemon",
+	"mate-system-monitor": "Process viewer and system resource monitor for MATE",
+	"mate-terminal": "The MATE Terminal Emulator",
+	"mate-utils": "MATE Utilities for the MATE Desktop",
+	"mozo": "Menu editor for MATE using the freedesktop.org menu specification",
+	"pluma": "A powerful text editor for MATE",
+	"mate-calc": "Calculator for MATE",
+	"mate-notification-daemon": "Daemon to display passive pop-up notifications",
+	"mate-applets": "Applets for use with the MATE panel"
+}
 
 def download(url, file):
 	proc = subprocess.Popen('wget ' + url + ' -O ' + file + ' &> /dev/null', shell=True)
@@ -105,6 +171,8 @@ def get_packages():
 	for name, link in links.items():
 		package = dict()
 		package['name'] = name
+		package['description'] = mate_descriptions[name]
+		package['section'] = mate_sections[name]
 		package['download_urls'] = [link]
 		package['tarball'] = link[link.rindex('/') + 1:]
 		package['version'] = package['tarball'].replace(name + '-', '').replace('.tar.xz', '')

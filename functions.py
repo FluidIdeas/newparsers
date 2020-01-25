@@ -60,18 +60,21 @@ custom_package_filters = [
 def get_package_sections(book_dir):
 	doc = BeautifulSoup(read_raw(book_dir + '/index.html').decode("latin-1"), 'html.parser')
 	section_anchors = doc.select("h4 a")
-	sections = list()
-	for a in section_anchors:
-		sections.append(a.attrs['href'])
-	package_sections = dict()
-	for section in sections:
-		doc = BeautifulSoup(read_raw(book_dir + '/' + section).decode("latin-1"), 'html.parser')
-		anchors = doc.select('li.sect1 a')
-		package_sections[section] = list()
-		for anchor in anchors:
-			package_sections[section].append(anchor.attrs['href'].replace('.html', ''))
-	return package_sections
-		
+	sections = dict()
+	for section_anchor in section_anchors:
+		anchor_text = section_anchor.text
+		href = section_anchor.attrs['href']
+		parts = anchor_text.split(' ')
+		parts = parts[1:]
+		parts = map(str.strip, parts)
+		parts = filter(lambda x : len(x) > 0, list(parts))
+		section = ' '.join(parts)
+		sections[section] = list()
+		doc1 = BeautifulSoup(read_raw(book_dir + '/' + href).decode("latin-1"), 'html.parser')
+		pkg_anchors = doc1.select('div.toc ul li a')
+		for pkg_anchor in pkg_anchors:
+			sections[section].append(pkg_anchor.attrs['href'].replace('.html', '').lower())
+	return sections
 
 def read_processed(file_path):
 	with open(file_path, 'rb') as fp:
@@ -412,21 +415,14 @@ def find_package(packages, name):
 		if package['name'] == name:
 			return package
 
-def get_section(package, sections, friendly_section_names):
-	sectionName = None
-	for section, packageNames in sections.items():
-		if package['name'] in packageNames:
-			sectionName = section
-	actualSectionName = None
-	package['section'] = None
-	for key, value in friendly_section_names.items():
-		if sectionName != None:
-			if key in sectionName:
-				package['section'] = value
-		else:
-			package['section'] = None
-	if package['section'] == None:
-		package['section'] = 'Others'
+def get_section(package, sections):
+	pkg_section = None
+	for section_name, pkgs in sections.items():
+		if package['name'] in pkgs:
+			pkg_section = section_name
+	if pkg_section == None:
+		pkg_section = 'Others'
+	return pkg_section
 
 def get_descriptions(base_url):
 	descriptions = dict()
@@ -438,7 +434,6 @@ def get_descriptions(base_url):
 	for anchor in anchors:
 		parts = anchor.attrs['href'].split('/')
 		if len(parts) < 2:
-			print(anchor)
 			continue
 		chapter = parts[0]
 		filename = parts[1]

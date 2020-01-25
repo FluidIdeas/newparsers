@@ -61,6 +61,7 @@ packages = list()
 document = BeautifulSoup(read_processed(book_dir + '/index.html'), 'html.parser')
 links = document.select('li.sect1 a[href]')
 
+print('Parsing packages...')
 for link in links:
 	if 'perl-modules.html' in link.attrs['href'] or 'perl-deps.html' in link.attrs['href'] or 'python-modules.html' in link.attrs['href'] or 'x7driver.html' in link.attrs['href']:
 		packages.extend(parse_perl_modules(book_dir + '/' + link.attrs['href']))
@@ -89,39 +90,7 @@ for p in packages:
 		needle = p['commands'][p['commands'].index('./configure'): p['commands'].index('make') + 4]
 		p['commands'] = p['commands'].replace(needle, php_configure)
 
-# Fetching sections
-friendly_section_names = {
-	'postlfs/config': 'Configuration',
-	'security': 'Security',
-	'filesystems': 'Filesystems and disk management',
-	'editors': 'Editors',
-	'shells': 'Shells',
-	'virtualization': 'Virtualization',
-	'general/': 'General Libraries and Utilities',
-	'basicnet/': 'Networking',
-	'graphlib/': 'Graphics and Font Libraries',
-	'genutils/': 'General Utilities',
-	'sysutils/': 'System Utilities',
-	'prog/': 'Programming',
-	'other-tools/': 'Other Programming Tools',
-	'connect/': 'Connecting to a Network',
-	'netprogs/': 'Networking Programs',
-	'othernetprogs/': 'Other Networking Programs',
-	'netutils/': 'Networking Utilities',
-	'netlibs': 'Networking Libraries',
-	'textweb': 'Text Web Browswers',
-	'mailnews': 'Mail/News Clients',
-	'othermn': 'Other Mail and News Programs',
-	'server/': 'Servers',
-	'x/': 'X-Server',
-	'kde/': 'KDE',
-	'gnome/': 'Gnome',
-	'xfce/': 'XFCE',
-	'xsoft/': 'Office Productivity',
-	'multimedia/': 'Multimedia',
-	'pst/': 'Printing and Typesetting'
-}
-
+print('Getting sections dictionary...')
 sections_dict = get_package_sections(book_dir)
 sections = sections_dict.keys()
 print('Getting descriptions...')
@@ -130,7 +99,8 @@ print('Done.')
 
 # Generate packages in the book
 for p in packages:
-	get_section(p, sections_dict, friendly_section_names)
+	section = get_section(p, sections_dict)
+	p['section'] = section
 	if p['name'] in descriptions:
 		p['description'] = descriptions[p['name']]
 	if p['name'] == 'krameworks5':
