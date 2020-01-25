@@ -1,3 +1,10 @@
 {
-    "lsb-release": "Others"
+    "lsb-release": "Others",
+    "extra-cmake-modules": "KDE Prerequisites",
+    "kde-desktop-environment": "KDE Plasma 5",
+    "libdbusmenu-qt": "KDE Prerequisites",
+    "phonon": "KDE Prerequisites",
+    "phonon-backend-gstreamer": "KDE Prerequisites",
+    "phonon-backend-vlc": "KDE Prerequisites",
+    "polkit-qt": "KDE Prerequisites"
 }
