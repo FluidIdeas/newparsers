@@ -623,7 +623,7 @@
     },
     {
         "name": "kde-desktop-environment",
-        "section": "Introduction to KDE",
+        "section": "KDE Plasma 5",
         "version": "5.53",
         "download_urls": [],
         "tarball": null,
