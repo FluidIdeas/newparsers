@@ -557,3 +557,11 @@ def pnmixer(package, commands):
 				new_urls.append(url)
 		package['download_urls'] = new_urls
 	return (package, commands)
+
+def rustfilter1(package, commands):
+	if package['name'] == 'rust':
+		parts = package['download_urls'][0].split('/')
+		tarball = parts[len(parts) - 1]
+		version = tarball.replace('rustc-', '').replace('-src.tar.gz', '')
+		package['version'] = version
+	return (package, commands)
