@@ -55,6 +55,7 @@ additional_dependencies = load_json('config/additional_dependencies.json')
 additional_downloads = load_json('config/additional_downloads.json')
 cloned_packages = load_json('config/cloned_packages.json')
 binary_packages = load_json('config/bin_packages.json')
+section_overrides = load_json('config/section_overrides.json')
 
 packages = list()
 
@@ -101,6 +102,8 @@ print('Done.')
 for p in packages:
 	section = get_section(p, sections_dict)
 	p['section'] = section
+	if p['name'] in section_overrides:
+		p['section'] = section_overrides[p['name']]
 	if p['name'] in descriptions:
 		p['description'] = descriptions[p['name']]
 	if p['name'] == 'krameworks5':
