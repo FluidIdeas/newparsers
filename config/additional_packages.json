@@ -1395,24 +1395,6 @@
         "description": "This library provides GObjects and helper methods to make it easy to read and write AppStream metadata. It also provides a simple DOM implementation that makes it easy to edit nodes and convert to and from the standardized XML representation."
     },
     {
-        "name": "mate-themes",
-        "version": "3.22.9",
-        "download_urls": ["https://pub.mate-desktop.org/releases/themes/3.22/mate-themes-3.22.9.tar.xz"],
-        "tarball": "mate-themes-3.22.9.tar.xz",
-        "commands": "./configure --prefix=/usr\nmake\nsudo make install",
-        "dependencies": [],
-        "description": "Themes for mate desktop environment"
-    },
-    {
-        "name": "atril",
-        "version": "1.22.3",
-        "download_urls": ["https://github.com/mate-desktop/atril/releases/download/v1.22.3/atril-1.22.3.tar.xz"],
-        "tarball": "atril-1.22.3.tar.xz",
-        "commands": "./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var --disable-static &&\nmake\nsudo make install",
-        "dependencies": [],
-        "description": "Atril is a document viewer capable of displaying multiple and single page document formats like PDF and Postscript."
-    },
-    {
         "name": "qt5",
         "version": "5.13.0",
         "download_urls": [
@@ -1804,5 +1786,14 @@
         "commands": "git clone https://github.com/dylanaraps/neofetch.git\ncd neofetch\nsudo make install\ncd ..\nrm -rf neofetch",
         "dependencies": [],
         "section": "Others"
+    },
+    {
+        "name": "subversion",
+        "version": "1.12.2",
+        "description": "Subversion is a version control system that is designed to be a compelling replacement for CVS in the open source community. It extends and enhances CVS' feature set, while maintaining a similar interface for those already familiar with CVS.",
+        "download_urls": ["https://archive.apache.org/dist/subversion/subversion-1.12.2.tar.bz2"],
+        "commands": "sed -i 's/classic/nofastunpack/' build.conf\n./configure --prefix=/usr             \\\n            --disable-static          \\\n            --with-apache-libexecdir  \\\n            --with-lz4=internal       \\\n            --with-utf8proc=internal &&\nmake\nsudo make install",
+        "dependencies": ["apr-util", "sqlite", "serf"],
+        "section": "Programming"
     }
 ]

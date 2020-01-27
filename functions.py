@@ -452,7 +452,7 @@ def get_descriptions(base_url):
 						new_desc.append(line.strip())
 				description = ' '.join(new_desc)
 				if '"' in description:
-					description = description.replace('"', '\"')
+					description = description.replace('\"', '\\\"')
 				descriptions[packagename] = description
 			except:
 				pass
