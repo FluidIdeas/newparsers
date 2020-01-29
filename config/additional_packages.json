@@ -1291,7 +1291,7 @@
         "version": "current",
         "download_urls": [],
         "tarball": null,
-        "commands": "KERNEL_VERSION=$(uname -r)\nKERNEL_MAJOR_VERSION=$(uname -r | cut -d '.' -f1)\nKERNEL_URL=https://cdn.kernel.org/pub/linux/kernel/v$KERNEL_MAJOR_VERSION.x/linux-$KERNEL_VERSION.tar.xz\nKERNEL_TARBALL=$(echo $KERNEL_URL | rev | cut -d/ -f1 | rev)\n\nwget -nc $KERNEL_URL\n\nKERNEL_DIR=$(tar tf $KERNEL_TARBALL | cut -d/ -f1 | uniq)\n\nsudo mkdir -pv /usr/src/\nsudo tar xf $KERNEL_TARBALL -C /usr/src\nsudo ln -svf /usr/src/$KERNEL_DIR /lib/modules/$KERNEL_VERSION/build\n\npushd /usr/src/$KERNEL_DIR\nsudo make oldconfig\nsudo make prepare\nsudo make scripts\npopd\n\nsudo rm -rf $KERNEL_TARBALL\n\nVERSION=$KERNEL_VERSION\n",
+        "commands": "KERNEL_VERSION=$(uname -r)\nKERNEL_MAJOR_VERSION=$(uname -r | cut -d '.' -f1)\nKERNEL_URL=https://cdn.kernel.org/pub/linux/kernel/v$KERNEL_MAJOR_VERSION.x/linux-$KERNEL_VERSION.tar.xz\nKERNEL_TARBALL=$(echo $KERNEL_URL | rev | cut -d/ -f1 | rev)\n\nwget -nc $KERNEL_URL\n\nKERNEL_DIR=$(tar tf $KERNEL_TARBALL | cut -d/ -f1 | uniq)\n\nsudo mkdir -pv /usr/src/\nsudo tar xf $KERNEL_TARBALL -C /usr/src\nsudo ln -svf /usr/src/$KERNEL_DIR /lib/modules/$KERNEL_VERSION/build\n\npushd /usr/src/$KERNEL_DIR\nsudo make oldconfig\nsudo make prepare\nsudo make scripts\npopd\n\nsudo rm -rf $KERNEL_TARBALL\n\nVERSION=current\n",
         "dependencies": [],
         "description": "The current linux kernel headers."
     },
