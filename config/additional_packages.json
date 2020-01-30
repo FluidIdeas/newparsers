@@ -1795,5 +1795,123 @@
         "commands": "sed -i 's/classic/nofastunpack/' build.conf\n./configure --prefix=/usr             \\\n            --disable-static          \\\n            --with-apache-libexecdir  \\\n            --with-lz4=internal       \\\n            --with-utf8proc=internal &&\nmake\nsudo make install",
         "dependencies": ["apr-util", "sqlite", "serf"],
         "section": "Programming"
+    },
+    {
+        "name": "muparser",
+        "version": "2.2.6.1",
+        "description": "Many applications require the parsing of mathematical expressions. The main objective of this library is to provide a fast and easy way of doing this. muParser is an extensible high performance math expression parser library written in C++. It works by transforming a mathematical expression into bytecode and precalculating constant parts of the expression.",
+        "download_urls": ["https://github.com/beltoforion/muparser/archive/v2.2.6.1.tar.gz"],
+        "commands": "mkdir build-dir\ncd build-dir\n\ncmake -DCMAKE_INSTALL_PREFIX=/usr ..\nmake\nsudo make install",
+        "dependencies": [],
+        "section": "Programming"
+    },
+    {
+        "name": "kwindowsystem",
+        "version": "5.61.0",
+        "description": "KWindowSystem provides information about the windowing system and allows interaction with the windowing system. It provides an high level API which is windowing system independent and has platform specific implementations. This API is inspired by X11 and thus not all functionality is available on all windowing systems.",
+        "download_urls": ["https://download.kde.org/stable/frameworks/5.61/kwindowsystem-5.61.0.tar.xz"],
+        "commands": "mkdir build\ncd build\n\ncmake -DCMAKE_INSTALL_PREFIX=/usr ..\nmake\nsudo make install",
+        "dependencies": [],
+        "section": "LXQT Desktop"
+    },
+    {
+        "name": "kwayland",
+        "version": "5.61.0",
+        "description": "KWayland is a Qt-style API to interact with the wayland-client and wayland-server API.",
+        "download_urls": ["https://download.kde.org/stable/frameworks/5.61/kwayland-5.61.0.tar.xz"],
+        "commands": "mkdir build\ncd build\n\ncmake -DCMAKE_INSTALL_PREFIX=/usr ..\nmake\nsudo make install",
+        "dependencies": [],
+        "section": "LXQT Desktop"
+    },
+    {
+        "name": "libkscreen",
+        "version": "5.61.0",
+        "description": "",
+        "download_urls": ["https://download.kde.org/stable/plasma/5.16.3/libkscreen-5.16.3.tar.xz"],
+        "commands": "mkdir build\ncd build\n\ncmake -DCMAKE_INSTALL_PREFIX=/usr ..\nmake\nsudo make install",
+        "dependencies": [],
+        "section": "LXQT Desktop"
+    },
+    {
+        "name": "kidletime",
+        "version": "5.61.0",
+        "description": "",
+        "download_urls": ["https://download.kde.org/stable/frameworks/5.61/kidletime-5.61.0.tar.xz"],
+        "commands": "mkdir build\ncd build\n\ncmake -DCMAKE_INSTALL_PREFIX=/usr ..\nmake\nsudo make install",
+        "dependencies": [],
+        "section": "LXQT Desktop"
+    },
+    {
+        "name": "solid",
+        "version": "5.61.0",
+        "description": "",
+        "download_urls": ["https://download.kde.org/stable/frameworks/5.61/solid-5.61.0.tar.xz"],
+        "commands": "mkdir build\ncd build\n\ncmake -DCMAKE_INSTALL_PREFIX=/usr ..\nmake\nsudo make install",
+        "dependencies": [],
+        "section": "LXQT Desktop"
+    },
+    {
+        "name": "kguiaddons",
+        "version": "5.61.0",
+        "description": "",
+        "download_urls": ["https://download.kde.org/stable/frameworks/5.61/kguiaddons-5.61.0.tar.xz"],
+        "commands": "mkdir build\ncd build\n\ncmake -DCMAKE_INSTALL_PREFIX=/usr ..\nmake\nsudo make install",
+        "dependencies": [],
+        "section": "LXQT Desktop"
+    },
+    {
+        "name": "libconfig",
+        "version": "1.7.2",
+        "description": "",
+        "download_urls": ["https://hyperrealm.github.io/libconfig/dist/libconfig-1.7.2.tar.gz"],
+        "commands": "./configure --prefix=/usr\nmake\nsudo make install",
+        "dependencies": [],
+        "section": "Others"
+    },
+    {
+        "name": "lxqt-desktop-environment",
+        "version": "0.11.0",
+        "description": "LXQt is a lightweight Qt desktop environment. Historically, LXQt is the product of the merge between LXDE-Qt, an initial Qt flavour of LXDE, and Razor-qt, a project aiming to develop a Qt based desktop environment with similar objectives as the current LXQt.",
+        "download_urls": [],
+        "commands": "git clone https://github.com/lxqt/lxqt.git\ncd lxqt\ngit submodule init\ngit submodule update --remote --rebase\nLXQT_PREFIX=/usr ./build_all.sh\ncd ..\nrm -rf lxqt",
+        "dependencies": [
+            "qt5",
+            "extra-cmake-modules",
+            "udisks2",
+            "upower",
+            "polkit",
+            "libexif",
+            "pulseaudio",
+            "xdg-user-dirs",
+            "libstatgrab",
+            "lm_sensors",
+            "json-glib",
+            "openbox",
+            "media-player-info",
+            "libdbusmenu-qt",
+            "polkit-qt",
+            "libfm",
+            "menu-cache",
+            "gtk2",
+            "gtk3",
+            "python-modules#pygobject2",
+            "python-modules#pygobject3",
+            "aryalinux-gtk-themes",
+            "aryalinux-icons",
+            "aryalinux-google-fonts",
+            "aryalinux-wallpapers",
+            "noto-fonts",
+            "muparser",
+            "kwindowsystem",
+            "kwayland",
+            "libkscreen",
+            "kidletime",
+            "solid",
+            "kguiaddons",
+            "libconfig",
+            "lightdm",
+            "lightdm-gtk-greeter"
+        ],
+        "section": "LXQT Desktop"
     }
 ]
