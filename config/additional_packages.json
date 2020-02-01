@@ -947,7 +947,7 @@
         "download_urls": [],
         "tarball": null,
         "commands": "git clone https://github.com/intel/cmrt\ncd cmrt\n\n./autogen.sh --prefix=/usr --sysconfdir=/etc &&\nmake\nsudo make install\n\ncd ..\nrm -rf cmrt",
-        "dependencies": [],
+        "dependencies": ["git"],
         "description": "C bindings for Intel Media Runtime"
     },
     {
