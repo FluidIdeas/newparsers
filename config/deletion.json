@@ -229,7 +229,8 @@
     "plasma-all": [
         "bash -e",
         "xinitrc",
-        "startx"
+        "startx",
+        "-e plasma.desktop"
     ],
     "lm_sensors": [
         "sensors-detect"
