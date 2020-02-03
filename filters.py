@@ -584,6 +584,7 @@ def kframeworksfilter(package, commands):
 					final_parts.append('    touch ' + tmpfile)
 					final_parts.append('    if grep $file ' + tmpfile + '; then continue; fi')
 					final_parts.append('    wget -nc $url/$file')
+					final_parts.append('    if echo $file | grep /; then file=$(echo $file | cut -d/ -f2); fi')
 				elif 'as_root /sbin/ldconfig' in part:
 					final_parts.append(part)
 					final_parts.append('echo $file >> ' + tmpfile)

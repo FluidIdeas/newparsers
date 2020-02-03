@@ -648,6 +648,7 @@
             "khelpcenter",
             "konsole5",
             "lightdm",
+            "lightdm-gtk-greeter",
             "libnotify",
             "gvfs",
             "udisks2",
