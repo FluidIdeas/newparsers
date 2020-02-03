@@ -567,7 +567,11 @@ def rustfilter1(package, commands):
 	return (package, commands)
 
 def kframeworksfilter(package, commands):
-	if package['name'] == 'krameworks5':
+	if package['name'] == 'krameworks5' or package['name'] == 'plasma-all':
+		if package['name'] == 'krameworks5':
+			tmpfile = '/tmp/kframeworks-done'
+		else:
+			tmpfile = '/tmp/plasma-done'
 		cmds = list()
 		for new_cmd in commands:
 			parts = new_cmd.split('\n')
@@ -577,12 +581,12 @@ def kframeworksfilter(package, commands):
 					continue
 				if 'file=$(' in part:
 					final_parts.append(part)
-					final_parts.append('    touch /tmp/kframeworks-done')
-					final_parts.append('    if grep $file /tmp/kframeworks-done; then continue; fi')
+					final_parts.append('    touch ' + tmpfile)
+					final_parts.append('    if grep $file ' + tmpfile + '; then continue; fi')
 					final_parts.append('    wget -nc $url/$file')
 				elif 'as_root /sbin/ldconfig' in part:
 					final_parts.append(part)
-					final_parts.append('echo $file >> /tmp/kframeworks-done')
+					final_parts.append('echo $file >> ' + tmpfile)
 				else:
 					final_parts.append(part)
 			cmds.append('\n'.join(final_parts))
