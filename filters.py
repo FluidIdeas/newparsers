@@ -568,21 +568,18 @@ def rustfilter1(package, commands):
 
 def kframeworksfilter(package, commands):
 	if package['name'] == 'krameworks5':
-		new_cmds = list()
-		for command in commands:
-			if 'wget -r' in command:
-				new_cmds.append(command.replace('wget -r', 'wget -nc -r'))
-			else:
-				new_cmds.append(command)
 		cmds = list()
-		for new_cmd in new_cmds:
+		for new_cmd in commands:
 			parts = new_cmd.split('\n')
 			final_parts = list()
 			for part in parts:
+				if 'wget' in part:
+					continue
 				if 'file=$(' in part:
 					final_parts.append(part)
-					final_parts.append('touch /tmp/kframeworks-done')
-					final_parts.append('if grep $file /tmp/kframeworks-done; then continue; fi')
+					final_parts.append('    touch /tmp/kframeworks-done')
+					final_parts.append('    if grep $file /tmp/kframeworks-done; then continue; fi')
+					final_parts.append('    wget -nc $url/$file')
 				elif 'as_root /sbin/ldconfig' in part:
 					final_parts.append(part)
 					final_parts.append('echo $file >> /tmp/kframeworks-done')
