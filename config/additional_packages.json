@@ -1759,7 +1759,7 @@
         "download_urls": [],
         "tarball": null,
         "commands": "version=\"12.14.1\"\nwget https:\/\/nodejs.org\/dist\/v$version\/node-v$version-linux-x64.tar.xz\ndir=$(tar tf node-v$version-linux-x64.tar.xz | cut -d\/ -f1 | uniq)\nsudo tar xf node-v$version-linux-x64.tar.xz -C \/opt\/\nsudo tee \/etc\/profile.d\/nodejs.sh<<\"EOF\"\nexport PATH=$PATH:\/opt\/node-dir\/bin\nEOF\n\nsudo sed -i \"s@node-dir@$dir@g\" \/etc\/profile.d\/nodejs.sh",
-        "dependencies": ["openjdk"]
+        "dependencies": []
     },
     {
         "name": "mongodb",
