@@ -14,5 +14,9 @@
 	"dconf": {
 		"position": 0,
 		"command": "patch -Np1 -i ../dconf-0.34.0-meson.patch"
+	},
+	"folks": {
+		"position": 0,
+		"command": "sed -i \"s@py_installation.dependency('dbusmock')@py_installation.dependency()@g\" meson.build"
 	}
 }
