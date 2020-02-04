@@ -3,10 +3,6 @@
 		"position": -2,
 		"command": "cd $SOURCE_DIR\nTARBALL=$(ls aspell*.tar.bz2)\nDIRECTORY=$(tar tf $TARBALL | cut -d/ -f1 | uniq)\n\ntar xf $TARBALL\ncd $DIRECTORY"
 	},
-	"grilo": {
-		"position": 0,
-		"command": "patch -Np1 -i ../52.diff\n\nmkdir build &&\ncd    build    &&\n\nmeson --prefix=/usr \\\n      --libexecdir=/usr/lib \\\n-Denable-gtk-doc=false .. &&\nninja"
-	},
 	"libgdata": {
 		"position": 0,
 		"command": "mkdir build &&\ncd    build    &&\n\nmeson --prefix=/usr -Dgtk_doc=false .. &&\nninja"
