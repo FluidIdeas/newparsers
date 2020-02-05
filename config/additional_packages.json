@@ -1592,7 +1592,7 @@
         "tarball": "xfce4-screenshooter-1.9.7.tar.gz",
         "commands": "./autogen.sh --prefix=/usr\nmake\nsudo make install",
         "dependencies": [],
-        "description": "Screenshooter is an utility for the Xfce Desktop Environment. It can take desktop, rectangles or selected window screenshots, and you can bind it to your \"Print Screen\" key. A panel plugin is provided too."
+        "description": "Screenshooter is an utility for the Xfce Desktop Environment. It can take desktop, rectangles or selected window screenshots, and you can bind it to your 'Print Screen' key. A panel plugin is provided too."
     },
     {
         "name": "xfce4-whiskermenu-plugin",
