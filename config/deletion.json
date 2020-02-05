@@ -273,5 +273,8 @@
 	"fuse": ["doxygen"],
 	"linux-pam": ["/lib/cracklib/pw_dict"],
     "postgresql": ["make -C contrib", "createdb", "/usr/bin/postgres", "/usr/bin/pg_ctl"],
-    "dconf": ["common/meson.build", "gsettings/abicheck.sh"]
+    "dconf": ["common/meson.build", "gsettings/abicheck.sh"],
+    "lxde-icon-theme": [
+        "gtk-update-icon-cache"
+    ]
 }
