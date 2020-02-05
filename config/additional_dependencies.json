@@ -24,5 +24,6 @@
 	"babl": ["lcms2"],
 	"mlt": ["pulseaudio"],
 	"vlc": ["qt5"],
-	"pavucontrol": ["gtkmm3", "libsigc"]
+	"pavucontrol": ["gtkmm3", "libsigc"],
+	"geoclue2": ["libnotify"]
 }
