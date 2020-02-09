@@ -565,3 +565,32 @@ def rustfilter1(package, commands):
 		version = tarball.replace('rustc-', '').replace('-src.tar.gz', '')
 		package['version'] = version
 	return (package, commands)
+
+def kframeworksfilter(package, commands):
+	if package['name'] == 'krameworks5' or package['name'] == 'plasma-all':
+		if package['name'] == 'krameworks5':
+			tmpfile = '/tmp/kframeworks-done'
+		else:
+			tmpfile = '/tmp/plasma-done'
+		cmds = list()
+		for new_cmd in commands:
+			parts = new_cmd.split('\n')
+			final_parts = list()
+			for part in parts:
+				if 'wget' in part:
+					continue
+				if 'file=$(' in part:
+					final_parts.append(part)
+					final_parts.append('    touch ' + tmpfile)
+					final_parts.append('    if grep $file ' + tmpfile + '; then continue; fi')
+					final_parts.append('    wget -nc $url/$file')
+					final_parts.append('    if echo $file | grep /; then file=$(echo $file | cut -d/ -f2); fi')
+				elif 'as_root /sbin/ldconfig' in part:
+					final_parts.append(part)
+					final_parts.append('echo $file >> ' + tmpfile)
+				else:
+					final_parts.append(part)
+			cmds.append('\n'.join(final_parts))
+		return (package, cmds)
+	else:
+		return (package, commands)

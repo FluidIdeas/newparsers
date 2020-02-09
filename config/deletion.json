@@ -229,7 +229,8 @@
     "plasma-all": [
         "bash -e",
         "xinitrc",
-        "startx"
+        "startx",
+        "-e plasma.desktop"
     ],
     "lm_sensors": [
         "sensors-detect"
@@ -268,10 +269,12 @@
 	"transmission": ["qt"],
 	"mariadb": ["mysql-test"],
 	"php": ["php_manual_en.html.gz", "php_manual_en.tar.gz"],
-	"grilo": ["meson --prefix=/usr"],
 	"libgdata": ["meson --prefix=/usr"],
 	"fuse": ["doxygen"],
 	"linux-pam": ["/lib/cracklib/pw_dict"],
     "postgresql": ["make -C contrib", "createdb", "/usr/bin/postgres", "/usr/bin/pg_ctl"],
-    "dconf": ["common/meson.build", "gsettings/abicheck.sh"]
+    "dconf": ["common/meson.build", "gsettings/abicheck.sh"],
+    "lxde-icon-theme": [
+        "gtk-update-icon-cache"
+    ]
 }

@@ -3,6 +3,5 @@
 		"https://github.com/cracklib/cracklib/releases/download/v2.9.7/cracklib-words-2.9.7.bz2"
 	],
 	"aspell": ["https://ftp.gnu.org/gnu/aspell/dict/en/aspell6-en-2018.04.16-0.tar.bz2"],
-	"grilo": ["https://gitlab.gnome.org/GNOME/grilo/merge_requests/52.diff"],
 	"dconf": ["https://bitbucket.org/chandrakantsingh/patches/raw/2.0/dconf-0.34.0-meson.patch"]
 }

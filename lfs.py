@@ -13,7 +13,7 @@ scripts_dir = '/home/chandrakant/aryalinux/aryalinux/base-system'
 index_path = book_dir + separator + 'index.html'
 wget_list_path = book_dir + separator + 'wget-list'
 chapter_map = {'chapter05': 'toolchain', 'chapter06': 'final-system'}
-unwanted_chapters = ['5.1', '5.2', '5.3', '5.36', '5.37', '6.1', '6.2', '6.3', '6.4', '6.5', '6.6', '6.77', '6.78', '6.79']
+unwanted_chapters = ['5.1', '5.2', '5.3', '5.36', '5.37', '6.1', '6.2', '6.3', '6.4', '6.5', '6.6', '6.78', '6.79', '6.80']
 
 filters = [libffifilter]
 
