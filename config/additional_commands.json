@@ -3,20 +3,8 @@
 		"position": -2,
 		"command": "cd $SOURCE_DIR\nTARBALL=$(ls aspell*.tar.bz2)\nDIRECTORY=$(tar tf $TARBALL | cut -d/ -f1 | uniq)\n\ntar xf $TARBALL\ncd $DIRECTORY"
 	},
-	"libgdata": {
-		"position": 0,
-		"command": "mkdir build &&\ncd    build    &&\n\nmeson --prefix=/usr -Dgtk_doc=false .. &&\nninja"
-	},
 	"rust": {
 		"position": 1000,
 		"command": "\n\ncat > \/tmp\/clearcargo.sh <<EOF\nif [ -d $HOME\/.cargo ]; then\n\trm -rf $HOME\/.cargo\nfi\nEOF\nchmod a+x \/tmp\/clearcargo.sh\n\/tmp\/clearcargo.sh\nsed -i \"s@$HOME@\/root@g\" \/tmp\/clearcargo.sh\nsudo \/tmp\/clearcargo.sh\nsudo rm -f \/tmp\/clearcargo.sh"
-	},
-	"dconf": {
-		"position": 0,
-		"command": "patch -Np1 -i ../dconf-0.34.0-meson.patch"
-	},
-	"folks": {
-		"position": 0,
-		"command": "sed -i \"s@py_installation.dependency('dbusmock')@py_installation.dependency()@g\" meson.build"
 	}
 }

@@ -28,18 +28,18 @@
         "bash -e",
         "/usr/lib/X11",
         "exit",
-			"grep -A9 summary"
+        "grep -A9 summary"
     ],
     "x7app": [
         "bash -e",
         "exit",
-			"grep -A9 summary"
+        "grep -A9 summary"
     ],
     "x7font": [
         "bash -e",
         "/usr/share/fonts/X11-OTF",
         "exit",
-			"grep -A9 summary"
+        "grep -A9 summary"
     ],
     "llvm": [
         "cmake -DLLVM_ENABLE_SPHINX=ON",
@@ -81,7 +81,7 @@
         "rsync -vrltLW",
         "make fate THREADS",
         "doc/doxy/html/*",
-	"doxygen"
+	    "doxygen"
     ],
     "rust": [
         "rustc-testlog"
@@ -136,7 +136,7 @@
     "lvm2": [
         "make -C tools install_dmsetup_dynamic",
         "--with-thin-check=",
-	"make check_local"
+	    "make check_local"
     ],
     "sudo": [
         "/etc/sudoers.d/sudo"
@@ -167,8 +167,8 @@
         "wpa_passphrase",
         "systemctl enable wpa_supplicant@<em class=\"replaceable\"><code>wlan0</code></em>",
         "systemctl start wpa_supplicant@<em class=\"replaceable\"><code>wlan0</code></em>",
-	"systemctl enable wpa_supplicant@wlan0",
-	"systemctl start wpa_supplicant@wlan0"
+        "systemctl enable wpa_supplicant@wlan0",
+        "systemctl start wpa_supplicant@wlan0"
     ],
     "networkmanager": [
         "/etc/NetworkManager/conf.d/dhcp.conf",
@@ -269,11 +269,9 @@
 	"transmission": ["qt"],
 	"mariadb": ["mysql-test"],
 	"php": ["php_manual_en.html.gz", "php_manual_en.tar.gz"],
-	"libgdata": ["meson --prefix=/usr"],
 	"fuse": ["doxygen"],
 	"linux-pam": ["/lib/cracklib/pw_dict"],
     "postgresql": ["make -C contrib", "createdb", "/usr/bin/postgres", "/usr/bin/pg_ctl"],
-    "dconf": ["common/meson.build", "gsettings/abicheck.sh"],
     "lxde-icon-theme": [
         "gtk-update-icon-cache"
     ]
