@@ -1038,7 +1038,7 @@
         "download_urls": [],
         "tarball": null,
         "commands": "sudo pip install bs4\n\nwget https://www.virtualbox.org/wiki/Linux_Downloads -O Linux_Downloads\n\ncat > /tmp/parser.py<<\"EOF\"\nfrom bs4 import BeautifulSoup\n\nwith open('Linux_Downloads') as fp:\n\tdoc = BeautifulSoup(fp.read(), features=\"html.parser\")\n\nfor anchor in doc.select('a[href]'):\n\tif 'All distributions' in str(anchor):\n\t\tprint(anchor['href'])\nEOF\n\nurl=$(python /tmp/parser.py)\ntarball=$(echo $url | rev | cut -d/ -f1 | rev)\n\nVBOX_INSTALLER=$(echo $url | rev | cut -d/ -f1 | rev)\nVERSION=$(echo $VBOX_INSTALLER | cut -d \"-\" -f2)\n\nwget -nc $url\n\nchmod a+x $VBOX_INSTALLER\n\nsudo ./$VBOX_INSTALLER\n\nsudo ln -svf /opt/VirtualBox/virtualbox.desktop /usr/share/applications/\nsudo update-desktop-database\nsudo update-mime-database /usr/share/mime\n",
-        "dependencies": ["xserver-meta", "kernel-headers"],
+        "dependencies": ["xserver-meta"],
         "description": "Oracle VM VirtualBox is a free and open-source hosted hypervisor for x86 virtualization, developed by Oracle Corporation. Created by Innotek GmbH, it was acquired by Sun Microsystems in 2008, which was, in turn, acquired by Oracle in 2010. VirtualBox may be installed on Windows, macOS, Linux, Solaris and OpenSolaris."
     },
     {
@@ -1250,15 +1250,6 @@
             "sqlite"
         ],
         "description": "The Firefox binary package. This package unlike firefox is not built from source. The latest online binaries are downloaded and extracted when this package is installed."
-    },
-    {
-        "name": "kernel-headers",
-        "version": "current",
-        "download_urls": [],
-        "tarball": null,
-        "commands": "KERNEL_VERSION=$(uname -r)\nKERNEL_MAJOR_VERSION=$(uname -r | cut -d '.' -f1)\nKERNEL_URL=https://cdn.kernel.org/pub/linux/kernel/v$KERNEL_MAJOR_VERSION.x/linux-$KERNEL_VERSION.tar.xz\nKERNEL_TARBALL=$(echo $KERNEL_URL | rev | cut -d/ -f1 | rev)\n\nwget -nc $KERNEL_URL\n\nKERNEL_DIR=$(tar tf $KERNEL_TARBALL | cut -d/ -f1 | uniq)\n\nsudo mkdir -pv /usr/src/\nsudo tar xf $KERNEL_TARBALL -C /usr/src\nsudo ln -svf /usr/src/$KERNEL_DIR /lib/modules/$KERNEL_VERSION/build\n\npushd /usr/src/$KERNEL_DIR\nsudo make oldconfig\nsudo make prepare\nsudo make scripts\npopd\n\nsudo rm -rf $KERNEL_TARBALL\n\nVERSION=current\n",
-        "dependencies": [],
-        "description": "The current linux kernel headers."
     },
     {
         "name": "binary-app-installer",
