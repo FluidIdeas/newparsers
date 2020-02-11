@@ -196,7 +196,7 @@
         "version": "3.32.0",
         "download_urls": [],
         "tarball": null,
-        "commands": "sudo sed -i 's@MimeType=inode/directory@# MimeType=inode/directory@g' /usr/share/applications/org.gnome.baobab.desktop\nsudo update-desktop-database\nsudo update-mime-database /usr/share/mime\npushd $SOURCE_DIR\nwget https://raw.githubusercontent.com/FluidIdeas/utils/master/wallpaper-list-update.sh\nsudo chmod a+x wallpaper-list-update.sh\nsudo ./wallpaper-list-update.sh\nsudo rm wallpaper-list-update.sh\npopd\nsudo tee /etc/profile.d/aryalinux-desktop.sh << EOF\ncd ~\nxdg-user-dirs-update\ndefault-gnome-user-instructions\nEOF\nsudo rm -rvf /usr/share/xsessions/gnome.desktop",
+        "commands": "sudo sed -i 's@MimeType=inode/directory@# MimeType=inode/directory@g' /usr/share/applications/org.gnome.baobab.desktop\nsudo update-desktop-database\nsudo update-mime-database /usr/share/mime\npushd $SOURCE_DIR\nwget https://raw.githubusercontent.com/FluidIdeas/utils/master/wallpaper-list-update.sh\nsudo chmod a+x wallpaper-list-update.sh\nsudo ./wallpaper-list-update.sh\nsudo rm wallpaper-list-update.sh\npopd\nsudo tee /etc/profile.d/aryalinux-desktop.sh << EOF\ncd ~\nxdg-user-dirs-update\ndefault-gnome-user-instructions\nEOF",
         "dependencies": [
             "accountsservice",
             "desktop-file-utils",
