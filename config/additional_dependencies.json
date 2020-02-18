@@ -25,5 +25,6 @@
 	"mlt": ["pulseaudio"],
 	"vlc": ["qt5"],
 	"pavucontrol": ["gtkmm3", "libsigc"],
-	"geoclue2": ["libnotify"]
+	"geoclue2": ["libnotify"],
+	"network-manager-applet": ["polkit-gnome"]
 }

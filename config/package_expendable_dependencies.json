@@ -54,5 +54,6 @@
 	"python-modules#pycairo": ["python-modules#pygtk"],
 	"linux-pam": ["shadow", "systemd"],
 	"systemd": ["polkit"],
-	"audacious": ["qt5"]
+	"audacious": ["qt5"],
+	"network-manager-applet": ["polkit#polkit-agent"]
 }
