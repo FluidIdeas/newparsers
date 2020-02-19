@@ -26,5 +26,6 @@
 	"vlc": ["qt5"],
 	"pavucontrol": ["gtkmm3", "libsigc"],
 	"geoclue2": ["libnotify"],
-	"network-manager-applet": ["polkit-gnome"]
+	"network-manager-applet": ["polkit-gnome"],
+	"python-modules#pygobject3": ["python-modules#pycairo2"]
 }
