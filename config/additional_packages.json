@@ -324,8 +324,8 @@
             "http://aryalinux.info/files/aryalinux-wallpapers-2.4.tar.xz"
         ],
 	    "url": null,
-        "tarball": "aryalinux-wallpapers-2.0.tar.xz",
-        "commands": "sudo tar xf aryalinux-wallpapers-2.0.tar.xz -C /\nsudo chown -R root:root /usr/share/backgrounds/aryalinux",
+        "tarball": "aryalinux-wallpapers-2.4.tar.xz",
+        "commands": "sudo tar xf aryalinux-wallpapers-2.4.tar.xz -C /\nsudo chown -R root:root /usr/share/backgrounds/aryalinux",
         "dependencies": [],
         "description": "The wallpaper collection for AryaLinux desktop."
     },
