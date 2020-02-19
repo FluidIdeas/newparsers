@@ -319,9 +319,9 @@
     },
     {
         "name": "aryalinux-wallpapers",
-        "version": "2.0",
+        "version": "2.4",
         "download_urls": [
-            "http://aryalinux.info/files/aryalinux-wallpapers-2.0.tar.xz"
+            "http://aryalinux.info/files/aryalinux-wallpapers-2.4.tar.xz"
         ],
 	    "url": null,
         "tarball": "aryalinux-wallpapers-2.0.tar.xz",

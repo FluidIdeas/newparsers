@@ -6,5 +6,9 @@
 	"rust": {
 		"position": 1000,
 		"command": "\n\ncat > \/tmp\/clearcargo.sh <<EOF\nif [ -d $HOME\/.cargo ]; then\n\trm -rf $HOME\/.cargo\nfi\nEOF\nchmod a+x \/tmp\/clearcargo.sh\n\/tmp\/clearcargo.sh\nsed -i \"s@$HOME@\/root@g\" \/tmp\/clearcargo.sh\nsudo \/tmp\/clearcargo.sh\nsudo rm -f \/tmp\/clearcargo.sh"
+	},
+	"lightdm": {
+		"position": 1000,
+		"command": "\nsudo tee -a /etc/lightdm/lightdm-gtk-greeter.conf << EOF\n[greeter]\nxft-hintstyle = hintmedium\nxft-antialias = true\nxft-rgba = rgb\nicon-theme-name = 'Flat Remix'\ntheme-name = Adapta-Nokto\nbackground = /usr/share/backgrounds/aryalinux/default-lock-screen-wallpaper.jpeg\nfont-name = Source Sans Pro 11\nEOF"
 	}
 }
