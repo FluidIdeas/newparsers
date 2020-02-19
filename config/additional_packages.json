@@ -1194,7 +1194,7 @@
             "caja-extensions",
             "caja-dropbox",
             "pluma",
-            "eom",
+            "gthumb",
             "engrampa",
             "atril",
             "udisks2",
@@ -1827,5 +1827,14 @@
             "lightdm"
         ],
         "section": "LXQT Desktop"
+    },
+    {
+        "name": "gthumb",
+        "version": "3.8.3",
+        "description": "gThumb is an image viewer and browser for the GNOME Desktop. It also includes an importer tool for transferring photos from cameras.",
+        "download_urls": ["http://ftp.acc.umu.se/pub/gnome/sources/gthumb/3.8/gthumb-3.8.3.tar.xz"],
+        "commands": "mkdir build\ncd build\n\nmeson prefix=/usr ..\nninja\nsudo ninja install",
+        "dependencies": [],
+        "section": "Others"
     }
 ]
