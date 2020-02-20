@@ -178,8 +178,6 @@ def get_packages():
 		package['version'] = package['tarball'].replace(name + '-', '').replace('.tar.xz', '')
 		if package['name'] == 'mate-power-manager':
 			package['commands'] = "./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var --disable-static --without-keyring --with-gtk=3.0 &&\nmake\n\nsudo make install"
-		elif package['name'] == 'mate-backgrounds':
-			package['commands'] = "mkdir -pv build\ncd build\nmeson --prefix=/usr&&\nninja\n\nsudo ninja install"
 		else:
 			package['commands'] = "./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var --disable-static &&\nmake\n\nsudo make install"
 		package['dependencies'] = []
