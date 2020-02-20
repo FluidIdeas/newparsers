@@ -221,7 +221,7 @@ def parse_package(file_path, version, patches_file):
 				else:
 					cmd = cmd_pre.select('kbd.command')[0].text.strip()
 					# lynx has a make install-full command, needs bypassing
-					if package['name'] != 'lynx' and 'make install-' in cmd and cmd.index('make install-') == 0:
+					if package['name'] != 'texlive' and package['name'] != 'lynx' and 'make install-' in cmd and cmd.index('make install-') == 0:
 						cmd = get_systemd_service_install_cmds(cmd)
 				root_cmd = 'sudo rm -rf /tmp/rootscript.sh\ncat > /tmp/rootscript.sh <<"ENDOFROOTSCRIPT"\n' + cmd + '\nENDOFROOTSCRIPT\n\nchmod a+x /tmp/rootscript.sh\nsudo /tmp/rootscript.sh\nsudo rm -rf /tmp/rootscript.sh\n'
 				commands.append(root_cmd)
