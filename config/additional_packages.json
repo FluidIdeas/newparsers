@@ -1843,7 +1843,7 @@
         "version": "2019",
         "description": "Package to configure installation of texlive",
         "download_urls": [],
-        "commands": "export TEXARCH=$(uname -m | sed -e 's/i.86/i386/' -e 's/$/-linux/') &&\n\ncat >> /etc/profile.d/extrapaths.sh << EOF\n\n# Begin texlive addition\n\npathappend /opt/texlive/2019/texmf-dist/doc/man  MANPATH\npathappend /opt/texlive/2019/texmf-dist/doc/info INFOPATH\npathappend /opt/texlive/2019/bin/$TEXARCH\n\n# End texlive addition\n\nEOF\n\nunset TEXARCH",
+        "commands": "export TEXARCH=$(uname -m | sed -e 's/i.86/i386/' -e 's/$/-linux/') &&\n\nsudo tee -a /etc/profile.d/extrapaths.sh << EOF\n\n# Begin texlive addition\n\npathappend /opt/texlive/2019/texmf-dist/doc/man  MANPATH\npathappend /opt/texlive/2019/texmf-dist/doc/info INFOPATH\npathappend /opt/texlive/2019/bin/$TEXARCH\n\n# End texlive addition\n\nEOF\n\nunset TEXARCH",
         "dependencies": [],
         "section": "Others"
     }
