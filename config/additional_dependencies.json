@@ -27,5 +27,6 @@
 	"pavucontrol": ["gtkmm3", "libsigc"],
 	"geoclue2": ["libnotify"],
 	"network-manager-applet": ["polkit-gnome"],
-	"python-modules#pygobject3": ["python-modules#pycairo2"]
+	"python-modules#pygobject3": ["python-modules#pycairo2"],
+	"python-modules#python-dbusmock": ["python-modules#dbus-python"]
 }
