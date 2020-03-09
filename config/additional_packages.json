@@ -1845,5 +1845,14 @@
         "commands": "export TEXARCH=$(uname -m | sed -e 's/i.86/i386/' -e 's/$/-linux/') &&\n\nsudo tee -a /etc/profile.d/extrapaths.sh << EOF\n\n# Begin texlive addition\n\npathappend /opt/texlive/2019/texmf-dist/doc/man  MANPATH\npathappend /opt/texlive/2019/texmf-dist/doc/info INFOPATH\npathappend /opt/texlive/2019/bin/$TEXARCH\n\n# End texlive addition\n\nEOF\n\nunset TEXARCH",
         "dependencies": [],
         "section": "Others"
+    },
+    {
+        "name": "avahi",
+        "version": "0.8",
+        "description": "The Avahi package is a system which facilitates service discovery on a local network.",
+        "download_urls": ["https://github.com/lathiat/avahi/releases/download/v0.8/avahi-0.8.tar.gz"],
+        "commands": "sudo groupadd -fg 84 avahi &&\nsudo useradd -c \"Avahi Daemon Owner\" -d \/var\/run\/avahi-daemon -u 84 \\\n        -g avahi -s \/bin\/false avahi\n\nsudo groupadd -fg 86 netdev\n\n.\/configure --prefix=\/usr        \\\n            --sysconfdir=\/etc    \\\n            --localstatedir=\/var \\\n            --disable-static     \\\n            --disable-libevent   \\\n            --disable-mono       \\\n            --disable-monodoc    \\\n            --disable-python     \\\n            --disable-qt3        \\\n            --disable-qt4        \\\n            --disable-qt5        \\\n            --enable-core-docs   \\\n            --with-distro=none   \\\n            --with-systemdsystemunitdir=\/lib\/systemd\/system &&\nmake\nsudo make install\nsudo systemctl enable avahi-daemon\nsudo systemctl enable avahi-dnsconfd",
+        "dependencies": ["glib2", "gobject-introspection", "gtk2", "gtk3", "libdaemon", "libglade"],
+        "section": "Networking Utilities"
     }
 ]
