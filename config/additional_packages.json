@@ -490,12 +490,12 @@
     },
     {
         "name": "libtdb",
-        "version": "1.3.17",
+        "version": "1.4.3",
         "section": "Others",
         "download_urls": [
-            "https://www.samba.org/ftp/tdb/tdb-1.3.17.tar.gz"
+            "https://www.samba.org/ftp/tdb/tdb-1.4.3.tar.gz"
         ],
-        "tarball": "tdb-1.3.17.tar.gz",
+        "tarball": "tdb-1.4.3.tar.gz",
         "commands": "sed -i \"s@../../buildtools@buildtools@g\" Makefile\n./configure --prefix=/usr &&\nmake\nsudo make install",
         "dependencies": [],
         "description": "This is a simple database API. It is modelled after the structure of GDBM. TDB features, unlike GDBM, multiple writers support with appropriate locking and transactions."
