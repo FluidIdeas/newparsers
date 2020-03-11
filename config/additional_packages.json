@@ -1311,7 +1311,7 @@
         "tarball": "libostree-2019.4.tar.xz",
         "commands": "./configure --prefix=/usr &&\nmake -j$(nproc)\nsudo make install",
         "dependencies": ["fuse2"],
-        "description": "libostree is a library for managing bootable, immutable, versioned filesystem trees. It is like git in that it checksums individual files and has a content-addressed object store; unlike git, it \"checks out\" the files using hardlinks into an immutable directory tree. This can be used to provide atomic upgrades with rollback, history and parallel-installation, particularly useful on 'fixed purpose' systems such as embedded devices. It is also used by the Flatpak application runtime system."
+        "description": "libostree is a library for managing bootable, immutable, versioned filesystem trees. It is like git in that it checksums individual files and has a content-addressed object store; unlike git, it \"checks out\" the files using hardlinks into an immutable directory tree. This can be used to provide atomic upgrades with rollback, history and parallel-installation, particularly useful on fixed purpose systems such as embedded devices. It is also used by the Flatpak application runtime system."
     },
     {
         "name": "libindicator",
