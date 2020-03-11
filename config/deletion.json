@@ -274,5 +274,9 @@
     "postgresql": ["make -C contrib", "createdb", "/usr/bin/postgres", "/usr/bin/pg_ctl"],
     "lxde-icon-theme": [
         "gtk-update-icon-cache"
+    ],
+    "audacious": [
+        "gtk-update-icon-cache",
+        "update-desktop-database"
     ]
 }
