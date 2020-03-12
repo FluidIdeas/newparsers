@@ -278,5 +278,9 @@
     "audacious": [
         "gtk-update-icon-cache",
         "update-desktop-database"
+    ],
+    "vlc": [
+        "gtk-update-icon-cache",
+        "update-desktop-database"
     ]
 }
