@@ -1854,5 +1854,23 @@
         "commands": "sudo groupadd -fg 84 avahi &&\nsudo useradd -c \"Avahi Daemon Owner\" -d \/var\/run\/avahi-daemon -u 84 \\\n        -g avahi -s \/bin\/false avahi\n\nsudo groupadd -fg 86 netdev\n\n.\/configure --prefix=\/usr        \\\n            --sysconfdir=\/etc    \\\n            --localstatedir=\/var \\\n            --disable-static     \\\n            --disable-libevent   \\\n            --disable-mono       \\\n            --disable-monodoc    \\\n            --disable-python     \\\n            --disable-qt3        \\\n            --disable-qt4        \\\n            --disable-qt5        \\\n            --enable-core-docs   \\\n            --with-distro=none   \\\n            --with-systemdsystemunitdir=\/lib\/systemd\/system &&\nmake\nsudo make install\nsudo systemctl enable avahi-daemon\nsudo systemctl enable avahi-dnsconfd",
         "dependencies": ["glib2", "gobject-introspection", "gtk2", "gtk3", "libdaemon", "libglade"],
         "section": "Networking Utilities"
+    },
+    {
+        "name": "rust",
+        "version": "1.37.0",
+        "description": "The Rust programming language is designed to be a safe, concurrent, practical language.",
+        "download_urls": [],
+        "commands": "wget -nc http://aryalinux.info/files/2.4/rust-1.37.0-x86_64.tar.gz\n\nsudo tar xf rust-1.37.0-x86_64.tar.gz -C \/\n\nsudo tee -a \/etc\/ld.so.conf << EOF\n# Begin rustc addition\n\n\/opt\/rustc\/lib\n\n# End rustc addition\nEOF\n\nsudo ldconfig\n\nsudo tee \/etc\/profile.d\/rustc.sh << \"EOF\"\n# Begin \/etc\/profile.d\/rustc.sh\n\npathprepend \/opt\/rustc\/bin           PATH\n\n# End \/etc\/profile.d\/rustc.sh\nEOF\n",
+        "dependencies": ["curl", "cmake", "libssh2", "llvm"],
+        "section": "Programming"
+    },
+    {
+        "name": "libreoffice",
+        "version": "6.4.0.3",
+        "description": "LibreOffice is a full-featured office suite. It is largely compatible with Microsoft Office and is descended from OpenOffice.org.",
+        "download_urls": [],
+        "commands": "wget -nc http://aryalinux.info/files/2.4/libreoffice-6.4.0.3-x86_64.tar.gz\n\nsudo tar xf libreoffice-6.4.0.3-x86_64.tar.gz -C /",
+        "dependencies": ["perl-modules#perl-archive-zip", "unzip", "wget", "which", "zip", "apr", "boost", "clucene", "cups", "curl", "dbus-glib", "libjpeg", "glm", "glu", "gpgme", "graphite2", "gst10-plugins-base", "gtk3", "harfbuzz", "icu", "libatomic_ops", "lcms2", "librsvg", "libxml2", "libxslt", "python-modules#lxml", "mesa", "neon", "nss", "openldap", "poppler", "redland", "serf", "unixodbc"],
+        "section": "Office Programs"
     }
 ]
