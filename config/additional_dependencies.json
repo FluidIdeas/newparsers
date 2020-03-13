@@ -26,7 +26,7 @@
 	"vlc": ["qt5"],
 	"pavucontrol": ["gtkmm3", "libsigc"],
 	"geoclue2": ["libnotify"],
-	"network-manager-applet": ["polkit-gnome"],
+	"network-manager-applet": ["polkit-gnome", "libnma"],
 	"python-modules#pygobject3": ["python-modules#pycairo2"],
 	"python-modules#python-dbusmock": ["python-modules#dbus-python"]
 }

@@ -1872,5 +1872,14 @@
         "commands": "wget -nc http://aryalinux.info/files/2.4/libreoffice-6.4.0.3-x86_64.tar.gz\n\nsudo tar xf libreoffice-6.4.0.3-x86_64.tar.gz -C /",
         "dependencies": ["perl-modules#perl-archive-zip", "unzip", "wget", "which", "zip", "apr", "boost", "clucene", "cups", "curl", "dbus-glib", "libjpeg", "glm", "glu", "gpgme", "graphite2", "gst10-plugins-base", "gtk3", "harfbuzz", "icu", "libatomic_ops", "lcms2", "librsvg", "libxml2", "libxslt", "python-modules#lxml", "mesa", "neon", "nss", "openldap", "poppler", "redland", "serf", "unixodbc"],
         "section": "Office Programs"
+    },
+    {
+        "name": "libnma",
+        "version": "1.8.28",
+        "description": "LibreOffice is a full-featured office suite. It is largely compatible with Microsoft Office and is descended from OpenOffice.org.",
+        "download_urls": ["ftp://ftp.gnome.org/pub/gnome/sources/libnma/1.8/libnma-1.8.28.tar.xz"],
+        "commands": "mkdir build\ncd build\n\nmeson --prefix=/usr &&\nninja\n\nsudo ninja install",
+        "dependencies": [],
+        "section": "Networking Utilities"
     }
 ]
