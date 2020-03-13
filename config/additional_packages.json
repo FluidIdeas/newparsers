@@ -1876,9 +1876,18 @@
     {
         "name": "libnma",
         "version": "1.8.28",
-        "description": "LibreOffice is a full-featured office suite. It is largely compatible with Microsoft Office and is descended from OpenOffice.org.",
+        "description": "libnma is a library for wireless and mobile dialogs",
         "download_urls": ["ftp://ftp.gnome.org/pub/gnome/sources/libnma/1.8/libnma-1.8.28.tar.xz"],
         "commands": "mkdir build\ncd build\n\nmeson --prefix=/usr &&\nninja\n\nsudo ninja install",
+        "dependencies": ["mobile-broadband-provider-info"],
+        "section": "Networking Utilities"
+    },
+    {
+        "name": "mobile-broadband-provider-info",
+        "version": "20190618",
+        "description": "A database of mobile broadband service providers",
+        "download_urls": ["ftp://ftp.gnome.org/pub/gnome/sources/mobile-broadband-provider-info/20190618/mobile-broadband-provider-info-20190618.tar.xz"],
+        "commands": "./configure --prefix=/usr &&\nmake\n\nsudo make install",
         "dependencies": [],
         "section": "Networking Utilities"
     }
