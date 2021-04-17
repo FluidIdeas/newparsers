@@ -22,9 +22,7 @@ unwanted_chapters = ['5.1', '6.1', '7.1', '7.2', '7.3', '7.4', '7.5', '7.6', '7.
 
 filters = [libffifilter]
 
-additional_commands = {
-	'openssl': 'ln -svf /tools/bin/env /usr/bin/'
-}
+additional_commands = {}
 deletables = [
 	"vim -c ':options'",
 	'make check',
@@ -53,7 +51,10 @@ deletables = [
 	'ABI=32 ./configure',
 	'tzselect',
 	'passwd root',
-	'vim-test.log'
+	'vim-test.log',
+	'chown -Rv tester .',
+ 	'make NON_ROOT_USERNAME=tester check-root',
+	'echo "dummy:x:102:tester" >> /etc/group'
 ]
 
 replaceables = {
