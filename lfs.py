@@ -12,8 +12,13 @@ book_dir = '/home/chandrakant/aryalinux/books/lfs'
 scripts_dir = '/home/chandrakant/aryalinux/aryalinux/base-system'
 index_path = book_dir + separator + 'index.html'
 wget_list_path = book_dir + separator + 'wget-list'
-chapter_map = {'chapter05': 'toolchain', 'chapter06': 'final-system'}
-unwanted_chapters = ['5.1', '5.2', '5.3', '5.36', '5.37', '6.1', '6.2', '6.3', '6.4', '6.5', '6.6', '6.78', '6.79', '6.80']
+chapter_map = {
+    'chapter05': 'cross-toolchain',
+    'chapter06': 'temp-tools',
+    'chapter07': 'additional-temp-tools',
+    'chapter08': 'final-system'
+}
+unwanted_chapters = ['5.1', '6.1', '7.1', '7.2', '7.3', '7.4', '7.5', '7.6', '7.14', '8.1', '8.2', '8.75', '8.76', '8.77']
 
 filters = [libffifilter]
 
@@ -197,10 +202,14 @@ for chapter, links in chapters_links.items():
 		package['name'] = link.split('/')[-1].replace('.html', '')
 		package['commands'] = get_commands(document, package['name'])
 		package['tarball'] = get_tarball_name(package['name'])
-		if chapter[0] == '5':
-			package['dir'] = 'toolchain'
-		elif chapter[0] == '6':
+		if chapter[0] == '8':
 			package['dir'] = 'final-system'
+		elif chapter[0] == '5':
+			package['dir'] = 'cross-toolchain'
+		elif chapter[0] == '6':
+			package['dir'] = 'temp-tools'
+		elif chapter[0] == '7':
+			package['dir'] = 'additional-temp-tools'
 		prefix = get_prefix(index)
 		package['script_name'] = prefix + '-' + package['name'].lower()
 		for f in filters:
