@@ -87,7 +87,8 @@ for tarball in tarballs:
 	elif 'gcc' in tarball and tarball.index('gcc') == 0:
 		package_tarballs['gcc-pass1'] = tarball
 		package_tarballs['gcc-pass2'] = tarball
-		package_tarballs['gcc-libstdc++'] = tarball
+		package_tarballs['gcc-libstdc++-pass1'] = tarball
+		package_tarballs['gcc-libstdc++-pass2'] = tarball
 	elif 'XML-Parser' in tarball:
 		package_tarballs['xml-parser'] = tarball
 	elif 'elfutils' in tarball:
