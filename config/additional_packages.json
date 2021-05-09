@@ -97,11 +97,11 @@
     },
     {
         "name": "xf86-video-vesa",
-        "version": "2.4.0",
+        "version": "2.5.0",
         "download_urls": [
-            "https://www.x.org/archive/individual/driver/xf86-video-vesa-2.4.0.tar.gz"
+            "https://www.x.org/archive/individual/driver/xf86-video-vesa-2.5.0.tar.gz"
         ],
-        "tarball": "xf86-video-vesa-2.4.0.tar.gz",
+        "tarball": "xf86-video-vesa-2.5.0.tar.gz",
         "commands": "./configure $XORG_CONFIG &&\nmake -j$(nproc)\nsudo make install",
         "dependencies": [],
         "description": "Userspace VESA video graphics driver."
@@ -920,9 +920,9 @@
         "name": "intel-hybrid-driver",
         "version": "1.0.2",
         "download_urls": [
-            "https://github.com/01org/intel-hybrid-driver/archive/1.0.2.tar.gz"
+            "https://github.com/01org/intel-hybrid-driver/archive/1.0.2/intel-hybrid-driver-1.0.2.tar.gz"
         ],
-        "tarball": "1.0.2.tar.gz",
+        "tarball": "intel-hybrid-driver-1.0.2.tar.gz",
         "commands": "./autogen.sh --prefix=/usr --sysconfdir=/etc &&\nmake\nsudo make install",
         "dependencies": [
             "libcmrt"
@@ -1465,8 +1465,8 @@
     {
         "name": "libmygpo-qt1",
         "version": "1.0.9",
-        "download_urls": ["https://github.com/gpodder/libmygpo-qt/archive/1.0.9.tar.gz"],
-        "tarball": "1.0.9.tar.gz",
+        "download_urls": ["https://github.com/gpodder/libmygpo-qt/archive/1.0.9/libmygpo-qt-1.0.9.tar.gz"],
+        "tarball": "libmygpo-qt-1.0.9.tar.gz",
         "commands": "mkdir build &&\ncd build &&\ncmake -DCMAKE_INSTALL_PREFIX=/usr -DBUILD_WITH_QT4=off .. &&\nmake \"-j`nproc`\"\nsudo make install",
         "dependencies": ["qt5", "gjson"],
         "description": "C++/Qt Library wrapping the gpodder.net Webservice"
@@ -1483,8 +1483,8 @@
     {
         "name": "gjson",
         "version": "0.9.0",
-        "download_urls": ["https://github.com/flavio/qjson/archive/0.9.0.tar.gz"],
-        "tarball": "0.9.0.tar.gz",
+        "download_urls": ["https://github.com/flavio/qjson/archive/0.9.0/qjson-0.9.0.tar.gz"],
+        "tarball": "qjson-0.9.0.tar.gz",
         "commands": "mkdir build &&\ncd build &&\ncmake -DCMAKE_INSTALL_PREFIX=/usr .. &&\nmake \"-j`nproc`\"\nsudo make install",
         "dependencies": [],
         "description": "Go package that provides a fast and simple way to get values from a JSON document. It has features such as one line retrieval, dot notation paths, iteration, and parsing JSON lines."
@@ -1505,9 +1505,9 @@
         "name": "libusbmuxd",
         "version": "2.0.1",
         "download_urls": [
-            "https://github.com/libimobiledevice/libusbmuxd/archive/2.0.1.tar.gz"
+            "https://github.com/libimobiledevice/libusbmuxd/archive/2.0.1/libusbmuxd-2.0.1.tar.gz"
         ],
-        "tarball": "2.0.1.tar.gz",
+        "tarball": "libusbmuxd-2.0.1.tar.gz",
         "commands": "./autogen.sh --prefix=/usr  &&\nmake \"-j`nproc`\"\nsudo make install",
         "dependencies": [],
         "description": "usbmuxd, the USB multiplexor daemon, is in charge of coordinating access to iPhone and iPod Touch services over USB. Synchronization and management applications for the iPhone and iPod Touch need this daemon to communicate with such devices concurrently."
@@ -1729,7 +1729,7 @@
         "name": "pyyaml",
         "version": "5.3",
         "description": "PyYAML - The next generation YAML parser and emitter for Python.",
-        "download_urls": ["https://github.com/yaml/pyyaml/archive/5.3.tar.gz"],
+        "download_urls": ["https://github.com/yaml/pyyaml/archive/5.3/pyyaml-5.3.tar.gz"],
         "commands": "python setup.py build\nsudo python setup.py install\n\npython3 setup.py build\nsudo python3 setup.py install\n\n",
         "dependencies": []
     },
@@ -1755,7 +1755,7 @@
         "name": "muparser",
         "version": "2.2.6.1",
         "description": "Many applications require the parsing of mathematical expressions. The main objective of this library is to provide a fast and easy way of doing this. muParser is an extensible high performance math expression parser library written in C++. It works by transforming a mathematical expression into bytecode and precalculating constant parts of the expression.",
-        "download_urls": ["https://github.com/beltoforion/muparser/archive/v2.2.6.1.tar.gz"],
+        "download_urls": ["https://github.com/beltoforion/muparser/archive/v2.2.6.1/muparser-2.2.6.1.tar.gz"],
         "commands": "mkdir build-dir\ncd build-dir\n\ncmake -DCMAKE_INSTALL_PREFIX=/usr ..\nmake\nsudo make install",
         "dependencies": [],
         "section": "Programming"
