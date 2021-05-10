@@ -1890,14 +1890,5 @@
         "commands": "./configure --prefix=/usr &&\nmake\n\nsudo make install",
         "dependencies": [],
         "section": "Networking Utilities"
-    },
-    {
-        "name": "graphene",
-        "version": "1.9.6",
-        "description": "A thin layer of types for graphic libraries",
-        "download_urls": ["ftp://ftp.gnome.org/pub/gnome/sources/graphene/1.9/graphene-1.9.6.tar.xz"],
-        "commands": "mkdir build\ncd build\n\nmeson --prefix=/usr &&\nninja\n\nsudo ninja install",
-        "dependencies": [],
-        "section": "Others"
     }
 ]
