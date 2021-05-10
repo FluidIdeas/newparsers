@@ -56,5 +56,5 @@
 	"systemd": ["polkit"],
 	"audacious": ["qt5"],
 	"network-manager-applet": ["polkit#polkit-agent"],
-	"xterm": ["dejavu-fonts"]
+	"xterm": ["ttf-and-otf-fonts#dejavu-fonts"]
 }

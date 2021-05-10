@@ -1,3 +1,3 @@
 [
-	"xorg7#xorg-env", "installing", "systems", "dejavu-fonts"
+	"xorg7#xorg-env", "installing", "systems", "ttf-and-otf-fonts#dejavu-fonts"
 ]

@@ -304,5 +304,8 @@
     ],
     "nss": [
         "cd tests"
+    ],
+    "iptables": [
+        "/etc/systemd/scripts"
     ]
 }
