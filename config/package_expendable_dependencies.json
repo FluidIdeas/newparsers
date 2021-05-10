@@ -52,8 +52,9 @@
 	"twm": ["x7legacy"],
 	"phonon": ["phonon-backend-gstreamer", "phonon-backend-vlc"],
 	"python-modules#pycairo": ["python-modules#pygtk"],
-	"linux-pam": ["shadow", "systemd"],
+	"linux-pam": ["shadow", "systemd", "libpwquality"],
 	"systemd": ["polkit"],
 	"audacious": ["qt5"],
-	"network-manager-applet": ["polkit#polkit-agent"]
+	"network-manager-applet": ["polkit#polkit-agent"],
+	"xterm": ["dejavu-fonts"]
 }

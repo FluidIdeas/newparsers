@@ -14,5 +14,17 @@
 	"libical": {
 		"position": -1,
 		"command": "export MAKEFLAGS=\"j 1\""
+	},
+	"intel-hybrid-driver": {
+		"position": 0,
+		"command": "patch -Np1 -i ../821f871296629ffab451faea5134abf6f2d1166f.patch"
+	},
+	"samba": {
+		"position": 0,
+		"command": "sudo rm -r /var/lock"
+	},
+	"xterm": {
+		"position": 1000,
+		"command": "sudo mkdir -pv /usr/share/fonts/google-fonts\nsudo unzip ../FiraMono.zip -d /usr/share/fonts/google-fonts"
 	}
 }

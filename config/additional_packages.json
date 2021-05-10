@@ -110,10 +110,11 @@
         "name": "xf86-video-openchrome",
         "version": "0.6.0",
         "download_urls": [
-            "https://www.x.org/archive/individual/driver/xf86-video-openchrome-0.6.0.tar.gz"
+            "https://www.x.org/archive/individual/driver/xf86-video-openchrome-0.6.0.tar.gz",
+            "https://gitweb.gentoo.org/repo/gentoo.git/plain/x11-drivers/xf86-video-openchrome/files/xf86-video-openchrome-0.6.0-fno-common.patch"
         ],
         "tarball": "xf86-video-openchrome-0.6.0.tar.gz",
-        "commands": "./configure $XORG_CONFIG &&\nmake -j$(nproc)\nsudo make install",
+        "commands": "patch -Np1 -i ../xf86-video-openchrome-0.6.0-fno-common.patch\n./configure $XORG_CONFIG &&\nmake -j$(nproc)\nsudo make install",
         "dependencies": [],
         "description": "Userspace openchrome video graphics driver"
     },
@@ -141,11 +142,11 @@
     },
     {
         "name": "intel-vaapi-driver",
-        "version": "2.3.0",
+        "version": "2.4.1",
         "download_urls": [
-            "https://github.com/intel/intel-vaapi-driver/releases/download/2.3.0/intel-vaapi-driver-2.3.0.tar.bz2"
+            "https://github.com/intel/intel-vaapi-driver/releases/download/2.4.1/intel-vaapi-driver-2.4.1.tar.bz2"
         ],
-        "tarball": "intel-vaapi-driver-2.3.0.tar.bz2",
+        "tarball": "intel-vaapi-driver-2.4.1.tar.bz2",
         "commands": "./configure $XORG_CONFIG &&\nmake -j$(nproc)\nsudo make install",
         "dependencies": [],
         "description": "VA-API (Video Acceleration API) user mode driver for Intel GEN Graphics family."
@@ -252,7 +253,6 @@
             "dash-to-panel",
             "dash-to-dock",
             "gnome-session",
-            "lightdm",
             "gnome-user-docs",
             "baobab",
             "brasero",
@@ -285,7 +285,7 @@
             "aryalinux-google-fonts",
             "aryalinux-icons",
             "aryalinux-gtk-themes",
-            "aryalinux-gnome-settings",
+            "aryalinux-gnome-defaults",
             "plymouth",
             "cups",
             "cups-filters",
@@ -295,9 +295,9 @@
     },
     {
         "name": "aryalinux-google-fonts",
-        "version": "1.4",
+        "version": "4.0",
         "download_urls": [
-            "http://aryalinux.info/files/aryalinux-google-fonts.tar.xz"
+            "https://sourceforge.net/projects/aryalinux/files/releases/4.0/aryalinux-google-fonts.tar.xz"
         ],
     	"url": null,
         "tarball": "aryalinux-google-fonts.tar.xz",
@@ -307,49 +307,49 @@
     },
     {
         "name": "aryalinux-gtk-themes",
-        "version": "1.4",
+        "version": "4.0",
         "download_urls": [
-            "http://aryalinux.info/files/aryalinux-gtk-themes.tar.xz"
+            "https://sourceforge.net/projects/aryalinux/files/releases/4.0/aryalinux-gtk-themes-4.0.tar.xz"
         ],
     	"url": null,
-        "tarball": "aryalinux-gtk-themes.tar.xz",
-        "commands": "sudo tar xf aryalinux-gtk-themes.tar.xz -C /\nsudo chown -R root:root /usr/share/themes/",
+        "tarball": "aryalinux-gtk-themes-4.0.tar.xz",
+        "commands": "sudo tar xf aryalinux-gtk-themes-4.0.tar.xz -C /\nsudo chown -R root:root /usr/share/themes/",
         "dependencies": [],
         "description": "Collection of GTK themes from various souces for usage within AryaLinux."
     },
     {
         "name": "aryalinux-wallpapers",
-        "version": "2.4",
+        "version": "4.0",
         "download_urls": [
-            "http://aryalinux.info/files/aryalinux-wallpapers-2.4.tar.xz"
+            "https://sourceforge.net/projects/aryalinux/files/releases/4.0/aryalinux-wallpapers-4.0.tar.xz"
         ],
 	    "url": null,
-        "tarball": "aryalinux-wallpapers-2.4.tar.xz",
-        "commands": "sudo tar xf aryalinux-wallpapers-2.4.tar.xz -C /\nsudo chown -R root:root /usr/share/backgrounds/aryalinux",
+        "tarball": "aryalinux-wallpapers-4.0.tar.xz",
+        "commands": "sudo tar xf aryalinux-wallpapers-4.0.tar.xz -C /\nsudo chown -R root:root /usr/share/backgrounds/aryalinux",
         "dependencies": [],
         "description": "The wallpaper collection for AryaLinux desktop."
     },
     {
         "name": "aryalinux-icons",
-        "version": "1.4",
+        "version": "4.0",
         "download_urls": [
-            "http://aryalinux.info/files/aryalinux-icons.tar.xz"
+            "https://sourceforge.net/projects/aryalinux/files/releases/4.0/aryalinux-icons-4.0.tar.xz"
         ],
 	    "url": null,
-        "tarball": "aryalinux-icons.tar.xz",
-        "commands": "sudo tar xf aryalinux-icons.tar.xz -C /\nsudo chown -R root:root /usr/share/icons/",
+        "tarball": "aryalinux-icons-4.0.tar.xz",
+        "commands": "sudo tar xf aryalinux-icons-4.0.tar.xz -C /\nsudo chown -R root:root /usr/share/icons/",
         "dependencies": [],
         "description": "Collections of icons for usage in AryaLinux."
     },
     {
-        "name": "aryalinux-gnome-settings",
+        "name": "aryalinux-gnome-defaults",
         "version": "2.0",
         "download_urls": [
-            "http://aryalinux.info/files/aryalinux-gnome-defaults-2.0.tar.xz"
+            "https://sourceforge.net/projects/aryalinux/files/releases/4.0/aryalinux-gnome-defaults-4.0.tar.xz"
         ],
 	    "url": null,
-        "tarball": "aryalinux-gnome-defaults-2.0.tar.xz",
-        "commands": "sudo tar xf aryalinux-gnome-defaults-2.0.tar.xz -C /\nsudo cp -r /etc/skel/{.config,.Xresources}* ~\nsudo chown -R $USER:$USER ~",
+        "tarball": "aryalinux-gnome-defaults-4.0.tar.xz",
+        "commands": "sudo tar xf aryalinux-gnome-defaults-4.0.tar.xz -C /\nsudo cp -r /etc/skel/{.config,.Xresources}* ~\nsudo chown -R $USER:$USER ~",
         "dependencies": [],
         "description": "Default settings for the AryaLinux Gnome desktop environment."
     },
@@ -454,11 +454,11 @@
     },
     {
         "name": "mpv",
-        "version": "0.29.1",
+        "version": "0.33.1",
         "download_urls": [
-            "https://github.com/mpv-player/mpv/archive/v0.29.1.tar.gz"
+            "https://github.com/mpv-player/mpv/archive/v0.33.1/mpv-0.33.1.tar.gz"
         ],
-        "tarball": "v0.29.1.tar.gz",
+        "tarball": "mpv-0.33.1.tar.gz",
         "commands": "./bootstrap.py &&\n./waf configure --enable-libmpv-shared --enable-vaapi --enable-vdpau --prefix=/usr &&\n./waf build &&\nsudo ./waf install --prefix=/usr",
         "dependencies": [
             "xserver-meta",
@@ -476,11 +476,11 @@
     },
     {
         "name": "celluloid",
-        "version": "0.18",
+        "version": "0.21",
         "download_urls": [
-            "https://github.com/celluloid-player/celluloid/releases/download/v0.18/celluloid-0.18.tar.xz"
+            "https://github.com/celluloid-player/celluloid/releases/download/v0.21/celluloid-0.21.tar.xz"
         ],
-        "tarball": "celluloid-0.18.tar.xz",
+        "tarball": "celluloid-0.21.tar.xz",
         "commands": "./configure --prefix=/usr &&\nmake\nsudo make install",
         "dependencies": [
             "mpv",
@@ -503,11 +503,11 @@
     {
         "name": "rhythmbox",
         "section": "Audio Utilities",
-        "version": "3.4.3",
+        "version": "3.4.4",
         "download_urls": [
-            "https://download.gnome.org/sources/rhythmbox/3.4/rhythmbox-3.4.3.tar.xz"
+            "https://download-fallback.gnome.org/sources/rhythmbox/3.4/rhythmbox-3.4.4.tar.xz"
         ],
-        "tarball": "rhythmbox-3.4.3.tar.xz",
+        "tarball": "rhythmbox-3.4.4.tar.xz",
         "commands": "./configure --prefix=/usr\nmake\nsudo make install",
         "dependencies": [
             "gobject-introspection",
@@ -534,11 +534,11 @@
     },
     {
         "name": "libmtp",
-        "version": "1.1.16",
+        "version": "1.1.18",
         "download_urls": [
-            "https://sourceforge.net/projects/libmtp/files/libmtp/1.1.16/libmtp-1.1.16.tar.gz"
+            "https://github.com/libmtp/libmtp/releases/download/libmtp-1-1-18/libmtp-1.1.18.tar.gz"
         ],
-        "tarball": "libmtp-1.1.16.tar.gz",
+        "tarball": "libmtp-1.1.18.tar.gz",
         "commands": "./configure --prefix=/usr &&\nmake\nsudo make install",
         "dependencies": [],
         "description": "A library to access MTP (Media Transfer Protocol) Devices."
@@ -567,11 +567,11 @@
     },
     {
         "name": "libgpod",
-        "version": "0.8.2",
+        "version": "0.8.3",
         "download_urls": [
-            "https://sourceforge.net/projects/gtkpod/files/libgpod/libgpod-0.8/libgpod-0.8.2.tar.bz2"
+            "https://launchpad.net/ubuntu/+archive/primary/+sourcefiles/libgpod/0.8.3-16/libgpod_0.8.3.orig.tar.bz2"
         ],
-        "tarball": "libgpod-0.8.2.tar.bz2",
+        "tarball": "libgpod_0.8.3.orig.tar.bz2",
         "commands": "./configure --prefix=/usr &&\nmake\nsudo make install",
         "dependencies": [
             "libplist"
@@ -693,7 +693,7 @@
             "cups-filters",
             "vpn-libs",
             "plymouth",
-            "aryalinux-xfce-settings",
+            "aryalinux-xfce-defaults",
             "pnmixer",
             "xdg-user-dirs",
             "xdg-utils",
@@ -803,11 +803,11 @@
     },
     {
         "name": "jack2",
-        "version": "1.9.12",
+        "version": "1.9.18",
         "download_urls": [
-            "https://github.com/jackaudio/jack2/releases/download/v1.9.12/jack2-1.9.12.tar.gz"
+            "https://github.com/jackaudio/jack2/archive/v1.9.18/jack2-v1.9.18.tar.gz"
         ],
-        "tarball": "jack2-1.9.12.tar.gz",
+        "tarball": "jack2-v1.9.18.tar.gz",
         "commands": "./waf configure --prefix=/usr &&\n./waf build\nsudo ./waf install",
         "dependencies": [],
         "description": "JACK2 aka jackdmp is a C++ version of the JACK low-latency audio server for multi-processor machines. It is a new implementation of the JACK server core features that aims at removing some limitations of the JACK1 design."
@@ -864,12 +864,13 @@
     },
     {
         "name": "ppp",
-        "version": "2.4",
+        "version": "2.4.9",
         "download_urls": [
+            "https://download.samba.org/pub/ppp/ppp-2.4.9.tar.gz"
         ],
         "tarball": null,
-        "commands": "git clone https://github.com/paulusmack/ppp.git\ncd ppp\n./configure --prefix=/usr\nmake\nsudo make install\ncd ..\n\nrm -rf ppp",
-        "dependencies": [],
+        "commands": "./configure --prefix=/usr\nmake\nsudo make install\n",
+        "dependencies": ["libpcap"],
         "description": "ppp (Paul's PPP Package) is an open source package which implements the Point-to-Point Protocol (PPP) on Linux and Solaris systems."
     },
     {
@@ -984,8 +985,7 @@
         "name": "caribou",
         "version": "0.4.21",
         "download_urls": [
-            "http://ftp.gnome.org/pub/gnome/sources/caribou/0.4/caribou-0.4.21.tar.xz",
-		"ftp://ftp.gnome.org/pub/gnome/sources/caribou/0.4/caribou-0.4.21.tar.xz"
+            "http://ftp.gnome.org/pub/gnome/sources/caribou/0.4/caribou-0.4.21.tar.xz"
         ],
         "tarball": "caribou-0.4.21.tar.xz",
         "commands": "PYTHON=python3 ./configure --prefix=/usr --sysconfdir=/etc --disable-gtk2-module --disable-static && make\n\nsudo make install",
@@ -1555,14 +1555,14 @@
         "description": "Oniguruma is a library for working with regular expressions."
     },
     {
-        "name": "aryalinux-xfce-settings",
-        "version": "2.0",
+        "name": "aryalinux-xfce-defaults",
+        "version": "4.0",
         "download_urls": [
-            "http://aryalinux.info/files/aryalinux-xfce-defaults-2.0.tar.xz"
+            "https://sourceforge.net/projects/aryalinux/files/releases/4.0/aryalinux-xfce-defaults-4.0.tar.xz"
         ],
     	"url": null,
-        "tarball": "aryalinux-xfce-defaults-2.0.tar.xz",
-        "commands": "sudo tar xf aryalinux-xfce-defaults-2.0.tar.xz -C /\nsudo cp -r /etc/skel/{.config,.Xresources}* ~\nsudo chown -R $USER:$USER ~",
+        "tarball": "aryalinux-xfce-defaults-4.0.tar.xz",
+        "commands": "sudo tar xf aryalinux-xfce-defaults-4.0.tar.xz -C /\nsudo cp -r /etc/skel/{.config,.Xresources}* ~\nsudo chown -R $USER:$USER ~",
         "dependencies": [],
         "description": "Default settings of the XFCE desktop environment in AryaLinux. Includes commands for setting themes, icons and fonts for the defualt XFCE desktop."
     },
@@ -1854,24 +1854,6 @@
         "commands": "sudo groupadd -fg 84 avahi &&\nsudo useradd -c \"Avahi Daemon Owner\" -d \/var\/run\/avahi-daemon -u 84 \\\n        -g avahi -s \/bin\/false avahi\n\nsudo groupadd -fg 86 netdev\n\n.\/configure --prefix=\/usr        \\\n            --sysconfdir=\/etc    \\\n            --localstatedir=\/var \\\n            --disable-static     \\\n            --disable-libevent   \\\n            --disable-mono       \\\n            --disable-monodoc    \\\n            --disable-python     \\\n            --disable-qt3        \\\n            --disable-qt4        \\\n            --disable-qt5        \\\n            --enable-core-docs   \\\n            --with-distro=none   \\\n            --with-systemdsystemunitdir=\/lib\/systemd\/system &&\nmake\nsudo make install\nsudo systemctl enable avahi-daemon\nsudo systemctl enable avahi-dnsconfd",
         "dependencies": ["glib2", "gobject-introspection", "gtk2", "gtk3", "libdaemon", "libglade"],
         "section": "Networking Utilities"
-    },
-    {
-        "name": "rust",
-        "version": "1.37.0",
-        "description": "The Rust programming language is designed to be a safe, concurrent, practical language.",
-        "download_urls": [],
-        "commands": "wget -nc http://aryalinux.info/files/2.4/rust-1.37.0-x86_64.tar.gz\n\nsudo tar xf rust-1.37.0-x86_64.tar.gz -C \/\n\nsudo tee -a \/etc\/ld.so.conf << EOF\n# Begin rustc addition\n\n\/opt\/rustc\/lib\n\n# End rustc addition\nEOF\n\nsudo ldconfig\n\nsudo tee \/etc\/profile.d\/rustc.sh << \"EOF\"\n# Begin \/etc\/profile.d\/rustc.sh\n\npathprepend \/opt\/rustc\/bin           PATH\n\n# End \/etc\/profile.d\/rustc.sh\nEOF\n",
-        "dependencies": ["curl", "cmake", "libssh2", "llvm"],
-        "section": "Programming"
-    },
-    {
-        "name": "libreoffice",
-        "version": "6.4.0.3",
-        "description": "LibreOffice is a full-featured office suite. It is largely compatible with Microsoft Office and is descended from OpenOffice.org.",
-        "download_urls": [],
-        "commands": "wget -nc http://aryalinux.info/files/2.4/libreoffice-6.4.0.3-x86_64.tar.gz\n\nsudo tar xf libreoffice-6.4.0.3-x86_64.tar.gz -C /",
-        "dependencies": ["perl-modules#perl-archive-zip", "unzip", "wget", "which", "zip", "apr", "boost", "clucene", "cups", "curl", "dbus-glib", "libjpeg", "glm", "glu", "gpgme", "graphite2", "gst10-plugins-base", "gtk3", "harfbuzz", "icu", "libatomic_ops", "lcms2", "librsvg", "libxml2", "libxslt", "python-modules#lxml", "mesa", "neon", "nss", "openldap", "poppler", "redland", "serf", "unixodbc"],
-        "section": "Office Programs"
     },
     {
         "name": "libnma",

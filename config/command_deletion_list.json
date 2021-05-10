@@ -380,5 +380,10 @@
 			"doxygen",
 			"doc/html/*"
 		]
+	},
+	{
+		"btrfs-progs": [
+			"fsck-tests"
+		]
 	}
 ]

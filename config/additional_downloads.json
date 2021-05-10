@@ -2,5 +2,12 @@
 	"cracklib": [
 		"https://github.com/cracklib/cracklib/releases/download/v2.9.7/cracklib-words-2.9.7.bz2"
 	],
-	"aspell": ["https://ftp.gnu.org/gnu/aspell/dict/en/aspell6-en-2019.10.06-0.tar.bz2"]
+	"aspell": ["https://ftp.gnu.org/gnu/aspell/dict/en/aspell6-en-2019.10.06-0.tar.bz2"],
+	"intel-hybrid-driver": ["https://github.com/intel/intel-hybrid-driver/commit/821f871296629ffab451faea5134abf6f2d1166f.patch"],
+	"xf86-video-openchrome": [
+		"https://gitweb.gentoo.org/repo/gentoo.git/plain/x11-drivers/xf86-video-openchrome/files/xf86-video-openchrome-0.6.0-fno-common.patch"
+	],
+	"xterm": [
+		"https://sourceforge.net/projects/aryalinux/files/releases/4.0/FiraMono.zip"
+	]
 }

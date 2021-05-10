@@ -30,5 +30,7 @@
 	"python-modules#pygobject3": ["python-modules#pycairo2"],
 	"python-modules#python-dbusmock": ["python-modules#dbus-python"],
 	"mutter": ["graphene", "pipewire"],
-	"pipewire": ["jack2"]
+	"pipewire": ["jack2"],
+	"libgweather": ["python-modules#pygobject3"],
+	"sysprof": ["json-glib"]
 }

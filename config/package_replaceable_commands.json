@@ -1,3 +1,16 @@
 {
-	
+	"gnome-settings-daemon": [
+    {"rm -v /usr/lib/systemd/user/gsd-*": "rm -fv /usr/lib/systemd/user/gsd-*"}
+  ],
+  "gtk3": [
+    {"cat > ~/.config/gtk-3.0/gtk.css << \"EOF\"": "mkdir -pv ~/.config/gtk-3.0/\ncat > ~/.config/gtk-3.0/gtk.css << \"EOF\""}
+  ],
+  "tracker3-miners": [
+    {"rm -v /etc/xdg/autostart/tracker-miner-*": "rm -fv /etc/xdg/autostart/tracker-miner-*"}
+  ],
+  "xterm": [
+    {
+      "Monospace": "Fira Mono"
+    }
+  ]
 }

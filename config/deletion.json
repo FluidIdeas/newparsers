@@ -45,7 +45,8 @@
         "cmake -DLLVM_ENABLE_SPHINX=ON",
         "ninja docs-clang-html docs-clang-man",
         "install -v -m644 docs/man/* /usr/share/man/man1",
-        "install -v -m644 tools/clang/docs/man/*"
+        "install -v -m644 tools/clang/docs/man/*",
+        "SPHINX"
     ],
     "mesa": [
         "cp -rfv docs/* /usr/share/doc/"
@@ -136,7 +137,9 @@
     "lvm2": [
         "make -C tools install_dmsetup_dynamic",
         "--with-thin-check=",
-	    "make check_local"
+	    "make check_local",
+        "make -C tools install_tools_dynamic",
+        "check_local"
     ],
     "sudo": [
         "/etc/sudoers.d/sudo"
@@ -176,7 +179,9 @@
     ],
     "btrfs-progs": [
         "make fssum",
-        "pushd tests"
+        "fsck-tests",
+        "pushd tests",
+        "make -j1 -k test"
     ],
     "mdadm": [
         "make test",
@@ -269,7 +274,7 @@
 	"transmission": ["qt"],
 	"mariadb": ["mysql-test"],
 	"php": ["php_manual_en.html.gz", "php_manual_en.tar.gz"],
-	"fuse": ["doxygen"],
+	"fuse": ["doxygen", "python3 -m pytest test"],
 	"linux-pam": ["/lib/cracklib/pw_dict"],
     "postgresql": ["make -C contrib", "createdb", "/usr/bin/postgres", "/usr/bin/pg_ctl"],
     "lxde-icon-theme": [
@@ -282,5 +287,22 @@
     "vlc": [
         "gtk-update-icon-cache",
         "update-desktop-database"
+    ],
+    "gtkmm3": [
+        "mv -v /usr/share/doc/gtkmm-3.0 /usr/share/doc/gtkmm-3.24.4"
+    ],
+    "js78": [
+        "mountpoint"
+    ],
+    "libburn": [
+        "doxygen",
+        "/usr/share/doc/"
+    ],
+    "libisofs": [
+        "doxygen",
+        "/usr/share/doc/"
+    ],
+    "nss": [
+        "cd tests"
     ]
 }
