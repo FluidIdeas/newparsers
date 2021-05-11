@@ -3,6 +3,7 @@
 from bs4 import BeautifulSoup
 import json
 from filters import mesafilter
+from filters import webkitgtkfilter
 from filters import rustfilter
 from filters import bluezfilter
 from filters import krameworks5filter
@@ -44,7 +45,8 @@ pkg_replaceable_cmds = load_json('config/package_replaceable_commands.json')
 final_cmds = load_json('config/final-commands.json')
 
 custom_package_filters = [
-	mesafilter, 
+	mesafilter,
+	webkitgtkfilter,
 	rustfilter, 
 	bluezfilter, 
 	krameworks5filter, 

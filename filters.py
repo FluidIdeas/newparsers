@@ -33,6 +33,20 @@ unset GALLIUM_DRIVERS DRI_DRIVERS EGL_PLATFORMS &&
 ninja
 '''
 
+webkit_build = '''
+mkdir -vp build &&
+cd        build &&
+
+cmake -DCMAKE_BUILD_TYPE=Release  \\
+      -DCMAKE_INSTALL_PREFIX=/usr \\
+      -DCMAKE_SKIP_RPATH=ON       \\
+      -DPORT=GTK                  \\
+      -DLIB_INSTALL_DIR=/usr/lib  \\
+      -DENABLE_MINIBROWSER=ON     \\
+      -Wno-dev -G Ninja ..        &&
+ninja
+'''
+
 lightdm_commands = '''export MOC4=moc-qt4
 
 ./configure --prefix=/usr \
@@ -421,6 +435,18 @@ def mesafilter(package, commands):
 		for command in commands:
 			if 'meson' in command:
 				new_commands.append(mesa_configure)
+			else:
+				new_commands.append(command)
+		return (package, new_commands)
+	else:
+		return (package, commands)
+
+def webkitgtkfilter(package, commands):
+	if package['name'] == 'webkitgtk':
+		new_commands = list()
+		for command in commands:
+			if 'cmake' in command:
+				new_commands.append(webkit_build)
 			else:
 				new_commands.append(command)
 		return (package, new_commands)

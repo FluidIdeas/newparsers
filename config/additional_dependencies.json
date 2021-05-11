@@ -32,5 +32,16 @@
 	"mutter": ["graphene", "pipewire"],
 	"pipewire": ["jack2"],
 	"libgweather": ["python-modules#pygobject3"],
-	"sysprof": ["json-glib"]
+	"sysprof": ["json-glib"],
+	"webkitgtk": [
+		"hyphen",
+		"libmanette",
+		"libwpe",
+		"wpebackend-fdo",
+		"bubblewrap",
+		"xdg-dbus-proxy",
+		"geoclue2",
+		"gtk-doc",
+		"woff2"
+	]
 }

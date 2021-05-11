@@ -1296,15 +1296,6 @@
         "description": "AppArmor protects systems from insecure or untrusted processes by running them in restricted confinement, while still allowing processes to share files, exercise privilege and communicate with other processes. AppArmor is a Mandatory Access Control (MAC) mechanism which uses the Linux Security Module (LSM) framework. The confinement's restrictions are mandatory and are not bound to identity, group membership, or object ownership. The protections provided are in addition to the kernel's regular access control mechanisms (including DAC) and can be used to restrict the superuser."
     },
     {
-        "name": "xdg-dbus-proxy",
-        "version": "0.1.2",
-        "download_urls": ["https://github.com/flatpak/xdg-dbus-proxy/releases/download/0.1.2/xdg-dbus-proxy-0.1.2.tar.xz"],
-        "tarball": "xdg-dbus-proxy-0.1.2.tar.xz",
-        "commands": "./configure --prefix=/usr &&\nmake\nsudo make install",
-        "dependencies": [],
-        "description": "xdg-dbus-proxy is a filtering proxy for D-Bus connections. It was originally part of the Flatpak project, but it has been broken out as a standalone module to facilitate using it in other contexts, for example in WebKit-GTK's optional bubblewrap-based sandbox."
-    },
-    {
         "name": "libostree",
         "version": "2019.4",
         "download_urls": ["https://github.com/ostreedev/ostree/releases/download/v2019.4/libostree-2019.4.tar.xz"],
@@ -1872,5 +1863,50 @@
         "commands": "./configure --prefix=/usr &&\nmake\n\nsudo make install",
         "dependencies": [],
         "section": "Networking Utilities"
+    },
+    {
+        "name": "hyphen",
+        "version": "2.8.8",
+        "description": "Hunspell is a spell checker and morphological analyzer library and program designed for languages with rich morphology and complex compounding or character encoding",
+        "download_urls": ["https://sourceforge.net/projects/hunspell/files/Hyphen/2.8/hyphen-2.8.8.tar.gz"],
+        "commands": "./configure --prefix=/usr\nmake\n\nsudo make install",
+        "dependencies": [],
+        "section": "Others"
+    },
+    {
+        "name": "libmanette",
+        "version": "0.2.6",
+        "description": "The simple GObject game controller library",
+        "download_urls": ["https://gitlab.gnome.org/GNOME/libmanette/-/archive/0.2.6/libmanette-0.2.6.tar.bz2"],
+        "commands": "mkdir build\ncd build\n\nmeson --prefix=/usr &&\nninja\n\nsudo ninja install",
+        "dependencies": [],
+        "section": "Others"
+    },
+    {
+        "name": "libwpe",
+        "version": "1.10.0",
+        "description": "General-purpose library specifically developed for the WPE-flavored port of WebKit.",
+        "download_urls": ["https://github.com/WebPlatformForEmbedded/libwpe/releases/download/1.10.0/libwpe-1.10.0.tar.xz"],
+        "commands": "mkdir build\ncd build\n\nmeson --prefix=/usr &&\nninja\n\nsudo ninja install",
+        "dependencies": [],
+        "section": "Others"
+    },
+    {
+        "name": "wpebackend-fdo",
+        "version": "1.8.3",
+        "description": "This package provides a backend implementation for the WPE WebKit engine that uses Wayland for graphics output.",
+        "download_urls": ["https://github.com/Igalia/WPEBackend-fdo/releases/download/1.8.3/wpebackend-fdo-1.8.3.tar.xz"],
+        "commands": "mkdir build\ncd build\n\nmeson --prefix=/usr &&\nninja\n\nsudo ninja install",
+        "dependencies": [],
+        "section": "Others"
+    },
+    {
+        "name": "xdg-dbus-proxy",
+        "version": "0.1.2",
+        "description": "xdg-dbus-proxy is a filtering proxy for D-Bus connections. It was originally part of the flatpak project, but it has been broken out as a standalone module to facilitate using it in other contexts.",
+        "download_urls": ["https://github.com/flatpak/xdg-dbus-proxy/releases/download/0.1.2/xdg-dbus-proxy-0.1.2.tar.xz"],
+        "commands": "./configure --prefix=/usr\nmake\n\nsudo make install",
+        "dependencies": [],
+        "section": "Others"
     }
 ]
