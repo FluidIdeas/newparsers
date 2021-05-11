@@ -482,7 +482,7 @@ def brotlifilter(package, commands):
 
 def rustfilter(package, commands):
 	if 'rust' in package['dependencies']:
-		commands.insert(0, 'if ! grep -ri \"/opt/rustc/lib\" /etc/ld.so.conf &> /dev/null; then\n\techo \"/opt/rustc/lib\" | sudo tee -a /etc/ld.so.conf\n\tsudo ldconfig\nfi\n\nsudo ldconfig\n. /etc/profile.d/rustc.sh\n')
+		commands.insert(0, 'if ! grep -ri \"/opt/rustc/lib\" /etc/ld.so.conf &> /dev/null; then\n\techo \"/opt/rustc/lib\" | sudo tee -a /etc/ld.so.conf\n\tsudo ldconfig\nfi\n\nsudo ldconfig\nexport PATH=/opt/rustc/bin:$PATH\n')
 	return (package, commands)
 
 
