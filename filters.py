@@ -47,17 +47,33 @@ cmake -DCMAKE_BUILD_TYPE=Release  \\
 ninja
 '''
 
+brotli_commands = '''
+mkdir out &&
+cd    out &&
+
+cmake -DCMAKE_INSTALL_PREFIX=/usr \\
+      -DCMAKE_BUILD_TYPE=Release  \\
+      ..  &&
+make
+pushd ..               &&
+python3 setup.py build &&
+popd
+sudo make install &&
+cd ..
+sudo python3 setup.py install --optimize=1
+'''
+
 lightdm_commands = '''export MOC4=moc-qt4
 
-./configure --prefix=/usr \
-            --sysconfdir=/etc \
-            --localstatedir=/var \
-            --libexecdir=/usr/lib \
-            --with-greeter-user=lightdm \
-            --with-greeter-session=lightdm-gtk-greeter \
-            --disable-static \
-            --disable-tests  \
-			--disable-liblightdm-qt5  \
+./configure --prefix=/usr                              \\
+            --sysconfdir=/etc                          \\
+            --localstatedir=/var                       \\
+            --libexecdir=/usr/lib                      \\
+            --with-greeter-user=lightdm                \\
+            --with-greeter-session=lightdm-gtk-greeter \\
+            --disable-static                           \\
+            --disable-tests                            \\
+			--disable-liblightdm-qt5                   \\
 			--disable-liblightdm-qt
 
 make "-j`nproc`"
@@ -449,6 +465,14 @@ def webkitgtkfilter(package, commands):
 				new_commands.append(webkit_build)
 			else:
 				new_commands.append(command)
+		return (package, new_commands)
+	else:
+		return (package, commands)
+
+def brotlifilter(package, commands):
+	if package['name'] == 'brotli':
+		new_commands = list()
+		new_commands.append(brotli_commands)
 		return (package, new_commands)
 	else:
 		return (package, commands)

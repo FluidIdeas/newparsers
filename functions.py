@@ -4,6 +4,7 @@ from bs4 import BeautifulSoup
 import json
 from filters import mesafilter
 from filters import webkitgtkfilter
+from filters import brotlifilter
 from filters import rustfilter
 from filters import bluezfilter
 from filters import krameworks5filter
@@ -47,6 +48,7 @@ final_cmds = load_json('config/final-commands.json')
 custom_package_filters = [
 	mesafilter,
 	webkitgtkfilter,
+	brotlifilter,
 	rustfilter, 
 	bluezfilter, 
 	krameworks5filter, 
