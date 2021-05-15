@@ -94,13 +94,13 @@ plasma-systemmonitor
 qqc2-breeze-style
 "
 
-base_url = "https://download.kde.org/stable/plasma/$VERSION/"
+base_url="https://download.kde.org/stable/plasma/$VERSION/"
 
 for pkg in $(echo $packages); do
     if ! grep pkg /tmp/framework-pkgs &> /dev/null; then
-        wget "$base_url$pkg"
-        tarball=$(echo "$base_url$pkg" | rev | cut -d/ -f1 | rev)
-        directory=$(tar tf $tarball)
+        wget -nc "$base_url$pkg-$VERSION.0.tar.xz"
+        tarball=$(echo "$base_url$pkg-$VERSION.0.tar.xz" | rev | cut -d/ -f1 | rev)
+        directory=$(tar tf $tarball | cut -d/ -f1 | uniq)
 
         tar xf $tarball
         pushd $directory
@@ -113,7 +113,7 @@ for pkg in $(echo $packages); do
             make
             sudo make install
         popd
-        rm -rf $directory
+        sudo rm -rf $directory
         echo $pkg | tee -a /tmp/framework-pkgs
     fi
 done

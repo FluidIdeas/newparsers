@@ -308,7 +308,8 @@
     "iptables": [
         "/etc/systemd/scripts"
     ],
-    "frameworks5": [
-        "/opt/kf5"
+    "qrencode": [
+        "doxygen",
+        "/usr/share/doc/qrencode"
     ]
 }
