@@ -646,8 +646,7 @@
             "aryalinux-gtk-themes",
             "aryalinux-google-fonts",
             "aryalinux-wallpapers",
-            "aryalinux-icons",
-            "aryalinux-kde-settings"
+            "aryalinux-icons"
         ],
         "description": "Plasma is KDE's desktop environment. Simple by default, powerful when needed."
     },
@@ -693,7 +692,6 @@
             "cups-filters",
             "vpn-libs",
             "plymouth",
-            "aryalinux-xfce-defaults",
             "pnmixer",
             "xdg-user-dirs",
             "xdg-utils",

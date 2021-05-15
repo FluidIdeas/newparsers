@@ -14,6 +14,8 @@ URL="https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-5.5.2.tar.xz"
 SECTION="System"
 
 cd $SOURCE_DIR
+mkdir -pv $NAME
+pushd $NAME
 
 wget -nc $URL
 TARBALL=`echo $URL | rev | cut -d/ -f1 | rev`
@@ -40,3 +42,5 @@ cd $SOURCE_DIR
 cleanup "$NAME" "$DIRECTORY"
 
 register_installed "$NAME" "$VERSION" "$INSTALLED_LIST"
+
+popd

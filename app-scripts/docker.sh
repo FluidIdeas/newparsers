@@ -11,13 +11,16 @@ set +h
 
 cd $SOURCE_DIR
 
-wget -nc https://download.docker.com/linux/static/stable/x86_64/docker-19.03.5.tgz
-
-
 NAME=docker
 VERSION=19.03.5
 URL=https://download.docker.com/linux/static/stable/x86_64/docker-19.03.5.tgz
 DESCRIPTION="Docker is a set of platform as a service products that use OS-level virtualization to deliver software in packages called containers. Containers are isolated from one another and bundle their own software, libraries and configuration files; they can communicate with each other through well-defined channels."
+
+
+mkdir -pv $NAME
+pushd $NAME
+
+wget -nc https://download.docker.com/linux/static/stable/x86_64/docker-19.03.5.tgz
 
 if [ ! -z $URL ]
 then
@@ -64,3 +67,4 @@ if [ ! -z $URL ]; then cd $SOURCE_DIR && cleanup "$NAME" "$DIRECTORY"; fi
 
 register_installed "$NAME" "$VERSION" "$INSTALLED_LIST"
 
+popd

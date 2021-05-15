@@ -7,21 +7,19 @@ set +h
 . /var/lib/alps/functions
 . /etc/alps/directories.conf
 
-##DEPS##
+#REQ:cmake
 
 cd $SOURCE_DIR
 
-##NAME##
-##VERSION##
-##URL##
-##SECTION##
-##DESCRIPTION##
-
+NAME=__NAME__
+VERSION=__VERSION__
+URL=__URL__
+SECTION="KDE Plasma 5"
 
 mkdir -pv $NAME
 pushd $NAME
 
-##DOWNLOADS##
+wget -nc __URL__
 
 if [ ! -z $URL ]
 then
@@ -39,8 +37,15 @@ fi
 cd $DIRECTORY
 fi
 
-##COMMANDS##
+echo $USER > /tmp/currentuser
 
+
+mkdir build &&
+cd    build &&
+
+cmake -DCMAKE_INSTALL_PREFIX=/usr .. &&
+make
+sudo make install
 
 if [ ! -z $URL ]; then cd $SOURCE_DIR && cleanup "$NAME" "$DIRECTORY"; fi
 

@@ -7,21 +7,22 @@ set +h
 . /var/lib/alps/functions
 . /etc/alps/directories.conf
 
-#REQ:cmake
+#REQ:extra-cmake-modules
 
 
 cd $SOURCE_DIR
 
-NAME=extra-cmake-modules
-VERSION=5.82.0
-URL=https://download.kde.org/stable/frameworks/5.82/extra-cmake-modules-5.82.0.tar.xz
-SECTION="KDE Plasma 5"
-DESCRIPTION="The Extra Cmake Modules package contains extra CMake modules used by KDE Frameworks 5 and other packages."
+NAME=plasma-wayland-protocols
+VERSION=1.3.0
+URL=https://download.kde.org/stable/plasma-wayland-protocols/plasma-wayland-protocols-1.3.0.tar.xz
+SECTION="Introduction to KDE"
+DESCRIPTION="This package provides a custom set of protocol definitions for KDE."
 
 mkdir -pv $NAME
 pushd $NAME
 
-wget -nc https://download.kde.org/stable/frameworks/5.82/extra-cmake-modules-5.82.0.tar.xz
+wget -nc https://download.kde.org/stable/plasma-wayland-protocols/plasma-wayland-protocols-1.3.0.tar.xz
+
 
 if [ ! -z $URL ]
 then
@@ -42,17 +43,10 @@ fi
 echo $USER > /tmp/currentuser
 
 
-sed -i '/"lib64"/s/64//' kde-modules/KDEInstallDirs.cmake &&
-
-sed -e '/PACKAGE_INIT/i set(SAVE_PACKAGE_PREFIX_DIR "${PACKAGE_PREFIX_DIR}")' \
-    -e '/^include/a set(PACKAGE_PREFIX_DIR "${SAVE_PACKAGE_PREFIX_DIR}")' \
-    -i ECMConfig.cmake.in &&
-
 mkdir build &&
 cd    build &&
 
-cmake -DCMAKE_INSTALL_PREFIX=/usr .. &&
-make
+cmake -DCMAKE_INSTALL_PREFIX=/usr ..
 sudo rm -rf /tmp/rootscript.sh
 cat > /tmp/rootscript.sh <<"ENDOFROOTSCRIPT"
 make install
