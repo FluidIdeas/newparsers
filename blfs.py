@@ -106,7 +106,7 @@ for p in packages:
 		p['section'] = section_overrides[p['name']]
 	if p['name'] in descriptions:
 		p['description'] = descriptions[p['name']]
-	if p['name'] == 'krameworks5':
+	if p['name'] == 'frameworks5':
 		frameworks = p
 	if p['name'] == 'plasma-all':
 		plasma_all = p

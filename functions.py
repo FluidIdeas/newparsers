@@ -7,7 +7,7 @@ from filters import webkitgtkfilter
 from filters import brotlifilter
 from filters import rustfilter
 from filters import bluezfilter
-from filters import krameworks5filter
+from filters import frameworks5filter
 from filters import plasmafilter
 from filters import gimpfilter
 from filters import linux_pam_filter
@@ -51,7 +51,7 @@ custom_package_filters = [
 	brotlifilter,
 	rustfilter, 
 	bluezfilter, 
-	krameworks5filter, 
+	frameworks5filter, 
 	plasmafilter, 
 	gimpfilter, 
 	linux_pam_filter, 

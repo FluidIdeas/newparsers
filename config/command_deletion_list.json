@@ -333,7 +333,7 @@
 		]
 	},
 	{
-		"krameworks5": [
+		"frameworks5": [
 			"/opt/kf5.old",
 			"bash -e",
 			"/opt/kf5"

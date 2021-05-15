@@ -509,8 +509,8 @@ def bluezfilter(p, commands):
 	else:
 		return(p, commands)
 
-def krameworks5filter(p, commands):
-	if p['name'] == 'krameworks5':
+def frameworks5filter(p, commands):
+	if p['name'] == 'frameworks5':
 		del(p['download_urls'][0])
 		return(p, commands)
 	else:
@@ -594,7 +594,7 @@ def openldapfilter(package, commands):
 		return (package, commands)
 
 def kframeworksplasma(package, commands):
-	if package['name'] == 'krameworks5' or package['name'] == 'plasma-all':
+	if package['name'] == 'frameworks5' or package['name'] == 'plasma-all':
 		new_cmds = list()
 		for cmd in commands:
 			new_cmds.append(cmd.replace('\nexit', ''))
@@ -620,8 +620,8 @@ def rustfilter1(package, commands):
 	return (package, commands)
 
 def kframeworksfilter(package, commands):
-	if package['name'] == 'krameworks5' or package['name'] == 'plasma-all':
-		if package['name'] == 'krameworks5':
+	if package['name'] == 'frameworks5' or package['name'] == 'plasma-all':
+		if package['name'] == 'frameworks5':
 			tmpfile = '/tmp/kframeworks-done'
 		else:
 			tmpfile = '/tmp/plasma-done'

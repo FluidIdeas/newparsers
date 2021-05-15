@@ -226,7 +226,7 @@
         "--no-overwrite-dir",
         "/usr/share/pixmaps"
     ],
-    "krameworks5": [
+    "frameworks5": [
         "/opt/kf5.old",
         "bash -e",
         "/opt/kf5"
@@ -307,5 +307,8 @@
     ],
     "iptables": [
         "/etc/systemd/scripts"
+    ],
+    "frameworks5": [
+        "/opt/kf5"
     ]
 }

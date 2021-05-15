@@ -9,7 +9,7 @@
 	"alsa-tools": [
 		"fltk"
 	],
-	"krameworks5": [
+	"frameworks5": [
 		"noto-fonts",
 		"oxygen-fonts",
 		"bluez",

@@ -627,7 +627,7 @@
             "phonon-backend-gstreamer",
             "polkit-qt",
             "libdbusmenu-qt",
-            "krameworks5",
+            "frameworks5",
             "fftw",
             "plasma-all",
             "ark5",
@@ -940,37 +940,6 @@
         "description": "C bindings for Intel Media Runtime"
     },
     {
-        "name": "firefox",
-        "section": "Graphical Web Browsers",
-        "version": "89.0b9",
-        "download_urls": [
-            "https://archive.mozilla.org/pub/firefox/releases/89.0b9/source/firefox-89.0b9.source.tar.xz"
-        ],
-        "tarball": "firefox-89.0b9.source.tar.xz",
-        "commands": "cat > mozconfig << \"EOF\"\n# If you have a multicore machine, all cores will be used by default.\n\n# If you have installed (or will install) wireless-tools, and you wish\n# to use geolocation web services, comment out this line\nac_add_options --disable-necko-wifi\n\n# API Keys for geolocation APIs - necko-wifi (above) is required for MLS\n# Uncomment the following line if you wish to use Mozilla Location Service\n#ac_add_options --with-mozilla-api-keyfile=$PWD/mozilla-key\n\n# Uncomment the following line if you wish to use Google's geolocaton API\n# (needed for use with saved maps with Google Maps)\n#ac_add_options --with-google-location-service-api-keyfile=$PWD/google-key\n\n# startup-notification is required since firefox-78\n\n# Uncomment the following option if you have not installed PulseAudio\n#ac_add_options --disable-pulseaudio\n# or uncomment this if you installed alsa-lib instead of PulseAudio\n#ac_add_options --enable-alsa\n\n# Comment out following options if you have not installed\n# recommended dependencies:\nac_add_options --with-system-libevent\nac_add_options --with-system-webp\nac_add_options --with-system-nspr\nac_add_options --with-system-nss\nac_add_options --with-system-icu\n\n# Do not specify the gold linker which is not the default. It will take\n# longer and use more disk space when debug symbols are disabled.\n\n# libdavid (av1 decoder) requires nasm. Uncomment this if nasm\n# has not been installed.\n#ac_add_options --disable-av1\n\n# You cannot distribute the binary if you do this\nac_add_options --enable-official-branding\n\n# Stripping is now enabled by default.\n# Uncomment these lines if you need to run a debugger:\n#ac_add_options --disable-strip\n#ac_add_options --disable-install-strip\n\n# Disabling debug symbols makes the build much smaller and a little\n# faster. Comment this if you need to run a debugger. Note: This is\n# required for compilation on i686.\nac_add_options --disable-debug-symbols\n\n# The elf-hack is reported to cause failed installs (after successful builds)\n# on some machines. It is supposed to improve startup time and it shrinks\n# libxul.so by a few MB - comment this if you know your machine is not affected.\nac_add_options --disable-elf-hack\n\n# The BLFS editors recommend not changing anything below this line:\nac_add_options --prefix=/usr\nac_add_options --enable-application=browser\nac_add_options --disable-crashreporter\nac_add_options --disable-updater\n# enabling the tests will use a lot more space and significantly\n# increase the build time, for no obvious benefit.\nac_add_options --disable-tests\n\n# The default level of optimization again produces a working build with gcc.\nac_add_options --enable-optimize\n\nac_add_options --enable-system-ffi\nac_add_options --enable-system-pixman\n\n# --with-system-bz2 was removed in firefox-78\nac_add_options --with-system-jpeg\nac_add_options --with-system-png\nac_add_options --with-system-zlib\n\n# The following option unsets Telemetry Reporting. With the Addons Fiasco,\n# Mozilla was found to be collecting user's data, including saved passwords and\n# web form data, without users consent. Mozilla was also found shipping updates\n# to systems without the user's knowledge or permission.\n# As a result of this, use the following command to permanently disable\n# telemetry reporting in Firefox.\nunset MOZ_TELEMETRY_REPORTING\n\nmk_add_options MOZ_OBJDIR=@TOPSRCDIR@/firefox-build-dir\nEOF\nexport SHELL=/bin/sh\nsed -e 's/checkImpl/checkFFImpl/g' -i js/src/vm/JSContext*.h &&\nexport CC=clang CXX=clang++ AR=llvm-ar NM=llvm-nm RANLIB=llvm-ranlib &&\nexport MOZBUILD_STATE_PATH=${PWD}/mozbuild &&\n./mach build\nif [ -f /sources/distro-build.sh ]; then\n\tDESTDIR=$BINARY_DIR/$NAME-$VERSION-$(uname-m) ./mach install\nfi\n\nsudo ./mach install                                                  &&\n\nsudo mkdir -pv  /usr/lib/mozilla/plugins                             &&\nsudo ln    -sfv ../../mozilla/plugins /usr/lib/firefox/browser/\nunset CC CXX AR NM RANLIB MOZBUILD_STATE_PATH\n\nsudo mkdir -pv /usr/share/applications &&\nsudo mkdir -pv /usr/share/pixmaps &&\n\nsudo tee /usr/share/applications/firefox.desktop << \"EOF\" &&\n[Desktop Entry]\nEncoding=UTF-8\nName=Firefox Web Browser\nComment=Browse the World Wide Web\nGenericName=Web Browser\nExec=firefox %u\nTerminal=false\nType=Application\nIcon=firefox\nCategories=GNOME;GTK;Network;WebBrowser;\nMimeType=application/xhtml+xml;text/xml;application/xhtml+xml;application/vnd.mozilla.xul+xml;text/mml;x-scheme-handler/http;x-scheme-handler/https;\nStartupNotify=true\nEOF\n\nsudo ln -sfv /usr/lib/firefox/browser/chrome/icons/default/default128.png \\\n        /usr/share/pixmaps/firefox.png",
-        "dependencies": [
-            "autoconf213",
-            "cbindgen",
-            "llvm",
-            "gtk3",
-            "gtk2",
-            "libnotify",
-            "nodejs",
-            "nss",
-            "pulseaudio",
-            "alsa-lib",
-            "rust",
-            "unzip",
-            "yasm",
-            "zip",
-            "icu",
-            "libevent",
-            "libwebp",
-            "sqlite"
-        ],
-        "description": "Mozilla Firefox, or simply Firefox, is a free and open-source web browser developed by the Mozilla Foundation and its subsidiary, Mozilla Corporation. Firefox uses the Gecko layout engine to render web pages, which implements current and anticipated web standards."
-    },
-    {
         "name": "xorg-vmmouse-driver",
         "version": "13.1.0",
         "download_urls": [
@@ -1080,9 +1049,9 @@
     {
         "name": "galculator",
         "version": "2.1.4",
-        "download_urls": ["http://galculator.mnim.org/downloads/galculator-2.1.4.tar.bz2"],
+        "download_urls": ["http://galculator.mnim.org/downloads/galculator-2.1.4.tar.bz2", "https://github.com/galculator/galculator/commit/501a9e3feeb2e56889c0ff98ab6d0ab20348ccd6.diff"],
         "tarball": "galculator-2.1.4.tar.bz2",
-        "commands": "./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var --disable-static &&\nmake\n\nsudo make install",
+        "commands": "patch -Np1 -i ../501a9e3feeb2e56889c0ff98ab6d0ab20348ccd6.diff &&\n./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var --disable-static &&\nmake\n\nsudo make install",
         "dependencies": [],
         "description": "galculator is a scientific calculator. It supports different number bases (DEC/HEX/OCT/BIN) and angles bases (DEG/RAD/GRAD) and features a wide range of mathematical (basic arithmetic operations, trigonometric functions, etc) and other useful functions (memory, etc) at the moment. galculator can be used in algebraic mode as well as in Reverse Polish Notation (RPN)."
     },
@@ -1233,7 +1202,7 @@
         "version": "12-2019",
         "download_urls": [],
         "tarball": null,
-        "commands": "if [ \"x$INSTALL_LANGUAGE\" == \"x\" ]; then\n\necho \"These are the languages in which firefox is available:\"\necho \"\"\nwget -O /tmp/langfile https://ftp.mozilla.org/pub/firefox/releases/latest/README.txt &> /dev/null\ncat /tmp/langfile | grep \"lang=\" | grep -v \"wget\" | grep -v \"http\" | grep -v \"For\" | tr -s ' ' | sed \"s@ (@@g\" | rev | cut -d= -f1 | rev | sed \"s@lang=@@g\" | tr \"\\n\" \" \" | sed \"s@en-GB@en-US en-GB@g\"\necho \"\"\nread -p \"Enter the language for Firefox \" LANG\nrm /tmp/langfile\n\nelse\n\tLANG=\"$INSTALL_LANGUAGE\"\nfi\n\nif [ $(uname -m) == \"x86_64\" ]\nthen\n\twget -O $SOURCE_DIR/firefox.tar.bz2 \"https://download.mozilla.org/?product=firefox-latest&os=linux64&lang=$LANG\"\nelse\n\twget -O $SOURCE_DIR/firefox.tar.bz2 \"https://download.mozilla.org/?product=firefox-latest&os=linux&lang=$LANG\"\nfi\n\nTARBALL=\"firefox.tar.bz2\"\nDIRECTORY=`tar -tf $TARBALL | sed -e 's@/.*@@' | uniq`\n\ntar -xf $TARBALL\n\ncd $DIRECTORY\n\ncat > 1434987998846.sh << \"ENDOFFILE\"\nmkdir /opt/firefox\ncp -rf * /opt/firefox\n\ncat > /usr/share/applications/firefox.desktop << \"EOF\" &&\n[Desktop Entry]\nEncoding=UTF-8\nName=Firefox Web Browser\nComment=Browse the World Wide Web\nGenericName=Web Browser\nExec=/opt/firefox/firefox %u\nTerminal=false\nType=Application\nIcon=firefox\nCategories=GNOME;GTK;Network;WebBrowser;\nMimeType=application/xhtml+xml;text/xml;application/xhtml+xml;application/vnd.mozilla.xul+xml;text/mml;x-scheme-handler/http;x-scheme-handler/https;\nStartupNotify=true\nEOF\n\nfor s in 16 32 48 128\ndo\ninstall -v -Dm644 /opt/firefox/browser/chrome/icons/default/default${s}.png \\\n                  /usr/share/icons/hicolor/${s}x${s}/apps/firefox.png\ndone\n\nENDOFFILE\nchmod a+x 1434987998846.sh\nsudo ./1434987998846.sh\nsudo rm -rf 1434987998846.sh\n\nif [ -f /usr/bin/firefox ]; then\n\tsudo rm /usr/bin/firefox\n\tsudo rm -rf /usr/lib/firefox/\nfi",
+        "commands": "if [ \"x$INSTALL_LANGUAGE\" == \"x\" ]; then\n\necho \"These are the languages in which firefox is available:\"\necho \"\"\nwget -O /tmp/langfile https://ftp.mozilla.org/pub/firefox/releases/latest/README.txt &> /dev/null\ncat /tmp/langfile | grep \"lang=\" | grep -v \"wget\" | grep -v \"http\" | grep -v \"For\" | tr -s ' ' | sed \"s@ (@@g\" | rev | cut -d= -f1 | rev | sed \"s@lang=@@g\" | tr \"\\n\" \" \" | sed \"s@en-GB@en-US en-GB@g\"\necho \"\"\nread -p \"Enter the language for Firefox \" LANG\nrm /tmp/langfile\n\nelse\n\tLANG=\"$INSTALL_LANGUAGE\"\nfi\n\nif [ $(uname -m) == \"x86_64\" ]\nthen\n\twget -O $SOURCE_DIR/firefox.tar.bz2 \"https://download.mozilla.org/?product=firefox-latest&os=linux64&lang=$LANG\"\nelse\n\twget -O $SOURCE_DIR/firefox.tar.bz2 \"https://download.mozilla.org/?product=firefox-latest&os=linux&lang=$LANG\"\nfi\n\nTARBALL=\"firefox.tar.bz2\"\nDIRECTORY=`tar -tf $TARBALL | sed -e 's@/.*@@' | uniq`\n\ntar -xf $TARBALL\n\ncd $DIRECTORY\n\ncat > 1434987998846.sh << \"ENDOFFILE\"\nmkdir /opt/firefox\ncp -rf * /opt/firefox\n\npushd /usr/share/applications/ &&\nsudo rm firefox.desktop &&\nsudo wget https://raw.githubusercontent.com/archlinux/svntogit-packages/packages/firefox/trunk/firefox.desktop &&\nsudo sed -i \"s@/usr/lib/firefox@/opt/firefox@g\" firefox.desktop\n\nfor s in 16 32 48 128\ndo\ninstall -v -Dm644 /opt/firefox/browser/chrome/icons/default/default${s}.png \\\n                  /usr/share/icons/hicolor/${s}x${s}/apps/firefox.png\ndone\n\nENDOFFILE\nchmod a+x 1434987998846.sh\nsudo ./1434987998846.sh\nsudo rm -rf 1434987998846.sh\n\nif [ -f /usr/bin/firefox ]; then\n\tsudo rm /usr/bin/firefox\n\tsudo rm -rf /usr/lib/firefox/\nfi",
         "dependencies": [
             "curl",
             "alsa-lib",
@@ -1568,9 +1537,9 @@
     },
     {
         "name": "xfce4-screenshooter",
-        "version": "1.9.7",
-        "download_urls": ["https://github.com/xfce-mirror/xfce4-screenshooter/archive/xfce4-screenshooter-1.9.7.tar.gz"],
-        "tarball": "xfce4-screenshooter-1.9.7.tar.gz",
+        "version": "1.9.8",
+        "download_urls": ["https://github.com/xfce-mirror/xfce4-screenshooter/archive/xfce4-screenshooter-1.9.8.tar.gz"],
+        "tarball": "xfce4-screenshooter-1.9.8.tar.gz",
         "commands": "./autogen.sh --prefix=/usr\nmake\nsudo make install",
         "dependencies": [],
         "description": "Screenshooter is an utility for the Xfce Desktop Environment. It can take desktop, rectangles or selected window screenshots, and you can bind it to your 'Print Screen' key. A panel plugin is provided too."
@@ -1588,9 +1557,9 @@
     },
     {
         "name": "blueman",
-        "version": "2.1.1",
-        "download_urls": ["https://github.com/blueman-project/blueman/releases/download/2.1.1/blueman-2.1.1.tar.gz"],
-        "tarball": "blueman-2.1.1.tar.gz",
+        "version": "2.1.4",
+        "download_urls": ["https://github.com/blueman-project/blueman/releases/download/2.1.4/blueman-2.1.4.tar.xz"],
+        "tarball": "blueman-2.1.4.tar.xz",
         "commands": "sudo pip3 install Cython\n\n./autogen.sh --prefix=/usr --disable-runtime-deps-check &&\nmake\nsudo make install",
         "dependencies": ["bluez"],
         "description": "Blueman is a GTK+ bluetooth management utility for GNOME using bluez D-Bus backend."
@@ -1766,7 +1735,7 @@
         "description": "",
         "download_urls": ["https://download.kde.org/stable/plasma/5.16.4/kwin-5.16.4.tar.xz"],
         "commands": "mkdir build\ncd build\n\ncmake -DCMAKE_INSTALL_PREFIX=/usr ..\nmake\nsudo make install",
-        "dependencies": ["krameworks5"],
+        "dependencies": ["frameworks5"],
         "section": "LXQT Desktop"
     },
     {
@@ -1786,7 +1755,7 @@
         "commands": "git clone https://github.com/lxqt/lxqt.git\ncd lxqt\ngit submodule init\ngit submodule update --remote --rebase\nLXQT_PREFIX=/usr ./build_all.sh\ncd ..\nrm -rf lxqt",
         "dependencies": [
             "qt5",
-            "krameworks5",
+            "frameworks5",
             "extra-cmake-modules",
             "udisks2",
             "upower",
