@@ -45,7 +45,7 @@ framework_packages = [
   'kio',
   'kdeclarative',
   'kcmutils',
-  'kirigami2',
+  'kirigami',
   'knewstuff',
   'frameworkintegration',
   'kinit',

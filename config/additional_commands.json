@@ -1,7 +1,7 @@
 {
 	"aspell": {
 		"position": -2,
-		"command": "cd $SOURCE_DIR\nTARBALL=$(ls aspell*.tar.bz2)\nDIRECTORY=$(tar tf $TARBALL | cut -d/ -f1 | uniq)\n\ntar xf $TARBALL\ncd $DIRECTORY"
+		"command": "cd ..\nTARBALL=$(ls aspell*.tar.bz2)\nDIRECTORY=$(tar tf $TARBALL | cut -d/ -f1 | uniq)\n\ntar xf $TARBALL\ncd $DIRECTORY"
 	},
 	"rust": {
 		"position": 1000,

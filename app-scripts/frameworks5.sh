@@ -85,7 +85,7 @@ set +h
 #REQ:kio
 #REQ:kdeclarative
 #REQ:kcmutils
-#REQ:kirigami2
+#REQ:kirigami
 #REQ:knewstuff
 #REQ:frameworkintegration
 #REQ:kinit
@@ -106,6 +106,7 @@ set +h
 #REQ:prison
 #REQ:qqc2-desktop-style
 #REQ:kjs
+#REQ:kdesignerplugin
 #REQ:kdelibs4support
 #REQ:khtml
 #REQ:kjsembed
