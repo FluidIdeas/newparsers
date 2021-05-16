@@ -42,6 +42,7 @@
 		"xdg-dbus-proxy",
 		"geoclue2",
 		"gtk-doc",
-		"woff2"
+		"woff2",
+		"libseccomp"
 	]
 }

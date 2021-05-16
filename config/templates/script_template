@@ -18,8 +18,8 @@ cd $SOURCE_DIR
 ##DESCRIPTION##
 
 
-mkdir -pv $NAME
-pushd $NAME
+mkdir -pv $(echo $NAME | sed "s@#@_@g")
+pushd $(echo $NAME | sed "s@#@_@g")
 
 ##DOWNLOADS##
 

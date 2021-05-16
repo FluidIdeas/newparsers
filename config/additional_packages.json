@@ -556,12 +556,12 @@
     },
     {
         "name": "libplist",
-        "version": "2.1.0",
+        "version": "2.2.0",
         "download_urls": [
-            "https://github.com/libimobiledevice/libplist/archive/2.1.0.tar.gz"
+            "https://github.com/libimobiledevice/libplist/releases/download/2.2.0/libplist-2.2.0.tar.bz2"
         ],
-        "tarball": "2.1.0.tar.gz",
-        "commands": "./autogen.sh --prefix=/usr &&\nmake\nsudo make install",
+        "tarball": "libplist-2.2.0.tar.bz2",
+        "commands": "./configure --prefix=/usr &&\nmake\nsudo make install",
         "dependencies": [],
         "description": "A library to handle Apple Property List format in binary or XML - libimobiledevice/libplist"
     },
@@ -569,10 +569,13 @@
         "name": "libgpod",
         "version": "0.8.3",
         "download_urls": [
-            "https://launchpad.net/ubuntu/+archive/primary/+sourcefiles/libgpod/0.8.3-16/libgpod_0.8.3.orig.tar.bz2"
+            "https://sourceforge.net/projects/gtkpod/files/libgpod/libgpod-0.8/libgpod-0.8.3.tar.bz2",
+            "https://raw.githubusercontent.com/archlinux/svntogit-packages/packages/libgpod/trunk/0001-323-Segmentation-fault-when-opening-ipod.patch",
+            "https://raw.githubusercontent.com/archlinux/svntogit-packages/packages/libgpod/trunk/libgpod-0.8.2-pkgconfig_overlinking.patch",
+            "https://raw.githubusercontent.com/archlinux/svntogit-packages/packages/libgpod/trunk/libgpod-fixswig.patch"
         ],
-        "tarball": "libgpod_0.8.3.orig.tar.bz2",
-        "commands": "./configure --prefix=/usr &&\nmake\nsudo make install",
+        "tarball": "libgpod-0.8.3.tar.bz2",
+        "commands": "sudo ln -svf /usr/lib/pkgconfig/libplist-2.0.pc /usr/lib/pkgconfig/libplist.pc &&\npatch -Np1 -i ../0001-323-Segmentation-fault-when-opening-ipod.patch &&\npatch -Np1 -i ../libgpod-0.8.2-pkgconfig_overlinking.patch &&\npatch -Np1 -i ../libgpod-fixswig.patch &&\n./configure --prefix=/usr &&\nmake\nsudo make install",
         "dependencies": [
             "libplist"
         ],
@@ -637,7 +640,6 @@
             "konsole5",
             "lightdm",
             "libnotify",
-            "gvfs",
             "udisks2",
             "dolphin",
             "dolphin-plugins",
@@ -1372,9 +1374,9 @@
     },
     {
         "name": "clementine",
-        "version": "1.4.0rc1",
-        "download_urls": ["https://github.com/clementine-player/Clementine/releases/download/1.4.0rc1/clementine-1.4.0rc1.tar.xz"],
-        "tarball": "clementine-1.4.0rc1.tar.xz",
+        "version": "1.4.0rc1-603-g75de59703",
+        "download_urls": ["https://github.com/clementine-player/Clementine/releases/download/1.4.0rc1-603-g75de59703/clementine-1.4.0rc1-603-g75de59703.tar.xz"],
+        "tarball": "clementine-1.4.0rc1-603-g75de59703.tar.xz",
         "commands": "mkdir build &&\ncd build &&\ncmake -DCMAKE_INSTALL_PREFIX=/usr .. &&\nmake \"-j`nproc`\"\nsudo make install",
         "dependencies": [
             "multimedia-plugins",
@@ -1396,17 +1398,17 @@
     {
         "name": "liblastfm",
         "version": "1.0.9",
-        "download_urls": ["http://archive.ubuntu.com/ubuntu/pool/universe/libl/liblastfm/liblastfm_1.0.9.orig.tar.gz"],
-        "tarball": "liblastfm_1.0.9.orig.tar.gz",
+        "download_urls": ["https://github.com/lastfm/liblastfm/archive/1.0.9/liblastfm-1.0.9.tar.gz"],
+        "tarball": "liblastfm-1.0.9.tar.gz",
         "commands": "mkdir -pv build\ncd build\n\ncmake -DCMAKE_INSTALL_PREFIX=/usr ..\nmake -j$(nproc)\n\nsudo make install",
         "dependencies": ["fftw", "libsamplerate", "qt5"],
         "description": "liblastfm is a collection of C++/Qt4 libraries provided by Last.fm for use with their web services."
     },
     {
         "name": "libsparsehash",
-        "version": "2.0.3",
-        "download_urls": ["https://github.com/sparsehash/sparsehash/archive/sparsehash-2.0.3.tar.gz"],
-        "tarball": "sparsehash-2.0.3.tar.gz",
+        "version": "2.0.4",
+        "download_urls": ["https://github.com/sparsehash/sparsehash/archive/refs/tags/sparsehash-2.0.4.tar.gz"],
+        "tarball": "sparsehash-2.0.4.tar.gz",
         "commands": "./configure --prefix=/usr  &&\nmake \"-j`nproc`\"\nsudo make install",
         "dependencies": [],
         "description": "The Google SparseHash project contains several C++ template hash-map implementations in use at Google, with different performance characteristics, including an implementation that optimizes for space and one that optimizes for speed."
@@ -1414,26 +1416,26 @@
     {
         "name": "libechonest",
         "version": "2.3.1",
-        "download_urls": ["http://archive.ubuntu.com/ubuntu/pool/universe/libe/libechonest/libechonest_2.3.1.orig.tar.gz"],
-        "tarball": "libechonest_2.3.1.orig.tar.gz",
+        "download_urls": ["https://github.com/KDE/libechonest/archive/2.3.1/libechonest-2.3.1.tar.gz"],
+        "tarball": "libechonest-2.3.1.tar.gz",
         "commands": "mkdir build &&\ncd build &&\ncmake -DCMAKE_INSTALL_PREFIX=/usr -DBUILD_WITH_QT4=off .. &&\nmake \"-j`nproc`\"\nsudo make install",
         "dependencies": [],
         "description": "Libechonest is a Qt library for communicating with 'The Echo Nest': an 'intelligent music application platform'. It currently supports all of the features of the Echo Nest API, including all the API functions."
     },
     {
         "name": "libmygpo-qt1",
-        "version": "1.0.9",
-        "download_urls": ["https://github.com/gpodder/libmygpo-qt/archive/1.0.9/libmygpo-qt-1.0.9.tar.gz"],
-        "tarball": "libmygpo-qt-1.0.9.tar.gz",
+        "version": "1.1.0",
+        "download_urls": ["https://github.com/gpodder/libmygpo-qt/archive/1.1.0/libmygpo-qt-1.1.0.tar.gz"],
+        "tarball": "libmygpo-qt-1.1.0.tar.gz",
         "commands": "mkdir build &&\ncd build &&\ncmake -DCMAKE_INSTALL_PREFIX=/usr -DBUILD_WITH_QT4=off .. &&\nmake \"-j`nproc`\"\nsudo make install",
         "dependencies": ["qt5", "gjson"],
         "description": "C++/Qt Library wrapping the gpodder.net Webservice"
     },
     {
         "name": "libcrypto++",
-        "version": "8.2.0",
-        "download_urls": ["https://github.com/weidai11/cryptopp/archive/CRYPTOPP_8_2_0.tar.gz"],
-        "tarball": "CRYPTOPP_8_2_0.tar.gz",
+        "version": "8.5.0",
+        "download_urls": ["https://github.com/weidai11/cryptopp/archive/refs/tags/CRYPTOPP_8_5_0.tar.gz"],
+        "tarball": "CRYPTOPP_8_5_0.tar.gz",
         "commands": "sed -i \"s@/usr/local@/usr@g\" GNUmakefile\nmake \"-j`nproc`\"\nmake libcryptopp.so",
         "dependencies": [],
         "description": "Crypto++ is library for creating C++ programs which use cryptographic algorithms. The library uses a Pipes & Filters architecture with heavy use of templates and abstract base classes."
@@ -1449,45 +1451,44 @@
     },
     {
         "name": "libimobiledevice",
-        "version": "1.2.0",
+        "version": "1.3.0",
         "download_urls": [
-            "http://www.libimobiledevice.org/downloads/libimobiledevice-1.2.0.tar.bz2",
-            "https://bitbucket.org/chandrakantsingh/patches/raw/1.0/libimobiledevice-1.2.0-sslv3.patch"
+            "https://github.com/libimobiledevice/libimobiledevice/releases/download/1.3.0/libimobiledevice-1.3.0.tar.bz2"
         ],
-        "tarball": "libimobiledevice-1.2.0.tar.bz2",
-        "commands": "patch -Np1 -i ../libimobiledevice-1.2.0-sslv3.patch &&\n./configure --prefix=/usr &&\nmake \"-j`nproc`\"\nsudo make install",
+        "tarball": "libimobiledevice-1.3.0.tar.bz2",
+        "commands": "./configure --prefix=/usr &&\nmake \"-j`nproc`\"\nsudo make install",
         "dependencies": ["libplist", "libusbmuxd"],
         "description": "libimobiledevice is a library that talks the native Apple USB protocols that the iPhone, iPad and iPod Touch use. Unlike other projects, libimobiledevice does not depend on using any existing libraries from Apple."
     },
     {
         "name": "libusbmuxd",
-        "version": "2.0.1",
+        "version": "2.0.2",
         "download_urls": [
-            "https://github.com/libimobiledevice/libusbmuxd/archive/2.0.1/libusbmuxd-2.0.1.tar.gz"
+            "https://github.com/libimobiledevice/libusbmuxd/releases/download/2.0.2/libusbmuxd-2.0.2.tar.bz2"
         ],
-        "tarball": "libusbmuxd-2.0.1.tar.gz",
-        "commands": "./autogen.sh --prefix=/usr  &&\nmake \"-j`nproc`\"\nsudo make install",
+        "tarball": "libusbmuxd-2.0.2.tar.bz2",
+        "commands": "./configure --prefix=/usr  &&\nmake \"-j`nproc`\"\nsudo make install",
         "dependencies": [],
         "description": "usbmuxd, the USB multiplexor daemon, is in charge of coordinating access to iPhone and iPod Touch services over USB. Synchronization and management applications for the iPhone and iPod Touch need this daemon to communicate with such devices concurrently."
     },
     {
         "name": "libchromaprint",
-        "version": "1.4.3",
+        "version": "1.5.0",
         "download_urls": [
-            "https://github.com/acoustid/chromaprint/releases/download/v1.4.3/chromaprint-1.4.3.tar.gz"
+            "https://github.com/acoustid/chromaprint/releases/download/v1.5.0/chromaprint-1.5.0.tar.gz"
         ],
-        "tarball": "chromaprint-1.4.3.tar.gz",
+        "tarball": "chromaprint-1.5.0.tar.gz",
         "commands": "mkdir build &&\ncd build &&\ncmake -DCMAKE_INSTALL_PREFIX=/usr .. &&\nmake \"-j`nproc`\"\nsudo make install",
         "dependencies": ["ffmpeg"],
         "description": "Chromaprint is a library for calculating audio fingerprints which are used by the Acoustid service. Its main purpose is to provide an accurate identifier for record tracks"
     },
     {
         "name": "protobuf",
-        "version": "3.11.2",
+        "version": "3.17.0",
         "download_urls": [
-            "https://github.com/protocolbuffers/protobuf/releases/download/v3.11.2/protobuf-all-3.11.2.tar.gz"
+            "https://github.com/protocolbuffers/protobuf/releases/download/v3.17.0/protobuf-all-3.17.0.tar.gz"
         ],
-        "tarball": "protobuf-all-3.11.2.tar.gz",
+        "tarball": "protobuf-all-3.17.0.tar.gz",
         "commands": "./configure --prefix=/usr  &&\nmake \"-j`nproc`\"\nsudo make install",
         "dependencies": [],
         "description": "An alternative protocol buffer support for the Go programming language, forked from golang-goprotobuf. It is backwards compatible with goprotobuf, but provides faster marshalling and unmarshalling and can generate extra helper code, tests and benchmarks."
