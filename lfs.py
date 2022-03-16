@@ -18,7 +18,7 @@ chapter_map = {
     'chapter07': 'additional-temp-tools',
     'chapter08': 'final-system'
 }
-unwanted_chapters = ['5.1', '6.1', '7.1', '7.2', '7.3', '7.4', '7.5', '7.6', '7.14', '8.1', '8.2', '8.75', '8.76', '8.77']
+unwanted_chapters = ['5.1', '6.1', '7.1', '7.2', '7.3', '7.4', '7.5', '7.6', '7.13', '8.1', '8.2', '8.77', '8.78', '8.79']
 
 filters = [libffifilter]
 
