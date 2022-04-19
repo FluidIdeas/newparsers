@@ -18,7 +18,7 @@ chapter_map = {
     'chapter07': 'additional-temp-tools',
     'chapter08': 'final-system'
 }
-unwanted_chapters = ['5.1', '6.1', '7.1', '7.2', '7.3', '7.4', '7.5', '7.6', '7.13', '8.1', '8.2', '8.77', '8.78', '8.79']
+unwanted_chapters = ['5.1', '6.1', '7.1', '7.2', '7.3', '7.4', '7.5', '7.6', '7.14', '8.1', '8.2', '8.77', '8.78', '8.79']
 
 filters = [libffifilter]
 
@@ -82,7 +82,7 @@ for tarball in tarballs:
 		package_tarballs['linux-headers'] = tarball
 	elif 'tar' in tarball and tarball.index('tar') == 0:
 		package_tarballs['tar'] = tarball
-	elif 'binutils' in tarball:
+	elif 'binutils' in tarball and 'xz' in tarball and tarball.rindex('xz') == len(tarball) - 2:
 		package_tarballs['binutils-pass1'] = tarball
 		package_tarballs['binutils-pass2'] = tarball
 	elif 'gcc' in tarball and tarball.index('gcc') == 0:
