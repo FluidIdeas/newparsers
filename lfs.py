@@ -48,6 +48,7 @@ deletables = [
 	'mkdir -pv /usr/lib/locale',
 	'./ninja ninja_test',
 	'exec /bin/bash --login +h',
+	'exec /usr/bin/bash --login',
 	'ABI=32 ./configure',
 	'tzselect',
 	'passwd root',
