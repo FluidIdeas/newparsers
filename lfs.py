@@ -98,6 +98,10 @@ for tarball in tarballs:
 		package_tarballs['make'] = tarball
 	elif 'xz' in tarball and tarball.index('xz') == 0:
 		package_tarballs['xz'] = tarball
+	elif 'MarkupSafe' in tarball:
+		package_tarballs['markupsafe'] = tarball
+	elif 'Jinja2' in tarball:
+		package_tarballs['jinja2'] = tarball
 
 def get_prefix(i):
 	if i < 10:
