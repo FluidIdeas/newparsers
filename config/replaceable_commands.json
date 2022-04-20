@@ -19,5 +19,6 @@
 	"%wheel ALL=(ALL) ALL" : "%wheel ALL=(ALL) NOPASSWD: ALL",
 	"ln -sv ../bin/ntfs-3g /usr/sbin/mount.ntfs &&": "sudo ln -sv ../bin/ntfs-3g /usr/sbin/mount.ntfs &&",
 	"ln -sv ntfs-3g.8 /usr/share/man/man8/mount.ntfs.8": "sudo ln -sv ntfs-3g.8 /usr/share/man/man8/mount.ntfs.8",
-	"mv -v $XORG_PREFIX/share/doc/xorgproto{,-2021.5}": "mv -v /usr/share/doc/xorgproto{,-2021.5}"
+	"mv -v $XORG_PREFIX/share/doc/xorgproto{,-2021.5}": "mv -v /usr/share/doc/xorgproto{,-2021.5}",
+	"      -DLLVM_TARGETS_TO_BUILD=\"host;AMDGPU;BPF\" \\\n": ""
 }
