@@ -312,5 +312,8 @@
     "qrencode": [
         "doxygen",
         "/usr/share/doc/qrencode"
+    ],
+    "libvdpau": [
+        "share/doc/libvdpau"
     ]
 }
