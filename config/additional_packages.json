@@ -55,7 +55,6 @@
             "xorg-server",
             "x7driver",
             "xf86-video-cirrus",
-            "xf86-video-mach64",
             "xf86-video-openchrome",
             "xf86-video-vesa",
             "intel-vaapi-driver",
