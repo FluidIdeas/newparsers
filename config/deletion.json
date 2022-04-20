@@ -47,7 +47,8 @@
         "ninja docs-clang-html docs-clang-man",
         "install -v -m644 docs/man/* /usr/share/man/man1",
         "install -v -m644 tools/clang/docs/man/*",
-        "SPHINX"
+        "SPHINX",
+        "/usr/share/doc/llvm"
     ],
     "mesa": [
         "cp -rfv docs/* /usr/share/doc/"
