@@ -1,7 +1,8 @@
 {
     "libusb": [
         "make -C doc docs",
-        "doc/html/*"
+        "doc/html/*",
+        "/usr/share/doc"
     ],
     "openssh": [
         "ssh-keygen"
