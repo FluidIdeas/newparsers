@@ -15,5 +15,6 @@
 	"--with-system-postgresql": "--disable-postgresql-sdbc",
 	"mysqld_safe --user=mysql 2>&1 >/dev/null &": "mysqld_safe --user=mysql 2>&1 >/dev/null & sleep 10",
 	"su - postgres": "su postgres",
-	"wget -r -nH -nd -A '*.xz' -np $url": "wget -r -nH -nd -np -A '*.xz' $url"
+	"wget -r -nH -nd -A '*.xz' -np $url": "wget -r -nH -nd -np -A '*.xz' $url",
+	"%wheel ALL=(ALL) ALL" : "%wheel ALL=(ALL) NOPASSWD: ALL"
 }
