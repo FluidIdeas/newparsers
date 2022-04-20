@@ -9,5 +9,8 @@
 	],
 	"xterm": [
 		"https://sourceforge.net/projects/aryalinux/files/releases/4.0/FiraMono.zip"
+	],
+	"systemd": [
+		"https://bitbucket.org/chandrakantsingh/patches/raw/4.0/systemd-250-kernel_5.17_fixes-1.patch"
 	]
 }

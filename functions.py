@@ -35,6 +35,7 @@ def load_json(file_path):
 		return json.load(fp)
 
 additional_commands = load_json('config/additional_commands.json')
+additional_downloads = load_json('config/additional_downloads.json')
 deletions = load_json('config/deletion.json')
 variables = load_json('config/variables.json')
 expendable_deps = load_json('config/expendable_dependencies.json')
@@ -322,6 +323,11 @@ def parse_perl_modules(file_path):
 			if key in package['commands']:
 				str_vars = str_vars + 'export ' + key + '="' + value + '"\n'
 		package['commands'] = str_vars + '\n' + package['commands']
+		if package['name'] in additional_downloads:
+			for url in additional_downloads[package['name']]:
+				package['download_urls'].append(url)
+		if package['name'] in additional_commands:
+			package['commands'].insert(additional_commands[package['name']].position, additional_commands[package['name']].command)
 		modules.append(package)
 	return modules
 
