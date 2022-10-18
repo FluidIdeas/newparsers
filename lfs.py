@@ -18,7 +18,7 @@ chapter_map = {
     'chapter07': 'additional-temp-tools',
     'chapter08': 'final-system'
 }
-unwanted_chapters = ['5.1', '6.1', '7.1', '7.2', '7.3', '7.4', '7.5', '7.6', '7.14', '8.1', '8.2', '8.75', '8.76', '8.77']
+unwanted_chapters = ['5.1', '6.1', '7.1', '7.2', '7.3', '7.4', '7.5', '7.6', '7.13', '8.1', '8.2', '8.78', '8.79', '8.80']
 
 filters = [libffifilter]
 
@@ -54,7 +54,8 @@ deletables = [
 	'vim-test.log',
 	'chown -Rv tester .',
  	'make NON_ROOT_USERNAME=tester check-root',
-	'echo "dummy:x:102:tester" >> /etc/group'
+	'echo "dummy:x:102:tester" >> /etc/group',
+        'exec /usr/bin/bash --login'
 ]
 
 replaceables = {
@@ -72,7 +73,8 @@ tarballs = list()
 with open(wget_list_path, 'r') as fp:
 	downloads = fp.read().split('\n')
 for download in downloads:
-	tarballs.append(download.split('/')[-1])
+	if ".patch" not in download:
+		tarballs.append(download.split('/')[-1])
 
 package_tarballs = dict()
 
@@ -139,7 +141,7 @@ def get_tarball_name(name):
 		return package_tarballs[name]
 	else:
 		for tarball in tarballs:
-			if name in tarball:
+			if name.lower() in tarball.lower():
 				return tarball
 
 def get_script(package):
