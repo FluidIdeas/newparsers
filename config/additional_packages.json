@@ -55,7 +55,6 @@
             "xorg-server",
             "x7driver",
             "xf86-video-cirrus",
-            "xf86-video-mach64",
             "xf86-video-openchrome",
             "xf86-video-vesa",
             "intel-vaapi-driver",
@@ -921,10 +920,11 @@
         "name": "intel-hybrid-driver",
         "version": "1.0.2",
         "download_urls": [
-            "https://github.com/01org/intel-hybrid-driver/archive/1.0.2/intel-hybrid-driver-1.0.2.tar.gz"
+            "https://github.com/01org/intel-hybrid-driver/archive/1.0.2/intel-hybrid-driver-1.0.2.tar.gz",
+            "https://github.com/intel/intel-hybrid-driver/commit/821f871296629ffab451faea5134abf6f2d1166f.patch"
         ],
         "tarball": "intel-hybrid-driver-1.0.2.tar.gz",
-        "commands": "./autogen.sh --prefix=/usr --sysconfdir=/etc &&\nmake\nsudo make install",
+        "commands": "patch -Np1 -i ../821f871296629ffab451faea5134abf6f2d1166f.patch &&\n./autogen.sh --prefix=/usr --sysconfdir=/etc &&\nmake\nsudo make install",
         "dependencies": [
             "libcmrt"
         ],

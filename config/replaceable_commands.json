@@ -15,5 +15,10 @@
 	"--with-system-postgresql": "--disable-postgresql-sdbc",
 	"mysqld_safe --user=mysql 2>&1 >/dev/null &": "mysqld_safe --user=mysql 2>&1 >/dev/null & sleep 10",
 	"su - postgres": "su postgres",
-	"wget -r -nH -nd -A '*.xz' -np $url": "wget -r -nH -nd -np -A '*.xz' $url"
+	"wget -r -nH -nd -A '*.xz' -np $url": "wget -r -nH -nd -np -A '*.xz' $url",
+	"%wheel ALL=(ALL) ALL" : "%wheel ALL=(ALL) NOPASSWD: ALL",
+	"ln -sv ../bin/ntfs-3g /usr/sbin/mount.ntfs &&": "sudo ln -sv ../bin/ntfs-3g /usr/sbin/mount.ntfs &&",
+	"ln -sv ntfs-3g.8 /usr/share/man/man8/mount.ntfs.8": "sudo ln -sv ntfs-3g.8 /usr/share/man/man8/mount.ntfs.8",
+	"mv -v $XORG_PREFIX/share/doc/xorgproto{,-2021.5}": "mv -v /usr/share/doc/xorgproto{,-2021.5}",
+	"      -DLLVM_TARGETS_TO_BUILD=\"host;AMDGPU;BPF\" \\\n": ""
 }

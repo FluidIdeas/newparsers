@@ -2,6 +2,7 @@
 	{
 		"libusb": [
 			"make -C doc docs",
+			"install -v -d -m755 /usr/share/doc/libusb",
 			"install -v -m644 doc/html/*"
 		]
 	},

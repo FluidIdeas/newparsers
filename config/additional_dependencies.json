@@ -44,5 +44,8 @@
 		"gtk-doc",
 		"woff2",
 		"libseccomp"
+	],
+	"accountsservice": [
+		"vala"
 	]
 }

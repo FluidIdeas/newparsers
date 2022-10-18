@@ -48,6 +48,7 @@ deletables = [
 	'mkdir -pv /usr/lib/locale',
 	'./ninja ninja_test',
 	'exec /bin/bash --login +h',
+	'exec /usr/bin/bash --login',
 	'ABI=32 ./configure',
 	'tzselect',
 	'passwd root',
@@ -84,7 +85,7 @@ for tarball in tarballs:
 		package_tarballs['linux-headers'] = tarball
 	elif 'tar' in tarball and tarball.index('tar') == 0:
 		package_tarballs['tar'] = tarball
-	elif 'binutils' in tarball:
+	elif 'binutils' in tarball and 'xz' in tarball and tarball.rindex('xz') == len(tarball) - 2:
 		package_tarballs['binutils-pass1'] = tarball
 		package_tarballs['binutils-pass2'] = tarball
 	elif 'gcc' in tarball and tarball.index('gcc') == 0:
@@ -100,6 +101,10 @@ for tarball in tarballs:
 		package_tarballs['make'] = tarball
 	elif 'xz' in tarball and tarball.index('xz') == 0:
 		package_tarballs['xz'] = tarball
+	elif 'MarkupSafe' in tarball:
+		package_tarballs['markupsafe'] = tarball
+	elif 'Jinja2' in tarball:
+		package_tarballs['jinja2'] = tarball
 
 def get_prefix(i):
 	if i < 10:
